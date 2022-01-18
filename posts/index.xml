@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>所有文章 - yuqin的博客</title>
+        <link>https://yuqinlee.github.io/posts/</link>
+        <description>所有文章 | yuqin的博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yuqin.lee@outlook.com (uchin)</managingEditor>
+            <webMaster>yuqin.lee@outlook.com (uchin)</webMaster><lastBuildDate>Tue, 18 Jan 2022 17:24:48 &#43;0800</lastBuildDate><atom:link href="https://yuqinlee.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Anaconda记录</title>
+    <link>https://yuqinlee.github.io/posts/anaconda%E8%AE%B0%E5%BD%95/</link>
+    <pubDate>Tue, 18 Jan 2022 17:24:48 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://yuqinlee.github.io/posts/anaconda%E8%AE%B0%E5%BD%95/</guid>
+    <description><![CDATA[1. Anaconda与Miniconda与Conda Conda 维基：conda conda官网 任何语言的包、依赖项和环境管理 — Python、R、Ruby]]></description>
+</item></channel>
+</rss>

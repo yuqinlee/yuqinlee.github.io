@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Anaconda记录 - yuqin的博客</title><meta name="Description" content=""><meta property="og:title" content="Anaconda记录" />
+<meta property="og:description" content="1. Anaconda与Miniconda与Conda Conda 维基：conda conda官网 任何语言的包、依赖项和环境管理 — Python、R、Ruby" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://yuqinlee.github.io/posts/anaconda%E8%AE%B0%E5%BD%95/" /><meta property="og:image" content="https://yuqinlee.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-01-18T17:24:48+08:00" />
+<meta property="article:modified_time" content="2022-01-18T17:24:48+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://yuqinlee.github.io/logo.png"/>
+
+<meta name="twitter:title" content="Anaconda记录"/>
+<meta name="twitter:description" content="1. Anaconda与Miniconda与Conda Conda 维基：conda conda官网 任何语言的包、依赖项和环境管理 — Python、R、Ruby"/>
+<meta name="application-name" content="yuqin的博客">
+<meta name="apple-mobile-web-app-title" content="yuqin的博客"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://yuqinlee.github.io/posts/anaconda%E8%AE%B0%E5%BD%95/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Anaconda记录",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/yuqinlee.github.io\/posts\/anaconda%E8%AE%B0%E5%BD%95\/"
+        },"genre": "posts","wordcount":  2782 ,
+        "url": "https:\/\/yuqinlee.github.io\/posts\/anaconda%E8%AE%B0%E5%BD%95\/","datePublished": "2022-01-18T17:24:48+08:00","dateModified": "2022-01-18T17:24:48+08:00","publisher": {
+            "@type": "Organization",
+            "name": "uchin"},"author": {
+                "@type": "Person",
+                "name": "uchin"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="yuqin的博客"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw'></i></span>uchin</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="yuqin的博客"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw'></i></span>uchin</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Anaconda记录</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/yuqinlee/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>uchin</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-01-18">2022-01-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2782 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-anaconda与miniconda与conda">1. Anaconda与Miniconda与Conda</a>
+      <ul>
+        <li><a href="#conda">Conda</a></li>
+        <li><a href="#anaconda">Anaconda</a></li>
+        <li><a href="#minicona">Minicona</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-下载与安装">2. 下载与安装</a>
+      <ul>
+        <li><a href="#miniconda下载">Miniconda下载</a></li>
+        <li><a href="#anaconda下载">Anaconda下载</a></li>
+        <li><a href="#安装">安装</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-换源">3. 换源</a>
+      <ul>
+        <li><a href="#添加清华源">添加清华源</a></li>
+        <li><a href="#添加中科大源">添加中科大源</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-conda常用命令">4. conda常用命令</a></li>
+    <li><a href="#5-mindspore相关">5. MindSpore相关</a></li>
+    <li><a href="#6jupyter-notebook使用">6.jupyter notebook使用</a></li>
+    <li><a href="#其他参考">其他参考</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://docs.conda.io/en/latest/_images/conda_logo.svg"
+        data-srcset="https://docs.conda.io/en/latest/_images/conda_logo.svg, https://docs.conda.io/en/latest/_images/conda_logo.svg 1.5x, https://docs.conda.io/en/latest/_images/conda_logo.svg 2x"
+        data-sizes="auto"
+        alt="https://docs.conda.io/en/latest/_images/conda_logo.svg"
+        title="alt" /></p>
+<h2 id="1-anaconda与miniconda与conda">1. Anaconda与Miniconda与Conda</h2>
+<h3 id="conda">Conda</h3>
+<p><strong><a href="https://zh.wikipedia.org/wiki/Conda" target="_blank" rel="noopener noreffer">维基：conda</a></strong></p>
+<p><strong><a href="https://docs.conda.io/en/latest/" target="_blank" rel="noopener noreffer">conda官网</a></strong></p>
+<blockquote>
+<p><em>任何语言的包、依赖项和环境管理 — Python、R、Ruby、Lua、Scala、Java、JavaScript、C/C++、FORTRAN 等。</em></p>
+<p>Conda 是一个开源包管理系统和环境管理系统，在 Windows、macOS 和 Linux 上运行。Conda 快速安装、运行和更新包及其依赖项。<strong>Conda 可在本地计算机上轻松创建、保存、加载和切换环境</strong>。它是为 Python 程序创建的，但它可以打包和分发任何语言的软件。</p>
+<p>Conda 作为包管理器可帮助您查找和安装包。<strong>如果需要不同版本的 Python 的包，则不需要切换到其他环境管理器，因为 conda 也是环境管理器。只需几个命令，就可以设置一个完全独立的环境来运行不同版本的 Python，同时在正常环境中继续运行通常版本的 Python</strong>。</p>
+<p>conda 包和环境管理器包含在 Anaconda 和 Miniconda 的所有版本中。</p>
+</blockquote>
+<p>以上为conda官网对于codna的说明，简单说就是包管理工具，并且提供设置不同的环境的功能，因此用户能在不同版本的python之间灵活切换，不同python环境各自独立。</p>
+<h3 id="anaconda">Anaconda</h3>
+<p><strong><a href="https://zh.wikipedia.org/wiki/Anaconda_%28Python%E5%8F%91%E8%A1%8C%E7%89%88%29" target="_blank" rel="noopener noreffer">维基：Anaconda</a></strong></p>
+<p><strong><a href="https://www.anaconda.com/" target="_blank" rel="noopener noreffer">Anaconda官网</a></strong></p>
+<blockquote>
+<p>Anaconda是一个免费开源的Python和R语言的发行版本，用于计算科学（数据科学、机器学习、大数据处理和预测分析），Anaconda致力于简化软件包管理系统和部署。Anaconda的包使用软件包管理系统Conda进行管理</p>
+</blockquote>
+<p>以上为维基Anaconda词条，简单说来就是python的一个发行版本，包括python、conda、许多科学计算需要的包，以及一些科学计算用到的工具等</p>
+<h3 id="minicona">Minicona</h3>
+<p><strong><a href="https://docs.conda.io/en/latest/miniconda.html" target="_blank" rel="noopener noreffer">Miniconda官网</a></strong></p>
+<blockquote>
+<p>Miniconda 是conda的免费最小安装程序。这是一个小的，引导版本的Anaconda，只包括conda，Python，他们依赖的包，和少数其他有用的包，包括pip，zlib和其他一些。</p>
+</blockquote>
+<p>以上为Miniconda官网的介绍</p>
+<h2 id="2-下载与安装">2. 下载与安装</h2>
+<blockquote>
+<p>下载Anaconda还是Miniconda？</p>
+<p>如果只是需要使用到不同的Python的环境，<strong>没有机器学习、科学计算等需求</strong>，下载Miniconda其实就行，需要一些包后续使用conda或pip安装即可。但是有些包因为版本问题等不是十分容易安装，而Anaconda自带很多常用、不常用的包，在这方面会比较方便。因此安装Anaconda肯定是没问题的，Anaconda安装包更大，并且自带Spyder、Jupyter等（安装后可删除），如果怕麻烦，电脑空间也够，那就安装Anaconda</p>
+<p>如果有强迫症，讨厌捆绑很多东西(比如本人)，那自然……</p>
+</blockquote>
+<h3 id="miniconda下载">Miniconda下载</h3>
+<ol>
+<li><a href="https://docs.conda.io/en/latest/miniconda.html" target="_blank" rel="noopener noreffer">官网</a></li>
+<li><a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/" target="_blank" rel="noopener noreffer">清华镜像</a></li>
+</ol>
+<h3 id="anaconda下载">Anaconda下载</h3>
+<ol>
+<li><a href="https://www.anaconda.com/" target="_blank" rel="noopener noreffer">官网</a></li>
+<li><a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/" target="_blank" rel="noopener noreffer">清华镜像</a></li>
+</ol>
+<p>官网下载速度可能比较慢，从清华镜像下载会快很多</p>
+<h3 id="安装">安装</h3>
+<p>Miniconda与Anaconda安装界面都差不多</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/Anaconda%E8%AE%B0%E5%BD%95.assets/image-20210214135615761.png"
+        data-srcset="/images/Anaconda%E8%AE%B0%E5%BD%95.assets/image-20210214135615761.png, /images/Anaconda%E8%AE%B0%E5%BD%95.assets/image-20210214135615761.png 1.5x, /images/Anaconda%E8%AE%B0%E5%BD%95.assets/image-20210214135615761.png 2x"
+        data-sizes="auto"
+        alt="/images/Anaconda%E8%AE%B0%E5%BD%95.assets/image-20210214135615761.png"
+        title="alt" /></p>
+<p>点击next，点击I Agree，如下</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/Anaconda%E8%AE%B0%E5%BD%95.assets/image-20210214135724640.png"
+        data-srcset="/images/Anaconda%E8%AE%B0%E5%BD%95.assets/image-20210214135724640.png, /images/Anaconda%E8%AE%B0%E5%BD%95.assets/image-20210214135724640.png 1.5x, /images/Anaconda%E8%AE%B0%E5%BD%95.assets/image-20210214135724640.png 2x"
+        data-sizes="auto"
+        alt="/images/Anaconda%E8%AE%B0%E5%BD%95.assets/image-20210214135724640.png"
+        title="alt" /></p>
+<p>Just Me安装在当前用户；All Users给所用用户安装。因为一台计算机中用户可能有多个(尽管Windows用户很多时候只有一个……)，给所有用户安装那只要是这台计算机中的用户都能使用Anaconda/Miniconda，Just Me就是只给当前所使用的用户安装~~（也不是说别的用户就完全不能用）~~，按个人喜好勾选，Windows个人还是建议All Users，毕竟多数时候是只是用一个用户的emmm</p>
+<p>点击Next，之后选择安装路径，</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/Anaconda%E8%AE%B0%E5%BD%95.assets/image-20210214140931475.png"
+        data-srcset="/images/Anaconda%E8%AE%B0%E5%BD%95.assets/image-20210214140931475.png, /images/Anaconda%E8%AE%B0%E5%BD%95.assets/image-20210214140931475.png 1.5x, /images/Anaconda%E8%AE%B0%E5%BD%95.assets/image-20210214140931475.png 2x"
+        data-sizes="auto"
+        alt="/images/Anaconda%E8%AE%B0%E5%BD%95.assets/image-20210214140931475.png"
+        title="alt" /></p>
+<p>点击Next</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/Anaconda%E8%AE%B0%E5%BD%95.assets/image-20210214141133596.png"
+        data-srcset="/images/Anaconda%E8%AE%B0%E5%BD%95.assets/image-20210214141133596.png, /images/Anaconda%E8%AE%B0%E5%BD%95.assets/image-20210214141133596.png 1.5x, /images/Anaconda%E8%AE%B0%E5%BD%95.assets/image-20210214141133596.png 2x"
+        data-sizes="auto"
+        alt="/images/Anaconda%E8%AE%B0%E5%BD%95.assets/image-20210214141133596.png"
+        title="alt" /></p>
+<p>两个选择框选择环境变量的添加，第一个是添加环境变量，第二个是将Anaconda/Miniconda自带的Python作为系统的python</p>
+<p>第一个个人建议勾选(<strong>不勾选之后再添加也可，网上有博客说勾选出问题了的，不过我是没出过问题哈，自己添加可参考下面安装完成后的环境变量，Anaconda与Miniconda类似</strong>)，第二个如果计算机还有其他Python根据情况选择，如果和其他Python产生冲突，之后调整环境变量顺序即可。</p>
+<p>Install等待安装即可，都勾选安装完成后涉及Anaconda的环境变量如下</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/Anaconda%E8%AE%B0%E5%BD%95.assets/image-20210214141745350.png"
+        data-srcset="/images/Anaconda%E8%AE%B0%E5%BD%95.assets/image-20210214141745350.png, /images/Anaconda%E8%AE%B0%E5%BD%95.assets/image-20210214141745350.png 1.5x, /images/Anaconda%E8%AE%B0%E5%BD%95.assets/image-20210214141745350.png 2x"
+        data-sizes="auto"
+        alt="/images/Anaconda%E8%AE%B0%E5%BD%95.assets/image-20210214141745350.png"
+        title="image-20210214141745350" /></p>
+<p>可以打开cmd(<strong>环境变量已经配好了</strong>)再验证下是否安装完成了</p>
+<p>查看当前python版本（安装了其他版本python可在环境变量里看看顺序，在前面的优先）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">python -V
+</code></pre></td></tr></table>
+</div>
+</div><p>查看conda版本</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">conda -V
+</code></pre></td></tr></table>
+</div>
+</div><p>查看pip版本</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">pip -V
+</code></pre></td></tr></table>
+</div>
+</div><p>启用base环境（Windows上，建议使用cmd，如果是使用cmd，提示符最前面会有base标记，Power shell的话没有）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">activate base
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="3-换源">3. 换源</h2>
+<p>使用conda更新、下载包时都比较慢，更换为国内源后会快很多</p>
+<p><strong>参看：<a href="https://www.cnblogs.com/dereen/p/anaconda_tencent_mirrors.html" target="_blank" rel="noopener noreffer">国内可用Anaconda 源的镜像站及换国内源方法</a></strong></p>
+<h3 id="添加清华源">添加清华源</h3>
+<p>命令行中直接使用以下命令（ubuntu命令行也可以）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge 
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2/
+<span class="c1"># 设置搜索时显示通道地址</span>
+conda config --set show_channel_urls yes
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="添加中科大源">添加中科大源</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/main/
+conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/conda-forge/
+conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/msys2/
+conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/bioconda/
+conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/menpo/
+conda config --set show_channel_urls yes
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="4-conda常用命令">4. conda常用命令</h2>
+<ul>
+<li>
+<p><strong>查看conda版本，验证是否安装</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">conda --version 
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>更新至最新版本，也会更新其它相关包</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">conda update conda
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>更新所有包</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">conda update --all 
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>更新指定的包</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">conda update package_name
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><font color='red'><strong>显示所有的虚拟环境</strong></font></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">conda env list
+</code></pre></td></tr></table>
+</div>
+</div><p>或者</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">conda info -e
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><font color='red'><strong>切换至env_name环境</strong></font></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">conda activate env_name
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>退出环境</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">codna deactivate
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong><font color='red'>创建名为env_name的新环境</font>，并在该环境下安装名为package_name 的包，可以指定新环境的版本号，例如：<code>conda create -n python2 python=python2.7 numpy pandas</code>，创建了python2环境，python版本为2.7，同时还安装了numpy pandas包</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">conda create --name env_name package_name <span class="nv">python</span><span class="o">=</span>3.7
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p><code>--name</code>可缩写为<code>-n</code></p>
+</blockquote>
+</li>
+<li>
+<p><strong>查看所有已经安装的包</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">conda list
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>在当前环境中安装包</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">conda install package_name
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>在指定环境中安装包</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">conda install --name env_name package_name
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>删除指定环境中的包</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">conda remove --name env_name package 
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>删除当前环境中的包</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">conda remove package
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>复制old_env_name为new_env_name</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">conda create --name new_env_name --clone old_env_name
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>删除环境</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">conda remove --name env_name --all
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>清理</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">conda clean -p      //删除没有用的包
+conda clean -t      //删除tar包
+conda clean -y --all //删除所有的安装包及cache
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>conda clean就可以轻松搞定！第一步：通过conda clean -p来删除一些没用的包，这个命令会检查哪些包没有在包缓存中被硬依赖到其他地方，并删除它们。第二步：通过conda clean -t可以将删除conda保存下来的tar包。</p>
+<p><a href="https://blog.csdn.net/zhayushui/article/details/80433768" target="_blank" rel="noopener noreffer">https://blog.csdn.net/zhayushui/article/details/80433768</a></p>
+</blockquote>
+</li>
+<li>
+<p><strong>复制/重命名/删除env环境</strong></p>
+<blockquote>
+<p>Conda是没有重命名环境的功能的, 要实现这个基本需求, 只能通过愚蠢的克隆-删除的过程。
+切记不要直接mv移动环境的文件夹来重命名, 会导致一系列无法想象的错误的发生!</p>
+<p><font color='red'>注意：必须在base环境下进行以上操作，否则会出现各种莫名的问题。</font></p>
+<p><a href="https://blog.csdn.net/zhayushui/article/details/80433768" target="_blank" rel="noopener noreffer">https://blog.csdn.net/zhayushui/article/details/80433768</a></p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">//克隆oldname环境为newname环境
+conda create --name newname --clone oldname 
+//彻底删除旧环境
+conda remove --name oldname --all      
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h2 id="5-mindspore相关">5. MindSpore相关</h2>
+<p><a href="https://www.mindspore.cn/install" target="_blank" rel="noopener noreffer">MindSpore官网</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/136172122" target="_blank" rel="noopener noreffer">MindSpore安装</a></p>
+<h2 id="6jupyter-notebook使用">6.jupyter notebook使用</h2>
+<p><a href="https://www.jianshu.com/p/0ab80f63af8a" target="_blank" rel="noopener noreffer">Jupyter Notebook 添加代码自动补全功能</a></p>
+<h2 id="其他参考">其他参考</h2>
+<p>【1】<a href="https://zhuanlan.zhihu.com/p/67745160" target="_blank" rel="noopener noreffer">conda常用命令</a></p>
+<p>【2】<a href="https://blog.csdn.net/zhayushui/article/details/80433768" target="_blank" rel="noopener noreffer">conda常用命令:安装，更新，创建，激活，关闭，查看，卸载，删除，清理，重命名，换源，问题</a></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-01-18</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/yuqinlee/" target="_blank">uchin</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
