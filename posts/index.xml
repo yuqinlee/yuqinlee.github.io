@@ -1,0 +1,8 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>所有文章 - uchin blog</title>
+        <link>https://yuqinlee.github.io/posts/</link>
+        <description>所有文章 | uchin blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yuqin.lee@outlook.com (uchin)</managingEditor>
+            <webMaster>yuqin.lee@outlook.com (uchin)</webMaster><lastBuildDate>Mon, 24 Jan 2022 14:44:00 &#43;0800</lastBuildDate><atom:link href="https://yuqinlee.github.io/posts/" rel="self" type="application/rss+xml" /></channel>
+</rss>

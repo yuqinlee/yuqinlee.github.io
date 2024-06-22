@@ -1,0 +1,10 @@
+<urlset
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    ><url>
+            <loc>https://yuqinlee.github.io/posts/</loc><lastmod>2022-01-24T14:44:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://yuqinlee.github.io/</loc><lastmod>2022-01-24T14:44:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://yuqinlee.github.io/authors/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://yuqinlee.github.io/categories/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://yuqinlee.github.io/series/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://yuqinlee.github.io/tags/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url></urlset>
