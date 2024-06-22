@@ -1,12 +1,10 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>uchin blog</title>
-        <link>https://yuqinlee.github.io/</link>
-        <description>玉勤的博客站</description>
+        <title>工具 - 标签 - uchin blog</title>
+        <link>https://yuqinlee.github.io/tags/%E5%B7%A5%E5%85%B7/</link>
+        <description>工具 - 标签 - uchin blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yuqin.lee@outlook.com (uchin)</managingEditor>
-            <webMaster>yuqin.lee@outlook.com (uchin)</webMaster><lastBuildDate>Mon, 24 Jan 2022 14:44:00 &#43;0800</lastBuildDate>
-            <atom:link href="https://yuqinlee.github.io/index.xml" rel="self" type="application/rss+xml" />
-        <item>
+            <webMaster>yuqin.lee@outlook.com (uchin)</webMaster><lastBuildDate>Mon, 24 Jan 2022 14:44:00 &#43;0800</lastBuildDate><atom:link href="https://yuqinlee.github.io/tags/%E5%B7%A5%E5%85%B7/" rel="self" type="application/rss+xml" /><item>
     <title>Git 使用小结</title>
     <link>https://yuqinlee.github.io/git-%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/</link>
     <pubDate>Mon, 24 Jan 2022 14:44:00 &#43;0800</pubDate><author>

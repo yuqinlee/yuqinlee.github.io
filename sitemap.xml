@@ -2,9 +2,13 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
+            <loc>https://yuqinlee.github.io/categories/base/</loc><lastmod>2022-01-24T14:44:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://yuqinlee.github.io/categories/</loc><lastmod>2022-01-24T14:44:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://yuqinlee.github.io/tags/git/</loc><lastmod>2022-01-24T14:44:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://yuqinlee.github.io/git-%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/</loc><lastmod>2022-01-24T14:44:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://yuqinlee.github.io/posts/</loc><lastmod>2022-01-24T14:44:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://yuqinlee.github.io/tags/</loc><lastmod>2022-01-24T14:44:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://yuqinlee.github.io/</loc><lastmod>2022-01-24T14:44:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://yuqinlee.github.io/tags/%E5%B7%A5%E5%85%B7/</loc><lastmod>2022-01-24T14:44:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://yuqinlee.github.io/authors/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://yuqinlee.github.io/categories/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://yuqinlee.github.io/series/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://yuqinlee.github.io/tags/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url></urlset>
+            <loc>https://yuqinlee.github.io/series/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url></urlset>
