@@ -5,18 +5,32 @@
         <description>Categories - 分类 - uchin blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yuqin.lee@outlook.com (uchin)</managingEditor>
             <webMaster>yuqin.lee@outlook.com (uchin)</webMaster><lastBuildDate>Sat, 22 Jun 2024 17:08:21 &#43;0800</lastBuildDate><atom:link href="https://yuqinlee.github.io/categories/" rel="self" type="application/rss+xml" /><item>
-    <title>Other</title>
-    <link>https://yuqinlee.github.io/categories/other/</link>
+    <title>Dev-Env</title>
+    <link>https://yuqinlee.github.io/categories/dev-env/</link>
     <pubDate>Sat, 22 Jun 2024 17:08:21 &#43;0800</pubDate><author>
         <name>uchin</name>
-    </author><guid>https://yuqinlee.github.io/categories/other/</guid>
+    </author><guid>https://yuqinlee.github.io/categories/dev-env/</guid>
     <description><![CDATA[]]></description>
 </item><item>
-    <title>Base</title>
-    <link>https://yuqinlee.github.io/categories/base/</link>
+    <title>Linux</title>
+    <link>https://yuqinlee.github.io/categories/linux/</link>
+    <pubDate>Fri, 30 Sep 2022 14:11:08 &#43;0800</pubDate><author>
+        <name>uchin</name>
+    </author><guid>https://yuqinlee.github.io/categories/linux/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Base-Tool</title>
+    <link>https://yuqinlee.github.io/categories/base-tool/</link>
     <pubDate>Mon, 24 Jan 2022 14:44:00 &#43;0800</pubDate><author>
         <name>uchin</name>
-    </author><guid>https://yuqinlee.github.io/categories/base/</guid>
+    </author><guid>https://yuqinlee.github.io/categories/base-tool/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Distributed</title>
+    <link>https://yuqinlee.github.io/categories/distributed/</link>
+    <pubDate>Wed, 04 Nov 2020 21:00:40 &#43;0800</pubDate><author>
+        <name>uchin</name>
+    </author><guid>https://yuqinlee.github.io/categories/distributed/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>

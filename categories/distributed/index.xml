@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Distributed - 分类 - uchin blog</title>
+        <link>https://yuqinlee.github.io/categories/distributed/</link>
+        <description>Distributed - 分类 - uchin blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yuqin.lee@outlook.com (uchin)</managingEditor>
+            <webMaster>yuqin.lee@outlook.com (uchin)</webMaster><lastBuildDate>Wed, 04 Nov 2020 21:00:40 &#43;0800</lastBuildDate><atom:link href="https://yuqinlee.github.io/categories/distributed/" rel="self" type="application/rss+xml" /><item>
+    <title>区块链与安全Note</title>
+    <link>https://yuqinlee.github.io/%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%8E%E5%AE%89%E5%85%A8note/</link>
+    <pubDate>Wed, 04 Nov 2020 21:00:40 &#43;0800</pubDate><author>
+        <name>uchin</name>
+    </author><guid>https://yuqinlee.github.io/%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%8E%E5%AE%89%E5%85%A8note/</guid>
+    <description><![CDATA[2020-11-04 https://www.bilibili.com/video/av37065233 一、BTC-密码学原理 1. Hash 性质1 collision resistance密文m H(m)经过hash函数处理之后得到一个hash值，很难在修改m后再进行ha]]></description>
+</item></channel>
+</rss>

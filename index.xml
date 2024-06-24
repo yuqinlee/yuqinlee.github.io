@@ -14,11 +14,25 @@
     </author><guid>https://yuqinlee.github.io/windows-%E5%AE%89%E8%A3%85-dockerwsl-%E7%AD%89/</guid>
     <description><![CDATA[安装 WSL——Archlinux控制面板找到 启用或关闭windows功能 勾选 Hyper-V 和 适用于 Linux 的 Windows 子系统（只用勾选后者实际就能WSL安装，如果需要]]></description>
 </item><item>
+    <title>Linux 重定向</title>
+    <link>https://yuqinlee.github.io/linux-%E9%87%8D%E5%AE%9A%E5%90%91/</link>
+    <pubDate>Fri, 30 Sep 2022 14:11:08 &#43;0800</pubDate><author>
+        <name>uchin</name>
+    </author><guid>https://yuqinlee.github.io/linux-%E9%87%8D%E5%AE%9A%E5%90%91/</guid>
+    <description><![CDATA[linux重定向可以将命令的输出或输入重新定向到其他位置或文件，以实现对输出输入的控制。默认情况下命令的输出通常为终端，如果想将输出转移到文]]></description>
+</item><item>
     <title>Git 使用小结</title>
     <link>https://yuqinlee.github.io/git-%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/</link>
     <pubDate>Mon, 24 Jan 2022 14:44:00 &#43;0800</pubDate><author>
         <name>uchin</name>
     </author><guid>https://yuqinlee.github.io/git-%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/</guid>
     <description><![CDATA[1. git 配置 1.1 git 三级配置 System： /etc/gitconfig，Msys64 底下的 etc Global： ~/.gitconfig，Msys64 底下]]></description>
+</item><item>
+    <title>区块链与安全Note</title>
+    <link>https://yuqinlee.github.io/%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%8E%E5%AE%89%E5%85%A8note/</link>
+    <pubDate>Wed, 04 Nov 2020 21:00:40 &#43;0800</pubDate><author>
+        <name>uchin</name>
+    </author><guid>https://yuqinlee.github.io/%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%8E%E5%AE%89%E5%85%A8note/</guid>
+    <description><![CDATA[2020-11-04 https://www.bilibili.com/video/av37065233 一、BTC-密码学原理 1. Hash 性质1 collision resistance密文m H(m)经过hash函数处理之后得到一个hash值，很难在修改m后再进行ha]]></description>
 </item></channel>
 </rss>
