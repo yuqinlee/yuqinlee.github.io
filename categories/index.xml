@@ -4,19 +4,19 @@
         <link>https://yuqinlee.github.io/categories/</link>
         <description>Categories - 分类 - uchin blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yuqin.lee@outlook.com (uchin)</managingEditor>
-            <webMaster>yuqin.lee@outlook.com (uchin)</webMaster><lastBuildDate>Tue, 25 Jun 2024 10:21:59 &#43;0800</lastBuildDate><atom:link href="https://yuqinlee.github.io/categories/" rel="self" type="application/rss+xml" /><item>
-    <title>Linux</title>
-    <link>https://yuqinlee.github.io/categories/linux/</link>
-    <pubDate>Tue, 25 Jun 2024 10:21:59 &#43;0800</pubDate><author>
-        <name>uchin</name>
-    </author><guid>https://yuqinlee.github.io/categories/linux/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
+            <webMaster>yuqin.lee@outlook.com (uchin)</webMaster><lastBuildDate>Sat, 22 Jun 2024 17:08:21 &#43;0800</lastBuildDate><atom:link href="https://yuqinlee.github.io/categories/" rel="self" type="application/rss+xml" /><item>
     <title>Dev-Env</title>
     <link>https://yuqinlee.github.io/categories/dev-env/</link>
     <pubDate>Sat, 22 Jun 2024 17:08:21 &#43;0800</pubDate><author>
         <name>uchin</name>
     </author><guid>https://yuqinlee.github.io/categories/dev-env/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Linux</title>
+    <link>https://yuqinlee.github.io/categories/linux/</link>
+    <pubDate>Wed, 01 Feb 2023 10:18:48 &#43;0800</pubDate><author>
+        <name>uchin</name>
+    </author><guid>https://yuqinlee.github.io/categories/linux/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>Distributed System</title>

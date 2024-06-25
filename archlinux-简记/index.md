@@ -357,10 +357,10 @@ to be contiune
 
 - 安装字体
 
-```bash
-sudo pacman -S adobe-source-han-serif-cn-fonts wqy-zenhei                   #安装几个开源中文字体 一般装上文泉驿就能解决大多wine应用中文方块的问题
-sudo pacman -S noto-fonts-cjk noto-fonts-emoji noto-fonts-extra 
-```
+    ```bash
+    sudo pacman -S adobe-source-han-serif-cn-fonts wqy-zenhei                   #安装几个开源中文字体 一般装上文泉驿就能解决大多wine应用中文方块的问题
+    sudo pacman -S noto-fonts-cjk noto-fonts-emoji noto-fonts-extra 
+    ```
 
 输入法问题
 
