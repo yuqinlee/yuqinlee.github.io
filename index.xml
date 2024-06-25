@@ -4,9 +4,16 @@
         <link>https://yuqinlee.github.io/</link>
         <description>玉勤的博客站</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yuqin.lee@outlook.com (uchin)</managingEditor>
-            <webMaster>yuqin.lee@outlook.com (uchin)</webMaster><lastBuildDate>Sat, 22 Jun 2024 17:08:21 &#43;0800</lastBuildDate>
+            <webMaster>yuqin.lee@outlook.com (uchin)</webMaster><lastBuildDate>Tue, 25 Jun 2024 10:21:59 &#43;0800</lastBuildDate>
             <atom:link href="https://yuqinlee.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Archlinux 简记</title>
+    <link>https://yuqinlee.github.io/archlinux-%E7%AE%80%E8%AE%B0/</link>
+    <pubDate>Tue, 25 Jun 2024 10:21:59 &#43;0800</pubDate><author>
+        <name>uchin</name>
+    </author><guid>https://yuqinlee.github.io/archlinux-%E7%AE%80%E8%AE%B0/</guid>
+    <description><![CDATA[1. 无图形安装 检查安装模式检测是否为 uefi 方式 安装，若为 uefi 方式 则以下命令将输出一堆东西 bash ls /sys/firmware/efi/efivars 更改字体默认 liveCD 字体可能过小 bash setfont /usr/local/kbd/consolefonts/LatGrkCyr-12x22.psfu.gz 禁用 reflector 服务禁用 reflector 服务，]]></description>
+</item><item>
     <title>Windows 安装 Docker、wsl 等</title>
     <link>https://yuqinlee.github.io/windows-%E5%AE%89%E8%A3%85-dockerwsl-%E7%AD%89/</link>
     <pubDate>Sat, 22 Jun 2024 17:08:21 &#43;0800</pubDate><author>

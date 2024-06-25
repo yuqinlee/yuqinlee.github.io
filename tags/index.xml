@@ -4,12 +4,33 @@
         <link>https://yuqinlee.github.io/tags/</link>
         <description>Tags - 标签 - uchin blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yuqin.lee@outlook.com (uchin)</managingEditor>
-            <webMaster>yuqin.lee@outlook.com (uchin)</webMaster><lastBuildDate>Sat, 22 Jun 2024 17:08:21 &#43;0800</lastBuildDate><atom:link href="https://yuqinlee.github.io/tags/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>yuqin.lee@outlook.com (uchin)</webMaster><lastBuildDate>Tue, 25 Jun 2024 10:21:59 &#43;0800</lastBuildDate><atom:link href="https://yuqinlee.github.io/tags/" rel="self" type="application/rss+xml" /><item>
     <title>Arch</title>
     <link>https://yuqinlee.github.io/tags/arch/</link>
-    <pubDate>Sat, 22 Jun 2024 17:08:21 &#43;0800</pubDate><author>
+    <pubDate>Tue, 25 Jun 2024 10:21:59 &#43;0800</pubDate><author>
         <name>uchin</name>
     </author><guid>https://yuqinlee.github.io/tags/arch/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Awesome</title>
+    <link>https://yuqinlee.github.io/tags/awesome/</link>
+    <pubDate>Tue, 25 Jun 2024 10:21:59 &#43;0800</pubDate><author>
+        <name>uchin</name>
+    </author><guid>https://yuqinlee.github.io/tags/awesome/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Dwm</title>
+    <link>https://yuqinlee.github.io/tags/dwm/</link>
+    <pubDate>Tue, 25 Jun 2024 10:21:59 &#43;0800</pubDate><author>
+        <name>uchin</name>
+    </author><guid>https://yuqinlee.github.io/tags/dwm/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Linux</title>
+    <link>https://yuqinlee.github.io/tags/linux/</link>
+    <pubDate>Tue, 25 Jun 2024 10:21:59 &#43;0800</pubDate><author>
+        <name>uchin</name>
+    </author><guid>https://yuqinlee.github.io/tags/linux/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>Docker</title>
@@ -40,13 +61,6 @@
     </author><guid>https://yuqinlee.github.io/tags/swarm/</guid>
     <description><![CDATA[]]></description>
 </item><item>
-    <title>Linux</title>
-    <link>https://yuqinlee.github.io/tags/linux/</link>
-    <pubDate>Fri, 30 Sep 2022 14:11:08 &#43;0800</pubDate><author>
-        <name>uchin</name>
-    </author><guid>https://yuqinlee.github.io/tags/linux/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
     <title>Redirection</title>
     <link>https://yuqinlee.github.io/tags/redirection/</link>
     <pubDate>Fri, 30 Sep 2022 14:11:08 &#43;0800</pubDate><author>
@@ -59,20 +73,6 @@
     <pubDate>Fri, 30 Sep 2022 14:11:08 &#43;0800</pubDate><author>
         <name>uchin</name>
     </author><guid>https://yuqinlee.github.io/tags/%E9%87%8D%E5%AE%9A%E5%90%91/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>Anconda</title>
-    <link>https://yuqinlee.github.io/tags/anconda/</link>
-    <pubDate>Fri, 24 Jun 2022 20:53:39 &#43;0800</pubDate><author>
-        <name>uchin</name>
-    </author><guid>https://yuqinlee.github.io/tags/anconda/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>Conda</title>
-    <link>https://yuqinlee.github.io/tags/conda/</link>
-    <pubDate>Fri, 24 Jun 2022 20:53:39 &#43;0800</pubDate><author>
-        <name>uchin</name>
-    </author><guid>https://yuqinlee.github.io/tags/conda/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>
