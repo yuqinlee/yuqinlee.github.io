@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Anconda - 标签 - uchin blog</title>
+        <link>https://yuqinlee.github.io/tags/anconda/</link>
+        <description>Anconda - 标签 - uchin blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yuqin.lee@outlook.com (uchin)</managingEditor>
+            <webMaster>yuqin.lee@outlook.com (uchin)</webMaster><lastBuildDate>Fri, 24 Jun 2022 20:53:39 &#43;0800</lastBuildDate><atom:link href="https://yuqinlee.github.io/tags/anconda/" rel="self" type="application/rss+xml" /><item>
+    <title>Conda 简记</title>
+    <link>https://yuqinlee.github.io/conda-%E7%AE%80%E8%AE%B0/</link>
+    <pubDate>Fri, 24 Jun 2022 20:53:39 &#43;0800</pubDate><author>
+        <name>uchin</name>
+    </author><guid>https://yuqinlee.github.io/conda-%E7%AE%80%E8%AE%B0/</guid>
+    <description><![CDATA[1. Anaconda 与 Miniconda 与 Conda Conda 维基：conda conda官网 任何语言的包、依赖项和环境管理 — Python、R、Ruby、Lua、Scala、Java、Jav]]></description>
+</item></channel>
+</rss>
