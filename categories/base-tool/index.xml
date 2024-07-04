@@ -18,5 +18,19 @@
         <name>uchin</name>
     </author><guid>https://yuqinlee.github.io/git-%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/</guid>
     <description><![CDATA[1. git 配置 1.1 git 三级配置 System： /etc/gitconfig，Msys64 底下的 etc Global： ~/.gitconfig，Msys64 底下]]></description>
+</item><item>
+    <title>Markdown 小记</title>
+    <link>https://yuqinlee.github.io/markdown-%E5%B0%8F%E8%AE%B0/</link>
+    <pubDate>Sat, 29 Feb 2020 00:56:14 &#43;0800</pubDate><author>
+        <name>uchin</name>
+    </author><guid>https://yuqinlee.github.io/markdown-%E5%B0%8F%E8%AE%B0/</guid>
+    <description><![CDATA[创建于_2020-02-29 00:56 by uchin 修改于_2020-08-01 19:00 by uchin 修改于_2020-12-13 21:27 by uchin 基本语法语法参考：https://ww]]></description>
+</item><item>
+    <title>Typora 小记</title>
+    <link>https://yuqinlee.github.io/typora-%E5%B0%8F%E8%AE%B0/</link>
+    <pubDate>Sat, 29 Feb 2020 00:56:14 &#43;0800</pubDate><author>
+        <name>uchin</name>
+    </author><guid>https://yuqinlee.github.io/typora-%E5%B0%8F%E8%AE%B0/</guid>
+    <description><![CDATA[创建于_2020-02-29 00:56 by uchin 修改于_2020-08-01 19:00 by uchin 修改于_2020-12-13 21:27 by uchin Typora 快捷键 1.菜单快捷键 1.1.文件 快捷]]></description>
 </item></channel>
 </rss>

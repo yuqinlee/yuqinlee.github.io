@@ -62,5 +62,19 @@
         <name>uchin</name>
     </author><guid>https://yuqinlee.github.io/%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%8E%E5%AE%89%E5%85%A8note/</guid>
     <description><![CDATA[2020-11-04 https://www.bilibili.com/video/av37065233 一、BTC-密码学原理 1. Hash 性质1 collision resistance密文m H(m)经过hash函数处理之后得到一个hash值，很难在修改m后再进行ha]]></description>
+</item><item>
+    <title>Markdown 小记</title>
+    <link>https://yuqinlee.github.io/markdown-%E5%B0%8F%E8%AE%B0/</link>
+    <pubDate>Sat, 29 Feb 2020 00:56:14 &#43;0800</pubDate><author>
+        <name>uchin</name>
+    </author><guid>https://yuqinlee.github.io/markdown-%E5%B0%8F%E8%AE%B0/</guid>
+    <description><![CDATA[创建于_2020-02-29 00:56 by uchin 修改于_2020-08-01 19:00 by uchin 修改于_2020-12-13 21:27 by uchin 基本语法语法参考：https://ww]]></description>
+</item><item>
+    <title>Typora 小记</title>
+    <link>https://yuqinlee.github.io/typora-%E5%B0%8F%E8%AE%B0/</link>
+    <pubDate>Sat, 29 Feb 2020 00:56:14 &#43;0800</pubDate><author>
+        <name>uchin</name>
+    </author><guid>https://yuqinlee.github.io/typora-%E5%B0%8F%E8%AE%B0/</guid>
+    <description><![CDATA[创建于_2020-02-29 00:56 by uchin 修改于_2020-08-01 19:00 by uchin 修改于_2020-12-13 21:27 by uchin Typora 快捷键 1.菜单快捷键 1.1.文件 快捷]]></description>
 </item></channel>
 </rss>

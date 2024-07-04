@@ -2,15 +2,15 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://yuqinlee.github.io/tags/arch/</loc><lastmod>2024-06-22T17:08:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://yuqinlee.github.io/categories/</loc><lastmod>2024-06-22T17:08:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://yuqinlee.github.io/categories/dev-env/</loc><lastmod>2024-06-22T17:08:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://yuqinlee.github.io/tags/docker/</loc><lastmod>2024-06-22T17:08:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://yuqinlee.github.io/posts/</loc><lastmod>2024-06-22T17:08:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://yuqinlee.github.io/tags/</loc><lastmod>2024-06-22T17:08:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://yuqinlee.github.io/</loc><lastmod>2024-06-22T17:08:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://yuqinlee.github.io/windows-%E5%AE%89%E8%A3%85-dockerwsl-%E7%AD%89/</loc><lastmod>2024-06-22T17:08:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://yuqinlee.github.io/tags/wsl/</loc><lastmod>2024-06-22T17:08:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://yuqinlee.github.io/tags/arch/</loc><lastmod>2024-06-22T17:08:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>https://yuqinlee.github.io/categories/</loc><lastmod>2024-06-22T17:08:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>https://yuqinlee.github.io/categories/dev-env/</loc><lastmod>2024-06-22T17:08:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>https://yuqinlee.github.io/tags/docker/</loc><lastmod>2024-06-22T17:08:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>https://yuqinlee.github.io/posts/</loc><lastmod>2024-06-22T17:08:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>https://yuqinlee.github.io/tags/</loc><lastmod>2024-06-22T17:08:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>https://yuqinlee.github.io/</loc><lastmod>2024-06-22T17:08:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>https://yuqinlee.github.io/windows-%E5%AE%89%E8%A3%85-dockerwsl-%E7%AD%89/</loc><lastmod>2024-06-22T17:08:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>https://yuqinlee.github.io/tags/wsl/</loc><lastmod>2024-06-22T17:08:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
             <loc>https://yuqinlee.github.io/tags/linux/</loc><lastmod>2023-09-04T17:21:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://yuqinlee.github.io/categories/linux/</loc><lastmod>2023-09-04T17:21:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://yuqinlee.github.io/linux-%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7/</loc><lastmod>2023-09-04T17:21:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
@@ -37,5 +37,9 @@
             <loc>https://yuqinlee.github.io/tags/distributed-system/</loc><lastmod>2020-11-04T21:00:40&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://yuqinlee.github.io/tags/encryption/</loc><lastmod>2020-11-04T21:00:40&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://yuqinlee.github.io/%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%8E%E5%AE%89%E5%85%A8note/</loc><lastmod>2020-11-04T21:00:40&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://yuqinlee.github.io/tags/markdown/</loc><lastmod>2020-02-29T00:56:14&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://yuqinlee.github.io/markdown-%E5%B0%8F%E8%AE%B0/</loc><lastmod>2020-02-29T00:56:14&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://yuqinlee.github.io/tags/typora/</loc><lastmod>2020-02-29T00:56:14&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://yuqinlee.github.io/typora-%E5%B0%8F%E8%AE%B0/</loc><lastmod>2020-02-29T00:56:14&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://yuqinlee.github.io/authors/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://yuqinlee.github.io/series/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url></urlset>
