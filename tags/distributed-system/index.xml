@@ -10,6 +10,18 @@
     <pubDate>Wed, 04 Nov 2020 21:00:40 &#43;0800</pubDate><author>
         <name>uchin</name>
     </author><guid>https://yuqinlee.github.io/%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%8E%E5%AE%89%E5%85%A8note/</guid>
-    <description><![CDATA[2020-11-04 https://www.bilibili.com/video/av37065233 一、BTC-密码学原理 1. Hash 性质1 collision resistance密文m H(m)经过hash函数处理之后得到一个hash值，很难在修改m后再进行ha]]></description>
+    <description><![CDATA[<!-- <h1>区块链与安全Note</h1> -->
+<blockquote>
+<p>2020-11-04</p>
+</blockquote>
+<!-- >yuqin -->
+<blockquote>
+<p><a href="https://www.bilibili.com/video/av37065233" target="_blank" rel="noopener noreferrer">https://www.bilibili.com/video/av37065233</a></p>
+</blockquote>
+<!-- [toc] -->
+<h2 id="一btc-密码学原理" class="headerLink">
+    <a href="#%e4%b8%80btc-%e5%af%86%e7%a0%81%e5%ad%a6%e5%8e%9f%e7%90%86" class="header-mark" aria-label="Header mark for '一、BTC-密码学原理'"></a>一、BTC-密码学原理</h2><h3 id="1-hash" class="headerLink">
+    <a href="#1-hash" class="header-mark" aria-label="Header mark for '1. Hash'"></a>1. Hash</h3><h4 id="性质1-collision-resistance" class="headerLink">
+    <a href="#%e6%80%a7%e8%b4%a81-collision-resistance" class="header-mark" aria-label="Header mark for '性质1 collision resistance'"></a>性质1 collision resistance</h4><p>密文m</p>]]></description>
 </item></channel>
 </rss>

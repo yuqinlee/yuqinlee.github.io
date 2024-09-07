@@ -4,7 +4,28 @@
         <link>https://yuqinlee.github.io/tags/</link>
         <description>Tags - 标签 - uchin blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yuqin.lee@outlook.com (uchin)</managingEditor>
-            <webMaster>yuqin.lee@outlook.com (uchin)</webMaster><lastBuildDate>Sat, 22 Jun 2024 17:08:21 &#43;0800</lastBuildDate><atom:link href="https://yuqinlee.github.io/tags/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>yuqin.lee@outlook.com (uchin)</webMaster><lastBuildDate>Fri, 30 Aug 2024 12:53:55 &#43;0800</lastBuildDate><atom:link href="https://yuqinlee.github.io/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>Linux</title>
+    <link>https://yuqinlee.github.io/tags/linux/</link>
+    <pubDate>Fri, 30 Aug 2024 12:53:55 &#43;0800</pubDate><author>
+        <name>uchin</name>
+    </author><guid>https://yuqinlee.github.io/tags/linux/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Shell</title>
+    <link>https://yuqinlee.github.io/tags/shell/</link>
+    <pubDate>Fri, 30 Aug 2024 12:53:55 &#43;0800</pubDate><author>
+        <name>uchin</name>
+    </author><guid>https://yuqinlee.github.io/tags/shell/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Zsh</title>
+    <link>https://yuqinlee.github.io/tags/zsh/</link>
+    <pubDate>Fri, 30 Aug 2024 12:53:55 &#43;0800</pubDate><author>
+        <name>uchin</name>
+    </author><guid>https://yuqinlee.github.io/tags/zsh/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>Arch</title>
     <link>https://yuqinlee.github.io/tags/arch/</link>
     <pubDate>Sat, 22 Jun 2024 17:08:21 &#43;0800</pubDate><author>
@@ -24,13 +45,6 @@
     <pubDate>Sat, 22 Jun 2024 17:08:21 &#43;0800</pubDate><author>
         <name>uchin</name>
     </author><guid>https://yuqinlee.github.io/tags/wsl/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>Linux</title>
-    <link>https://yuqinlee.github.io/tags/linux/</link>
-    <pubDate>Mon, 04 Sep 2023 17:21:39 &#43;0800</pubDate><author>
-        <name>uchin</name>
-    </author><guid>https://yuqinlee.github.io/tags/linux/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>Awesome</title>
@@ -59,20 +73,6 @@
     <pubDate>Thu, 01 Dec 2022 09:46:11 &#43;0800</pubDate><author>
         <name>uchin</name>
     </author><guid>https://yuqinlee.github.io/tags/swarm/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>Redirection</title>
-    <link>https://yuqinlee.github.io/tags/redirection/</link>
-    <pubDate>Fri, 30 Sep 2022 14:11:08 &#43;0800</pubDate><author>
-        <name>uchin</name>
-    </author><guid>https://yuqinlee.github.io/tags/redirection/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>重定向</title>
-    <link>https://yuqinlee.github.io/tags/%E9%87%8D%E5%AE%9A%E5%90%91/</link>
-    <pubDate>Fri, 30 Sep 2022 14:11:08 &#43;0800</pubDate><author>
-        <name>uchin</name>
-    </author><guid>https://yuqinlee.github.io/tags/%E9%87%8D%E5%AE%9A%E5%90%91/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>

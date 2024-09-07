@@ -10,13 +10,261 @@
     <pubDate>Sat, 29 Feb 2020 00:56:14 &#43;0800</pubDate><author>
         <name>uchin</name>
     </author><guid>https://yuqinlee.github.io/markdown-%E5%B0%8F%E8%AE%B0/</guid>
-    <description><![CDATA[创建于_2020-02-29 00:56 by uchin 修改于_2020-08-01 19:00 by uchin 修改于_2020-12-13 21:27 by uchin 基本语法语法参考：https://ww]]></description>
+    <description><![CDATA[<blockquote>
+<p>创建于_2020-02-29 00:56 by uchin<br>
+修改于_2020-08-01 19:00 by uchin<br>
+修改于_2020-12-13 21:27 by uchin</p>
+</blockquote>
+<h2 id="基本语法" class="headerLink">
+    <a href="#%e5%9f%ba%e6%9c%ac%e8%af%ad%e6%b3%95" class="header-mark" aria-label="Header mark for '基本语法'"></a>基本语法</h2><p>语法参考：<a href="https://www.markdown.xyz/basic-syntax/" target="_blank" rel="noopener noreferrer">https://www.markdown.xyz/basic-syntax/</a></p>]]></description>
 </item><item>
     <title>Typora 小记</title>
     <link>https://yuqinlee.github.io/typora-%E5%B0%8F%E8%AE%B0/</link>
     <pubDate>Sat, 29 Feb 2020 00:56:14 &#43;0800</pubDate><author>
         <name>uchin</name>
     </author><guid>https://yuqinlee.github.io/typora-%E5%B0%8F%E8%AE%B0/</guid>
-    <description><![CDATA[创建于_2020-02-29 00:56 by uchin 修改于_2020-08-01 19:00 by uchin 修改于_2020-12-13 21:27 by uchin Typora 快捷键 1.菜单快捷键 1.1.文件 快捷]]></description>
+    <description><![CDATA[<blockquote>
+<p>创建于_2020-02-29 00:56 by uchin<br>
+修改于_2020-08-01 19:00 by uchin<br>
+修改于_2020-12-13 21:27 by uchin</p>
+</blockquote>
+<h2 id="typora-快捷键" class="headerLink">
+    <a href="#typora-%e5%bf%ab%e6%8d%b7%e9%94%ae" class="header-mark" aria-label="Header mark for 'Typora 快捷键'"></a>Typora 快捷键</h2><h3 id="1菜单快捷键" class="headerLink">
+    <a href="#1%e8%8f%9c%e5%8d%95%e5%bf%ab%e6%8d%b7%e9%94%ae" class="header-mark" aria-label="Header mark for '1.菜单快捷键'"></a>1.菜单快捷键</h3><h4 id="11文件" class="headerLink">
+    <a href="#11%e6%96%87%e4%bb%b6" class="header-mark" aria-label="Header mark for '1.1.文件'"></a>1.1.文件</h4><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">快捷键</th>
+          <th style="text-align: left">功能</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">ctrl+N</td>
+          <td style="text-align: left">新建</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ctrl+shift+N</td>
+          <td style="text-align: left">新建窗口</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ctrl+O</td>
+          <td style="text-align: left">打开文件夹</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ctrl+P</td>
+          <td style="text-align: left">快速打开</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ctrl+S</td>
+          <td style="text-align: left">保存</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ctrl+shift+S</td>
+          <td style="text-align: left">另存为</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ctrl+，</td>
+          <td style="text-align: left">偏好设置</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ctrl+W</td>
+          <td style="text-align: left">关闭</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="12编辑" class="headerLink">
+    <a href="#12%e7%bc%96%e8%be%91" class="header-mark" aria-label="Header mark for '1.2.编辑'"></a>1.2.编辑</h4><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">快捷键</th>
+          <th style="text-align: left">功能</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">ctrl+shift+V</td>
+          <td style="text-align: left"><strong>粘贴为纯文本</strong></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ctrl+shift+C</td>
+          <td style="text-align: left">复制为纯文本</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ctrl+A</td>
+          <td style="text-align: left">全选</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ctrl+L</td>
+          <td style="text-align: left">选当前行</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ctrl+E</td>
+          <td style="text-align: left">选当前格式文本</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ctrl+D</td>
+          <td style="text-align: left"><strong>选当前词</strong></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ctrl+J</td>
+          <td style="text-align: left">跳转到所选内容</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="13段落" class="headerLink">
+    <a href="#13%e6%ae%b5%e8%90%bd" class="header-mark" aria-label="Header mark for '1.3.段落'"></a>1.3.段落</h4><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">快捷键</th>
+          <th style="text-align: left">功能</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">ctrl+=</td>
+          <td style="text-align: left">提升标题级别</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ctrl+-</td>
+          <td style="text-align: left">降低标题级别</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ctrl+T</td>
+          <td style="text-align: left"><strong>插入表格</strong></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ctrl+shift+K</td>
+          <td style="text-align: left"><strong>代码块</strong></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ctrl+shift+D</td>
+          <td style="text-align: left">公式块</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ctrl+shift+Q</td>
+          <td style="text-align: left"><strong>引用</strong></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ctrl+shift+[</td>
+          <td style="text-align: left">有序列表</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ctrl+shift+]</td>
+          <td style="text-align: left">无序列表</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ctrl+[/]</td>
+          <td style="text-align: left">列表缩进</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="14格式" class="headerLink">
+    <a href="#14%e6%a0%bc%e5%bc%8f" class="header-mark" aria-label="Header mark for '1.4.格式'"></a>1.4.格式</h4><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">快捷键</th>
+          <th style="text-align: left">功能</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">ctrl+B/I/U</td>
+          <td style="text-align: left">加粗/斜体/下划线</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ctrl+shift+`</td>
+          <td style="text-align: left">代码</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">alt+shift+5</td>
+          <td style="text-align: left">删除线</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ctrl+K</td>
+          <td style="text-align: left"><strong>超链接</strong></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ctrl+shift+I</td>
+          <td style="text-align: left">插入图片</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ctrl+\</td>
+          <td style="text-align: left">清除样式</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="15视图" class="headerLink">
+    <a href="#15%e8%a7%86%e5%9b%be" class="header-mark" aria-label="Header mark for '1.5.视图'"></a>1.5.视图</h4><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">快捷键</th>
+          <th style="text-align: left">功能</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">ctrl+shift+9</td>
+          <td style="text-align: left">实际大小</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ctrl+shift+=</td>
+          <td style="text-align: left">放大</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ctrl+shift+-</td>
+          <td style="text-align: left">缩小</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ctrl+tab</td>
+          <td style="text-align: left">应用内窗口切换</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ctr+/</td>
+          <td style="text-align: left"><strong>源码模式</strong></td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="2其他快捷键" class="headerLink">
+    <a href="#2%e5%85%b6%e4%bb%96%e5%bf%ab%e6%8d%b7%e9%94%ae" class="header-mark" aria-label="Header mark for '2.其他快捷键&#43;'"></a>2.其他快捷键+</h3><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">快捷键</th>
+          <th style="text-align: left">功能</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">ctrl+d</td>
+          <td style="text-align: left">选中单词</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ctrl+l</td>
+          <td style="text-align: left">选中一行</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ctrl+e</td>
+          <td style="text-align: left">选中相同格式的字</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ctrl+f</td>
+          <td style="text-align: left"><strong>文件内搜索</strong></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ctrl+h</td>
+          <td style="text-align: left"><strong>替换</strong></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ctrl+shift+f</td>
+          <td style="text-align: left"><strong>全局搜索</strong></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="3自定义快捷键" class="headerLink">
+    <a href="#3%e8%87%aa%e5%ae%9a%e4%b9%89%e5%bf%ab%e6%8d%b7%e9%94%ae" class="header-mark" aria-label="Header mark for '3.自定义快捷键'"></a>3.自定义快捷键</h3><p>Windows 路径:<font color='orange'><code>C:\Users\[userName]\AppData\Roaming\Typora\conf\conf.user.json</code></font></p>]]></description>
 </item></channel>
 </rss>

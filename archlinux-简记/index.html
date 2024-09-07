@@ -9,7 +9,7 @@
     <meta name="robots" content="noodp" /><title>Archlinux 简记 - uchin blog</title><meta name="Description" content="玉勤的博客站"><meta property="og:url" content="https://yuqinlee.github.io/archlinux-%E7%AE%80%E8%AE%B0/">
   <meta property="og:site_name" content="uchin blog">
   <meta property="og:title" content="Archlinux 简记">
-  <meta property="og:description" content="1. 无图形安装 检查安装模式检测是否为 uefi 方式 安装，若为 uefi 方式 则以下命令将输出一堆东西 bash ls /sys/firmware/efi/efivars 更改字体默认 liveCD 字体可能过小 bash setfont /usr/local/kbd/consolefonts/LatGrkCyr-12x22.psfu.gz 禁用 reflector 服务禁用 reflector 服务，">
+  <meta property="og:description" content=" 1. 无图形安装 检查安装模式检测是否为 uefi 方式 安装，若为 uefi 方式 则以下命令将输出一堆东西">
   <meta property="og:locale" content="zh_CN">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -22,7 +22,7 @@
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Archlinux 简记">
-  <meta name="twitter:description" content="1. 无图形安装 检查安装模式检测是否为 uefi 方式 安装，若为 uefi 方式 则以下命令将输出一堆东西 bash ls /sys/firmware/efi/efivars 更改字体默认 liveCD 字体可能过小 bash setfont /usr/local/kbd/consolefonts/LatGrkCyr-12x22.psfu.gz 禁用 reflector 服务禁用 reflector 服务，">
+  <meta name="twitter:description" content=" 1. 无图形安装 检查安装模式检测是否为 uefi 方式 安装，若为 uefi 方式 则以下命令将输出一堆东西">
 <meta name="application-name" content="ublog">
 <meta name="apple-mobile-web-app-title" content="ublog">
 
@@ -1058,22 +1058,22 @@
 <h3 id="分区btrfs" class="headerLink">
     <a href="#%e5%88%86%e5%8c%babtrfs" class="header-mark" aria-label="Header mark for '分区（Btrfs）'"></a>分区（Btrfs）</h3><p>这里文件采用 <code>Btrfs</code> 文件系统，分区根据个人情况</p>
 <table>
-<thead>
-<tr>
-<th>/</th>
-<th>/home</th>
-<th>/efi</th>
-<th>Swap</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-<td>500M</td>
-<td>&gt;= 内存 x 60%</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">/</th>
+          <th style="text-align: left">/home</th>
+          <th style="text-align: left">/efi</th>
+          <th style="text-align: left">Swap</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">500M</td>
+          <td style="text-align: left">&gt;= 内存 x 60%</td>
+      </tr>
+  </tbody>
 </table>
 <p>由于使用 <code>Btrfs</code> 文件系统，这里 <code>/home</code> 与 <code>/</code> 将位于同一分区</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">

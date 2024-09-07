@@ -4,7 +4,14 @@
         <link>https://yuqinlee.github.io/categories/</link>
         <description>Categories - 分类 - uchin blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yuqin.lee@outlook.com (uchin)</managingEditor>
-            <webMaster>yuqin.lee@outlook.com (uchin)</webMaster><lastBuildDate>Sat, 22 Jun 2024 17:08:21 &#43;0800</lastBuildDate><atom:link href="https://yuqinlee.github.io/categories/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>yuqin.lee@outlook.com (uchin)</webMaster><lastBuildDate>Fri, 30 Aug 2024 12:53:55 &#43;0800</lastBuildDate><atom:link href="https://yuqinlee.github.io/categories/" rel="self" type="application/rss+xml" /><item>
+    <title>Linux</title>
+    <link>https://yuqinlee.github.io/categories/linux/</link>
+    <pubDate>Fri, 30 Aug 2024 12:53:55 &#43;0800</pubDate><author>
+        <name>uchin</name>
+    </author><guid>https://yuqinlee.github.io/categories/linux/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>Dev-Env</title>
     <link>https://yuqinlee.github.io/categories/dev-env/</link>
     <pubDate>Sat, 22 Jun 2024 17:08:21 &#43;0800</pubDate><author>
@@ -12,14 +19,7 @@
     </author><guid>https://yuqinlee.github.io/categories/dev-env/</guid>
     <description><![CDATA[]]></description>
 </item><item>
-    <title>Linux</title>
-    <link>https://yuqinlee.github.io/categories/linux/</link>
-    <pubDate>Mon, 04 Sep 2023 17:21:39 &#43;0800</pubDate><author>
-        <name>uchin</name>
-    </author><guid>https://yuqinlee.github.io/categories/linux/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>Distributed System</title>
+    <title>Distributed-System</title>
     <link>https://yuqinlee.github.io/categories/distributed-system/</link>
     <pubDate>Thu, 01 Dec 2022 09:46:11 &#43;0800</pubDate><author>
         <name>uchin</name>
@@ -28,16 +28,9 @@
 </item><item>
     <title>Base-Tool</title>
     <link>https://yuqinlee.github.io/categories/base-tool/</link>
-    <pubDate>Fri, 24 Jun 2022 20:53:39 &#43;0800</pubDate><author>
+    <pubDate>Mon, 24 Jan 2022 14:44:00 &#43;0800</pubDate><author>
         <name>uchin</name>
     </author><guid>https://yuqinlee.github.io/categories/base-tool/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>Distributed</title>
-    <link>https://yuqinlee.github.io/categories/distributed/</link>
-    <pubDate>Wed, 04 Nov 2020 21:00:40 &#43;0800</pubDate><author>
-        <name>uchin</name>
-    </author><guid>https://yuqinlee.github.io/categories/distributed/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>

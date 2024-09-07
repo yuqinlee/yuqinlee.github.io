@@ -10,11 +10,11 @@
 > CentOS 7  
 > VirtualBox
 
-|虚拟机名|虚拟磁盘大小|IP|Host映射|
-|:---:|:---:|:---:|:---:|
-|myCent_00|100G|192.168.56.101|master|
-|myCent_01|50G|192.168.56.104|slave01|
-|myCent_02|50G|192.168.56.103|slave02|
+| 虚拟机名  | 虚拟磁盘大小 |       IP       | Host 映射 |
+| :-------: | :----------: | :------------: | :-------: |
+| myCent_00 |     100G     | 192.168.56.101 |  master   |
+| myCent_01 |     50G      | 192.168.56.104 |  slave01  |
+| myCent_02 |     50G      | 192.168.56.103 |  slave02  |
 
 注：各虚拟机节点网卡设置如下
 
@@ -30,7 +30,7 @@ vim /etc/hosts    # 修改映射
 
 修改后如下：
 
-![图 2](%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650679575241.png)  
+![图 2](%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650679575241.png)
 
 ### 1.2 ssh 免密登录
 
@@ -57,7 +57,7 @@ ssh localhost                           # 测试
 
 ```bash
 cd ~.ssh
-scp ./id_rsa.pub slave01:~/.ssh/id_master 
+scp ./id_rsa.pub slave01:~/.ssh/id_master
 ```
 
 登录至 slave01 ，将 master 的公钥追加到认证文件，其他节点类似
@@ -75,90 +75,90 @@ chmod 600 ./authorized_keys # 赋予认证文件600权限
 
 1. 更新 yum
 
-    ```bash
-    sudo yum -y update
-    ```
+   ```bash
+   sudo yum -y update
+   ```
 
 2. 添加源，选一个即可，考虑国内网络，这里使用的是阿里的源
 
-    ```bash
-    # 阿里仓库
-    sudo yum-config-manager --add-repo http://mirrors.  aliyun.com/docker-ce/linux/centos/docker-ce.repo
+   ```bash
+   # 阿里仓库
+   sudo yum-config-manager --add-repo http://mirrors.  aliyun.com/docker-ce/linux/centos/docker-ce.repo
 
-    # 中央仓库
-    # sudo yum-config-manager --add-repo http://download. docker.com/linux/centos/docker-ce.repo
-    ```
+   # 中央仓库
+   # sudo yum-config-manager --add-repo http://download. docker.com/linux/centos/docker-ce.repo
+   ```
 
-    <font color='red'>注：这里没有添加源的话，yum 默认是没有 docker 的包安装的</font>
+   <font color='red'>注：这里没有添加源的话，yum 默认是没有 docker 的包安装的</font>
 
 3. 查看可用版本
 
-    ```bash
-    yum list docker-ce --showduplicates | sort -r
-    ```
+   ```bash
+   yum list docker-ce --showduplicates | sort -r
+   ```
 
 4. 安装
 
-    ```bash
-    sudo yum -y install docker-ce-18.03.1.ce
-    ```
+   ```bash
+   sudo yum -y install docker-ce-18.03.1.ce
+   ```
 
-    安装完成如图
+   安装完成如图
 
-    ![图 1](%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650642608352.png)  
+   ![图 1](%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650642608352.png)
 
 #### 1.3.2 更改用户组
 
 1. 查看用户组命令
 
-    ```bash
-    groups hadoop
-    # hadoop : hadoop docker
-    ```
+   ```bash
+   groups hadoop
+   # hadoop : hadoop docker
+   ```
 
 2. 创建 docker 用户组，添加当前用户  
-    在安装完 docker 后默认会创建 docker 用户组
+   在安装完 docker 后默认会创建 docker 用户组
 
-    ```bash
-    sudo groupadd docker            # 新建 docker 组
-    sudo usermod -aG docker $USER   # 添加当前用户至docker组
-    newgrp docker                   #更新
-    ```
+   ```bash
+   sudo groupadd docker            # 新建 docker 组
+   sudo usermod -aG docker $USER   # 添加当前用户至docker组
+   newgrp docker                   #更新
+   ```
 
-    执行更新命令后就不会再出现 `Got permission denied while trying to connect to the Docker daemon socket...` 报错了，或者修改用户组后退出当前终端并重新登录进行测试
+   执行更新命令后就不会再出现 `Got permission denied while trying to connect to the Docker daemon socket...` 报错了，或者修改用户组后退出当前终端并重新登录进行测试
 
 3. docker 启动重启等相关命令  
-    这里启动 docker 服务并设置开机自启即可，执行以下命令**前两条**
+   这里启动 docker 服务并设置开机自启即可，执行以下命令**前两条**
 
-    ```bash
-    # 启动 docker
-    systemctl start docker
-    
-    # 设置开机自启
-    systemctl enable docker
-    
-    # 设置开机自启并立即启动docker服务（相当于以上两条命令都执行）
-    systemctl enable --now docker
-    
-    # 重启docker
-    systemctl restart docker
-    
-    # 停止docker
-    systemctl stop docker
-    
-    # 移除开机自启
-    systemctl disable docker
-    ```
+   ```bash
+   # 启动 docker
+   systemctl start docker
+
+   # 设置开机自启
+   systemctl enable docker
+
+   # 设置开机自启并立即启动docker服务（相当于以上两条命令都执行）
+   systemctl enable --now docker
+
+   # 重启docker
+   systemctl restart docker
+
+   # 停止docker
+   systemctl stop docker
+
+   # 移除开机自启
+   systemctl disable docker
+   ```
 
 4. 测试安装是否成功
 
-    ```bash
-    docker run --rm hello-world
-    ```
+   ```bash
+   docker run --rm hello-world
+   ```
 
-    ![图 3](%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650681556408.png)  
+   ![图 3](%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650681556408.png)
 
-    注：首次执行需要拉去镜像，会花一段时间
+   注：首次执行需要拉去镜像，会花一段时间
 
 5. 在准备创建集群的各节点安装 docker，操作同上
 
@@ -168,13 +168,13 @@ chmod 600 ./authorized_keys # 赋予认证文件600权限
 
 1. 每启动一个 docker，docker 就会给容器分配一个 ip，只要安装了 docker，就会有一个 docker0 的网卡，这里的网卡采用的是**桥接模式**，使用的技术是 evth-pair 技术
 2. 当启动一个容器时，本地就会多一个网卡（**与容器的网卡成对**）
-    ![图 2](%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650962858622.png)  
+   ![图 2](%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650962858622.png)
 3. 这些由于容器而产生的**成对**的网卡就是 evth-pair 技术：一对虚拟设备接口，一端连着协议，一端彼此连接
 4. 正因为有这个特性，evth-pair 充当一个桥梁，连接各种虚拟设备
 5. 因此容器之间也是可以 ping 通的
 6. 所有容器在没有指定网络的情况下都是 docker0 进行路由的，docker 会给容器分配默认的可用 ip
-![图 3](%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650963563673.png)  
-![图 4](%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650963614223.png)  
+   ![图 3](%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650963563673.png)  
+   ![图 4](%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650963614223.png)
 
 <font color='red'>--link 有待学习</font>
 
@@ -188,8 +188,8 @@ Docker 有以下四种网络模式
 4. container：容器内网络连通（用的少）
 
 ```bash
-docker run -it -P --name mycentos centos 
-# docker run -it -P --name mycentos --net bridge centos 
+docker run -it -P --name mycentos centos
+# docker run -it -P --name mycentos --net bridge centos
 ```
 
 上述两个命令等价，因为默认创建就是使用的 bridge
@@ -287,7 +287,7 @@ docker run -it -v juming:/home centos /bin/bash
         "Scope": "local"
     }
 ]
-(base) [hadoop@master run]$ 
+(base) [hadoop@master run]$
 ```
 
 可以看到该卷在主机上的挂载点为 `/var/lib/docker/volumes/juming/_data`
@@ -309,68 +309,68 @@ docker run -it -v juming:/home:rw centos /bin/bash
 
 1. 创建 `dockerfile`
 
-    ```dockerfile
-    FROM centos
-    VOLUME ["volume01","volume02"]
-    CMD echo "--------- end ---------"
-    CMD /bin/bash
-    ```
+   ```dockerfile
+   FROM centos
+   VOLUME ["volume01","volume02"]
+   CMD echo "--------- end ---------"
+   CMD /bin/bash
+   ```
 
-    这里的每个命令就是镜像的一层，这里通过生成镜像的方式使得在容器创建时候就挂载不需要再指定参数
+   这里的每个命令就是镜像的一层，这里通过生成镜像的方式使得在容器创建时候就挂载不需要再指定参数
 
 2. 构建
 
-    ```bash
-    docker build -f dockerfile1 -t uchin_centos .
-    ```
+   ```bash
+   docker build -f dockerfile1 -t uchin_centos .
+   ```
 
-    上述 `-f` 指定 dockerfile 文件，`-t` 即 target，指定生成的镜像名，最后指定生成后的路径
+   上述 `-f` 指定 dockerfile 文件，`-t` 即 target，指定生成的镜像名，最后指定生成后的路径
 
-    ```txt
-    (base) [hadoop@master test_docker_volume]$ docker build -f dockerfile1 -t uchin_centos .
-    Sending build context to Docker daemon  2.048kB
-    Step 1/4 : FROM centos
-     ---> 5d0da3dc9764
-    Step 2/4 : VOLUME ["volume01","volume02"]
-     ---> Running in 8ce46c7e7766
-    Removing intermediate container 8ce46c7e7766
-     ---> 3019041d4948
-    Step 3/4 : CMD echo "--------- end ---------"
-     ---> Running in b4647234f83d
-    Removing intermediate container b4647234f83d
-     ---> b61a9aa5313f
-    Step 4/4 : CMD /bin/bash
-     ---> Running in 8669d24b2112
-    Removing intermediate container 8669d24b2112
-     ---> 8ea7424ac06e
-    Successfully built 8ea7424ac06e
-    Successfully tagged uchin_centos:latest
+   ```txt
+   (base) [hadoop@master test_docker_volume]$ docker build -f dockerfile1 -t uchin_centos .
+   Sending build context to Docker daemon  2.048kB
+   Step 1/4 : FROM centos
+    ---> 5d0da3dc9764
+   Step 2/4 : VOLUME ["volume01","volume02"]
+    ---> Running in 8ce46c7e7766
+   Removing intermediate container 8ce46c7e7766
+    ---> 3019041d4948
+   Step 3/4 : CMD echo "--------- end ---------"
+    ---> Running in b4647234f83d
+   Removing intermediate container b4647234f83d
+    ---> b61a9aa5313f
+   Step 4/4 : CMD /bin/bash
+    ---> Running in 8669d24b2112
+   Removing intermediate container 8669d24b2112
+    ---> 8ea7424ac06e
+   Successfully built 8ea7424ac06e
+   Successfully tagged uchin_centos:latest
 
-    (base) [hadoop@master test_docker_volume]$ docker image ls | grep uchin_centos
-    uchin_centos          latest              8ea7424ac06e        2 minutes ago       231MB
-    ```
+   (base) [hadoop@master test_docker_volume]$ docker image ls | grep uchin_centos
+   uchin_centos          latest              8ea7424ac06e        2 minutes ago       231MB
+   ```
 
 3. 测试
 
-    ```bash
-    docker run -it uchin_centos /bin/bash
-    ```
+   ```bash
+   docker run -it uchin_centos /bin/bash
+   ```
 
-    进入容器后发现指定的数据卷就被自动挂载了
+   进入容器后发现指定的数据卷就被自动挂载了
 
-    ```txt
-    [root@5a1789b7990c /]# ls -l | grep volume
-    drwxr-xr-x.   2 root root   6 Apr 26 07:36 volume01
-    drwxr-xr-x.   2 root root   6 Apr 26 07:36 volume02
-    ```
+   ```txt
+   [root@5a1789b7990c /]# ls -l | grep volume
+   drwxr-xr-x.   2 root root   6 Apr 26 07:36 volume01
+   drwxr-xr-x.   2 root root   6 Apr 26 07:36 volume02
+   ```
 
-    并且这个卷和外部是同步的，但是在 dockerfile 中使用的是**匿名挂载**的方式，可以使用 `inspect` 方式查询其具体位置
+   并且这个卷和外部是同步的，但是在 dockerfile 中使用的是**匿名挂载**的方式，可以使用 `inspect` 方式查询其具体位置
 
-    这种方式使用十分多，通常我们都会自己构建镜像，假设构建镜像时没有挂载卷，就手动使用 `-v` 方式挂载
+   这种方式使用十分多，通常我们都会自己构建镜像，假设构建镜像时没有挂载卷，就手动使用 `-v` 方式挂载
 
 ### 3.5 数据卷容器
 
-![图 1](%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650959416556.png)  
+![图 1](%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650959416556.png)
 
 创建父容器
 
@@ -407,13 +407,13 @@ Dockerfile 是一个用来**构建镜像**的文本文件，文本内容包含�
 3. 在 Dockerfile 文件的存放目录下，执行构建动作 `docker build -t mycentos:v1 .`命令构建  
    其中 `-t` 即 target，参数指定 `镜像名称:镜像标签`； `.` 代表本次执行的**上下文路径**
 
-    > 上下文路径，是指 docker 在构建镜像，有时候想要使用到本机的文件（比如复制），docker build 命令得知这个路径后，会将路径下的所有内容打包。
-    >
-    > 解析：由于 docker 的运行模式是 C/S。我们本机是 C，docker 引擎是 S。实际的构建过程是在 docker 引擎下完成的，所以这个时候无法用到我们本机的文件。这就需要把我们本机的指定目录下的文件一起打包提供给 docker 引擎使用。
-    >
-    > 如果未说明最后一个参数，那么默认上下文路径就是 Dockerfile 所在的位置。
-    >
-    > 注意：上下文路径下不要放无用的文件，因为会一起打包发送给 docker 引擎，如果文件过多会造成过程缓慢。
+   > 上下文路径，是指 docker 在构建镜像，有时候想要使用到本机的文件（比如复制），docker build 命令得知这个路径后，会将路径下的所有内容打包。
+   >
+   > 解析：由于 docker 的运行模式是 C/S。我们本机是 C，docker 引擎是 S。实际的构建过程是在 docker 引擎下完成的，所以这个时候无法用到我们本机的文件。这就需要把我们本机的指定目录下的文件一起打包提供给 docker 引擎使用。
+   >
+   > 如果未说明最后一个参数，那么默认上下文路径就是 Dockerfile 所在的位置。
+   >
+   > 注意：上下文路径下不要放无用的文件，因为会一起打包发送给 docker 引擎，如果文件过多会造成过程缓慢。
 
 ### 4.3 Dockerfile 指令
 
@@ -436,18 +436,18 @@ CMD ["flask", "run"]
 
 - `RUN`：用于执行后面跟着的命令行命令。有以下两种格式：
 
-    ```bash
-    RUN <命令行命令>
-    
-    RUN ["可执行文件", "参数1", "参数2"]
-    # 例如：
-    # RUN ["./test.php", "dev", "offline"] 等价于 RUN ./test.php dev offline
-    ```
+  ```bash
+  RUN <命令行命令>
 
-    注：Dockerfile 的指令每执行一次都会在 docker 上新建一层。所以过多无意义的层，会造成镜像膨胀过大，尽量使用 `&&` 符号将多个命令写成一行，这样就只会创建一层镜像，例如  
-    `RUN yum -y install wget \
-    && wget -O redis.tar.gz "http://download.redis.io/releases/redis-5.0.3.tar.gz" \
-    && tar -xvf redis.tar.gz`
+  RUN ["可执行文件", "参数1", "参数2"]
+  # 例如：
+  # RUN ["./test.php", "dev", "offline"] 等价于 RUN ./test.php dev offline
+  ```
+
+  注：Dockerfile 的指令每执行一次都会在 docker 上新建一层。所以过多无意义的层，会造成镜像膨胀过大，尽量使用 `&&` 符号将多个命令写成一行，这样就只会创建一层镜像，例如  
+   `RUN yum -y install wget \
+  && wget -O redis.tar.gz "http://download.redis.io/releases/redis-5.0.3.tar.gz" \
+  && tar -xvf redis.tar.gz`
 
 更多指令参考<https://www.runoob.com/docker/docker-dockerfile.html>
 
@@ -458,7 +458,7 @@ CMD ["flask", "run"]
 原先是使用 dockerfile 进行镜像创建，使用`docker build`、`docker run` 等命令进行**手动的**操作**单个**容器；这样也不便实现相互之间的依赖关系，于是就有了 docker compose
 这一容器编排管理技术
 
-使用docker compose 能高效管理容器：  
+使用 docker compose 能高效管理容器：  
 ① 定义多个运行容器  
 ② 实现批量容器编排
 
@@ -476,16 +476,16 @@ docker compose 不是 docker 所自带，需要额外自行安装
 
 1. 下载
 
-    ```bash
-    sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-    # sudo curl -L https://get.daocloud.io/docker/compose/releases/download/1.25.5/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
-    ```
+   ```bash
+   sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+   # sudo curl -L https://get.daocloud.io/docker/compose/releases/download/1.25.5/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+   ```
 
 2. 赋权限
 
-    ```bash
-    sudo chmod +x /usr/local/bin/docker-compose
-    ```
+   ```bash
+   sudo chmod +x /usr/local/bin/docker-compose
+   ```
 
 ### 5.3 测试
 
@@ -493,67 +493,67 @@ docker compose 不是 docker 所自带，需要额外自行安装
 
 1. 创测试目录
 
-    ```bash
-    mkdir composetest
-    cd composetest
-    ```
+   ```bash
+   mkdir composetest
+   cd composetest
+   ```
 
 2. 创建 `app.py`
 
-    ```python
-    import time
+   ```python
+   import time
 
-    import redis
-    from flask import Flask
+   import redis
+   from flask import Flask
 
-    app = Flask(__name__)
-    cache = redis.Redis(host='redis', port=6379)
+   app = Flask(__name__)
+   cache = redis.Redis(host='redis', port=6379)
 
-    def get_hit_count():
-        retries = 5
-        while True:
-            try:
-                return cache.incr('hits')
-            except redis.exceptions.ConnectionError as exc:
-                if retries == 0:
-                    raise exc
-                retries -= 1
-                time.sleep(0.5)
+   def get_hit_count():
+       retries = 5
+       while True:
+           try:
+               return cache.incr('hits')
+           except redis.exceptions.ConnectionError as exc:
+               if retries == 0:
+                   raise exc
+               retries -= 1
+               time.sleep(0.5)
 
-    @app.route('/')
-    def hello():
-        count = get_hit_count()
-        return 'Hello World! I have been seen {} times.\n'.format(count)
+   @app.route('/')
+   def hello():
+       count = get_hit_count()
+       return 'Hello World! I have been seen {} times.\n'.format(count)
 
-    ```
+   ```
 
 3. `Dockerfile`
 
-    ```dockerfile
-    FROM python:3.7-alpine
-    WORKDIR /code
-    ENV FLASK_APP=app.py
-    ENV FLASK_RUN_HOST=0.0.0.0
-    RUN apk add --no-cache gcc musl-dev linux-headers
-    COPY requirements.txt requirements.txt
-    RUN pip install -r requirements.txt
-    EXPOSE 5000
-    COPY . .
-    CMD ["flask", "run"]
-    ```
+   ```dockerfile
+   FROM python:3.7-alpine
+   WORKDIR /code
+   ENV FLASK_APP=app.py
+   ENV FLASK_RUN_HOST=0.0.0.0
+   RUN apk add --no-cache gcc musl-dev linux-headers
+   COPY requirements.txt requirements.txt
+   RUN pip install -r requirements.txt
+   EXPOSE 5000
+   COPY . .
+   CMD ["flask", "run"]
+   ```
 
 4. `docker-compose.yml` 文件
 
-    ```yaml
-    version: "3.9"
-    services:
-      web:
-        build: .
-        ports:
-          - "8000:5000"
-      redis:
-        image: "redis:alpine"
-    ```
+   ```yaml
+   version: "3.9"
+   services:
+     web:
+       build: .
+       ports:
+         - "8000:5000"
+     redis:
+       image: "redis:alpine"
+   ```
 
 5. 运行
 
@@ -611,24 +611,24 @@ configs:
 
 如有多块网卡，需指定集群中使用的网卡所对应的 ip，例如，当前有多块网卡，如下图
 
-![图 1](%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650677417546.png)  
+![图 1](%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650677417546.png)
 
-这里将 `enp0s9` 作为集群通信所使用的，那就用其所对应ip `192.168.56.101`
+这里将 `enp0s9` 作为集群通信所使用的，那就用其所对应 ip `192.168.56.101`
 
 选择一个节点作为 manager 节点登录，执行初始化命令
 
 ```bash
-docker swarm init --autolock=false  --advertise-addr 192.168.56.101 --listen-addr 192.168.56.101:2377 
+docker swarm init --autolock=false  --advertise-addr 192.168.56.101 --listen-addr 192.168.56.101:2377
 ```
 
 执行后如下
 
-![图 2](%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650645402766.png)  
+![图 2](%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650645402766.png)
 
 初始化后，当前所在的这个节点就是 manager，接下来可添加 worker,复制以上 Join token 内容，即 `docker swarm join --token SWMTKN-1-5tquxa6ztsbln9l4q0gr5tq6o7wowj16oncu6vg9t26mp9shj7-drdzg6xreehoz3gpm6h48hgpk 192.168.56.101:2377`
 ，登录 slave01 节点，执行该命令，即可将 slave01 节点以 worker 方式加入 swarm 集群
 
-> **在 swarm 中有两种可用的不同的 token，一种是用作worker角色，另一个是用作manager角色**  
+> **在 swarm 中有两种可用的不同的 token，一种是用作 worker 角色，另一个是用作 manager 角色**
 
 由于集群中允许有多个 manager 与 worker 的存在，因此**在 join 时根据所使用的 token 的不同，加入的方式也不同**，如果使用的是 worker 的 token，那加入后就是 worker，使用的 manager 的 token，加入后就是 manager
 
@@ -649,7 +649,7 @@ Swarm 集群部署完成后可以通过各命令操作，当然也可以通过 P
 
 Portainer 是一款轻量级的开源应用，它提供了图形化界面，用于方便地管理 Docker 环境，包括单机环境和集群环境
 
-如果部署了包含 Portainer 的Docker环境，可直接登录使用，否则，先安装 Portainer：
+如果部署了包含 Portainer 的 Docker 环境，可直接登录使用，否则，先安装 Portainer：
 
 ```bash
 docker volume create portainer_data # 首次创建
@@ -659,13 +659,13 @@ docker run -d -p 9000:9000 --name portainer -v /var/run/docker.sock:/var/run/doc
 以上是使用独立容器启动 Portainer，也可以通过 Docker Compose 进行启动，docker-compose.yml 文件内容如下:
 
 ```yaml
-version: '3'
+version: "3"
 volumes:
   portainer_data:
 
 services:
   portainer:
-    image:  portainer/portainer
+    image: portainer/portainer
     ports:
       - "9000:9000"
     command: -H unix:///var/run/docker.sock
@@ -680,20 +680,20 @@ services:
 
 容器启动后，访问 `https://192.168.56.101:9000` 即可进入 webUI 界面，如图（`192.168.56.101` 为**运行该容器**所在节点的 ip）
 
-![图 4](%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650685819089.png)  
+![图 4](%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650685819089.png)
 
 注：首次进入需设置用户名与密码
 
 在 portainer 页面可创建、删除容器、查看 swarm 信息等
 
 查看 swarm 信息
-![图 5](%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650686138442.png)  
+![图 5](%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650686138442.png)
 
 进入容器
-![图 6](%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650686499864.png)  
+![图 6](%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650686499864.png)
 
 容器控制界面
-![图 7](%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650686591366.png)  
+![图 7](%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650686591366.png)
 
 ## 7. Swarm 集群使用
 
@@ -723,7 +723,7 @@ docker service create  -p 8888:80 --name my-nginx nginx
 ![图 5](./基于%20Swarm%20的%20Docker%20分布式集群管理.assets/pic_1650980646777.png)  
 上述访问的是 `slave01` 的 ip，但容器运行在 `master` 节点上
 
-![图 6](./基于%20Swarm%20的%20Docker%20分布式集群管理.assets//pic_1650980702383.png)  
+![图 6](./基于%20Swarm%20的%20Docker%20分布式集群管理.assets//pic_1650980702383.png)
 
 #### 4.1.2 查看服务（在 manager 节点上执行）
 
@@ -746,7 +746,7 @@ vah2ryttads6        my-nginx            replicated          1/1                 
 docker service update --replicas 3 my-nginx
 ```
 
-上述命令将 `my-nginx` 服务副本更新为 3，即集群中有 3 个运行nginx的容器，当选择的节点上没有该镜像时会自动下载；如指定 replicas 为 1 就能回到开始状态，达到动态缩容的效果
+上述命令将 `my-nginx` 服务副本更新为 3，即集群中有 3 个运行 nginx 的容器，当选择的节点上没有该镜像时会自动下载；如指定 replicas 为 1 就能回到开始状态，达到动态缩容的效果
 
 注：**只要是一个服务，那么在集群中的任意一个节点都可以访问**
 
@@ -762,13 +762,13 @@ docker service scale my-nginx=2
 docker service rm my-nginx
 ```
 
-![图 7](./基于%20Swarm%20的%20Docker%20分布式集群管理.assets/pic_1650982073596.png)  
+![图 7](./基于%20Swarm%20的%20Docker%20分布式集群管理.assets/pic_1650982073596.png)
 
-![图 8](./基于%20Swarm%20的%20Docker%20分布式集群管理.assets/pic_1650982138022.png)  
+![图 8](./基于%20Swarm%20的%20Docker%20分布式集群管理.assets/pic_1650982138022.png)
 
-命令 -> 管理节点 -> api -> 调度 -> 工作节点（创建容器，即Task任务）
+命令 -> 管理节点 -> api -> 调度 -> 工作节点（创建容器，即 Task 任务）
 
-![图 9](./基于%20Swarm%20的%20Docker%20分布式集群管理.assets/pic_1650982654368.png)  
+![图 9](./基于%20Swarm%20的%20Docker%20分布式集群管理.assets/pic_1650982654368.png)
 
 ### 7.3 Docker stack
 
@@ -777,9 +777,9 @@ docker service rm my-nginx
 - docker-compose:单机部署
 - docker stack：集群上部署
 
->使用 `docker-compose.yml` 来一次配置、启动多个容器，在 Swarm 集群中也可以使用 `compose` 文件 （`docker-compose.yml`） 来配置、启动多个服务。
+> 使用 `docker-compose.yml` 来一次配置、启动多个容器，在 Swarm 集群中也可以使用 `compose` 文件 （`docker-compose.yml`） 来配置、启动多个服务。
 >
->`docker service create` 一次只能部署一个服务，使用 `docker-compose.yml` 我们可以一次启动多个关联的服务。
+> `docker service create` 一次只能部署一个服务，使用 `docker-compose.yml` 我们可以一次启动多个关联的服务。
 
 命令如下，其中 `-c` 指定 compose 文件名
 
@@ -820,7 +820,7 @@ docker service create --name uchin_test --network kafka --mount type=volume,src=
 docker service create --network kafka -p 8888:80 --name my-nginx --mount type=volume,src=volume_kafka,dst=/home  nginx
 ```
 
-[docker swarm 模式下，如何固定容器的ip？](https://ask.csdn.net/questions/770590)
+[docker swarm 模式下，如何固定容器的 ip？](https://ask.csdn.net/questions/770590)
 
 docker run -it --network kafka -v /home/hadoop/workspace/zkk/zk_volumes/app/:/home --name myCL python /bin/bash
 docker run -it --network kafka -v /home/hadoop/workspace/zkk/zk_volumes/app/:/home --name myConsumer continuumio/anaconda3 /bin/bash
@@ -843,102 +843,102 @@ Manager 节点用来处理集群管理任务：
 - 调度 service
 - 提供 swarm 模式 HTTP API 端点
 
-推荐使 Swarm 的节点为**奇数**个，来实现高可用的要求。当采用多个 manager 节点时，我们就可以在不停止集群运行的情况下恢复停止运行的manager节点。
+推荐使 Swarm 的节点为**奇数**个，来实现高可用的要求。当采用多个 manager 节点时，我们就可以在不停止集群运行的情况下恢复停止运行的 manager 节点。
 
-- 3个manager节点最大容错允许1个manager不可用
-- 5个manager节点最大容错允许2个manager不可用。
-- N个manager节点最大容错允许(N-1)/2个manager节点不可用。
-- 建议最大 manager 节点数为7个。
+- 3 个 manager 节点最大容错允许 1 个 manager 不可用
+- 5 个 manager 节点最大容错允许 2 个 manager 不可用。
+- N 个 manager 节点最大容错允许(N-1)/2 个 manager 节点不可用。
+- 建议最大 manager 节点数为 7 个。
 
 #### 8.1.2 Worker 节点
 
-Worker节点也是 Docker Engine 的实例，目的是用来运行 Container。Worker 节点不会像 Manager 节点那样提供集群的管理、任务调度和API。
+Worker 节点也是 Docker Engine 的实例，目的是用来运行 Container。Worker 节点不会像 Manager 节点那样提供集群的管理、任务调度和 API。
 
-**可以创建仅有一个manager节点的Swarm，但是不能在没有manager节点的前提下，创建Worker节点。在默认情况下，manager 节点同时也是一个 worker 节点。** 在一个manager节点的集群中，执行``docker service create`命令，调度器会将所有的task调度在本地Docker Engine上执行。
+**可以创建仅有一个 manager 节点的 Swarm，但是不能在没有 manager 节点的前提下，创建 Worker 节点。在默认情况下，manager 节点同时也是一个 worker 节点。** 在一个 manager 节点的集群中，执行``docker service create`命令，调度器会将所有的 task 调度在本地 Docker Engine 上执行。
 
-要阻止调度器将task分配到 manager 节点上执行，就需要将 manager 节点的可用性状态设置成 DRAIN。调度器会停止 DRAIN 节点上的 task，转移到其他状态为 ACTIVE 的节点上继续运行停止的 task。并且调度器不会再将新的 task 分配给 DRAIN 状态的节点。
+要阻止调度器将 task 分配到 manager 节点上执行，就需要将 manager 节点的可用性状态设置成 DRAIN。调度器会停止 DRAIN 节点上的 task，转移到其他状态为 ACTIVE 的节点上继续运行停止的 task。并且调度器不会再将新的 task 分配给 DRAIN 状态的节点。
 
 #### 8.1.3 改变节点角色
 
-我们可以通过``docker node promote`来将一个 worker 节点修改成一个 manager 节点。例如，某些维护需要，我们将停止一个 manager 节点，这时我们可以将某一个正在运行的worker节点变成manager节点，来代替停止的那个manager节点。当然，同样也可将一个manager节点改成一个worker节点。
+我们可以通过``docker node promote`来将一个 worker 节点修改成一个 manager 节点。例如，某些维护需要，我们将停止一个 manager 节点，这时我们可以将某一个正在运行的 worker 节点变成 manager 节点，来代替停止的那个 manager 节点。当然，同样也可将一个 manager 节点改成一个 worker 节点。
 
 ### 8.2 Service 工作原理
 
-参考[Service工作原理](https://holynull.gitbooks.io/docker-swarm/content/swarmmo-shi-gong-zuo-yuan-li/servicegong-zuo-yuan-li.html)
+参考[Service 工作原理](https://holynull.gitbooks.io/docker-swarm/content/swarmmo-shi-gong-zuo-yuan-li/servicegong-zuo-yuan-li.html)
 
-为了部署一个应用的镜像到 Swarm 模式的 Docker Engine 中，我们需要创建一个 service。通常 service 是拥有大型应用系统上下文信息的微服务镜像。例如，一个服务可能包含一个HTTP服务器、一个数据库、或者其他的软件，我们需要这些软件运行在一个分布式环境中。
+为了部署一个应用的镜像到 Swarm 模式的 Docker Engine 中，我们需要创建一个 service。通常 service 是拥有大型应用系统上下文信息的微服务镜像。例如，一个服务可能包含一个 HTTP 服务器、一个数据库、或者其他的软件，我们需要这些软件运行在一个分布式环境中。
 
 当创建 service 时，我们需要指定用什么镜像运行 container，以及 container 内部运行什么样的命令。我们还需要定义以下内容：
 
 - service 向 Swarm 以外暴露的可用端口
 - 一个 overlay network，用来支持 service 之间相互通信
-- CPU和内存的限制和预设
+- CPU 和内存的限制和预设
 - 滚动更新的策略
-- 镜像在Swarm中运行的副本数
+- 镜像在 Swarm 中运行的副本数
 
 #### 8.2.1 Service，Tasks and Containers
 
 当我们部署一个 service 到 swarm 时，manager 节点将接受我们对 service 定义，并作为 service 的理想状态。Manager 节点在 swarm 节点之间调度 service 的副本。不同节点上运行的 task 是相互独立的。
 
-例如，我们设想在3个HTTP监听实例之间实现负载均衡。下图展示了拥有3个副本的HTTP监听器。每一个监听器实例就是一个 swarm 中的 task。
+例如，我们设想在 3 个 HTTP 监听实例之间实现负载均衡。下图展示了拥有 3 个副本的 HTTP 监听器。每一个监听器实例就是一个 swarm 中的 task。
 
-![alt](././基于%20Swarm%20的%20Docker%20分布式集群管理.assets/services-diagram.png)  
+![alt](././基于%20Swarm%20的%20Docker%20分布式集群管理.assets/services-diagram.png)
 
-一个 container 是一个被隔离的进程。在 swarm 模式的模型中，每一个 task 运行一个 container。**task 就像调度器放置 container 使用的一个“槽”**。一旦 container 运行起来，调度器就能意识到task是在运行状态。如果 container 不可用或者被终止，则 task 也将被终止。
+一个 container 是一个被隔离的进程。在 swarm 模式的模型中，每一个 task 运行一个 container。**task 就像调度器放置 container 使用的一个“槽”**。一旦 container 运行起来，调度器就能意识到 task 是在运行状态。如果 container 不可用或者被终止，则 task 也将被终止。
 
-#### 8.2.2 task和调度
+#### 8.2.2 task 和调度
 
-task 是 swarm 调度的原子单元。当创建和更新 service 时，我们声明了 service 的理想状态，协调器通过调度 task 来实现这个理想状态。例如，我们定义了一个service，要求协调器在任何时候都能保证有3个HTTP监听器在运行。协调器创建3个task作为回应。每一个task就像一个“槽”，调度器将产生3个 container 放在“槽”中。container 是 task 的一个实例。当一个HTTP监听器不可用或者崩溃，协调器将创建一个新的task副本，并放入一个新的container。
+task 是 swarm 调度的原子单元。当创建和更新 service 时，我们声明了 service 的理想状态，协调器通过调度 task 来实现这个理想状态。例如，我们定义了一个 service，要求协调器在任何时候都能保证有 3 个 HTTP 监听器在运行。协调器创建 3 个 task 作为回应。每一个 task 就像一个“槽”，调度器将产生 3 个 container 放在“槽”中。container 是 task 的一个实例。当一个 HTTP 监听器不可用或者崩溃，协调器将创建一个新的 task 副本，并放入一个新的 container。
 
-task 的状态变化采用一种单向机制。贯穿 task 生命周期的状态有：已分配状态、已准备状态、正在运行状态，等等。如果task运行失败了，协调器会移除这个 task 并停止它的 container，然后创建新的 task 替代它，以保证service定义的理想状态。
+task 的状态变化采用一种单向机制。贯穿 task 生命周期的状态有：已分配状态、已准备状态、正在运行状态，等等。如果 task 运行失败了，协调器会移除这个 task 并停止它的 container，然后创建新的 task 替代它，以保证 service 定义的理想状态。
 
-Swarm模式背后的逻辑其实是一种通用的调度器和协调器逻辑。service和task被抽象设计成并不需要知道他们实现的container是什么样的。假设，我们可以实现其他类型的task，例如虚拟机task或者非容器化的进程task。调度器和协调器并不需要知道task的类型。然而，当前版本的Docker只支持容器task。
+Swarm 模式背后的逻辑其实是一种通用的调度器和协调器逻辑。service 和 task 被抽象设计成并不需要知道他们实现的 container 是什么样的。假设，我们可以实现其他类型的 task，例如虚拟机 task 或者非容器化的进程 task。调度器和协调器并不需要知道 task 的类型。然而，当前版本的 Docker 只支持容器 task。
 
-下图展示了Swarm模式如何接收service的创建请求，并调度task到worker节点。
+下图展示了 Swarm 模式如何接收 service 的创建请求，并调度 task 到 worker 节点。
 
 ![service-lifecycle](././基于%20Swarm%20的%20Docker%20分布式集群管理.assets/service-lifecycle.png)
 
 #### 8.2.3 Pending services
 
-由于配置的原因，某些 service 在当前swarm中没有节点可以执行它的task。在这种情况下，service 会一直保持 pending 状态。下面的一些例子会造成service保持pending状态。
+由于配置的原因，某些 service 在当前 swarm 中没有节点可以执行它的 task。在这种情况下，service 会一直保持 pending 状态。下面的一些例子会造成 service 保持 pending 状态。
 
-> 注意：如果有意要阻止 service 被发布，应该将 service 的 scale 设置为0，而不是通过设置让 service 一直保持在 pending 状态上。
+> 注意：如果有意要阻止 service 被发布，应该将 service 的 scale 设置为 0，而不是通过设置让 service 一直保持在 pending 状态上。
 
-- 如果所有的节点都暂停了或者都处于DRAIN状态，创建service时就会一直处于pending状态，知道有节点变为可用状态。事实上，当一个节点可用时，所有的任务都会被分配到这个节点上，所以对于生产环境来说并不是一件好事。
-- 可以事先给service划定一定的内存。如果没有一个节点具有所需要的内存空间量，service会一直保持pending状态，直到一个节点变的可用。
-- 可以强制service的放置约束，短时间内可能达不到约束条件。
+- 如果所有的节点都暂停了或者都处于 DRAIN 状态，创建 service 时就会一直处于 pending 状态，知道有节点变为可用状态。事实上，当一个节点可用时，所有的任务都会被分配到这个节点上，所以对于生产环境来说并不是一件好事。
+- 可以事先给 service 划定一定的内存。如果没有一个节点具有所需要的内存空间量，service 会一直保持 pending 状态，直到一个节点变的可用。
+- 可以强制 service 的放置约束，短时间内可能达不到约束条件。
 
-以上说明需求和task的配置没有紧密的结合到swarm的当前状态。作为Swarm的管理员，生命Swarm的理想状态，manager节点结合其他节点在Swarm中创建出这个状态。就不需要将管理的粒度细化到task级别。
+以上说明需求和 task 的配置没有紧密的结合到 swarm 的当前状态。作为 Swarm 的管理员，生命 Swarm 的理想状态，manager 节点结合其他节点在 Swarm 中创建出这个状态。就不需要将管理的粒度细化到 task 级别。
 
-#### 8.2.4 复制和全局service
+#### 8.2.4 复制和全局 service
 
-有两种service的部署模式，复制和全局。
+有两种 service 的部署模式，复制和全局。
 
-设置task的数量来实现复制模式下的service。例如，想要部署3个副本的HTTP服务，每个副本都提供相同的服务。
+设置 task 的数量来实现复制模式下的 service。例如，想要部署 3 个副本的 HTTP 服务，每个副本都提供相同的服务。
 
-全局service是在所有节点上都有一个task的service。不能指定task的数量。每次增加一个节点，协调器会创建一个task，并有调度器分配到新节点上。全局service的最佳应用是部署监控代理，病毒扫描，以及其他希望在swarm中每个节点上都部署的service。
+全局 service 是在所有节点上都有一个 task 的 service。不能指定 task 的数量。每次增加一个节点，协调器会创建一个 task，并有调度器分配到新节点上。全局 service 的最佳应用是部署监控代理，病毒扫描，以及其他希望在 swarm 中每个节点上都部署的 service。
 
-下图展示了3个副本的service和一个全局service部署在swarm中的情况，黄色代表3个副本的service，灰色代表全局service：
+下图展示了 3 个副本的 service 和一个全局 service 部署在 swarm 中的情况，黄色代表 3 个副本的 service，灰色代表全局 service：
 
-![alt](././基于%20Swarm%20的%20Docker%20分布式集群管理.assets/replicated-vs-global.png)  
+![alt](././基于%20Swarm%20的%20Docker%20分布式集群管理.assets/replicated-vs-global.png)
 
 ### 8.3 安全(PKI)
 
 参考：[安全](https://holynull.gitbooks.io/docker-swarm/content/swarmmo-shi-gong-zuo-yuan-li/an-quan-ff08-pki.html)
 
-Docker内置了PKI，使保障发布容器化的业务流程系统的安全性变得很简单。Swarm节点之间采用TLS来鉴权、授权和加密通信。
+Docker 内置了 PKI，使保障发布容器化的业务流程系统的安全性变得很简单。Swarm 节点之间采用 TLS 来鉴权、授权和加密通信。
 
-当我们运行`docker swarm init`命令时，Docker指定当前节点为一个 manager 节点。默认情况下，manager 节点会生成一个新的根CA证书以及一对密钥。CA证书和密钥将会被用在节点之间的通信上。也可以通过参数--external-ca来指定其他CA证书。
+当我们运行`docker swarm init`命令时，Docker 指定当前节点为一个 manager 节点。默认情况下，manager 节点会生成一个新的根 CA 证书以及一对密钥。CA 证书和密钥将会被用在节点之间的通信上。也可以通过参数--external-ca 来指定其他 CA 证书。
 
-Manager节点会生成两个token，一个用来添加worker节点，一个用来添加manager节点。每一个token包含了CA证书的digest和一个随机密钥。当节点加入到Swarm中时，加入的节点将digest发送给远端的manager节点，由manager节点来验证申请加入节点的根CA证书是否合法。远端manager节点通过随机密钥来验证申请加入的节点是否被核准加入。
+Manager 节点会生成两个 token，一个用来添加 worker 节点，一个用来添加 manager 节点。每一个 token 包含了 CA 证书的 digest 和一个随机密钥。当节点加入到 Swarm 中时，加入的节点将 digest 发送给远端的 manager 节点，由 manager 节点来验证申请加入节点的根 CA 证书是否合法。远端 manager 节点通过随机密钥来验证申请加入的节点是否被核准加入。
 
-每当节点加入到Swarm中后，manager都会给节点发送一个证书。这个证书中包含了一个随机生成的节点ID，用来标识这个证书通用名称下的节点，以及组织单元下的角色。在节点的当前Swarm生命周期中，节点ID是节点的安全加密的身份标识。
+每当节点加入到 Swarm 中后，manager 都会给节点发送一个证书。这个证书中包含了一个随机生成的节点 ID，用来标识这个证书通用名称下的节点，以及组织单元下的角色。在节点的当前 Swarm 生命周期中，节点 ID 是节点的安全加密的身份标识。
 
-下图说明了manager节点和worker节点如何使用TSL 1.2进行通信加密的。
+下图说明了 manager 节点和 worker 节点如何使用 TSL 1.2 进行通信加密的。
 
-![alt](././基于%20Swarm%20的%20Docker%20分布式集群管理.assets/tls.png)  
+![alt](././基于%20Swarm%20的%20Docker%20分布式集群管理.assets/tls.png)
 
-下面的例子展示了一个worker节点获得证书内容：
+下面的例子展示了一个 worker 节点获得证书内容：
 
 ```bash
 Certificate:
@@ -955,69 +955,69 @@ Certificate:
 ...snip...
 ```
 
-默认情况下，每个节点的证书3个月轮换一次。我们可以通过配置修改的这个间隔：docker swarm update --cert-expiry \<TIME PERIOD\>。最小的证书轮换时间为1小时。
+默认情况下，每个节点的证书 3 个月轮换一次。我们可以通过配置修改的这个间隔：docker swarm update --cert-expiry \<TIME PERIOD\>。最小的证书轮换时间为 1 小时。
 
-#### 8.3.1 CA证书轮换
+#### 8.3.1 CA 证书轮换
 
-如果Swarm的CA密钥或Manager节点受到危害，您可以轮换Swarm的根CA证书，以使所有节点都不再信任旧的根CA签名的证书。
+如果 Swarm 的 CA 密钥或 Manager 节点受到危害，您可以轮换 Swarm 的根 CA 证书，以使所有节点都不再信任旧的根 CA 签名的证书。
 
-运行命令`docker swarm ca --ratate`来生成新的CA证书和密钥。也可以通过参数`--ca-cert`和`--external-ca`来指定外部的根CA证书。
+运行命令`docker swarm ca --ratate`来生成新的 CA 证书和密钥。也可以通过参数`--ca-cert`和`--external-ca`来指定外部的根 CA 证书。
 
 当运行了`docker swarm ca --rotate`命令后，会按顺序发生下面的事情：
 
-1. Docker会生成一个交叉签名（cross-signed）证书。即新证书是由旧的证书签署的。这个交叉签名证书将作为一个过渡性的证书。这是为了确保节点仍然能够信任旧的证书，也能使用新的CA证书验证签名。
+1. Docker 会生成一个交叉签名（cross-signed）证书。即新证书是由旧的证书签署的。这个交叉签名证书将作为一个过渡性的证书。这是为了确保节点仍然能够信任旧的证书，也能使用新的 CA 证书验证签名。
 
-2. 在Docker 17.06或者更高版本中，Docker会通知所有节点立即更新TLS证书。根据Swarm中节点的数量多少，这个过程可能会花费几分钟时间。
+2. 在 Docker 17.06 或者更高版本中，Docker 会通知所有节点立即更新 TLS 证书。根据 Swarm 中节点的数量多少，这个过程可能会花费几分钟时间。
 
-    > 注意：如果Swarm中的节点上Docker的版本不一致，将会发生下面的情况：
-    >
-    > - 只有manager节点运行了Docker 17.06或者更高版本，并且作为leader时，才能通知到其他节点更新TLS证书。
-    > - 只有Docker 17.06或者更高版本才会支持这个指令。 最好确保所有的Swarm节点上运行Docker 17.06或者更高版本。
+   > 注意：如果 Swarm 中的节点上 Docker 的版本不一致，将会发生下面的情况：
+   >
+   > - 只有 manager 节点运行了 Docker 17.06 或者更高版本，并且作为 leader 时，才能通知到其他节点更新 TLS 证书。
+   > - 只有 Docker 17.06 或者更高版本才会支持这个指令。 最好确保所有的 Swarm 节点上运行 Docker 17.06 或者更高版本。
 
-3. 在所有的节点都更新了新CA证书签署的TLS证书后，Docker将不在信任旧的证书，并通知所有节点仅信任新的CA证书。
+3. 在所有的节点都更新了新 CA 证书签署的 TLS 证书后，Docker 将不在信任旧的证书，并通知所有节点仅信任新的 CA 证书。
 
-    加入Swarm使用的token将发生变化，旧的token将不可用。
+   加入 Swarm 使用的 token 将发生变化，旧的 token 将不可用。
 
-从这时起，所有新的由新根CA证书签署的节点证书将颁发给节点，并且完全不存在过度内容。
+从这时起，所有新的由新根 CA 证书签署的节点证书将颁发给节点，并且完全不存在过度内容。
 
-### 8.4 Task的状态
+### 8.4 Task 的状态
 
-Service是应用运行的理想状态的描述，task在这个理想状态下完成工作。工作按照下面的流程在Swarm节点之间被调度：
+Service 是应用运行的理想状态的描述，task 在这个理想状态下完成工作。工作按照下面的流程在 Swarm 节点之间被调度：
 
-1. 使用CLI运行命令`docker service create`，或者使用UCP web界面。
+1. 使用 CLI 运行命令`docker service create`，或者使用 UCP web 界面。
 
-2. 请求传递给manager节点。
+2. 请求传递给 manager 节点。
 
-3. manager节点在特定的节点调度service的运行。
+3. manager 节点在特定的节点调度 service 的运行。
 
-4. 每一个service可以由多个task来执行。
+4. 每一个 service 可以由多个 task 来执行。
 
-5. 每一个task都有一个生命周期，生命周期的状态包括：`NEW`，`PENDING`和`COMPLETE`等等。
+5. 每一个 task 都有一个生命周期，生命周期的状态包括：`NEW`，`PENDING`和`COMPLETE`等等。
 
-Task是一次执行单元。当task停止，就不会再被执行，除非一个新的task会取代它。
+Task 是一次执行单元。当 task 停止，就不会再被执行，除非一个新的 task 会取代它。
 
-在task执行完成或者失败之前，task会通过一系列的状态变化。task由`NEW`状态初始化。task的状态变化过程是不可逆的。例如，一个task是永远不会从`COMPLETE`状态变回`RUNNING`状态的。
+在 task 执行完成或者失败之前，task 会通过一系列的状态变化。task 由`NEW`状态初始化。task 的状态变化过程是不可逆的。例如，一个 task 是永远不会从`COMPLETE`状态变回`RUNNING`状态的。
 
-Task的状态如下表：
+Task 的状态如下表：
 
-|状态 |描述|
-|---|---|
-|NEW|初始化状态|
-|PENDING|资源分配了任务时的状态|
-|ASSIGNED|task被分配到节点后的状态|
-|ACCEPTED|task被worker节点接受后的状态。|
-|PREPARING|Docker正在准备task|
-|STARTING|Docker启动task|
-|RUNNING|正在运行中的状态|
-|COMPLETE|task已经存在，并且没有错误码|
-|FAILED|task已经存在，但是有错误码出现|
-|SHUTDOWN|Docker被请求关闭task|
-|REJECTED|worker节点拒绝接受task|
-|ORPHANED|节点离线时间超长|
+| 状态      | 描述                              |
+| --------- | --------------------------------- |
+| NEW       | 初始化状态                        |
+| PENDING   | 资源分配了任务时的状态            |
+| ASSIGNED  | task 被分配到节点后的状态         |
+| ACCEPTED  | task 被 worker 节点接受后的状态。 |
+| PREPARING | Docker 正在准备 task              |
+| STARTING  | Docker 启动 task                  |
+| RUNNING   | 正在运行中的状态                  |
+| COMPLETE  | task 已经存在，并且没有错误码     |
+| FAILED    | task 已经存在，但是有错误码出现   |
+| SHUTDOWN  | Docker 被请求关闭 task            |
+| REJECTED  | worker 节点拒绝接受 task          |
+| ORPHANED  | 节点离线时间超长                  |
 
 #### 8.4.1 查看状态
 
-运行命令`docker service ps <service-name>`来获得task的状态。`CURRENT STATE`表示task的状态：
+运行命令`docker service ps <service-name>`来获得 task 的状态。`CURRENT STATE`表示 task 的状态：
 
 ---
 
@@ -1025,11 +1025,11 @@ Task的状态如下表：
 
 [docker 常用命令](https://sunbufu.github.io/wiki/docker-command/)
 
-[Docker network命令](https://blog.csdn.net/gezhonglei2007/article/details/51627821)
+[Docker network 命令](https://blog.csdn.net/gezhonglei2007/article/details/51627821)
 
 [常用命令](https://blog.csdn.net/qq_30118563/article/details/113838214)
 
-[Docker实践(二)：容器的管理(创建、查看、启动、终止、删除)](https://blog.csdn.net/u010246789/article/details/53958662)
+[Docker 实践(二)：容器的管理(创建、查看、启动、终止、删除)](https://blog.csdn.net/u010246789/article/details/53958662)
 
 ---
 
@@ -1039,37 +1039,37 @@ raft 是工程上使用较为广泛的强一致性、去中心化、高可用的
 
 参考
 
-[Raft 协议原理详解，10 分钟带你掌握](https://mp.weixin.qq.com/s/OLcb0nWLp-Oa1DA6ppFbKQ)
+- [Raft 协议原理详解，10 分钟带你掌握](https://mp.weixin.qq.com/s/OLcb0nWLp-Oa1DA6ppFbKQ)
 
-[一文搞懂Raft算法](https://www.cnblogs.com/xybaby/p/10124083.html)
+- [一文搞懂 Raft 算法](https://www.cnblogs.com/xybaby/p/10124083.html)
 
 ---
 
 其他参考：
 
-[安装教程 01](https://yeasy.gitbook.io/docker_practice/install/centos)
+- [安装教程 01](https://yeasy.gitbook.io/docker_practice/install/centos)
 
-[安装教程 02](https://cloud.tencent.com/developer/article/1701451)
+- [安装教程 02](https://cloud.tencent.com/developer/article/1701451)
 
-[docker swarm集群创建、配置、可视化管理实验](https://blog.csdn.net/dkfajsldfsdfsd/article/details/79923218)
+- [docker swarm 集群创建、配置、可视化管理实验](https://blog.csdn.net/dkfajsldfsdfsd/article/details/79923218)
 
-[Docker Swarm 管理节点高可用分析](https://www.jianshu.com/p/6e48d01d11c9)
+- [Docker Swarm 管理节点高可用分析](https://www.jianshu.com/p/6e48d01d11c9)
 
-[使用swarm搭建和管理docker集群](https://ypdai.github.io/2021/02/24/%E4%BD%BF%E7%94%A8swarm%E6%90%AD%E5%BB%BA%E5%92%8C%E7%AE%A1%E7%90%86docker%E9%9B%86%E7%BE%A4/)
+- [使用 swarm 搭建和管理 docker 集群](https://ypdai.github.io/2021/02/24/%E4%BD%BF%E7%94%A8swarm%E6%90%AD%E5%BB%BA%E5%92%8C%E7%AE%A1%E7%90%86docker%E9%9B%86%E7%BE%A4/)
 
-[Docker Swarm （容器集群，高可用，安全）](https://blog.51cto.com/lwc0329/3010862)
+- [Docker Swarm （容器集群，高可用，安全）](https://blog.51cto.com/lwc0329/3010862)
 
-[<u>Docker Swarm 深入浅出</u>](https://www.gitbook.com/book/holynull/docker-swarm)
+- [<u>Docker Swarm 深入浅出</u>](https://www.gitbook.com/book/holynull/docker-swarm)
 
-[DockerSwarm获取Token与常用命令](https://www.cnblogs.com/songxingzhu/p/10669497.html)
+- [DockerSwarm 获取 Token 与常用命令](https://www.cnblogs.com/songxingzhu/p/10669497.html)
 
-[Portainer - Docker的可视化管理工具使用详解](https://www.hangge.com/blog/cache/detail_2597.html)
+- [Portainer - Docker 的可视化管理工具使用详解](https://www.hangge.com/blog/cache/detail_2597.html)
 
-[Docker network命令](https://blog.csdn.net/gezhonglei2007/article/details/51627821)
+- [Docker network 命令](https://blog.csdn.net/gezhonglei2007/article/details/51627821)
 
-[在 Swarm 集群中使用 Compose 文件](https://laravelacademy.org/post/21850)
+- [在 Swarm 集群中使用 Compose 文件](https://laravelacademy.org/post/21850)
 
-<https://www.cnblogs.com/xiangsikai/p/9935253.html>
+- <https://www.cnblogs.com/xiangsikai/p/9935253.html>
 
 |**PS：原《 docker 进阶》见 7.3**
 
