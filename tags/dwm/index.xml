@@ -12,7 +12,7 @@
     </author><guid>https://yuqinlee.github.io/archlinux-%E7%AE%80%E8%AE%B0/</guid>
     <description><![CDATA[<!-- # Archlinux 简记 -->
 <h2 id="1-无图形安装" class="headerLink">
-    <a href="#1-%e6%97%a0%e5%9b%be%e5%bd%a2%e5%ae%89%e8%a3%85" class="header-mark" aria-label="Header mark for '1. 无图形安装'"></a>1. 无图形安装</h2><h3 id="检查安装模式" class="headerLink">
-    <a href="#%e6%a3%80%e6%9f%a5%e5%ae%89%e8%a3%85%e6%a8%a1%e5%bc%8f" class="header-mark" aria-label="Header mark for '检查安装模式'"></a>检查安装模式</h3><p>检测是否为 <code>uefi 方式</code> 安装，若为 <code>uefi 方式</code> 则以下命令将输出一堆东西</p>]]></description>
+    <a href="#1-%e6%97%a0%e5%9b%be%e5%bd%a2%e5%ae%89%e8%a3%85" class="header-mark"></a>1. 无图形安装</h2><h3 id="检查安装模式" class="headerLink">
+    <a href="#%e6%a3%80%e6%9f%a5%e5%ae%89%e8%a3%85%e6%a8%a1%e5%bc%8f" class="header-mark"></a>检查安装模式</h3><p>检测是否为 <code>uefi 方式</code> 安装，若为 <code>uefi 方式</code> 则以下命令将输出一堆东西</p>]]></description>
 </item></channel>
 </rss>

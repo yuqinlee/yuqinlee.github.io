@@ -14,8 +14,8 @@
 <!-- > uchin/李玉勤   -->
 <!-- > 20220124   -->
 <h2 id="1-git-配置" class="headerLink">
-    <a href="#1-git-%e9%85%8d%e7%bd%ae" class="header-mark" aria-label="Header mark for '1. git 配置'"></a>1. git 配置</h2><h3 id="11-git-三级配置" class="headerLink">
-    <a href="#11-git-%e4%b8%89%e7%ba%a7%e9%85%8d%e7%bd%ae" class="header-mark" aria-label="Header mark for '1.1 git 三级配置'"></a>1.1 git 三级配置</h3><ul>
+    <a href="#1-git-%e9%85%8d%e7%bd%ae" class="header-mark"></a>1. git 配置</h2><h3 id="11-git-三级配置" class="headerLink">
+    <a href="#11-git-%e4%b8%89%e7%ba%a7%e9%85%8d%e7%bd%ae" class="header-mark"></a>1.1 git 三级配置</h3><ul>
 <li>System： <code>/etc/gitconfig</code>，Msys64 底下的 etc</li>
 <li>Global： <code>~/.gitconfig</code>，Msys64 底下的 home/[UserName]/w 为 ~</li>
 <li>工程目录： <code>.git/gitconfig</code></li>
@@ -33,7 +33,7 @@
 修改于_2020-12-13 21:27 by uchin</p>
 </blockquote>
 <h2 id="基本语法" class="headerLink">
-    <a href="#%e5%9f%ba%e6%9c%ac%e8%af%ad%e6%b3%95" class="header-mark" aria-label="Header mark for '基本语法'"></a>基本语法</h2><p>语法参考：<a href="https://www.markdown.xyz/basic-syntax/" target="_blank" rel="noopener noreferrer">https://www.markdown.xyz/basic-syntax/</a></p>]]></description>
+    <a href="#%e5%9f%ba%e6%9c%ac%e8%af%ad%e6%b3%95" class="header-mark"></a>基本语法</h2><p>语法参考：<a href="https://www.markdown.xyz/basic-syntax/" target="_blank" rel="noopener noreferrer">https://www.markdown.xyz/basic-syntax/</a></p>]]></description>
 </item><item>
     <title>Typora 小记</title>
     <link>https://yuqinlee.github.io/typora-%E5%B0%8F%E8%AE%B0/</link>
@@ -46,9 +46,9 @@
 修改于_2020-12-13 21:27 by uchin</p>
 </blockquote>
 <h2 id="typora-快捷键" class="headerLink">
-    <a href="#typora-%e5%bf%ab%e6%8d%b7%e9%94%ae" class="header-mark" aria-label="Header mark for 'Typora 快捷键'"></a>Typora 快捷键</h2><h3 id="1菜单快捷键" class="headerLink">
-    <a href="#1%e8%8f%9c%e5%8d%95%e5%bf%ab%e6%8d%b7%e9%94%ae" class="header-mark" aria-label="Header mark for '1.菜单快捷键'"></a>1.菜单快捷键</h3><h4 id="11文件" class="headerLink">
-    <a href="#11%e6%96%87%e4%bb%b6" class="header-mark" aria-label="Header mark for '1.1.文件'"></a>1.1.文件</h4><table>
+    <a href="#typora-%e5%bf%ab%e6%8d%b7%e9%94%ae" class="header-mark"></a>Typora 快捷键</h2><h3 id="1菜单快捷键" class="headerLink">
+    <a href="#1%e8%8f%9c%e5%8d%95%e5%bf%ab%e6%8d%b7%e9%94%ae" class="header-mark"></a>1.菜单快捷键</h3><h4 id="11文件" class="headerLink">
+    <a href="#11%e6%96%87%e4%bb%b6" class="header-mark"></a>1.1.文件</h4><table>
   <thead>
       <tr>
           <th style="text-align: left">快捷键</th>
@@ -91,7 +91,7 @@
   </tbody>
 </table>
 <h4 id="12编辑" class="headerLink">
-    <a href="#12%e7%bc%96%e8%be%91" class="header-mark" aria-label="Header mark for '1.2.编辑'"></a>1.2.编辑</h4><table>
+    <a href="#12%e7%bc%96%e8%be%91" class="header-mark"></a>1.2.编辑</h4><table>
   <thead>
       <tr>
           <th style="text-align: left">快捷键</th>
@@ -130,7 +130,7 @@
   </tbody>
 </table>
 <h4 id="13段落" class="headerLink">
-    <a href="#13%e6%ae%b5%e8%90%bd" class="header-mark" aria-label="Header mark for '1.3.段落'"></a>1.3.段落</h4><table>
+    <a href="#13%e6%ae%b5%e8%90%bd" class="header-mark"></a>1.3.段落</h4><table>
   <thead>
       <tr>
           <th style="text-align: left">快捷键</th>
@@ -177,7 +177,7 @@
   </tbody>
 </table>
 <h4 id="14格式" class="headerLink">
-    <a href="#14%e6%a0%bc%e5%bc%8f" class="header-mark" aria-label="Header mark for '1.4.格式'"></a>1.4.格式</h4><table>
+    <a href="#14%e6%a0%bc%e5%bc%8f" class="header-mark"></a>1.4.格式</h4><table>
   <thead>
       <tr>
           <th style="text-align: left">快捷键</th>
@@ -212,7 +212,7 @@
   </tbody>
 </table>
 <h4 id="15视图" class="headerLink">
-    <a href="#15%e8%a7%86%e5%9b%be" class="header-mark" aria-label="Header mark for '1.5.视图'"></a>1.5.视图</h4><table>
+    <a href="#15%e8%a7%86%e5%9b%be" class="header-mark"></a>1.5.视图</h4><table>
   <thead>
       <tr>
           <th style="text-align: left">快捷键</th>
@@ -243,7 +243,7 @@
   </tbody>
 </table>
 <h3 id="2其他快捷键" class="headerLink">
-    <a href="#2%e5%85%b6%e4%bb%96%e5%bf%ab%e6%8d%b7%e9%94%ae" class="header-mark" aria-label="Header mark for '2.其他快捷键&#43;'"></a>2.其他快捷键+</h3><table>
+    <a href="#2%e5%85%b6%e4%bb%96%e5%bf%ab%e6%8d%b7%e9%94%ae" class="header-mark"></a>2.其他快捷键+</h3><table>
   <thead>
       <tr>
           <th style="text-align: left">快捷键</th>
@@ -282,6 +282,6 @@
   </tbody>
 </table>
 <h3 id="3自定义快捷键" class="headerLink">
-    <a href="#3%e8%87%aa%e5%ae%9a%e4%b9%89%e5%bf%ab%e6%8d%b7%e9%94%ae" class="header-mark" aria-label="Header mark for '3.自定义快捷键'"></a>3.自定义快捷键</h3><p>Windows 路径:<font color='orange'><code>C:\Users\[userName]\AppData\Roaming\Typora\conf\conf.user.json</code></font></p>]]></description>
+    <a href="#3%e8%87%aa%e5%ae%9a%e4%b9%89%e5%bf%ab%e6%8d%b7%e9%94%ae" class="header-mark"></a>3.自定义快捷键</h3><p>Windows 路径:<font color='orange'><code>C:\Users\[userName]\AppData\Roaming\Typora\conf\conf.user.json</code></font></p>]]></description>
 </item></channel>
 </rss>

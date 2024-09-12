@@ -1,0 +1,20 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Venv - 标签 - uchin blog</title>
+        <link>https://yuqinlee.github.io/tags/venv/</link>
+        <description>Venv - 标签 - uchin blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yuqin.lee@outlook.com (uchin)</managingEditor>
+            <webMaster>yuqin.lee@outlook.com (uchin)</webMaster><lastBuildDate>Mon, 09 Sep 2024 16:02:58 &#43;0800</lastBuildDate><atom:link href="https://yuqinlee.github.io/tags/venv/" rel="self" type="application/rss+xml" /><item>
+    <title>Python 版本管理 —— Poetry</title>
+    <link>https://yuqinlee.github.io/python-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/</link>
+    <pubDate>Mon, 09 Sep 2024 16:02:58 &#43;0800</pubDate><author>
+        <name>uchin</name>
+    </author><guid>https://yuqinlee.github.io/python-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/</guid>
+    <description><![CDATA[<h2 id="poetry-是什么" class="headerLink">
+    <a href="#poetry-%e6%98%af%e4%bb%80%e4%b9%88" class="header-mark"></a>poetry 是什么</h2><p>主要针对虚拟环境下的 python 包管理工具</p>
+<p>poetry 与常见框架对比</p>
+<ul>
+<li>
+<p>conda: Python 版本管理，创建不同虚拟环境，管理不同 python 与 包 版本均</p>]]></description>
+</item></channel>
+</rss>

@@ -9,9 +9,9 @@
     <meta name="robots" content="noodp" /><title>区块链与安全Note - uchin blog</title><meta name="Description" content="玉勤的博客站"><meta property="og:url" content="https://yuqinlee.github.io/%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%8E%E5%AE%89%E5%85%A8note/">
   <meta property="og:site_name" content="uchin blog">
   <meta property="og:title" content="区块链与安全Note">
-  <meta property="og:description" content=" 2020-11-04
+  <meta property="og:description" content="2020-11-04
 https://www.bilibili.com/video/av37065233
-一、BTC-密码学原理 1. Hash 性质1 collision resistance密文m">
+一、BTC-密码学原理1. Hash性质1 collision resistance密文m">
   <meta property="og:locale" content="zh_CN">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -23,9 +23,9 @@ https://www.bilibili.com/video/av37065233
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="区块链与安全Note">
-  <meta name="twitter:description" content=" 2020-11-04
+  <meta name="twitter:description" content="2020-11-04
 https://www.bilibili.com/video/av37065233
-一、BTC-密码学原理 1. Hash 性质1 collision resistance密文m">
+一、BTC-密码学原理1. Hash性质1 collision resistance密文m">
 <meta name="application-name" content="ublog">
 <meta name="apple-mobile-web-app-title" content="ublog">
 
@@ -217,8 +217,9 @@ https://www.bilibili.com/video/av37065233
             <div class="post-meta-line"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"/></svg>&nbsp;<time datetime="2020-11-04">2020-11-04</time>&nbsp;<svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg>&nbsp;<time datetime="2020-11-04">2020-11-04</time>&nbsp;<svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;约 6372 字&nbsp;<svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;预计阅读 13 分钟&nbsp;</div>
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;约 6372 字&nbsp;
+                    <svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;预计阅读 28 分钟&nbsp;</div>
         </div><div class="details toc print:!tw-block" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -270,19 +271,19 @@ https://www.bilibili.com/video/av37065233
 </blockquote>
 <!-- [toc] -->
 <h2 id="一btc-密码学原理" class="headerLink">
-    <a href="#%e4%b8%80btc-%e5%af%86%e7%a0%81%e5%ad%a6%e5%8e%9f%e7%90%86" class="header-mark" aria-label="Header mark for '一、BTC-密码学原理'"></a>一、BTC-密码学原理</h2><h3 id="1-hash" class="headerLink">
-    <a href="#1-hash" class="header-mark" aria-label="Header mark for '1. Hash'"></a>1. Hash</h3><h4 id="性质1-collision-resistance" class="headerLink">
-    <a href="#%e6%80%a7%e8%b4%a81-collision-resistance" class="header-mark" aria-label="Header mark for '性质1 collision resistance'"></a>性质1 collision resistance</h4><p>密文m</p>
+    <a href="#%e4%b8%80btc-%e5%af%86%e7%a0%81%e5%ad%a6%e5%8e%9f%e7%90%86" class="header-mark"></a>一、BTC-密码学原理</h2><h3 id="1-hash" class="headerLink">
+    <a href="#1-hash" class="header-mark"></a>1. Hash</h3><h4 id="性质1-collision-resistance" class="headerLink">
+    <a href="#%e6%80%a7%e8%b4%a81-collision-resistance" class="header-mark"></a>性质1 collision resistance</h4><p>密文m</p>
 <p>H(m)经过hash函数处理之后得到一个hash值，很难在修改m后再进行hash运算还是原来的值，尽管存在hash碰撞</p>
 <p><font color='red'>没有证明那个hash函数是不存在collision resistance的！！但是有函数是被验证是能够人为找出碰撞的，如MD5</font></p>
 <h4 id="性质2-hiding" class="headerLink">
-    <a href="#%e6%80%a7%e8%b4%a82-hiding" class="header-mark" aria-label="Header mark for '性质2 hiding'"></a>性质2 hiding</h4><p>hiding：hash函数的计算是单向且不可逆的，即给定x，可以算出其hash值$H(x)$ , $x-&gt;H(x)$但是没办法从$H(x)$反推出$x$</p>
+    <a href="#%e6%80%a7%e8%b4%a82-hiding" class="header-mark"></a>性质2 hiding</h4><p>hiding：hash函数的计算是单向且不可逆的，即给定x，可以算出其hash值$H(x)$ , $x-&gt;H(x)$但是没办法从$H(x)$反推出$x$</p>
 <p><font color='red'>hiding成立的前提是输入空间足够大(不然直接暴力遍历出原文),并且输入的取值比较均匀,各种取值差不多</font></p>
 <p>hiding与collision resistance结合起来,实现 <strong>digital commitment(digital equivalent  of a sealed envelope)</strong></p>
 <p>例如,呀进行股市的预测,需提前给出预测,但是又不能将结果直接公布,因为这个预测会对结果产生影响,所以,可以先将预测进行hash,得到一个hash值,由于性质1与性质2,在第二天结果知晓后,公布预测内容并计算hash值,对比之前公布的hash值,相同则预测正确</p>
 <p><strong>实际操作中,为使输入的空间足够大,可以$H(x||nonce)$,即在输入内容后增加一个随机数(nonce)</strong></p>
 <h4 id="性质3-puzzle-friendly" class="headerLink">
-    <a href="#%e6%80%a7%e8%b4%a83-puzzle-friendly" class="header-mark" aria-label="Header mark for '性质3 puzzle friendly'"></a>性质3 puzzle friendly</h4><p>puzzle friendly:hash值的计算事先是不可预测的,即如果想获得一个区间范围内的hash值,那只能一个一个试</p>
+    <a href="#%e6%80%a7%e8%b4%a83-puzzle-friendly" class="header-mark"></a>性质3 puzzle friendly</h4><p>puzzle friendly:hash值的计算事先是不可预测的,即如果想获得一个区间范围内的hash值,那只能一个一个试</p>
 <p>例如,想要获得一个经过hash运算后，256位的hash值是形如&quot;00……00xxxxx&quot;前k位都是&quot;0&quot;的原文，那只能一个一个试，而没有方法实现知道。在挖矿中，$nonce$在$block\quad header$中,是可以自己设置的,挖矿过程就是找到适合的$nonce$使得满足以下式子:
 $$
 H(block\quad header)\leq target
@@ -290,15 +291,15 @@ $$
 $H(block\quad header)$要落在指定的$target\quad space$中,只有经过大量的尝试,才能证明其中的&quot;$proof\quad of\quad work$&quot;,在这个过程中,&ldquo;挖矿&quot;是很难的,但是去验证是很容易的,这个性质叫**&ldquo;difficult to solve,but easy to verify&rdquo;**</p>
 <p>在比特币中使用的hash函数是$SHA-256(Secure Hash Algorithm)$,满足上述三个性质</p>
 <h3 id="2-签名" class="headerLink">
-    <a href="#2-%e7%ad%be%e5%90%8d" class="header-mark" aria-label="Header mark for '2. 签名'"></a>2. 签名</h3><p>$asymmetric\quad encryption\quad algorithm(非对称加密)$</p>
+    <a href="#2-%e7%ad%be%e5%90%8d" class="header-mark"></a>2. 签名</h3><p>$asymmetric\quad encryption\quad algorithm(非对称加密)$</p>
 <p>在现实中开户需要到银行进行相关手续，但是比特币开户只需要在本地创建一对公钥与私钥即可$(public\quad key ,private\quad key)$,知道公钥就相当于知道银行账号,其他人可以往里转账,而私钥就好比是账户的口令,能将账户中的&quot;钱&quot;取出来。比特币是不加密的加密货币，这里公私钥是为了进行签名。</p>
 <p><font color='red'>会不会两人生成的公私钥对是相同的？答：可能性微乎其微</font></p>
 <p>这里生成公私钥要求有一个$a\quad good\quad source\quad of\quad randomness$，如果随机源选择不好的话就有可能两个人的公私钥相同了；在比特币中，除了生成公私钥对时需要一个好的随机源，在每一次加密的过程中都需要有好的随机源，不然可能泄露私钥</p>
 <p>比特币中一般是先对message进行hash，然后再对hash值进行签名！！</p>
 <p><em><a href="https://www.cnblogs.com/wkfvawl/p/13138979.html" target="_blank" rel="noopener noreferrer">区块链技术与应用——BTC密码学原理</a></em></p>
 <h2 id="二btc-数据结构" class="headerLink">
-    <a href="#%e4%ba%8cbtc-%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84" class="header-mark" aria-label="Header mark for '二、BTC-数据结构'"></a>二、BTC-数据结构</h2><h3 id="hash-pointer区块链" class="headerLink">
-    <a href="#hash-pointer%e5%8c%ba%e5%9d%97%e9%93%be" class="header-mark" aria-label="Header mark for 'hash pointer、区块链'"></a>hash pointer、区块链</h3><p>普通指针是存储一个结构体的地址值，而hash指针除了存储地址值外还存储hash值，这样一来可以找到该结构体的位置，二来可以知道该结构体是否被改变，一般使用$H()$表示</p>
+    <a href="#%e4%ba%8cbtc-%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84" class="header-mark"></a>二、BTC-数据结构</h2><h3 id="hash-pointer区块链" class="headerLink">
+    <a href="#hash-pointer%e5%8c%ba%e5%9d%97%e9%93%be" class="header-mark"></a>hash pointer、区块链</h3><p>普通指针是存储一个结构体的地址值，而hash指针除了存储地址值外还存储hash值，这样一来可以找到该结构体的位置，二来可以知道该结构体是否被改变，一般使用$H()$表示</p>
 <p>比特币中区块与普通的区块的一个区别就是使用hash指针代替了普通指针</p>
 <blockquote>
 <p>$Block\quad chain\quad is\quad a\quad linked\quad list\quad using\quad hash\quad pointers$</p>
@@ -307,7 +308,7 @@ $H(block\quad header)$要落在指定的$target\quad space$中,只有经过大�
 <p>后面一个hash值是将前面区块$block\quad header$整个取hash，包括其中的hash function，以此实现了 tamper-evident log，这样如果前一个区块中的内容发生改变，那么后面的hash值也会发生改变，依次类推，后面所有的区块内容都会发生改变，所以只要记住最后的hash值就可以检测出整个区块链中任何部位的修改，这也是和普通区块的不同。</p>
 <p>本地不必存储所有的区块，在需要使用前面的区块时向其他节点要即可，验证真伪只需要将前面的hash值进行对比就可。</p>
 <h3 id="merkel-tree" class="headerLink">
-    <a href="#merkel-tree" class="header-mark" aria-label="Header mark for 'Merkel tree'"></a>Merkel tree</h3><p><img class="tw-inline" loading="lazy" src="%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%8E%E5%AE%89%E5%85%A8Note.assets/image-20201104202141989.png"  sizes="auto" alt="image-20201104202141989"  ></p>
+    <a href="#merkel-tree" class="header-mark"></a>Merkel tree</h3><p><img class="tw-inline" loading="lazy" src="%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%8E%E5%AE%89%E5%85%A8Note.assets/image-20201104202141989.png"   alt="image-20201104202141989"  ></p>
 <p>两个data blocks的hash pointer放在父节点，这两个hash pointer组合再取hash值，构成整个父节点，两个父节点的的hash pointer再放在更上一层中，……</p>
 <p><strong>binary tree与Merkel tree的区别</strong></p>
 <ul>
@@ -318,7 +319,7 @@ $H(block\quad header)$要落在指定的$target\quad space$中,只有经过大�
 <p><font color='red'>比特币中各个区块之间用hash 指针连接在一起，每个区块所包含的交易是组织成一个Merkel tree的形式</font></p>
 <p>每个区块分为$block\quad header$和$block\quad body$，在$block\quad header$中有根hash值，而没有交易的具体内容，$block\quad body$中是有交易列表的</p>
 <p><strong>merkel tree的作用：提供Merkel proof</strong>，示意图如下：</p>
-<p><img class="tw-inline" loading="lazy" src="%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%8E%E5%AE%89%E5%85%A8Note.assets/image-20201104203540474.png"  sizes="auto" alt="image-20201104203540474"  ></p>
+<p><img class="tw-inline" loading="lazy" src="%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%8E%E5%AE%89%E5%85%A8Note.assets/image-20201104203540474.png"   alt="image-20201104203540474"  ></p>
 <ol>
 <li>
 <p>轻节点向全节点进行一个Merkel proof的请求，全节点向轻节点发送红色的H()</p>
@@ -333,7 +334,7 @@ $H(block\quad header)$要落在指定的$target\quad space$中,只有经过大�
 <p>以上证明称为$proof\quad of\quad membership$或$proof\quad of\quad inclusion$，其事件复杂度为$O(log(n))$,如果是证明$proof\quad of\quad no-membership$,其中一个方式是将整棵Merkel tree传回来，验证每一层的hash值都是正确的，则说明这树中只有这些叶节点，而没有待验证的此时复杂度为$O(n)$,如果没有对叶节点进行排序等操作，是没有更好的办法的，但是将tx按照交易的hash值进行排序，就能以$O(log(n))$的代价进行验证了，此时这棵树叫$sorted\quad merkel\quad tree$,<strong>在比特币中是没有这种需求的！</strong></p>
 <p><strong>没有环的数据结构中，hash pointer基本都可以代替普通指针，但是有环的是不行的</strong></p>
 <h2 id="三btc-协议" class="headerLink">
-    <a href="#%e4%b8%89btc-%e5%8d%8f%e8%ae%ae" class="header-mark" aria-label="Header mark for '三、BTC-协议'"></a>三、BTC-协议</h2><p><strong>前言</strong></p>
+    <a href="#%e4%b8%89btc-%e5%8d%8f%e8%ae%ae" class="header-mark"></a>三、BTC-协议</h2><p><strong>前言</strong></p>
 <p><strong>数字货币方案1</strong></p>
 <p>假设央行发行数字货币，只采用非对称密码，央行保存私钥，并用私钥进行数字签名，这样发行出来的货币存在的问题：“double spending attack”，即可以将央行发行的数字货币进行复制，从而进行多次支付！这也是数字货币面临的主要挑战。</p>
 <p><strong>数字货币方案2</strong></p>
@@ -341,7 +342,7 @@ $H(block\quad header)$要落在指定的$target\quad space$中,只有经过大�
 <p>这套方案可行，但每笔交易都经过央行，过于繁琐，这是一种中心化的方案。</p>
 <hr>
 <p><strong>简单区块链示意</strong></p>
-<p><img class="tw-inline" loading="lazy" src="%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%8E%E5%AE%89%E5%85%A8Note.assets/image-20201106184509456.png"  sizes="auto" alt="image-20201106184509456"  ></p>
+<p><img class="tw-inline" loading="lazy" src="%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%8E%E5%AE%89%E5%85%A8Note.assets/image-20201106184509456.png"   alt="image-20201106184509456"  ></p>
 <p>上图中有两种hash指针，一种是区块链之间的连接的<font color='orange'>hash指针(橙色)</font>，另一种是<font color='green'>指向前面某个交易的(绿色)</font></p>
 <p>比特币系统中每个交易都包含输入和输出两个部分:</p>
 <ul>
@@ -353,7 +354,7 @@ $H(block\quad header)$要落在指定的$target\quad space$中,只有经过大�
 <blockquote>
 <p><font color='red'>为什么要记录来源？</font>①证明这个钱不是凭空捏造的；②防止<strong>double spending attack</strong>
 例如上图中：B已经将钱转给C和D了，现在出现F，B要将钱再次转给F
-<img class="tw-inline" loading="lazy" src="%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%8E%E5%AE%89%E5%85%A8Note.assets/image-20201106183904834.png"  sizes="auto" alt="image-20201106183904834"  >
+<img class="tw-inline" loading="lazy" src="%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%8E%E5%AE%89%E5%85%A8Note.assets/image-20201106183904834.png"   alt="image-20201106183904834"  >
 别的节点收到交易后，从B转向F的交易向前查询，当查到B转给C与D时就会出生问题，B在转给C与D的这次交易中就已将5个币花了出去，即说明B转给F的交易是不合法的！！</p>
 </blockquote>
 </li>
@@ -413,10 +414,10 @@ $$</p>
 </li>
 </ul>
 <h3 id="关于full-node全节点与light-node轻节点" class="headerLink">
-    <a href="#%e5%85%b3%e4%ba%8efull-node%e5%85%a8%e8%8a%82%e7%82%b9%e4%b8%8elight-node%e8%bd%bb%e8%8a%82%e7%82%b9" class="header-mark" aria-label="Header mark for '关于full node（全节点）与light node（轻节点）'"></a>关于full node（全节点）与light node（轻节点）</h3><p>full node：也称fully validating node，保存全部信息</p>
+    <a href="#%e5%85%b3%e4%ba%8efull-node%e5%85%a8%e8%8a%82%e7%82%b9%e4%b8%8elight-node%e8%bd%bb%e8%8a%82%e7%82%b9" class="header-mark"></a>关于full node（全节点）与light node（轻节点）</h3><p>full node：也称fully validating node，保存全部信息</p>
 <p>light node：只保存block header的信息，一般是无法独立验证交易的合法性的。轻节点知识利用区块链的信息进行一些查询等操作。</p>
 <h3 id="比特币中的共识协议consensus-in-bitcoin" class="headerLink">
-    <a href="#%e6%af%94%e7%89%b9%e5%b8%81%e4%b8%ad%e7%9a%84%e5%85%b1%e8%af%86%e5%8d%8f%e8%ae%aeconsensus-in-bitcoin" class="header-mark" aria-label="Header mark for '比特币中的共识协议（Consensus in BitCoin）'"></a>比特币中的共识协议（Consensus in BitCoin）</h3><blockquote>
+    <a href="#%e6%af%94%e7%89%b9%e5%b8%81%e4%b8%ad%e7%9a%84%e5%85%b1%e8%af%86%e5%8d%8f%e8%ae%aeconsensus-in-bitcoin" class="header-mark"></a>比特币中的共识协议（Consensus in BitCoin）</h3><blockquote>
 <p>账本的内容要取得分布式共识 distributed consensus</p>
 <p>FLP impossibility result：
 在异步式系统（网络传输时延没有上限）中，只有一个成员有问题，也不可能取得共识</p>
@@ -444,14 +445,14 @@ $$</p>
 </blockquote>
 <p>在比特币中也是进行“投票”，但是是利用算力进行投票，每个节点都可以在本地组装出候选区块，将其认为合法的交易放到这个区块中，然后尝试各种nonce值，如果某个节点找到了nonce，使得$H(block\quad header)\leq target$,则该节点获得了记账权，即能往账本中写入下一个区块的权利。其他节点则检查是否符合要求。</p>
 <h3 id="最长合法链" class="headerLink">
-    <a href="#%e6%9c%80%e9%95%bf%e5%90%88%e6%b3%95%e9%93%be" class="header-mark" aria-label="Header mark for '最长合法链'"></a>最长合法链</h3><p>下图中，区块1为C转账A，区块3为A转B，区块5为A再次转给自己，首先，这没有构成$double\quad spending\quad attack$,因为在链1&lt;-2&lt;-5中，A并没有使用两次，检测是否是”双花“时是不会检查其他链上的交易情况的。下图中5写到2的后面的情况显然是不被希望的。</p>
+    <a href="#%e6%9c%80%e9%95%bf%e5%90%88%e6%b3%95%e9%93%be" class="header-mark"></a>最长合法链</h3><p>下图中，区块1为C转账A，区块3为A转B，区块5为A再次转给自己，首先，这没有构成$double\quad spending\quad attack$,因为在链1&lt;-2&lt;-5中，A并没有使用两次，检测是否是”双花“时是不会检查其他链上的交易情况的。下图中5写到2的后面的情况显然是不被希望的。</p>
 <img src="%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%8E%E5%AE%89%E5%85%A8Note.assets/image-20201106205107454.png" alt="image-20201106205107454" style="zoom: 50%;" />
 <p>因此在比特币协议中，规定写在**<font color='red'>最长合法链</font>**之后的才是合法区块,上述例子称为”forking attack（分叉攻击）“，即：通过往区块链中间某个区块后插入区块实现回滚某个已经发生了的交易。</p>
 <p>在正常情况下，如果两个节点同时找到了合适的nonce并发布出去，由于整个系统中节点众多，不同节点认同的这两个区块中的某一个，那么就会形成两个等长的链，按照最长合法链原则，这两个都是合法的，比特币系统中，接受某个区块就会往该区块后面继续添加区块，因此会存在临时的分支，但某条链最后会”胜出“。</p>
 <img src="%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%8E%E5%AE%89%E5%85%A8Note.assets/image-20201106210916913.png" alt="image-20201106210916913" style="zoom: 60%;" />
 <p>如上图，5，6同时发布，原先最长链分叉，这时形成两条合法链，如果在下一时刻，区块5后增加区块7，而6后并未增加新的区块，那么6所在的那条链就会被丢弃，称为”orphan block“。在”orphan block“中获得的block reward是不会被认可的</p>
 <h3 id="block-reward出块奖励" class="headerLink">
-    <a href="#block-reward%e5%87%ba%e5%9d%97%e5%a5%96%e5%8a%b1" class="header-mark" aria-label="Header mark for 'block reward（出块奖励）'"></a>block reward（出块奖励）</h3><p>去中心化货币面临的两个问题：①谁来发行货币；②怎么保证交易的合法性</p>
+    <a href="#block-reward%e5%87%ba%e5%9d%97%e5%a5%96%e5%8a%b1" class="header-mark"></a>block reward（出块奖励）</h3><p>去中心化货币面临的两个问题：①谁来发行货币；②怎么保证交易的合法性</p>
 <p>coinbase transaction是发行比特币的<font color='red'><strong>唯一方法</strong></font>。</p>
 <blockquote>
 <p>前21万个区块里，每个区块发行50BTC，之后21万区块里，每个区块发行25BTC，下一21万区块中，每个区块发行12.5BTC</p>
@@ -461,9 +462,9 @@ $$</p>
 <p>针对“sybil attack”，由于投票权是以算力决定的，即使创建账户十分多，也无法改变其算力大小。</p>
 <p><em><a href="https://www.cnblogs.com/wkfvawl/p/13150376.html" target="_blank" rel="noopener noreferrer">区块链技术与应用——BTC的共识协议</a></em></p>
 <h2 id="bth-实现" class="headerLink">
-    <a href="#bth-%e5%ae%9e%e7%8e%b0" class="header-mark" aria-label="Header mark for 'BTH-实现'"></a>BTH-实现</h2><p>比特币采用的是<strong>基于交易的账本模式，transaction-based ledger</strong>。</p>
+    <a href="#bth-%e5%ae%9e%e7%8e%b0" class="header-mark"></a>BTH-实现</h2><p>比特币采用的是<strong>基于交易的账本模式，transaction-based ledger</strong>。</p>
 <h3 id="utxounspend-transaction-output" class="headerLink">
-    <a href="#utxounspend-transaction-output" class="header-mark" aria-label="Header mark for 'UTXO：Unspend Transaction Output'"></a>UTXO：Unspend Transaction Output</h3><p>即：还没有被花出去的交易的输出，区块链上有很多交易，有些交易的输出可能已经被花掉了，有些还没有被花掉，没有被花掉的交易的输出组成的集合就是UTXO。UTXO为比特币系统中的一个数据结构。</p>
+    <a href="#utxounspend-transaction-output" class="header-mark"></a>UTXO：Unspend Transaction Output</h3><p>即：还没有被花出去的交易的输出，区块链上有很多交易，有些交易的输出可能已经被花掉了，有些还没有被花掉，没有被花掉的交易的输出组成的集合就是UTXO。UTXO为比特币系统中的一个数据结构。</p>
 <blockquote>
 <p>例如：A转给B、C各5BTC，这时B将这5个比特币花掉了，C没有花掉，那么就只有A与C的输出在UTXO中</p>
 <p>如果这时B再转给D，D也没有花掉，那么B转给D的输出就会保存在UTXO</p>
@@ -508,7 +509,7 @@ $$</p>
 
     <div class="post-info-more">
         <section class="post-tags"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.941 225.941L286.059 14.059A48 48 0 0 0 252.118 0H48C21.49 0 0 21.49 0 48v204.118a48 48 0 0 0 14.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882 0l204.118-204.118c18.745-18.745 18.745-49.137 0-67.882zM112 160c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882 0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397 0h48.721a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882z"/></svg>&nbsp;<a href="/tags/block-chain/">Block Chain</a>,&nbsp;<a href="/tags/distributed-system/">Distributed System</a>,&nbsp;<a href="/tags/encryption/">Encryption</a></section>
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.941 225.941L286.059 14.059A48 48 0 0 0 252.118 0H48C21.49 0 0 21.49 0 48v204.118a48 48 0 0 0 14.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882 0l204.118-204.118c18.745-18.745 18.745-49.137 0-67.882zM112 160c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882 0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397 0h48.721a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882z"/></svg>&nbsp;<a href=""></a>,&nbsp;<a href=""></a>,&nbsp;<a href="/tags/encryption/">Encryption</a></section>
         <section class="print:!tw-hidden">
             <span><button class="tw-text-fgColor-link-muted hover:tw-text-fgColor-link-muted-hover" onclick="window.history.back();">返回</button></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>

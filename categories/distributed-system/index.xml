@@ -12,8 +12,8 @@
     </author><guid>https://yuqinlee.github.io/%E5%9F%BA%E4%BA%8E-swarm-%E7%9A%84-docker-%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/</guid>
     <description><![CDATA[<!-- # 基于 Swarm 的 Docker 分布式集群管理 -->
 <h2 id="1-序" class="headerLink">
-    <a href="#1-%e5%ba%8f" class="header-mark" aria-label="Header mark for '1. 序'"></a>1. 序</h2><h3 id="11-各虚拟机信息" class="headerLink">
-    <a href="#11-%e5%90%84%e8%99%9a%e6%8b%9f%e6%9c%ba%e4%bf%a1%e6%81%af" class="header-mark" aria-label="Header mark for '1.1 各虚拟机信息'"></a>1.1 各虚拟机信息</h3><blockquote>
+    <a href="#1-%e5%ba%8f" class="header-mark"></a>1. 序</h2><h3 id="11-各虚拟机信息" class="headerLink">
+    <a href="#11-%e5%90%84%e8%99%9a%e6%8b%9f%e6%9c%ba%e4%bf%a1%e6%81%af" class="header-mark"></a>1.1 各虚拟机信息</h3><blockquote>
 <p>CentOS 7<br>
 VirtualBox</p>]]></description>
 </item><item>
@@ -32,8 +32,8 @@ VirtualBox</p>]]></description>
 </blockquote>
 <!-- [toc] -->
 <h2 id="一btc-密码学原理" class="headerLink">
-    <a href="#%e4%b8%80btc-%e5%af%86%e7%a0%81%e5%ad%a6%e5%8e%9f%e7%90%86" class="header-mark" aria-label="Header mark for '一、BTC-密码学原理'"></a>一、BTC-密码学原理</h2><h3 id="1-hash" class="headerLink">
-    <a href="#1-hash" class="header-mark" aria-label="Header mark for '1. Hash'"></a>1. Hash</h3><h4 id="性质1-collision-resistance" class="headerLink">
-    <a href="#%e6%80%a7%e8%b4%a81-collision-resistance" class="header-mark" aria-label="Header mark for '性质1 collision resistance'"></a>性质1 collision resistance</h4><p>密文m</p>]]></description>
+    <a href="#%e4%b8%80btc-%e5%af%86%e7%a0%81%e5%ad%a6%e5%8e%9f%e7%90%86" class="header-mark"></a>一、BTC-密码学原理</h2><h3 id="1-hash" class="headerLink">
+    <a href="#1-hash" class="header-mark"></a>1. Hash</h3><h4 id="性质1-collision-resistance" class="headerLink">
+    <a href="#%e6%80%a7%e8%b4%a81-collision-resistance" class="header-mark"></a>性质1 collision resistance</h4><p>密文m</p>]]></description>
 </item></channel>
 </rss>

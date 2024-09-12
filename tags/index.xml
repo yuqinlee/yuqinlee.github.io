@@ -4,7 +4,35 @@
         <link>https://yuqinlee.github.io/tags/</link>
         <description>Tags - 标签 - uchin blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yuqin.lee@outlook.com (uchin)</managingEditor>
-            <webMaster>yuqin.lee@outlook.com (uchin)</webMaster><lastBuildDate>Fri, 30 Aug 2024 12:53:55 &#43;0800</lastBuildDate><atom:link href="https://yuqinlee.github.io/tags/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>yuqin.lee@outlook.com (uchin)</webMaster><lastBuildDate>Mon, 09 Sep 2024 16:02:58 &#43;0800</lastBuildDate><atom:link href="https://yuqinlee.github.io/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>Conda</title>
+    <link>https://yuqinlee.github.io/tags/conda/</link>
+    <pubDate>Mon, 09 Sep 2024 16:02:58 &#43;0800</pubDate><author>
+        <name>uchin</name>
+    </author><guid>https://yuqinlee.github.io/tags/conda/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Poetry</title>
+    <link>https://yuqinlee.github.io/tags/poetry/</link>
+    <pubDate>Mon, 09 Sep 2024 16:02:58 &#43;0800</pubDate><author>
+        <name>uchin</name>
+    </author><guid>https://yuqinlee.github.io/tags/poetry/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Python</title>
+    <link>https://yuqinlee.github.io/tags/python/</link>
+    <pubDate>Mon, 09 Sep 2024 16:02:58 &#43;0800</pubDate><author>
+        <name>uchin</name>
+    </author><guid>https://yuqinlee.github.io/tags/python/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Venv</title>
+    <link>https://yuqinlee.github.io/tags/venv/</link>
+    <pubDate>Mon, 09 Sep 2024 16:02:58 &#43;0800</pubDate><author>
+        <name>uchin</name>
+    </author><guid>https://yuqinlee.github.io/tags/venv/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>Linux</title>
     <link>https://yuqinlee.github.io/tags/linux/</link>
     <pubDate>Fri, 30 Aug 2024 12:53:55 &#43;0800</pubDate><author>
@@ -45,34 +73,6 @@
     <pubDate>Sat, 22 Jun 2024 17:08:21 &#43;0800</pubDate><author>
         <name>uchin</name>
     </author><guid>https://yuqinlee.github.io/tags/wsl/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>Awesome</title>
-    <link>https://yuqinlee.github.io/tags/awesome/</link>
-    <pubDate>Wed, 01 Feb 2023 10:18:48 &#43;0800</pubDate><author>
-        <name>uchin</name>
-    </author><guid>https://yuqinlee.github.io/tags/awesome/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>Dwm</title>
-    <link>https://yuqinlee.github.io/tags/dwm/</link>
-    <pubDate>Wed, 01 Feb 2023 10:18:48 &#43;0800</pubDate><author>
-        <name>uchin</name>
-    </author><guid>https://yuqinlee.github.io/tags/dwm/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>Distributed</title>
-    <link>https://yuqinlee.github.io/tags/distributed/</link>
-    <pubDate>Thu, 01 Dec 2022 09:46:11 &#43;0800</pubDate><author>
-        <name>uchin</name>
-    </author><guid>https://yuqinlee.github.io/tags/distributed/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>Swarm</title>
-    <link>https://yuqinlee.github.io/tags/swarm/</link>
-    <pubDate>Thu, 01 Dec 2022 09:46:11 &#43;0800</pubDate><author>
-        <name>uchin</name>
-    </author><guid>https://yuqinlee.github.io/tags/swarm/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>

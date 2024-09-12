@@ -4,16 +4,28 @@
         <link>https://yuqinlee.github.io/</link>
         <description>玉勤的博客站</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yuqin.lee@outlook.com (uchin)</managingEditor>
-            <webMaster>yuqin.lee@outlook.com (uchin)</webMaster><lastBuildDate>Fri, 30 Aug 2024 12:53:55 &#43;0800</lastBuildDate>
+            <webMaster>yuqin.lee@outlook.com (uchin)</webMaster><lastBuildDate>Mon, 09 Sep 2024 16:02:58 &#43;0800</lastBuildDate>
             <atom:link href="https://yuqinlee.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Python 版本管理 —— Poetry</title>
+    <link>https://yuqinlee.github.io/python-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/</link>
+    <pubDate>Mon, 09 Sep 2024 16:02:58 &#43;0800</pubDate><author>
+        <name>uchin</name>
+    </author><guid>https://yuqinlee.github.io/python-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/</guid>
+    <description><![CDATA[<h2 id="poetry-是什么" class="headerLink">
+    <a href="#poetry-%e6%98%af%e4%bb%80%e4%b9%88" class="header-mark"></a>poetry 是什么</h2><p>主要针对虚拟环境下的 python 包管理工具</p>
+<p>poetry 与常见框架对比</p>
+<ul>
+<li>
+<p>conda: Python 版本管理，创建不同虚拟环境，管理不同 python 与 包 版本均</p>]]></description>
+</item><item>
     <title>zsh 简记</title>
     <link>https://yuqinlee.github.io/zsh-%E7%AE%80%E8%AE%B0/</link>
     <pubDate>Fri, 30 Aug 2024 12:53:55 &#43;0800</pubDate><author>
         <name>uchin</name>
     </author><guid>https://yuqinlee.github.io/zsh-%E7%AE%80%E8%AE%B0/</guid>
     <description><![CDATA[<h2 id="zsh-安装与基础配置" class="headerLink">
-    <a href="#zsh-%e5%ae%89%e8%a3%85%e4%b8%8e%e5%9f%ba%e7%a1%80%e9%85%8d%e7%bd%ae" class="header-mark" aria-label="Header mark for 'zsh 安装与基础配置'"></a>zsh 安装与基础配置</h2><p>arch</p>
+    <a href="#zsh-%e5%ae%89%e8%a3%85%e4%b8%8e%e5%9f%ba%e7%a1%80%e9%85%8d%e7%bd%ae" class="header-mark"></a>zsh 安装与基础配置</h2><p>arch</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
@@ -47,7 +59,7 @@
     </author><guid>https://yuqinlee.github.io/windows-%E5%AE%89%E8%A3%85-dockerwsl-%E7%AD%89/</guid>
     <description><![CDATA[<!-- # Windows 安装 docker、wsl 等 -->
 <h2 id="安装-wslarchlinux" class="headerLink">
-    <a href="#%e5%ae%89%e8%a3%85-wslarchlinux" class="header-mark" aria-label="Header mark for '安装 WSL——Archlinux'"></a>安装 WSL——Archlinux</h2><p>控制面板找到 <code>启用或关闭windows功能</code> 勾选 <code>Hyper-V</code> 和 <code>适用于 Linux 的 Windows 子系统</code>（只用勾选后者实际就能WSL安装，如果需要使用原来的 Hyper-V 方式安装 Docker 才需要开启前者，这里直接都打开了），重启系统，执行 <code>wsl --update</code> 更新</p>]]></description>
+    <a href="#%e5%ae%89%e8%a3%85-wslarchlinux" class="header-mark"></a>安装 WSL——Archlinux</h2><p>控制面板找到 <code>启用或关闭windows功能</code> 勾选 <code>Hyper-V</code> 和 <code>适用于 Linux 的 Windows 子系统</code>（只用勾选后者实际就能WSL安装，如果需要使用原来的 Hyper-V 方式安装 Docker 才需要开启前者，这里直接都打开了），重启系统，执行 <code>wsl --update</code> 更新</p>]]></description>
 </item><item>
     <title>Linux 文件属性</title>
     <link>https://yuqinlee.github.io/linux-%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7/</link>
@@ -88,8 +100,8 @@
     </author><guid>https://yuqinlee.github.io/archlinux-%E7%AE%80%E8%AE%B0/</guid>
     <description><![CDATA[<!-- # Archlinux 简记 -->
 <h2 id="1-无图形安装" class="headerLink">
-    <a href="#1-%e6%97%a0%e5%9b%be%e5%bd%a2%e5%ae%89%e8%a3%85" class="header-mark" aria-label="Header mark for '1. 无图形安装'"></a>1. 无图形安装</h2><h3 id="检查安装模式" class="headerLink">
-    <a href="#%e6%a3%80%e6%9f%a5%e5%ae%89%e8%a3%85%e6%a8%a1%e5%bc%8f" class="header-mark" aria-label="Header mark for '检查安装模式'"></a>检查安装模式</h3><p>检测是否为 <code>uefi 方式</code> 安装，若为 <code>uefi 方式</code> 则以下命令将输出一堆东西</p>]]></description>
+    <a href="#1-%e6%97%a0%e5%9b%be%e5%bd%a2%e5%ae%89%e8%a3%85" class="header-mark"></a>1. 无图形安装</h2><h3 id="检查安装模式" class="headerLink">
+    <a href="#%e6%a3%80%e6%9f%a5%e5%ae%89%e8%a3%85%e6%a8%a1%e5%bc%8f" class="header-mark"></a>检查安装模式</h3><p>检测是否为 <code>uefi 方式</code> 安装，若为 <code>uefi 方式</code> 则以下命令将输出一堆东西</p>]]></description>
 </item><item>
     <title>基于 Swarm 的 Docker 分布式集群管理</title>
     <link>https://yuqinlee.github.io/%E5%9F%BA%E4%BA%8E-swarm-%E7%9A%84-docker-%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/</link>
@@ -98,8 +110,8 @@
     </author><guid>https://yuqinlee.github.io/%E5%9F%BA%E4%BA%8E-swarm-%E7%9A%84-docker-%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/</guid>
     <description><![CDATA[<!-- # 基于 Swarm 的 Docker 分布式集群管理 -->
 <h2 id="1-序" class="headerLink">
-    <a href="#1-%e5%ba%8f" class="header-mark" aria-label="Header mark for '1. 序'"></a>1. 序</h2><h3 id="11-各虚拟机信息" class="headerLink">
-    <a href="#11-%e5%90%84%e8%99%9a%e6%8b%9f%e6%9c%ba%e4%bf%a1%e6%81%af" class="header-mark" aria-label="Header mark for '1.1 各虚拟机信息'"></a>1.1 各虚拟机信息</h3><blockquote>
+    <a href="#1-%e5%ba%8f" class="header-mark"></a>1. 序</h2><h3 id="11-各虚拟机信息" class="headerLink">
+    <a href="#11-%e5%90%84%e8%99%9a%e6%8b%9f%e6%9c%ba%e4%bf%a1%e6%81%af" class="header-mark"></a>1.1 各虚拟机信息</h3><blockquote>
 <p>CentOS 7<br>
 VirtualBox</p>]]></description>
 </item><item>
@@ -119,7 +131,7 @@ VirtualBox</p>]]></description>
     </author><guid>https://yuqinlee.github.io/conda-%E7%AE%80%E8%AE%B0/</guid>
     <description><![CDATA[<!-- # Anaconda 记录 -->
 <h2 id="1-anaconda-与-miniconda-与-conda" class="headerLink">
-    <a href="#1-anaconda-%e4%b8%8e-miniconda-%e4%b8%8e-conda" class="header-mark" aria-label="Header mark for '1. Anaconda 与 Miniconda 与 Conda'"></a>1. Anaconda 与 Miniconda 与 Conda</h2><center>
+    <a href="#1-anaconda-%e4%b8%8e-miniconda-%e4%b8%8e-conda" class="header-mark"></a>1. Anaconda 与 Miniconda 与 Conda</h2><center>
 <img src="https://conda.io/projects/conda/en/latest/_static/conda_logo_full.svg" alt="condalogo" style="zoom:50%;" />
 </center>
 <p><strong>Conda</strong></p>]]></description>
@@ -133,8 +145,8 @@ VirtualBox</p>]]></description>
 <!-- > uchin/李玉勤   -->
 <!-- > 20220124   -->
 <h2 id="1-git-配置" class="headerLink">
-    <a href="#1-git-%e9%85%8d%e7%bd%ae" class="header-mark" aria-label="Header mark for '1. git 配置'"></a>1. git 配置</h2><h3 id="11-git-三级配置" class="headerLink">
-    <a href="#11-git-%e4%b8%89%e7%ba%a7%e9%85%8d%e7%bd%ae" class="header-mark" aria-label="Header mark for '1.1 git 三级配置'"></a>1.1 git 三级配置</h3><ul>
+    <a href="#1-git-%e9%85%8d%e7%bd%ae" class="header-mark"></a>1. git 配置</h2><h3 id="11-git-三级配置" class="headerLink">
+    <a href="#11-git-%e4%b8%89%e7%ba%a7%e9%85%8d%e7%bd%ae" class="header-mark"></a>1.1 git 三级配置</h3><ul>
 <li>System： <code>/etc/gitconfig</code>，Msys64 底下的 etc</li>
 <li>Global： <code>~/.gitconfig</code>，Msys64 底下的 home/[UserName]/w 为 ~</li>
 <li>工程目录： <code>.git/gitconfig</code></li>
@@ -156,21 +168,8 @@ VirtualBox</p>]]></description>
 </blockquote>
 <!-- [toc] -->
 <h2 id="一btc-密码学原理" class="headerLink">
-    <a href="#%e4%b8%80btc-%e5%af%86%e7%a0%81%e5%ad%a6%e5%8e%9f%e7%90%86" class="header-mark" aria-label="Header mark for '一、BTC-密码学原理'"></a>一、BTC-密码学原理</h2><h3 id="1-hash" class="headerLink">
-    <a href="#1-hash" class="header-mark" aria-label="Header mark for '1. Hash'"></a>1. Hash</h3><h4 id="性质1-collision-resistance" class="headerLink">
-    <a href="#%e6%80%a7%e8%b4%a81-collision-resistance" class="header-mark" aria-label="Header mark for '性质1 collision resistance'"></a>性质1 collision resistance</h4><p>密文m</p>]]></description>
-</item><item>
-    <title>Markdown 小记</title>
-    <link>https://yuqinlee.github.io/markdown-%E5%B0%8F%E8%AE%B0/</link>
-    <pubDate>Sat, 29 Feb 2020 00:56:14 &#43;0800</pubDate><author>
-        <name>uchin</name>
-    </author><guid>https://yuqinlee.github.io/markdown-%E5%B0%8F%E8%AE%B0/</guid>
-    <description><![CDATA[<blockquote>
-<p>创建于_2020-02-29 00:56 by uchin<br>
-修改于_2020-08-01 19:00 by uchin<br>
-修改于_2020-12-13 21:27 by uchin</p>
-</blockquote>
-<h2 id="基本语法" class="headerLink">
-    <a href="#%e5%9f%ba%e6%9c%ac%e8%af%ad%e6%b3%95" class="header-mark" aria-label="Header mark for '基本语法'"></a>基本语法</h2><p>语法参考：<a href="https://www.markdown.xyz/basic-syntax/" target="_blank" rel="noopener noreferrer">https://www.markdown.xyz/basic-syntax/</a></p>]]></description>
+    <a href="#%e4%b8%80btc-%e5%af%86%e7%a0%81%e5%ad%a6%e5%8e%9f%e7%90%86" class="header-mark"></a>一、BTC-密码学原理</h2><h3 id="1-hash" class="headerLink">
+    <a href="#1-hash" class="header-mark"></a>1. Hash</h3><h4 id="性质1-collision-resistance" class="headerLink">
+    <a href="#%e6%80%a7%e8%b4%a81-collision-resistance" class="header-mark"></a>性质1 collision resistance</h4><p>密文m</p>]]></description>
 </item></channel>
 </rss>

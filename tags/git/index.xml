@@ -14,8 +14,8 @@
 <!-- > uchin/李玉勤   -->
 <!-- > 20220124   -->
 <h2 id="1-git-配置" class="headerLink">
-    <a href="#1-git-%e9%85%8d%e7%bd%ae" class="header-mark" aria-label="Header mark for '1. git 配置'"></a>1. git 配置</h2><h3 id="11-git-三级配置" class="headerLink">
-    <a href="#11-git-%e4%b8%89%e7%ba%a7%e9%85%8d%e7%bd%ae" class="header-mark" aria-label="Header mark for '1.1 git 三级配置'"></a>1.1 git 三级配置</h3><ul>
+    <a href="#1-git-%e9%85%8d%e7%bd%ae" class="header-mark"></a>1. git 配置</h2><h3 id="11-git-三级配置" class="headerLink">
+    <a href="#11-git-%e4%b8%89%e7%ba%a7%e9%85%8d%e7%bd%ae" class="header-mark"></a>1.1 git 三级配置</h3><ul>
 <li>System： <code>/etc/gitconfig</code>，Msys64 底下的 etc</li>
 <li>Global： <code>~/.gitconfig</code>，Msys64 底下的 home/[UserName]/w 为 ~</li>
 <li>工程目录： <code>.git/gitconfig</code></li>
