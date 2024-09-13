@@ -15,6 +15,10 @@
     <a href="#1-anaconda-%e4%b8%8e-miniconda-%e4%b8%8e-conda" class="header-mark"></a>1. Anaconda 与 Miniconda 与 Conda</h2><center>
 <img src="https://conda.io/projects/conda/en/latest/_static/conda_logo_full.svg" alt="condalogo" style="zoom:50%;" />
 </center>
-<p><strong>Conda</strong></p>]]></description>
+<p><strong>Conda</strong></p>
+<p><strong><a href="https://zh.wikipedia.org/wiki/Conda" target="_blank" rel="noopener noreferrer">维基：conda</a></strong></p>
+<p><strong><a href="https://docs.conda.io/en/latest/" target="_blank" rel="noopener noreferrer">conda官网</a></strong></p>
+<blockquote>
+<p><em>任何语言的包、依赖项和环境管理 — Python、R、Ruby、Lua、Scala、Java、JavaScript、C/C++、FORTRAN 等。</em></p>]]></description>
 </item></channel>
 </rss>

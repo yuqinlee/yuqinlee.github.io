@@ -24,6 +24,38 @@
     <a href="#1-%e5%ba%8f" class="header-mark"></a>1. 序</h2><h3 id="11-各虚拟机信息" class="headerLink">
     <a href="#11-%e5%90%84%e8%99%9a%e6%8b%9f%e6%9c%ba%e4%bf%a1%e6%81%af" class="header-mark"></a>1.1 各虚拟机信息</h3><blockquote>
 <p>CentOS 7<br>
-VirtualBox</p>]]></description>
+VirtualBox</p>
+</blockquote>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">虚拟机名</th>
+          <th style="text-align: center">虚拟磁盘大小</th>
+          <th style="text-align: center">IP</th>
+          <th style="text-align: center">Host 映射</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">myCent_00</td>
+          <td style="text-align: center">100G</td>
+          <td style="text-align: center">192.168.56.101</td>
+          <td style="text-align: center">master</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">myCent_01</td>
+          <td style="text-align: center">50G</td>
+          <td style="text-align: center">192.168.56.104</td>
+          <td style="text-align: center">slave01</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">myCent_02</td>
+          <td style="text-align: center">50G</td>
+          <td style="text-align: center">192.168.56.103</td>
+          <td style="text-align: center">slave02</td>
+      </tr>
+  </tbody>
+</table>
+<p>注：各虚拟机节点网卡设置如下</p>]]></description>
 </item></channel>
 </rss>

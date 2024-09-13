@@ -15,7 +15,10 @@
 <p>poetry 与常见框架对比</p>
 <ul>
 <li>
-<p>conda: Python 版本管理，创建不同虚拟环境，管理不同 python 与 包 版本均</p>]]></description>
+<p>conda: Python 版本管理，创建不同虚拟环境，管理不同 python 与 包 版本均</p>
+</li>
+<li>
+<p>Pyenv：Python 版本管理，注意这里主要是对于不同 python 版本需求</p>]]></description>
 </item><item>
     <title>zsh 简记</title>
     <link>https://yuqinlee.github.io/zsh-%E7%AE%80%E8%AE%B0/</link>
@@ -99,7 +102,32 @@
     <description><![CDATA[<!-- # Archlinux 简记 -->
 <h2 id="1-无图形安装" class="headerLink">
     <a href="#1-%e6%97%a0%e5%9b%be%e5%bd%a2%e5%ae%89%e8%a3%85" class="header-mark"></a>1. 无图形安装</h2><h3 id="检查安装模式" class="headerLink">
-    <a href="#%e6%a3%80%e6%9f%a5%e5%ae%89%e8%a3%85%e6%a8%a1%e5%bc%8f" class="header-mark"></a>检查安装模式</h3><p>检测是否为 <code>uefi 方式</code> 安装，若为 <code>uefi 方式</code> 则以下命令将输出一堆东西</p>]]></description>
+    <a href="#%e6%a3%80%e6%9f%a5%e5%ae%89%e8%a3%85%e6%a8%a1%e5%bc%8f" class="header-mark"></a>检查安装模式</h3><p>检测是否为 <code>uefi 方式</code> 安装，若为 <code>uefi 方式</code> 则以下命令将输出一堆东西</p>
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
+  <div class="
+    code-block-title 
+    
+    tw-flex 
+    tw-flex-row 
+    tw-justify-between 
+    tw-w-full tw-bg-bgColor-secondary
+    ">      
+    <button 
+      class="
+        tw-select-none 
+        tw-mx-2 
+        tw-block
+        group-[.is-open]:tw-rotate-90
+        tw-transition-[transform] 
+        tw-duration-500 
+        tw-ease-in-out
+        print:!tw-hidden"
+      disabled
+      aria-hidden="true"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></button>
+
+    <div class="code-block-title-bar tw-w-full">
+      <p class="tw-select-none !tw-my-1">bash</p>]]></description>
 </item><item>
     <title>基于 Swarm 的 Docker 分布式集群管理</title>
     <link>https://yuqinlee.github.io/%E5%9F%BA%E4%BA%8E-swarm-%E7%9A%84-docker-%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/</link>
@@ -111,7 +139,39 @@
     <a href="#1-%e5%ba%8f" class="header-mark"></a>1. 序</h2><h3 id="11-各虚拟机信息" class="headerLink">
     <a href="#11-%e5%90%84%e8%99%9a%e6%8b%9f%e6%9c%ba%e4%bf%a1%e6%81%af" class="header-mark"></a>1.1 各虚拟机信息</h3><blockquote>
 <p>CentOS 7<br>
-VirtualBox</p>]]></description>
+VirtualBox</p>
+</blockquote>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">虚拟机名</th>
+          <th style="text-align: center">虚拟磁盘大小</th>
+          <th style="text-align: center">IP</th>
+          <th style="text-align: center">Host 映射</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">myCent_00</td>
+          <td style="text-align: center">100G</td>
+          <td style="text-align: center">192.168.56.101</td>
+          <td style="text-align: center">master</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">myCent_01</td>
+          <td style="text-align: center">50G</td>
+          <td style="text-align: center">192.168.56.104</td>
+          <td style="text-align: center">slave01</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">myCent_02</td>
+          <td style="text-align: center">50G</td>
+          <td style="text-align: center">192.168.56.103</td>
+          <td style="text-align: center">slave02</td>
+      </tr>
+  </tbody>
+</table>
+<p>注：各虚拟机节点网卡设置如下</p>]]></description>
 </item><item>
     <title>Linux 重定向</title>
     <link>https://yuqinlee.github.io/linux-%E9%87%8D%E5%AE%9A%E5%90%91/</link>
@@ -132,7 +192,11 @@ VirtualBox</p>]]></description>
     <a href="#1-anaconda-%e4%b8%8e-miniconda-%e4%b8%8e-conda" class="header-mark"></a>1. Anaconda 与 Miniconda 与 Conda</h2><center>
 <img src="https://conda.io/projects/conda/en/latest/_static/conda_logo_full.svg" alt="condalogo" style="zoom:50%;" />
 </center>
-<p><strong>Conda</strong></p>]]></description>
+<p><strong>Conda</strong></p>
+<p><strong><a href="https://zh.wikipedia.org/wiki/Conda" target="_blank" rel="noopener noreferrer">维基：conda</a></strong></p>
+<p><strong><a href="https://docs.conda.io/en/latest/" target="_blank" rel="noopener noreferrer">conda官网</a></strong></p>
+<blockquote>
+<p><em>任何语言的包、依赖项和环境管理 — Python、R、Ruby、Lua、Scala、Java、JavaScript、C/C++、FORTRAN 等。</em></p>]]></description>
 </item><item>
     <title>Git 使用小结</title>
     <link>https://yuqinlee.github.io/git-%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/</link>
@@ -168,6 +232,7 @@ VirtualBox</p>]]></description>
 <h2 id="一btc-密码学原理" class="headerLink">
     <a href="#%e4%b8%80btc-%e5%af%86%e7%a0%81%e5%ad%a6%e5%8e%9f%e7%90%86" class="header-mark"></a>一、BTC-密码学原理</h2><h3 id="1-hash" class="headerLink">
     <a href="#1-hash" class="header-mark"></a>1. Hash</h3><h4 id="性质1-collision-resistance" class="headerLink">
-    <a href="#%e6%80%a7%e8%b4%a81-collision-resistance" class="header-mark"></a>性质1 collision resistance</h4><p>密文m</p>]]></description>
+    <a href="#%e6%80%a7%e8%b4%a81-collision-resistance" class="header-mark"></a>性质1 collision resistance</h4><p>密文m</p>
+<p>H(m)经过hash函数处理之后得到一个hash值，很难在修改m后再进行hash运算还是原来的值，尽管存在hash碰撞</p>]]></description>
 </item></channel>
 </rss>

@@ -15,7 +15,39 @@
     <a href="#1-%e5%ba%8f" class="header-mark"></a>1. 序</h2><h3 id="11-各虚拟机信息" class="headerLink">
     <a href="#11-%e5%90%84%e8%99%9a%e6%8b%9f%e6%9c%ba%e4%bf%a1%e6%81%af" class="header-mark"></a>1.1 各虚拟机信息</h3><blockquote>
 <p>CentOS 7<br>
-VirtualBox</p>]]></description>
+VirtualBox</p>
+</blockquote>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">虚拟机名</th>
+          <th style="text-align: center">虚拟磁盘大小</th>
+          <th style="text-align: center">IP</th>
+          <th style="text-align: center">Host 映射</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">myCent_00</td>
+          <td style="text-align: center">100G</td>
+          <td style="text-align: center">192.168.56.101</td>
+          <td style="text-align: center">master</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">myCent_01</td>
+          <td style="text-align: center">50G</td>
+          <td style="text-align: center">192.168.56.104</td>
+          <td style="text-align: center">slave01</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">myCent_02</td>
+          <td style="text-align: center">50G</td>
+          <td style="text-align: center">192.168.56.103</td>
+          <td style="text-align: center">slave02</td>
+      </tr>
+  </tbody>
+</table>
+<p>注：各虚拟机节点网卡设置如下</p>]]></description>
 </item><item>
     <title>区块链与安全Note</title>
     <link>https://yuqinlee.github.io/%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%8E%E5%AE%89%E5%85%A8note/</link>
@@ -34,6 +66,7 @@ VirtualBox</p>]]></description>
 <h2 id="一btc-密码学原理" class="headerLink">
     <a href="#%e4%b8%80btc-%e5%af%86%e7%a0%81%e5%ad%a6%e5%8e%9f%e7%90%86" class="header-mark"></a>一、BTC-密码学原理</h2><h3 id="1-hash" class="headerLink">
     <a href="#1-hash" class="header-mark"></a>1. Hash</h3><h4 id="性质1-collision-resistance" class="headerLink">
-    <a href="#%e6%80%a7%e8%b4%a81-collision-resistance" class="header-mark"></a>性质1 collision resistance</h4><p>密文m</p>]]></description>
+    <a href="#%e6%80%a7%e8%b4%a81-collision-resistance" class="header-mark"></a>性质1 collision resistance</h4><p>密文m</p>
+<p>H(m)经过hash函数处理之后得到一个hash值，很难在修改m后再进行hash运算还是原来的值，尽管存在hash碰撞</p>]]></description>
 </item></channel>
 </rss>

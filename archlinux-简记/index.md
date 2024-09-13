@@ -172,7 +172,7 @@ vim /etc/hosts              # 修改主机映射
 # /etc/hosts
 127.0.0.1   localhost
 ::1         localhost
-127.0.1.1   myarch.localdomain myarch
+127.0.1.1   archlinux
 ```
 
 ### 时间与时区
@@ -184,11 +184,33 @@ hwclock --systohc                                       # 硬件时间设置
 
 ### Locale
 
+[wiki-archlinuxcn](https://wiki.archlinuxcn.org/wiki/%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%E6%9C%AC%E5%9C%B0%E5%8C%96)
+上不推荐直接修改 `/etc/locale.conf` 方式修改 locale
+
+> 不推荐在 `/etc/locale.conf` 里把全局的 LANG locale 设置成中文 `LANG=zh_CN.UTF-8`，因为 TTY 下没有 CJK 字体，这样设置会导致 TTY 中显示豆腐块（除非你使用的内核打了 cjktty 补丁能绘制中文字体，比如linux-lilyCNRepo）。
+>
+> 每个用户单独的 locale 可以在 ~/.bashrc、~/.xinitrc 或 ~/.xprofile 中设置：  
+>
+> `.bashrc`：每次使用终端时会应用此处的设置。  
+> `.xinitrc`：每次使用 startx 或 SLiM 来启动 X 窗口系统时会应用此处的设置。  
+> `.xprofile`：每次使用 GDM 等显示管理器时会应用此处的设置。  
+
+可以在用户环境变量下配置
+
+```bash
+# ~/.xinitrc 或 ~/.xprofile 中如下配置且放在 WM 启动前即可
+export LANG=zh_CN.UTF-8
+export LANGUAGE=zh_CN:en_US
+```
+
+以下做法来自 <https://archlinuxstudio.github.io/ArchLinuxTutorial/#/rookie/basic_install?id=_12%e8%ae%be%e7%bd%ae-locale-%e8%bf%9b%e8%a1%8c%e6%9c%ac%e5%9c%b0%e5%8c%96>
+
 编辑 `/etc/locale.gen`，去掉 `en_US.UTF-8 UTF-8` 以及 `zh_CN.UTF-8 UTF-8` 行前的注释符号 `#`
 
 ```bash
 vim /etc/locale.gen                         # 去除相关注释
 locale-gen                                  # 生成 locale
+
 echo 'LANG=en_US.UTF-8'  > /etc/locale.conf # 向 /etc/locale.conf 导入内容
 ```
 
@@ -248,7 +270,7 @@ passwd root
 
 ## 2. 基础配置
 
-### 添加用户
+### 2.1 添加用户
 
 添加用户，比如新增加的用户叫 testuser
 
@@ -284,16 +306,51 @@ nobody       ALL=(root) NOPASSWD: /usr/sbin/rndc reload
 
 > 组 mailadmin 可以作为 root 用户，执行一些邮件服务器控制命令。可以在 "snow" 和 "rain"这两台主机上执行 用户 nobody 可以以 root 用户执行rndc reload命令。可以在所有主机上执行。同时可以不输入密码。(正常来说 sudo 都是要求输入调用方的密码的)
 
-### 图形界面
+### 2.2 archlinuxcn 与 AUR
+
+#### 2.2.1 archlinuxcn
+>
+> Arch Linux 中文社区仓库是由 Arch Linux 中文社区驱动的非官方软件仓库，包含许多官方仓库未提供的额外的软件包，以及已有软件的 git 版本等变种。一部分软件包的打包脚本来源于 AUR，但也有许多包与 AUR 不一样。
+
+`sudo vim /etc/pacman.conf` 文件末尾添加以下两行
+
+```text
+[archlinuxcn]
+Server = https://repo.archlinuxcn.org/$arch
+```
+
+更新索引、系统
+
+```bash
+sudo pacman -Syyu --noconfirm
+```
+
+安装 `archlinuxcn-keyring`
+
+```bash
+sudo pacman -S --noconfirm archlinuxcn-keyring
+```
+
+#### 2.2.2 AUR
+
+pura 安装
+
+archlinuxcn 中提供了二进制包，可直接安装
+
+```bash
+sudo pacman -S paru 
+```
+
+## 3. 桌面（x11）
 
 ```bash
 sudo pacman -S xorg
 sudo pacman -S xorg-server
 ```
 
-## 3. DWM
+### 3.1 DWM
 
-### 基础安装与启动
+#### 3.1.1 基础安装与启动
 
 没联网先联网，同前文使用 iwd 方式连接，没开服务先开服务
 
@@ -343,34 +400,32 @@ exec dwm
 startx
 ```
 
-### 打 patch
+#### 3.1.2 打 patch
 
-to be contiune
+todo
 
-## 4. Awesome
+### 3.2 Awesome
 
-- 安装awesome
+#### 3.2.1 安装
 
-    ```bash
-    pacman -S awesome
-    ```
+安装awesome
 
-- 安装字体
+```bash
+pacman -S awesome
+```
 
-    ```bash
-    sudo pacman -S adobe-source-han-serif-cn-fonts wqy-zenhei                   #安装几个开源中文字体 一般装上文泉驿就能解决大多wine应用中文方块的问题
-    sudo pacman -S noto-fonts-cjk noto-fonts-emoji noto-fonts-extra 
-    ```
+安装字体
 
-输入法问题
+```bash
+sudo pacman -S adobe-source-han-serif-cn-fonts wqy-zenhei                   #安装几个开源中文字体 一般装上文泉驿就能解决大多wine应用中文方块的问题
+sudo pacman -S noto-fonts-cjk noto-fonts-emoji noto-fonts-extra 
+```
 
-1. [wiki](https://wiki.archlinuxcn.org/wiki/Fcitx5#%E9%85%8D%E7%BD%AE%E5%B7%A5%E5%85%B7)
-2. [来自blibili的配置](https://www.bilibili.com/read/cv7476615)
-3. <https://manateelazycat.github.io/linux/2020/06/19/fcitx5-is-awesome.html>
+#### 3.2.2 配置
 
-rofi
+todo
 
-1. [Rofi 配置](https://www.cnblogs.com/siyingcheng/p/11706215.html)
+<center> ----- ref ----- </center>
 
 ---
 
@@ -397,16 +452,29 @@ DWM
 输入法
 
 1. [Arch系安装并配置fcitx5输入法](https://www.bilibili.com/read/cv7476615)
+2. [wiki](https://wiki.archlinuxcn.org/wiki/Fcitx5#%E9%85%8D%E7%BD%AE%E5%B7%A5%E5%85%B7)
+3. [来自blibili的配置](https://www.bilibili.com/read/cv7476615)
+4. <https://manateelazycat.github.io/linux/2020/06/19/fcitx5-is-awesome.html>
+
+---
+
+终端
+
+1. [流行终端对比](https://www.v2ex.com/t/900640)
+
+2. [Kitty Terminal 终端](https://josephpei.github.io/2022/04/18/kitty-terminal-%E7%BB%88%E7%AB%AF/)
+
+3. [kitty文档](https://sw.kovidgoyal.net/kitty/conf/#fonts)
+
+---
+
+rofi
+
+1. [Rofi 配置](https://www.cnblogs.com/siyingcheng/p/11706215.html)
 
 ---
 
 其他
 
 1. [archlinux 修复uefi引导启动](http://ivo-wang.github.io/2018/05/29/archlinux-%E4%BF%AE%E5%A4%8Duefi%E5%BC%95%E5%AF%BC%E5%90%AF%E5%8A%A8/)
-
-2. [流行终端对比](https://www.v2ex.com/t/900640)
-
-3. [Kitty Terminal 终端](https://josephpei.github.io/2022/04/18/kitty-terminal-%E7%BB%88%E7%AB%AF/)
-
-4. [kitty文档](https://sw.kovidgoyal.net/kitty/conf/#fonts)
 

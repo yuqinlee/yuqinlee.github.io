@@ -15,6 +15,9 @@
 <p>poetry 与常见框架对比</p>
 <ul>
 <li>
-<p>conda: Python 版本管理，创建不同虚拟环境，管理不同 python 与 包 版本均</p>]]></description>
+<p>conda: Python 版本管理，创建不同虚拟环境，管理不同 python 与 包 版本均</p>
+</li>
+<li>
+<p>Pyenv：Python 版本管理，注意这里主要是对于不同 python 版本需求</p>]]></description>
 </item></channel>
 </rss>
