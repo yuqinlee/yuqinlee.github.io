@@ -1,14 +1,14 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>所有文章 - yuchin blog</title>
+        <title> - yuchin-blog</title>
         <link>https://yuqinlee.github.io/posts/</link>
-        <description>所有文章 | yuchin blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 09 Sep 2024 16:02:58 &#43;0800</lastBuildDate><atom:link href="https://yuqinlee.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <description> | yuchin-blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Mon, 09 Sep 2024 16:02:58 &#43;0800</lastBuildDate><atom:link href="https://yuqinlee.github.io/posts/" rel="self" type="application/rss+xml" /><item>
     <title>Python 版本管理 —— Poetry</title>
-    <link>https://yuqinlee.github.io/python-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/</link>
+    <link>https://yuqinlee.github.io/posts/cst/python-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/</link>
     <pubDate>Mon, 09 Sep 2024 16:02:58 &#43;0800</pubDate><author>
-        <name>作者</name>
-    </author><guid>https://yuqinlee.github.io/python-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/</guid>
+        <name></name>
+    </author><guid>https://yuqinlee.github.io/posts/cst/python-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/</guid>
     <description><![CDATA[<h2 id="poetry-是什么" class="headerLink">
     <a href="#poetry-%e6%98%af%e4%bb%80%e4%b9%88" class="header-mark"></a>poetry 是什么</h2><p>主要针对虚拟环境下的 python 包管理工具</p>
 <p>poetry 与常见框架对比</p>
@@ -17,16 +17,8 @@
 <p>conda: Python 版本管理，创建不同虚拟环境，管理不同 python 与 包 版本均</p>
 </li>
 <li>
-<p>Pyenv：Python 版本管理，注意这里主要是对于不同 python 版本需求</p>]]></description>
-</item><item>
-    <title>zsh 简记</title>
-    <link>https://yuqinlee.github.io/zsh-%E7%AE%80%E8%AE%B0/</link>
-    <pubDate>Fri, 30 Aug 2024 12:53:55 &#43;0800</pubDate><author>
-        <name>作者</name>
-    </author><guid>https://yuqinlee.github.io/zsh-%E7%AE%80%E8%AE%B0/</guid>
-    <description><![CDATA[<h2 id="zsh-安装与基础配置" class="headerLink">
-    <a href="#zsh-%e5%ae%89%e8%a3%85%e4%b8%8e%e5%9f%ba%e7%a1%80%e9%85%8d%e7%bd%ae" class="header-mark"></a>zsh 安装与基础配置</h2><p>arch</p>
-<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
+<p>Pyenv：Python 版本管理，注意这里主要是对于不同 python 版本需求</p>
+<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -47,22 +39,122 @@
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div>
           <p class="tw-select-none !tw-my-1">bash</p>]]></description>
 </item><item>
+    <title>zsh 简记</title>
+    <link>https://yuqinlee.github.io/posts/cst/zsh-%E7%AE%80%E8%AE%B0/</link>
+    <pubDate>Fri, 30 Aug 2024 12:53:55 &#43;0800</pubDate><author>
+        <name></name>
+    </author><guid>https://yuqinlee.github.io/posts/cst/zsh-%E7%AE%80%E8%AE%B0/</guid>
+    <description><![CDATA[<h2 id="zsh-安装与基础配置" class="headerLink">
+    <a href="#zsh-%e5%ae%89%e8%a3%85%e4%b8%8e%e5%9f%ba%e7%a1%80%e9%85%8d%e7%bd%ae" class="header-mark"></a>zsh 安装与基础配置</h2><p>arch</p>
+<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+  <div class="
+    
+    tw-flex 
+    tw-flex-row
+    tw-flex-1 
+    tw-justify-between 
+    tw-w-full tw-bg-bgColor-secondary
+    ">      
+    <button 
+      class="
+        code-block-button
+        tw-mx-2 
+        tw-flex
+        tw-flex-row
+        tw-flex-1"
+      aria-hidden="true">
+          <div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div>
+          <p class="tw-select-none !tw-my-1">bash</p>
+      </button>
+
+   <div class="tw-flex">
+      <button 
+        class="
+          line-number-button
+          tw-mx-2 
+          tw-hidden 
+          group-[.is-open]:tw-block 
+          group-[.show-line-numbers]:tw-text-fgColor-link 
+          print:!tw-hidden" 
+        title="Toggle line numbers"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M61.77 401l17.5-20.15a19.92 19.92 0 0 0 5.07-14.19v-3.31C84.34 356 80.5 352 73 352H16a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8h22.83a157.41 157.41 0 0 0-11 12.31l-5.61 7c-4 5.07-5.25 10.13-2.8 14.88l1.05 1.93c3 5.76 6.29 7.88 12.25 7.88h4.73c10.33 0 15.94 2.44 15.94 9.09 0 4.72-4.2 8.22-14.36 8.22a41.54 41.54 0 0 1-15.47-3.12c-6.49-3.88-11.74-3.5-15.6 3.12l-5.59 9.31c-3.72 6.13-3.19 11.72 2.63 15.94 7.71 4.69 20.38 9.44 37 9.44 34.16 0 48.5-22.75 48.5-44.12-.03-14.38-9.12-29.76-28.73-34.88zM496 224H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-160H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16V80a16 16 0 0 0-16-16zm0 320H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zM16 160h64a8 8 0 0 0 8-8v-16a8 8 0 0 0-8-8H64V40a8 8 0 0 0-8-8H32a8 8 0 0 0-7.14 4.42l-8 16A8 8 0 0 0 24 64h8v64H16a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8zm-3.91 160H80a8 8 0 0 0 8-8v-16a8 8 0 0 0-8-8H41.32c3.29-10.29 48.34-18.68 48.34-56.44 0-29.06-25-39.56-44.47-39.56-21.36 0-33.8 10-40.46 18.75-4.37 5.59-3 10.84 2.8 15.37l8.58 6.88c5.61 4.56 11 2.47 16.12-2.44a13.44 13.44 0 0 1 9.46-3.84c3.33 0 9.28 1.56 9.28 8.75C51 248.19 0 257.31 0 304.59v4C0 316 5.08 320 12.09 320z"/></svg></button>
+
+      <button 
+        class="
+          wrap-code-button
+          tw-select-none 
+          tw-mx-2 
+          tw-hidden 
+          group-[.is-open]:tw-block 
+          group-[.is-wrap]:tw-text-fgColor-link 
+          print:!tw-hidden" 
+        title="Toggle code wrap"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg></button>
+      
+      <button 
+        class="
+          copy-code-button
+          tw-select-none
+          tw-mx-2 
+          tw-hidden
+          group-[.is-open]:tw-block
+          hover:tw-text-fgColor-link 
+          print:!tw-hidden"
+        title="Copy code">
+          <span class="copy-icon tw-block"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M433.941 65.941l-51.882-51.882A48 48 0 0 0 348.118 0H176c-26.51 0-48 21.49-48 48v48H48c-26.51 0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48v-48h80c26.51 0 48-21.49 48-48V99.882a48 48 0 0 0-14.059-33.941zM266 464H54a6 6 0 0 1-6-6V150a6 6 0 0 1 6-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 0 1-6 6zm128-96H182a6 6 0 0 1-6-6V54a6 6 0 0 1 6-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 0 1-6 6zm6-256h-64V48h9.632c1.591 0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 0 1 1.757 4.243V112z"/></svg></span>
+          <span class="check-icon tw-hidden"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"/></svg></span>
+      </button>
+        
+      <button 
+        class="
+          tw-select-none 
+          tw-mx-2 
+          tw-block 
+          group-[.is-open]:tw-hidden 
+          print:!tw-hidden" 
+        disabled
+        aria-hidden="true"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M328 256c0 39.8-32.2 72-72 72s-72-32.2-72-72 32.2-72 72-72 72 32.2 72 72zm104-72c-39.8 0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72zm-352 0c-39.8 0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72z"/></svg></button>
+    </div>
+  </div>
+  <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
+    id="codeblock-id-11" 
+    class="
+      chroma 
+      !tw-block 
+      tw-p-0
+      tw-m-0
+      tw-transition-[max-height] 
+      tw-duration-500 
+      tw-ease-in-out 
+      group-[.is-closed]:!tw-max-h-0 
+      group-[.is-wrap]:tw-text-wrap
+      tw-overflow-y-hidden
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span style="display:flex;"><span>pacman -S zsh</span></span></code></pre>
+</div>
+<p>切换默认 shell</p>]]></description>
+</item><item>
     <title>Windows 安装 Docker、wsl 等</title>
-    <link>https://yuqinlee.github.io/windows-%E5%AE%89%E8%A3%85-dockerwsl-%E7%AD%89/</link>
+    <link>https://yuqinlee.github.io/posts/cst/windows-%E5%AE%89%E8%A3%85-dockerwsl-%E7%AD%89/</link>
     <pubDate>Sat, 22 Jun 2024 17:08:21 &#43;0800</pubDate><author>
-        <name>作者</name>
-    </author><guid>https://yuqinlee.github.io/windows-%E5%AE%89%E8%A3%85-dockerwsl-%E7%AD%89/</guid>
+        <name></name>
+    </author><guid>https://yuqinlee.github.io/posts/cst/windows-%E5%AE%89%E8%A3%85-dockerwsl-%E7%AD%89/</guid>
     <description><![CDATA[<!-- # Windows 安装 docker、wsl 等 -->
 <h2 id="安装-wslarchlinux" class="headerLink">
     <a href="#%e5%ae%89%e8%a3%85-wslarchlinux" class="header-mark"></a>安装 WSL——Archlinux</h2><p>控制面板找到 <code>启用或关闭windows功能</code> 勾选 <code>Hyper-V</code> 和 <code>适用于 Linux 的 Windows 子系统</code>（只用勾选后者实际就能WSL安装，如果需要使用原来的 Hyper-V 方式安装 Docker 才需要开启前者，这里直接都打开了），重启系统，执行 <code>wsl --update</code> 更新</p>]]></description>
 </item><item>
     <title>Linux 文件属性</title>
-    <link>https://yuqinlee.github.io/linux-%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7/</link>
+    <link>https://yuqinlee.github.io/posts/cst/linux-%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7/</link>
     <pubDate>Mon, 04 Sep 2023 17:21:39 &#43;0800</pubDate><author>
-        <name>作者</name>
-    </author><guid>https://yuqinlee.github.io/linux-%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7/</guid>
+        <name></name>
+    </author><guid>https://yuqinlee.github.io/posts/cst/linux-%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7/</guid>
     <description><![CDATA[<!-- # Linux 文件属性 -->
-<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -81,18 +173,96 @@
       aria-hidden="true">
           <div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div>
-          <p class="tw-select-none !tw-my-1">bash</p>]]></description>
+          <p class="tw-select-none !tw-my-1">bash</p>
+      </button>
+
+   <div class="tw-flex">
+      <button 
+        class="
+          line-number-button
+          tw-mx-2 
+          tw-hidden 
+          group-[.is-open]:tw-block 
+          group-[.show-line-numbers]:tw-text-fgColor-link 
+          print:!tw-hidden" 
+        title="Toggle line numbers"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M61.77 401l17.5-20.15a19.92 19.92 0 0 0 5.07-14.19v-3.31C84.34 356 80.5 352 73 352H16a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8h22.83a157.41 157.41 0 0 0-11 12.31l-5.61 7c-4 5.07-5.25 10.13-2.8 14.88l1.05 1.93c3 5.76 6.29 7.88 12.25 7.88h4.73c10.33 0 15.94 2.44 15.94 9.09 0 4.72-4.2 8.22-14.36 8.22a41.54 41.54 0 0 1-15.47-3.12c-6.49-3.88-11.74-3.5-15.6 3.12l-5.59 9.31c-3.72 6.13-3.19 11.72 2.63 15.94 7.71 4.69 20.38 9.44 37 9.44 34.16 0 48.5-22.75 48.5-44.12-.03-14.38-9.12-29.76-28.73-34.88zM496 224H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-160H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16V80a16 16 0 0 0-16-16zm0 320H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zM16 160h64a8 8 0 0 0 8-8v-16a8 8 0 0 0-8-8H64V40a8 8 0 0 0-8-8H32a8 8 0 0 0-7.14 4.42l-8 16A8 8 0 0 0 24 64h8v64H16a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8zm-3.91 160H80a8 8 0 0 0 8-8v-16a8 8 0 0 0-8-8H41.32c3.29-10.29 48.34-18.68 48.34-56.44 0-29.06-25-39.56-44.47-39.56-21.36 0-33.8 10-40.46 18.75-4.37 5.59-3 10.84 2.8 15.37l8.58 6.88c5.61 4.56 11 2.47 16.12-2.44a13.44 13.44 0 0 1 9.46-3.84c3.33 0 9.28 1.56 9.28 8.75C51 248.19 0 257.31 0 304.59v4C0 316 5.08 320 12.09 320z"/></svg></button>
+
+      <button 
+        class="
+          wrap-code-button
+          tw-select-none 
+          tw-mx-2 
+          tw-hidden 
+          group-[.is-open]:tw-block 
+          group-[.is-wrap]:tw-text-fgColor-link 
+          print:!tw-hidden" 
+        title="Toggle code wrap"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg></button>
+      
+      <button 
+        class="
+          copy-code-button
+          tw-select-none
+          tw-mx-2 
+          tw-hidden
+          group-[.is-open]:tw-block
+          hover:tw-text-fgColor-link 
+          print:!tw-hidden"
+        title="Copy code">
+          <span class="copy-icon tw-block"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M433.941 65.941l-51.882-51.882A48 48 0 0 0 348.118 0H176c-26.51 0-48 21.49-48 48v48H48c-26.51 0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48v-48h80c26.51 0 48-21.49 48-48V99.882a48 48 0 0 0-14.059-33.941zM266 464H54a6 6 0 0 1-6-6V150a6 6 0 0 1 6-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 0 1-6 6zm128-96H182a6 6 0 0 1-6-6V54a6 6 0 0 1 6-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 0 1-6 6zm6-256h-64V48h9.632c1.591 0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 0 1 1.757 4.243V112z"/></svg></span>
+          <span class="check-icon tw-hidden"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"/></svg></span>
+      </button>
+        
+      <button 
+        class="
+          tw-select-none 
+          tw-mx-2 
+          tw-block 
+          group-[.is-open]:tw-hidden 
+          print:!tw-hidden" 
+        disabled
+        aria-hidden="true"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M328 256c0 39.8-32.2 72-72 72s-72-32.2-72-72 32.2-72 72-72 72 32.2 72 72zm104-72c-39.8 0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72zm-352 0c-39.8 0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72z"/></svg></button>
+    </div>
+  </div>
+  <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
+    id="codeblock-id-1" 
+    class="
+      chroma 
+      !tw-block 
+      tw-p-0
+      tw-m-0
+      tw-transition-[max-height] 
+      tw-duration-500 
+      tw-ease-in-out 
+      group-[.is-closed]:!tw-max-h-0 
+      group-[.is-wrap]:tw-text-wrap
+      tw-overflow-y-hidden
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span style="display:flex;"><span><span style="color:#0550ae">[</span>uchin@master linuxLearn<span style="color:#0550ae">]</span>$ ll
+</span></span><span style="display:flex;"><span>总用量 12K
+</span></span><span style="display:flex;"><span>drwxrwxr-x.  <span style="color:#0550ae">2</span> uchin uchin   <span style="color:#0550ae">23</span> 9月   <span style="color:#0550ae">4</span> 17:21 .
+</span></span><span style="display:flex;"><span>drwx------. <span style="color:#0550ae">12</span> uchin uchin 4.0K 9月   <span style="color:#0550ae">4</span> 17:21 ..
+</span></span><span style="display:flex;"><span>-rw-------.  <span style="color:#0550ae">1</span> uchin uchin   <span style="color:#0550ae">23</span> 9月   <span style="color:#0550ae">4</span> 17:21 uchin.txt</span></span></code></pre>
+</div>
+<h2 id="各列含义" class="headerLink">
+    <a href="#%e5%90%84%e5%88%97%e5%90%ab%e4%b9%89" class="header-mark"></a>各列含义</h2><h3 id="第一列" class="headerLink">
+    <a href="#%e7%ac%ac%e4%b8%80%e5%88%97" class="header-mark"></a>第一列</h3><p>第一列代表这个文件的类型与权限（permission）</p>]]></description>
 </item><item>
     <title>Archlinux 简记</title>
-    <link>https://yuqinlee.github.io/archlinux-%E7%AE%80%E8%AE%B0/</link>
+    <link>https://yuqinlee.github.io/posts/cst/archlinux-%E7%AE%80%E8%AE%B0/</link>
     <pubDate>Wed, 01 Feb 2023 10:18:48 &#43;0800</pubDate><author>
-        <name>作者</name>
-    </author><guid>https://yuqinlee.github.io/archlinux-%E7%AE%80%E8%AE%B0/</guid>
+        <name></name>
+    </author><guid>https://yuqinlee.github.io/posts/cst/archlinux-%E7%AE%80%E8%AE%B0/</guid>
     <description><![CDATA[<!-- # Archlinux 简记 -->
 <h2 id="1-无图形安装" class="headerLink">
     <a href="#1-%e6%97%a0%e5%9b%be%e5%bd%a2%e5%ae%89%e8%a3%85" class="header-mark"></a>1. 无图形安装</h2><h3 id="检查安装模式" class="headerLink">
     <a href="#%e6%a3%80%e6%9f%a5%e5%ae%89%e8%a3%85%e6%a8%a1%e5%bc%8f" class="header-mark"></a>检查安装模式</h3><p>检测是否为 <code>uefi 方式</code> 安装，若为 <code>uefi 方式</code> 则以下命令将输出一堆东西</p>
-<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -114,10 +284,10 @@
           <p class="tw-select-none !tw-my-1">bash</p>]]></description>
 </item><item>
     <title>基于 Swarm 的 Docker 分布式集群管理</title>
-    <link>https://yuqinlee.github.io/%E5%9F%BA%E4%BA%8E-swarm-%E7%9A%84-docker-%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/</link>
+    <link>https://yuqinlee.github.io/posts/cst/%E5%9F%BA%E4%BA%8E-swarm-%E7%9A%84-docker-%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/</link>
     <pubDate>Thu, 01 Dec 2022 09:46:11 &#43;0800</pubDate><author>
-        <name>作者</name>
-    </author><guid>https://yuqinlee.github.io/%E5%9F%BA%E4%BA%8E-swarm-%E7%9A%84-docker-%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/</guid>
+        <name></name>
+    </author><guid>https://yuqinlee.github.io/posts/cst/%E5%9F%BA%E4%BA%8E-swarm-%E7%9A%84-docker-%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/</guid>
     <description><![CDATA[<!-- # 基于 Swarm 的 Docker 分布式集群管理 -->
 <h2 id="1-序" class="headerLink">
     <a href="#1-%e5%ba%8f" class="header-mark"></a>1. 序</h2><h3 id="11-各虚拟机信息" class="headerLink">
@@ -154,22 +324,28 @@ VirtualBox</p>
       </tr>
   </tbody>
 </table>
-<p>注：各虚拟机节点网卡设置如下</p>]]></description>
+<p>注：各虚拟机节点网卡设置如下</p>
+<ol>
+<li>Nat：负责虚拟机与外网链接，保持默认</li>
+<li>Host-Only：设置静态 ip 保证集群之间通信</li>
+</ol>
+<p>确保每台虚拟机能 ping 通外网网络设置好后，更改主机名与映射，主机名修改后重启生效</p>]]></description>
 </item><item>
     <title>Linux 重定向</title>
-    <link>https://yuqinlee.github.io/linux-%E9%87%8D%E5%AE%9A%E5%90%91/</link>
+    <link>https://yuqinlee.github.io/posts/cst/linux-%E9%87%8D%E5%AE%9A%E5%90%91/</link>
     <pubDate>Fri, 30 Sep 2022 14:11:08 &#43;0800</pubDate><author>
-        <name>作者</name>
-    </author><guid>https://yuqinlee.github.io/linux-%E9%87%8D%E5%AE%9A%E5%90%91/</guid>
+        <name></name>
+    </author><guid>https://yuqinlee.github.io/posts/cst/linux-%E9%87%8D%E5%AE%9A%E5%90%91/</guid>
     <description><![CDATA[<!-- # Linux 重定向 -->
 <blockquote>
-  <p>linux重定向可以将命令的输出或输入重新定向到其他位置或文件，以实现对输出输入的控制。默认情况下命令的输出通常为终端，<strong>如果想将输出转移到文件或其他位置，这时候就需要重定向。</strong></p>]]></description>
+  <p>linux重定向可以将命令的输出或输入重新定向到其他位置或文件，以实现对输出输入的控制。默认情况下命令的输出通常为终端，<strong>如果想将输出转移到文件或其他位置，这时候就需要重定向。</strong></p>
+<p><strong>文件描述符：一个命令通常都会打开三个文件，默认使用文件描述符0,1,2来指代这个三个文件</strong></p>]]></description>
 </item><item>
     <title>Conda 简记</title>
-    <link>https://yuqinlee.github.io/conda-%E7%AE%80%E8%AE%B0/</link>
+    <link>https://yuqinlee.github.io/posts/cst/conda-%E7%AE%80%E8%AE%B0/</link>
     <pubDate>Fri, 24 Jun 2022 20:53:39 &#43;0800</pubDate><author>
-        <name>作者</name>
-    </author><guid>https://yuqinlee.github.io/conda-%E7%AE%80%E8%AE%B0/</guid>
+        <name></name>
+    </author><guid>https://yuqinlee.github.io/posts/cst/conda-%E7%AE%80%E8%AE%B0/</guid>
     <description><![CDATA[<!-- # Anaconda 记录 -->
 <h2 id="1-anaconda-与-miniconda-与-conda" class="headerLink">
     <a href="#1-anaconda-%e4%b8%8e-miniconda-%e4%b8%8e-conda" class="header-mark"></a>1. Anaconda 与 Miniconda 与 Conda</h2><center>
@@ -182,10 +358,10 @@ VirtualBox</p>
   <p><em>任何语言的包、依赖项和环境管理 — Python、R、Ruby、Lua、Scala、Java、JavaScript、C/C++、FORTRAN 等。</em></p>]]></description>
 </item><item>
     <title>Git 使用小结</title>
-    <link>https://yuqinlee.github.io/git-%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/</link>
+    <link>https://yuqinlee.github.io/posts/cst/git-%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/</link>
     <pubDate>Mon, 24 Jan 2022 14:44:00 &#43;0800</pubDate><author>
-        <name>作者</name>
-    </author><guid>https://yuqinlee.github.io/git-%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/</guid>
+        <name></name>
+    </author><guid>https://yuqinlee.github.io/posts/cst/git-%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/</guid>
     <description><![CDATA[<!-- # Git 使用小结 -->
 <!-- > uchin/李玉勤   -->
 <!-- > 20220124   -->
@@ -199,10 +375,10 @@ VirtualBox</p>
 <p>作用域依次减小，优先级依次升高</p>]]></description>
 </item><item>
     <title>区块链与安全Note</title>
-    <link>https://yuqinlee.github.io/%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%8E%E5%AE%89%E5%85%A8note/</link>
+    <link>https://yuqinlee.github.io/posts/cst/%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%8E%E5%AE%89%E5%85%A8note/</link>
     <pubDate>Wed, 04 Nov 2020 21:00:40 &#43;0800</pubDate><author>
-        <name>作者</name>
-    </author><guid>https://yuqinlee.github.io/%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%8E%E5%AE%89%E5%85%A8note/</guid>
+        <name></name>
+    </author><guid>https://yuqinlee.github.io/posts/cst/%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%8E%E5%AE%89%E5%85%A8note/</guid>
     <description><![CDATA[<!-- <h1>区块链与安全Note</h1> -->
 <blockquote>
   <p>2020-11-04</p>
@@ -214,6 +390,7 @@ VirtualBox</p>
     <a href="#%e4%b8%80btc-%e5%af%86%e7%a0%81%e5%ad%a6%e5%8e%9f%e7%90%86" class="header-mark"></a>一、BTC-密码学原理</h2><h3 id="1-hash" class="headerLink">
     <a href="#1-hash" class="header-mark"></a>1. Hash</h3><h4 id="性质1-collision-resistance" class="headerLink">
     <a href="#%e6%80%a7%e8%b4%a81-collision-resistance" class="header-mark"></a>性质1 collision resistance</h4><p>密文m</p>
-<p>H(m)经过hash函数处理之后得到一个hash值，很难在修改m后再进行hash运算还是原来的值，尽管存在hash碰撞</p>]]></description>
+<p>H(m)经过hash函数处理之后得到一个hash值，很难在修改m后再进行hash运算还是原来的值，尽管存在hash碰撞</p>
+<p><font color='red'>没有证明那个hash函数是不存在collision resistance的！！但是有函数是被验证是能够人为找出碰撞的，如MD5</font></p>]]></description>
 </item></channel>
 </rss>

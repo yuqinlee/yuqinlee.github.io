@@ -1,23 +1,23 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Docker - 标签 - yuchin blog</title>
+        <title>Docker - tag - yuchin-blog</title>
         <link>https://yuqinlee.github.io/tags/docker/</link>
-        <description>Docker - 标签 - yuchin blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 22 Jun 2024 17:08:21 &#43;0800</lastBuildDate><atom:link href="https://yuqinlee.github.io/tags/docker/" rel="self" type="application/rss+xml" /><item>
+        <description>Docker - tag - yuchin-blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sat, 22 Jun 2024 17:08:21 &#43;0800</lastBuildDate><atom:link href="https://yuqinlee.github.io/tags/docker/" rel="self" type="application/rss+xml" /><item>
     <title>Windows 安装 Docker、wsl 等</title>
-    <link>https://yuqinlee.github.io/windows-%E5%AE%89%E8%A3%85-dockerwsl-%E7%AD%89/</link>
+    <link>https://yuqinlee.github.io/posts/cst/windows-%E5%AE%89%E8%A3%85-dockerwsl-%E7%AD%89/</link>
     <pubDate>Sat, 22 Jun 2024 17:08:21 &#43;0800</pubDate><author>
-        <name>作者</name>
-    </author><guid>https://yuqinlee.github.io/windows-%E5%AE%89%E8%A3%85-dockerwsl-%E7%AD%89/</guid>
+        <name></name>
+    </author><guid>https://yuqinlee.github.io/posts/cst/windows-%E5%AE%89%E8%A3%85-dockerwsl-%E7%AD%89/</guid>
     <description><![CDATA[<!-- # Windows 安装 docker、wsl 等 -->
 <h2 id="安装-wslarchlinux" class="headerLink">
     <a href="#%e5%ae%89%e8%a3%85-wslarchlinux" class="header-mark"></a>安装 WSL——Archlinux</h2><p>控制面板找到 <code>启用或关闭windows功能</code> 勾选 <code>Hyper-V</code> 和 <code>适用于 Linux 的 Windows 子系统</code>（只用勾选后者实际就能WSL安装，如果需要使用原来的 Hyper-V 方式安装 Docker 才需要开启前者，这里直接都打开了），重启系统，执行 <code>wsl --update</code> 更新</p>]]></description>
 </item><item>
     <title>基于 Swarm 的 Docker 分布式集群管理</title>
-    <link>https://yuqinlee.github.io/%E5%9F%BA%E4%BA%8E-swarm-%E7%9A%84-docker-%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/</link>
+    <link>https://yuqinlee.github.io/posts/cst/%E5%9F%BA%E4%BA%8E-swarm-%E7%9A%84-docker-%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/</link>
     <pubDate>Thu, 01 Dec 2022 09:46:11 &#43;0800</pubDate><author>
-        <name>作者</name>
-    </author><guid>https://yuqinlee.github.io/%E5%9F%BA%E4%BA%8E-swarm-%E7%9A%84-docker-%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/</guid>
+        <name></name>
+    </author><guid>https://yuqinlee.github.io/posts/cst/%E5%9F%BA%E4%BA%8E-swarm-%E7%9A%84-docker-%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/</guid>
     <description><![CDATA[<!-- # 基于 Swarm 的 Docker 分布式集群管理 -->
 <h2 id="1-序" class="headerLink">
     <a href="#1-%e5%ba%8f" class="header-mark"></a>1. 序</h2><h3 id="11-各虚拟机信息" class="headerLink">
@@ -54,6 +54,11 @@ VirtualBox</p>
       </tr>
   </tbody>
 </table>
-<p>注：各虚拟机节点网卡设置如下</p>]]></description>
+<p>注：各虚拟机节点网卡设置如下</p>
+<ol>
+<li>Nat：负责虚拟机与外网链接，保持默认</li>
+<li>Host-Only：设置静态 ip 保证集群之间通信</li>
+</ol>
+<p>确保每台虚拟机能 ping 通外网网络设置好后，更改主机名与映射，主机名修改后重启生效</p>]]></description>
 </item></channel>
 </rss>

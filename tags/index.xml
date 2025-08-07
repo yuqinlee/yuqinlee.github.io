@@ -1,76 +1,76 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Tags - 标签 - yuchin blog</title>
+        <title>Tags - tag - yuchin-blog</title>
         <link>https://yuqinlee.github.io/tags/</link>
-        <description>Tags - 标签 - yuchin blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 09 Sep 2024 16:02:58 &#43;0800</lastBuildDate><atom:link href="https://yuqinlee.github.io/tags/" rel="self" type="application/rss+xml" /><item>
+        <description>Tags - tag - yuchin-blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Mon, 09 Sep 2024 16:02:58 &#43;0800</lastBuildDate><atom:link href="https://yuqinlee.github.io/tags/" rel="self" type="application/rss+xml" /><item>
     <title>Conda</title>
     <link>https://yuqinlee.github.io/tags/conda/</link>
     <pubDate>Mon, 09 Sep 2024 16:02:58 &#43;0800</pubDate><author>
-        <name>作者</name>
+        <name></name>
     </author><guid>https://yuqinlee.github.io/tags/conda/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>Poetry</title>
     <link>https://yuqinlee.github.io/tags/poetry/</link>
     <pubDate>Mon, 09 Sep 2024 16:02:58 &#43;0800</pubDate><author>
-        <name>作者</name>
+        <name></name>
     </author><guid>https://yuqinlee.github.io/tags/poetry/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>Python</title>
     <link>https://yuqinlee.github.io/tags/python/</link>
     <pubDate>Mon, 09 Sep 2024 16:02:58 &#43;0800</pubDate><author>
-        <name>作者</name>
+        <name></name>
     </author><guid>https://yuqinlee.github.io/tags/python/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>Venv</title>
     <link>https://yuqinlee.github.io/tags/venv/</link>
     <pubDate>Mon, 09 Sep 2024 16:02:58 &#43;0800</pubDate><author>
-        <name>作者</name>
+        <name></name>
     </author><guid>https://yuqinlee.github.io/tags/venv/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>Linux</title>
     <link>https://yuqinlee.github.io/tags/linux/</link>
     <pubDate>Fri, 30 Aug 2024 12:53:55 &#43;0800</pubDate><author>
-        <name>作者</name>
+        <name></name>
     </author><guid>https://yuqinlee.github.io/tags/linux/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>Shell</title>
     <link>https://yuqinlee.github.io/tags/shell/</link>
     <pubDate>Fri, 30 Aug 2024 12:53:55 &#43;0800</pubDate><author>
-        <name>作者</name>
+        <name></name>
     </author><guid>https://yuqinlee.github.io/tags/shell/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>Zsh</title>
     <link>https://yuqinlee.github.io/tags/zsh/</link>
     <pubDate>Fri, 30 Aug 2024 12:53:55 &#43;0800</pubDate><author>
-        <name>作者</name>
+        <name></name>
     </author><guid>https://yuqinlee.github.io/tags/zsh/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>Arch</title>
     <link>https://yuqinlee.github.io/tags/arch/</link>
     <pubDate>Sat, 22 Jun 2024 17:08:21 &#43;0800</pubDate><author>
-        <name>作者</name>
+        <name></name>
     </author><guid>https://yuqinlee.github.io/tags/arch/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>Docker</title>
     <link>https://yuqinlee.github.io/tags/docker/</link>
     <pubDate>Sat, 22 Jun 2024 17:08:21 &#43;0800</pubDate><author>
-        <name>作者</name>
+        <name></name>
     </author><guid>https://yuqinlee.github.io/tags/docker/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>Wsl</title>
     <link>https://yuqinlee.github.io/tags/wsl/</link>
     <pubDate>Sat, 22 Jun 2024 17:08:21 &#43;0800</pubDate><author>
-        <name>作者</name>
+        <name></name>
     </author><guid>https://yuqinlee.github.io/tags/wsl/</guid>
     <description><![CDATA[]]></description>
 </item></channel>

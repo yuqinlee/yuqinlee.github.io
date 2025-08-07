@@ -1,16 +1,17 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>重定向 - 标签 - yuchin blog</title>
+        <title>重定向 - tag - yuchin-blog</title>
         <link>https://yuqinlee.github.io/tags/%E9%87%8D%E5%AE%9A%E5%90%91/</link>
-        <description>重定向 - 标签 - yuchin blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 30 Sep 2022 14:11:08 &#43;0800</lastBuildDate><atom:link href="https://yuqinlee.github.io/tags/%E9%87%8D%E5%AE%9A%E5%90%91/" rel="self" type="application/rss+xml" /><item>
+        <description>重定向 - tag - yuchin-blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 30 Sep 2022 14:11:08 &#43;0800</lastBuildDate><atom:link href="https://yuqinlee.github.io/tags/%E9%87%8D%E5%AE%9A%E5%90%91/" rel="self" type="application/rss+xml" /><item>
     <title>Linux 重定向</title>
-    <link>https://yuqinlee.github.io/linux-%E9%87%8D%E5%AE%9A%E5%90%91/</link>
+    <link>https://yuqinlee.github.io/posts/cst/linux-%E9%87%8D%E5%AE%9A%E5%90%91/</link>
     <pubDate>Fri, 30 Sep 2022 14:11:08 &#43;0800</pubDate><author>
-        <name>作者</name>
-    </author><guid>https://yuqinlee.github.io/linux-%E9%87%8D%E5%AE%9A%E5%90%91/</guid>
+        <name></name>
+    </author><guid>https://yuqinlee.github.io/posts/cst/linux-%E9%87%8D%E5%AE%9A%E5%90%91/</guid>
     <description><![CDATA[<!-- # Linux 重定向 -->
 <blockquote>
-  <p>linux重定向可以将命令的输出或输入重新定向到其他位置或文件，以实现对输出输入的控制。默认情况下命令的输出通常为终端，<strong>如果想将输出转移到文件或其他位置，这时候就需要重定向。</strong></p>]]></description>
+  <p>linux重定向可以将命令的输出或输入重新定向到其他位置或文件，以实现对输出输入的控制。默认情况下命令的输出通常为终端，<strong>如果想将输出转移到文件或其他位置，这时候就需要重定向。</strong></p>
+<p><strong>文件描述符：一个命令通常都会打开三个文件，默认使用文件描述符0,1,2来指代这个三个文件</strong></p>]]></description>
 </item></channel>
 </rss>

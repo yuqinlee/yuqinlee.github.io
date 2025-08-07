@@ -1,14 +1,14 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Venv - 标签 - yuchin blog</title>
+        <title>Venv - tag - yuchin-blog</title>
         <link>https://yuqinlee.github.io/tags/venv/</link>
-        <description>Venv - 标签 - yuchin blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 09 Sep 2024 16:02:58 &#43;0800</lastBuildDate><atom:link href="https://yuqinlee.github.io/tags/venv/" rel="self" type="application/rss+xml" /><item>
+        <description>Venv - tag - yuchin-blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Mon, 09 Sep 2024 16:02:58 &#43;0800</lastBuildDate><atom:link href="https://yuqinlee.github.io/tags/venv/" rel="self" type="application/rss+xml" /><item>
     <title>Python 版本管理 —— Poetry</title>
-    <link>https://yuqinlee.github.io/python-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/</link>
+    <link>https://yuqinlee.github.io/posts/cst/python-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/</link>
     <pubDate>Mon, 09 Sep 2024 16:02:58 &#43;0800</pubDate><author>
-        <name>作者</name>
-    </author><guid>https://yuqinlee.github.io/python-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/</guid>
+        <name></name>
+    </author><guid>https://yuqinlee.github.io/posts/cst/python-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/</guid>
     <description><![CDATA[<h2 id="poetry-是什么" class="headerLink">
     <a href="#poetry-%e6%98%af%e4%bb%80%e4%b9%88" class="header-mark"></a>poetry 是什么</h2><p>主要针对虚拟环境下的 python 包管理工具</p>
 <p>poetry 与常见框架对比</p>
@@ -17,6 +17,26 @@
 <p>conda: Python 版本管理，创建不同虚拟环境，管理不同 python 与 包 版本均</p>
 </li>
 <li>
-<p>Pyenv：Python 版本管理，注意这里主要是对于不同 python 版本需求</p>]]></description>
+<p>Pyenv：Python 版本管理，注意这里主要是对于不同 python 版本需求</p>
+<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+  <div class="
+    
+    tw-flex 
+    tw-flex-row
+    tw-flex-1 
+    tw-justify-between 
+    tw-w-full tw-bg-bgColor-secondary
+    ">      
+    <button 
+      class="
+        code-block-button
+        tw-mx-2 
+        tw-flex
+        tw-flex-row
+        tw-flex-1"
+      aria-hidden="true">
+          <div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div>
+          <p class="tw-select-none !tw-my-1">bash</p>]]></description>
 </item></channel>
 </rss>

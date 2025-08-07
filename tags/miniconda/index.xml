@@ -1,14 +1,14 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Miniconda - 标签 - yuchin blog</title>
+        <title>Miniconda - tag - yuchin-blog</title>
         <link>https://yuqinlee.github.io/tags/miniconda/</link>
-        <description>Miniconda - 标签 - yuchin blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 24 Jun 2022 20:53:39 &#43;0800</lastBuildDate><atom:link href="https://yuqinlee.github.io/tags/miniconda/" rel="self" type="application/rss+xml" /><item>
+        <description>Miniconda - tag - yuchin-blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 24 Jun 2022 20:53:39 &#43;0800</lastBuildDate><atom:link href="https://yuqinlee.github.io/tags/miniconda/" rel="self" type="application/rss+xml" /><item>
     <title>Conda 简记</title>
-    <link>https://yuqinlee.github.io/conda-%E7%AE%80%E8%AE%B0/</link>
+    <link>https://yuqinlee.github.io/posts/cst/conda-%E7%AE%80%E8%AE%B0/</link>
     <pubDate>Fri, 24 Jun 2022 20:53:39 &#43;0800</pubDate><author>
-        <name>作者</name>
-    </author><guid>https://yuqinlee.github.io/conda-%E7%AE%80%E8%AE%B0/</guid>
+        <name></name>
+    </author><guid>https://yuqinlee.github.io/posts/cst/conda-%E7%AE%80%E8%AE%B0/</guid>
     <description><![CDATA[<!-- # Anaconda 记录 -->
 <h2 id="1-anaconda-与-miniconda-与-conda" class="headerLink">
     <a href="#1-anaconda-%e4%b8%8e-miniconda-%e4%b8%8e-conda" class="header-mark"></a>1. Anaconda 与 Miniconda 与 Conda</h2><center>

@@ -1,14 +1,14 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Base-Tool - 分类 - yuchin blog</title>
+        <title>Base-Tool - category - yuchin-blog</title>
         <link>https://yuqinlee.github.io/categories/base-tool/</link>
-        <description>Base-Tool - 分类 - yuchin blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 24 Jan 2022 14:44:00 &#43;0800</lastBuildDate><atom:link href="https://yuqinlee.github.io/categories/base-tool/" rel="self" type="application/rss+xml" /><item>
+        <description>Base-Tool - category - yuchin-blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Mon, 24 Jan 2022 14:44:00 &#43;0800</lastBuildDate><atom:link href="https://yuqinlee.github.io/categories/base-tool/" rel="self" type="application/rss+xml" /><item>
     <title>Git 使用小结</title>
-    <link>https://yuqinlee.github.io/git-%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/</link>
+    <link>https://yuqinlee.github.io/posts/cst/git-%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/</link>
     <pubDate>Mon, 24 Jan 2022 14:44:00 &#43;0800</pubDate><author>
-        <name>作者</name>
-    </author><guid>https://yuqinlee.github.io/git-%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/</guid>
+        <name></name>
+    </author><guid>https://yuqinlee.github.io/posts/cst/git-%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/</guid>
     <description><![CDATA[<!-- # Git 使用小结 -->
 <!-- > uchin/李玉勤   -->
 <!-- > 20220124   -->
@@ -22,10 +22,10 @@
 <p>作用域依次减小，优先级依次升高</p>]]></description>
 </item><item>
     <title>Markdown 小记</title>
-    <link>https://yuqinlee.github.io/markdown-%E5%B0%8F%E8%AE%B0/</link>
+    <link>https://yuqinlee.github.io/posts/cst/markdown-%E5%B0%8F%E8%AE%B0/</link>
     <pubDate>Sat, 29 Feb 2020 00:56:14 &#43;0800</pubDate><author>
-        <name>作者</name>
-    </author><guid>https://yuqinlee.github.io/markdown-%E5%B0%8F%E8%AE%B0/</guid>
+        <name></name>
+    </author><guid>https://yuqinlee.github.io/posts/cst/markdown-%E5%B0%8F%E8%AE%B0/</guid>
     <description><![CDATA[<blockquote>
   <p>创建于_2020-02-29 00:56 by uchin<br>
 修改于_2020-08-01 19:00 by uchin<br>
@@ -33,7 +33,7 @@
 </blockquote><h2 id="基本语法" class="headerLink">
     <a href="#%e5%9f%ba%e6%9c%ac%e8%af%ad%e6%b3%95" class="header-mark"></a>基本语法</h2><p>语法参考：<a href="https://www.markdown.xyz/basic-syntax/" target="_blank" rel="noopener noreferrer">https://www.markdown.xyz/basic-syntax/</a></p>
 <h3 id="插入表格" class="headerLink">
-    <a href="#%e6%8f%92%e5%85%a5%e8%a1%a8%e6%a0%bc" class="header-mark"></a>插入表格</h3><div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
+    <a href="#%e6%8f%92%e5%85%a5%e8%a1%a8%e6%a0%bc" class="header-mark"></a>插入表格</h3><div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -55,10 +55,10 @@
           <p class="tw-select-none !tw-my-1">markdown</p>]]></description>
 </item><item>
     <title>Typora 小记</title>
-    <link>https://yuqinlee.github.io/typora-%E5%B0%8F%E8%AE%B0/</link>
+    <link>https://yuqinlee.github.io/posts/cst/typora-%E5%B0%8F%E8%AE%B0/</link>
     <pubDate>Sat, 29 Feb 2020 00:56:14 &#43;0800</pubDate><author>
-        <name>作者</name>
-    </author><guid>https://yuqinlee.github.io/typora-%E5%B0%8F%E8%AE%B0/</guid>
+        <name></name>
+    </author><guid>https://yuqinlee.github.io/posts/cst/typora-%E5%B0%8F%E8%AE%B0/</guid>
     <description><![CDATA[<blockquote>
   <p>创建于_2020-02-29 00:56 by uchin<br>
 修改于_2020-08-01 19:00 by uchin<br>

@@ -1,28 +1,28 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Arch - 标签 - yuchin blog</title>
+        <title>Arch - tag - yuchin-blog</title>
         <link>https://yuqinlee.github.io/tags/arch/</link>
-        <description>Arch - 标签 - yuchin blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 22 Jun 2024 17:08:21 &#43;0800</lastBuildDate><atom:link href="https://yuqinlee.github.io/tags/arch/" rel="self" type="application/rss+xml" /><item>
+        <description>Arch - tag - yuchin-blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sat, 22 Jun 2024 17:08:21 &#43;0800</lastBuildDate><atom:link href="https://yuqinlee.github.io/tags/arch/" rel="self" type="application/rss+xml" /><item>
     <title>Windows 安装 Docker、wsl 等</title>
-    <link>https://yuqinlee.github.io/windows-%E5%AE%89%E8%A3%85-dockerwsl-%E7%AD%89/</link>
+    <link>https://yuqinlee.github.io/posts/cst/windows-%E5%AE%89%E8%A3%85-dockerwsl-%E7%AD%89/</link>
     <pubDate>Sat, 22 Jun 2024 17:08:21 &#43;0800</pubDate><author>
-        <name>作者</name>
-    </author><guid>https://yuqinlee.github.io/windows-%E5%AE%89%E8%A3%85-dockerwsl-%E7%AD%89/</guid>
+        <name></name>
+    </author><guid>https://yuqinlee.github.io/posts/cst/windows-%E5%AE%89%E8%A3%85-dockerwsl-%E7%AD%89/</guid>
     <description><![CDATA[<!-- # Windows 安装 docker、wsl 等 -->
 <h2 id="安装-wslarchlinux" class="headerLink">
     <a href="#%e5%ae%89%e8%a3%85-wslarchlinux" class="header-mark"></a>安装 WSL——Archlinux</h2><p>控制面板找到 <code>启用或关闭windows功能</code> 勾选 <code>Hyper-V</code> 和 <code>适用于 Linux 的 Windows 子系统</code>（只用勾选后者实际就能WSL安装，如果需要使用原来的 Hyper-V 方式安装 Docker 才需要开启前者，这里直接都打开了），重启系统，执行 <code>wsl --update</code> 更新</p>]]></description>
 </item><item>
     <title>Archlinux 简记</title>
-    <link>https://yuqinlee.github.io/archlinux-%E7%AE%80%E8%AE%B0/</link>
+    <link>https://yuqinlee.github.io/posts/cst/archlinux-%E7%AE%80%E8%AE%B0/</link>
     <pubDate>Wed, 01 Feb 2023 10:18:48 &#43;0800</pubDate><author>
-        <name>作者</name>
-    </author><guid>https://yuqinlee.github.io/archlinux-%E7%AE%80%E8%AE%B0/</guid>
+        <name></name>
+    </author><guid>https://yuqinlee.github.io/posts/cst/archlinux-%E7%AE%80%E8%AE%B0/</guid>
     <description><![CDATA[<!-- # Archlinux 简记 -->
 <h2 id="1-无图形安装" class="headerLink">
     <a href="#1-%e6%97%a0%e5%9b%be%e5%bd%a2%e5%ae%89%e8%a3%85" class="header-mark"></a>1. 无图形安装</h2><h3 id="检查安装模式" class="headerLink">
     <a href="#%e6%a3%80%e6%9f%a5%e5%ae%89%e8%a3%85%e6%a8%a1%e5%bc%8f" class="header-mark"></a>检查安装模式</h3><p>检测是否为 <code>uefi 方式</code> 安装，若为 <code>uefi 方式</code> 则以下命令将输出一堆东西</p>
-<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
