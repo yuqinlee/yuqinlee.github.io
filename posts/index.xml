@@ -1,14 +1,13 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>所有文章 - uchin blog</title>
+        <title>所有文章 - yuchin blog</title>
         <link>https://yuqinlee.github.io/posts/</link>
-        <description>所有文章 | uchin blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yuqin.lee@outlook.com (uchin)</managingEditor>
-            <webMaster>yuqin.lee@outlook.com (uchin)</webMaster><lastBuildDate>Mon, 09 Sep 2024 16:02:58 &#43;0800</lastBuildDate><atom:link href="https://yuqinlee.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <description>所有文章 | yuchin blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 09 Sep 2024 16:02:58 &#43;0800</lastBuildDate><atom:link href="https://yuqinlee.github.io/posts/" rel="self" type="application/rss+xml" /><item>
     <title>Python 版本管理 —— Poetry</title>
     <link>https://yuqinlee.github.io/python-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/</link>
     <pubDate>Mon, 09 Sep 2024 16:02:58 &#43;0800</pubDate><author>
-        <name>uchin</name>
+        <name>作者</name>
     </author><guid>https://yuqinlee.github.io/python-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/</guid>
     <description><![CDATA[<h2 id="poetry-是什么" class="headerLink">
     <a href="#poetry-%e6%98%af%e4%bb%80%e4%b9%88" class="header-mark"></a>poetry 是什么</h2><p>主要针对虚拟环境下的 python 包管理工具</p>
@@ -23,40 +22,35 @@
     <title>zsh 简记</title>
     <link>https://yuqinlee.github.io/zsh-%E7%AE%80%E8%AE%B0/</link>
     <pubDate>Fri, 30 Aug 2024 12:53:55 &#43;0800</pubDate><author>
-        <name>uchin</name>
+        <name>作者</name>
     </author><guid>https://yuqinlee.github.io/zsh-%E7%AE%80%E8%AE%B0/</guid>
     <description><![CDATA[<h2 id="zsh-安装与基础配置" class="headerLink">
     <a href="#zsh-%e5%ae%89%e8%a3%85%e4%b8%8e%e5%9f%ba%e7%a1%80%e9%85%8d%e7%bd%ae" class="header-mark"></a>zsh 安装与基础配置</h2><p>arch</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
-    code-block-title 
     
     tw-flex 
-    tw-flex-row 
+    tw-flex-row
+    tw-flex-1 
     tw-justify-between 
     tw-w-full tw-bg-bgColor-secondary
     ">      
     <button 
       class="
-        tw-select-none 
+        code-block-button
         tw-mx-2 
-        tw-block
-        group-[.is-open]:tw-rotate-90
-        tw-transition-[transform] 
-        tw-duration-500 
-        tw-ease-in-out
-        print:!tw-hidden"
-      disabled
-      aria-hidden="true"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></button>
-
-    <div class="code-block-title-bar tw-w-full">
-      <p class="tw-select-none !tw-my-1">bash</p>]]></description>
+        tw-flex
+        tw-flex-row
+        tw-flex-1"
+      aria-hidden="true">
+          <div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div>
+          <p class="tw-select-none !tw-my-1">bash</p>]]></description>
 </item><item>
     <title>Windows 安装 Docker、wsl 等</title>
     <link>https://yuqinlee.github.io/windows-%E5%AE%89%E8%A3%85-dockerwsl-%E7%AD%89/</link>
     <pubDate>Sat, 22 Jun 2024 17:08:21 &#43;0800</pubDate><author>
-        <name>uchin</name>
+        <name>作者</name>
     </author><guid>https://yuqinlee.github.io/windows-%E5%AE%89%E8%A3%85-dockerwsl-%E7%AD%89/</guid>
     <description><![CDATA[<!-- # Windows 安装 docker、wsl 等 -->
 <h2 id="安装-wslarchlinux" class="headerLink">
@@ -65,39 +59,34 @@
     <title>Linux 文件属性</title>
     <link>https://yuqinlee.github.io/linux-%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7/</link>
     <pubDate>Mon, 04 Sep 2023 17:21:39 &#43;0800</pubDate><author>
-        <name>uchin</name>
+        <name>作者</name>
     </author><guid>https://yuqinlee.github.io/linux-%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7/</guid>
     <description><![CDATA[<!-- # Linux 文件属性 -->
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
-    code-block-title 
     
     tw-flex 
-    tw-flex-row 
+    tw-flex-row
+    tw-flex-1 
     tw-justify-between 
     tw-w-full tw-bg-bgColor-secondary
     ">      
     <button 
       class="
-        tw-select-none 
+        code-block-button
         tw-mx-2 
-        tw-block
-        group-[.is-open]:tw-rotate-90
-        tw-transition-[transform] 
-        tw-duration-500 
-        tw-ease-in-out
-        print:!tw-hidden"
-      disabled
-      aria-hidden="true"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></button>
-
-    <div class="code-block-title-bar tw-w-full">
-      <p class="tw-select-none !tw-my-1">bash</p>]]></description>
+        tw-flex
+        tw-flex-row
+        tw-flex-1"
+      aria-hidden="true">
+          <div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div>
+          <p class="tw-select-none !tw-my-1">bash</p>]]></description>
 </item><item>
     <title>Archlinux 简记</title>
     <link>https://yuqinlee.github.io/archlinux-%E7%AE%80%E8%AE%B0/</link>
     <pubDate>Wed, 01 Feb 2023 10:18:48 &#43;0800</pubDate><author>
-        <name>uchin</name>
+        <name>作者</name>
     </author><guid>https://yuqinlee.github.io/archlinux-%E7%AE%80%E8%AE%B0/</guid>
     <description><![CDATA[<!-- # Archlinux 简记 -->
 <h2 id="1-无图形安装" class="headerLink">
@@ -105,43 +94,37 @@
     <a href="#%e6%a3%80%e6%9f%a5%e5%ae%89%e8%a3%85%e6%a8%a1%e5%bc%8f" class="header-mark"></a>检查安装模式</h3><p>检测是否为 <code>uefi 方式</code> 安装，若为 <code>uefi 方式</code> 则以下命令将输出一堆东西</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
-    code-block-title 
     
     tw-flex 
-    tw-flex-row 
+    tw-flex-row
+    tw-flex-1 
     tw-justify-between 
     tw-w-full tw-bg-bgColor-secondary
     ">      
     <button 
       class="
-        tw-select-none 
+        code-block-button
         tw-mx-2 
-        tw-block
-        group-[.is-open]:tw-rotate-90
-        tw-transition-[transform] 
-        tw-duration-500 
-        tw-ease-in-out
-        print:!tw-hidden"
-      disabled
-      aria-hidden="true"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></button>
-
-    <div class="code-block-title-bar tw-w-full">
-      <p class="tw-select-none !tw-my-1">bash</p>]]></description>
+        tw-flex
+        tw-flex-row
+        tw-flex-1"
+      aria-hidden="true">
+          <div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div>
+          <p class="tw-select-none !tw-my-1">bash</p>]]></description>
 </item><item>
     <title>基于 Swarm 的 Docker 分布式集群管理</title>
     <link>https://yuqinlee.github.io/%E5%9F%BA%E4%BA%8E-swarm-%E7%9A%84-docker-%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/</link>
     <pubDate>Thu, 01 Dec 2022 09:46:11 &#43;0800</pubDate><author>
-        <name>uchin</name>
+        <name>作者</name>
     </author><guid>https://yuqinlee.github.io/%E5%9F%BA%E4%BA%8E-swarm-%E7%9A%84-docker-%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/</guid>
     <description><![CDATA[<!-- # 基于 Swarm 的 Docker 分布式集群管理 -->
 <h2 id="1-序" class="headerLink">
     <a href="#1-%e5%ba%8f" class="header-mark"></a>1. 序</h2><h3 id="11-各虚拟机信息" class="headerLink">
     <a href="#11-%e5%90%84%e8%99%9a%e6%8b%9f%e6%9c%ba%e4%bf%a1%e6%81%af" class="header-mark"></a>1.1 各虚拟机信息</h3><blockquote>
-<p>CentOS 7<br>
+  <p>CentOS 7<br>
 VirtualBox</p>
-</blockquote>
-<table>
+</blockquote><table>
   <thead>
       <tr>
           <th style="text-align: center">虚拟机名</th>
@@ -176,16 +159,16 @@ VirtualBox</p>
     <title>Linux 重定向</title>
     <link>https://yuqinlee.github.io/linux-%E9%87%8D%E5%AE%9A%E5%90%91/</link>
     <pubDate>Fri, 30 Sep 2022 14:11:08 &#43;0800</pubDate><author>
-        <name>uchin</name>
+        <name>作者</name>
     </author><guid>https://yuqinlee.github.io/linux-%E9%87%8D%E5%AE%9A%E5%90%91/</guid>
     <description><![CDATA[<!-- # Linux 重定向 -->
 <blockquote>
-<p>linux重定向可以将命令的输出或输入重新定向到其他位置或文件，以实现对输出输入的控制。默认情况下命令的输出通常为终端，<strong>如果想将输出转移到文件或其他位置，这时候就需要重定向。</strong></p>]]></description>
+  <p>linux重定向可以将命令的输出或输入重新定向到其他位置或文件，以实现对输出输入的控制。默认情况下命令的输出通常为终端，<strong>如果想将输出转移到文件或其他位置，这时候就需要重定向。</strong></p>]]></description>
 </item><item>
     <title>Conda 简记</title>
     <link>https://yuqinlee.github.io/conda-%E7%AE%80%E8%AE%B0/</link>
     <pubDate>Fri, 24 Jun 2022 20:53:39 &#43;0800</pubDate><author>
-        <name>uchin</name>
+        <name>作者</name>
     </author><guid>https://yuqinlee.github.io/conda-%E7%AE%80%E8%AE%B0/</guid>
     <description><![CDATA[<!-- # Anaconda 记录 -->
 <h2 id="1-anaconda-与-miniconda-与-conda" class="headerLink">
@@ -196,12 +179,12 @@ VirtualBox</p>
 <p><strong><a href="https://zh.wikipedia.org/wiki/Conda" target="_blank" rel="noopener noreferrer">维基：conda</a></strong></p>
 <p><strong><a href="https://docs.conda.io/en/latest/" target="_blank" rel="noopener noreferrer">conda官网</a></strong></p>
 <blockquote>
-<p><em>任何语言的包、依赖项和环境管理 — Python、R、Ruby、Lua、Scala、Java、JavaScript、C/C++、FORTRAN 等。</em></p>]]></description>
+  <p><em>任何语言的包、依赖项和环境管理 — Python、R、Ruby、Lua、Scala、Java、JavaScript、C/C++、FORTRAN 等。</em></p>]]></description>
 </item><item>
     <title>Git 使用小结</title>
     <link>https://yuqinlee.github.io/git-%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/</link>
     <pubDate>Mon, 24 Jan 2022 14:44:00 &#43;0800</pubDate><author>
-        <name>uchin</name>
+        <name>作者</name>
     </author><guid>https://yuqinlee.github.io/git-%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/</guid>
     <description><![CDATA[<!-- # Git 使用小结 -->
 <!-- > uchin/李玉勤   -->
@@ -218,17 +201,15 @@ VirtualBox</p>
     <title>区块链与安全Note</title>
     <link>https://yuqinlee.github.io/%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%8E%E5%AE%89%E5%85%A8note/</link>
     <pubDate>Wed, 04 Nov 2020 21:00:40 &#43;0800</pubDate><author>
-        <name>uchin</name>
+        <name>作者</name>
     </author><guid>https://yuqinlee.github.io/%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%8E%E5%AE%89%E5%85%A8note/</guid>
     <description><![CDATA[<!-- <h1>区块链与安全Note</h1> -->
 <blockquote>
-<p>2020-11-04</p>
-</blockquote>
-<!-- >yuqin -->
+  <p>2020-11-04</p>
+</blockquote><!-- >yuqin -->
 <blockquote>
-<p><a href="https://www.bilibili.com/video/av37065233" target="_blank" rel="noopener noreferrer">https://www.bilibili.com/video/av37065233</a></p>
-</blockquote>
-<!-- [toc] -->
+  <p><a href="https://www.bilibili.com/video/av37065233" target="_blank" rel="noopener noreferrer">https://www.bilibili.com/video/av37065233</a></p>
+</blockquote><!-- [toc] -->
 <h2 id="一btc-密码学原理" class="headerLink">
     <a href="#%e4%b8%80btc-%e5%af%86%e7%a0%81%e5%ad%a6%e5%8e%9f%e7%90%86" class="header-mark"></a>一、BTC-密码学原理</h2><h3 id="1-hash" class="headerLink">
     <a href="#1-hash" class="header-mark"></a>1. Hash</h3><h4 id="性质1-collision-resistance" class="headerLink">

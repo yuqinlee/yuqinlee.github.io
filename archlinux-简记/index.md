@@ -425,6 +425,8 @@ sudo pacman -S noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
 
 todo
 
+## 4. wayland-Hyprland
+
 <center> ----- ref ----- </center>
 
 ---
@@ -473,7 +475,30 @@ rofi
 1. [Rofi 配置](https://www.cnblogs.com/siyingcheng/p/11706215.html)
 
 ---
+Hyprland
 
+TODO 目录整理:
+
+- [如何规整你的 Arch Linux 系统](https://blog.inetech.fun/posts/clean-arch/)
+- [Linux 整理魔法：整理 Linux 家目录](https://catcat.cc/post/wn3np/)
+- [wiki: XDG 基本目录](https://wiki.archlinuxcn.org/wiki/XDG_%E5%9F%BA%E6%9C%AC%E7%9B%AE%E5%BD%95#%E5%B7%A5%E5%85%B7)
+- [整理后配置文件](https://github.com/rydesun/dotfiles)
+- [zsh 配置](https://github.com/rydesun/dotfiles)
+
+TODO hyprland教程
+
+配置
+
+- [1](https://github.com/gaurav210233/simple-hyprland/blob/main/README.md)
+- [Hyprland 环境配置与美化](https://cascade.moe/posts/hyprland-configure/)
+- [ArchLinux下Hyprland配置指北](https://www.bilibili.com/read/cv22707313/)
+- [Hyprland設定教學，漂亮又不佔資源的Linux Wayland視窗管理器](https://ivonblog.com/posts/hyprland-setup/#3--%E8%A8%AD%E5%AE%9Ahyprland%E7%9A%84%E9%85%8D%E5%A5%97%E7%A8%8B%E5%BC%8F)
+- [[译] Arch Linux 上的完整 Wayland 设置](https://a-wing.top/linux/2022/01/03/translate_wayland)
+- [声音控制1](https://samwhelp.github.io/note-about-ultramarine-hyprland/read/config/keybind/volume-control.html#pamixer-%E7%89%88%E6%9C%AC)
+- [linux下使用命令行来调节系统音量的两种方法amixer和pactl](https://blog.csdn.net/weixin_43046653/article/details/105583100)
+- [Ubuntu 命令行配置默认声卡、录音播放与音量调节](https://www.jianshu.com/p/fc8c8cad67d6)
+
+---
 其他
 
 1. [archlinux 修复uefi引导启动](http://ivo-wang.github.io/2018/05/29/archlinux-%E4%BF%AE%E5%A4%8Duefi%E5%BC%95%E5%AF%BC%E5%90%AF%E5%8A%A8/)

@@ -1,14 +1,13 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Wsl - 标签 - uchin blog</title>
+        <title>Wsl - 标签 - yuchin blog</title>
         <link>https://yuqinlee.github.io/tags/wsl/</link>
-        <description>Wsl - 标签 - uchin blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yuqin.lee@outlook.com (uchin)</managingEditor>
-            <webMaster>yuqin.lee@outlook.com (uchin)</webMaster><lastBuildDate>Sat, 22 Jun 2024 17:08:21 &#43;0800</lastBuildDate><atom:link href="https://yuqinlee.github.io/tags/wsl/" rel="self" type="application/rss+xml" /><item>
+        <description>Wsl - 标签 - yuchin blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 22 Jun 2024 17:08:21 &#43;0800</lastBuildDate><atom:link href="https://yuqinlee.github.io/tags/wsl/" rel="self" type="application/rss+xml" /><item>
     <title>Windows 安装 Docker、wsl 等</title>
     <link>https://yuqinlee.github.io/windows-%E5%AE%89%E8%A3%85-dockerwsl-%E7%AD%89/</link>
     <pubDate>Sat, 22 Jun 2024 17:08:21 &#43;0800</pubDate><author>
-        <name>uchin</name>
+        <name>作者</name>
     </author><guid>https://yuqinlee.github.io/windows-%E5%AE%89%E8%A3%85-dockerwsl-%E7%AD%89/</guid>
     <description><![CDATA[<!-- # Windows 安装 docker、wsl 等 -->
 <h2 id="安装-wslarchlinux" class="headerLink">

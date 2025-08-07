@@ -1,24 +1,21 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Block Chain - 标签 - uchin blog</title>
+        <title>Block Chain - 标签 - yuchin blog</title>
         <link>https://yuqinlee.github.io/tags/block-chain/</link>
-        <description>Block Chain - 标签 - uchin blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yuqin.lee@outlook.com (uchin)</managingEditor>
-            <webMaster>yuqin.lee@outlook.com (uchin)</webMaster><lastBuildDate>Wed, 04 Nov 2020 21:00:40 &#43;0800</lastBuildDate><atom:link href="https://yuqinlee.github.io/tags/block-chain/" rel="self" type="application/rss+xml" /><item>
+        <description>Block Chain - 标签 - yuchin blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 04 Nov 2020 21:00:40 &#43;0800</lastBuildDate><atom:link href="https://yuqinlee.github.io/tags/block-chain/" rel="self" type="application/rss+xml" /><item>
     <title>区块链与安全Note</title>
     <link>https://yuqinlee.github.io/%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%8E%E5%AE%89%E5%85%A8note/</link>
     <pubDate>Wed, 04 Nov 2020 21:00:40 &#43;0800</pubDate><author>
-        <name>uchin</name>
+        <name>作者</name>
     </author><guid>https://yuqinlee.github.io/%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%8E%E5%AE%89%E5%85%A8note/</guid>
     <description><![CDATA[<!-- <h1>区块链与安全Note</h1> -->
 <blockquote>
-<p>2020-11-04</p>
-</blockquote>
-<!-- >yuqin -->
+  <p>2020-11-04</p>
+</blockquote><!-- >yuqin -->
 <blockquote>
-<p><a href="https://www.bilibili.com/video/av37065233" target="_blank" rel="noopener noreferrer">https://www.bilibili.com/video/av37065233</a></p>
-</blockquote>
-<!-- [toc] -->
+  <p><a href="https://www.bilibili.com/video/av37065233" target="_blank" rel="noopener noreferrer">https://www.bilibili.com/video/av37065233</a></p>
+</blockquote><!-- [toc] -->
 <h2 id="一btc-密码学原理" class="headerLink">
     <a href="#%e4%b8%80btc-%e5%af%86%e7%a0%81%e5%ad%a6%e5%8e%9f%e7%90%86" class="header-mark"></a>一、BTC-密码学原理</h2><h3 id="1-hash" class="headerLink">
     <a href="#1-hash" class="header-mark"></a>1. Hash</h3><h4 id="性质1-collision-resistance" class="headerLink">

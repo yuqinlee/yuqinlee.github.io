@@ -1,79 +1,68 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Linux - 标签 - uchin blog</title>
+        <title>Linux - 标签 - yuchin blog</title>
         <link>https://yuqinlee.github.io/tags/linux/</link>
-        <description>Linux - 标签 - uchin blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yuqin.lee@outlook.com (uchin)</managingEditor>
-            <webMaster>yuqin.lee@outlook.com (uchin)</webMaster><lastBuildDate>Fri, 30 Aug 2024 12:53:55 &#43;0800</lastBuildDate><atom:link href="https://yuqinlee.github.io/tags/linux/" rel="self" type="application/rss+xml" /><item>
+        <description>Linux - 标签 - yuchin blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 30 Aug 2024 12:53:55 &#43;0800</lastBuildDate><atom:link href="https://yuqinlee.github.io/tags/linux/" rel="self" type="application/rss+xml" /><item>
     <title>zsh 简记</title>
     <link>https://yuqinlee.github.io/zsh-%E7%AE%80%E8%AE%B0/</link>
     <pubDate>Fri, 30 Aug 2024 12:53:55 &#43;0800</pubDate><author>
-        <name>uchin</name>
+        <name>作者</name>
     </author><guid>https://yuqinlee.github.io/zsh-%E7%AE%80%E8%AE%B0/</guid>
     <description><![CDATA[<h2 id="zsh-安装与基础配置" class="headerLink">
     <a href="#zsh-%e5%ae%89%e8%a3%85%e4%b8%8e%e5%9f%ba%e7%a1%80%e9%85%8d%e7%bd%ae" class="header-mark"></a>zsh 安装与基础配置</h2><p>arch</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
-    code-block-title 
     
     tw-flex 
-    tw-flex-row 
+    tw-flex-row
+    tw-flex-1 
     tw-justify-between 
     tw-w-full tw-bg-bgColor-secondary
     ">      
     <button 
       class="
-        tw-select-none 
+        code-block-button
         tw-mx-2 
-        tw-block
-        group-[.is-open]:tw-rotate-90
-        tw-transition-[transform] 
-        tw-duration-500 
-        tw-ease-in-out
-        print:!tw-hidden"
-      disabled
-      aria-hidden="true"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></button>
-
-    <div class="code-block-title-bar tw-w-full">
-      <p class="tw-select-none !tw-my-1">bash</p>]]></description>
+        tw-flex
+        tw-flex-row
+        tw-flex-1"
+      aria-hidden="true">
+          <div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div>
+          <p class="tw-select-none !tw-my-1">bash</p>]]></description>
 </item><item>
     <title>Linux 文件属性</title>
     <link>https://yuqinlee.github.io/linux-%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7/</link>
     <pubDate>Mon, 04 Sep 2023 17:21:39 &#43;0800</pubDate><author>
-        <name>uchin</name>
+        <name>作者</name>
     </author><guid>https://yuqinlee.github.io/linux-%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7/</guid>
     <description><![CDATA[<!-- # Linux 文件属性 -->
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
-    code-block-title 
     
     tw-flex 
-    tw-flex-row 
+    tw-flex-row
+    tw-flex-1 
     tw-justify-between 
     tw-w-full tw-bg-bgColor-secondary
     ">      
     <button 
       class="
-        tw-select-none 
+        code-block-button
         tw-mx-2 
-        tw-block
-        group-[.is-open]:tw-rotate-90
-        tw-transition-[transform] 
-        tw-duration-500 
-        tw-ease-in-out
-        print:!tw-hidden"
-      disabled
-      aria-hidden="true"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></button>
-
-    <div class="code-block-title-bar tw-w-full">
-      <p class="tw-select-none !tw-my-1">bash</p>]]></description>
+        tw-flex
+        tw-flex-row
+        tw-flex-1"
+      aria-hidden="true">
+          <div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div>
+          <p class="tw-select-none !tw-my-1">bash</p>]]></description>
 </item><item>
     <title>Archlinux 简记</title>
     <link>https://yuqinlee.github.io/archlinux-%E7%AE%80%E8%AE%B0/</link>
     <pubDate>Wed, 01 Feb 2023 10:18:48 &#43;0800</pubDate><author>
-        <name>uchin</name>
+        <name>作者</name>
     </author><guid>https://yuqinlee.github.io/archlinux-%E7%AE%80%E8%AE%B0/</guid>
     <description><![CDATA[<!-- # Archlinux 简记 -->
 <h2 id="1-无图形安装" class="headerLink">
@@ -81,37 +70,32 @@
     <a href="#%e6%a3%80%e6%9f%a5%e5%ae%89%e8%a3%85%e6%a8%a1%e5%bc%8f" class="header-mark"></a>检查安装模式</h3><p>检测是否为 <code>uefi 方式</code> 安装，若为 <code>uefi 方式</code> 则以下命令将输出一堆东西</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
-    code-block-title 
     
     tw-flex 
-    tw-flex-row 
+    tw-flex-row
+    tw-flex-1 
     tw-justify-between 
     tw-w-full tw-bg-bgColor-secondary
     ">      
     <button 
       class="
-        tw-select-none 
+        code-block-button
         tw-mx-2 
-        tw-block
-        group-[.is-open]:tw-rotate-90
-        tw-transition-[transform] 
-        tw-duration-500 
-        tw-ease-in-out
-        print:!tw-hidden"
-      disabled
-      aria-hidden="true"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></button>
-
-    <div class="code-block-title-bar tw-w-full">
-      <p class="tw-select-none !tw-my-1">bash</p>]]></description>
+        tw-flex
+        tw-flex-row
+        tw-flex-1"
+      aria-hidden="true">
+          <div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div>
+          <p class="tw-select-none !tw-my-1">bash</p>]]></description>
 </item><item>
     <title>Linux 重定向</title>
     <link>https://yuqinlee.github.io/linux-%E9%87%8D%E5%AE%9A%E5%90%91/</link>
     <pubDate>Fri, 30 Sep 2022 14:11:08 &#43;0800</pubDate><author>
-        <name>uchin</name>
+        <name>作者</name>
     </author><guid>https://yuqinlee.github.io/linux-%E9%87%8D%E5%AE%9A%E5%90%91/</guid>
     <description><![CDATA[<!-- # Linux 重定向 -->
 <blockquote>
-<p>linux重定向可以将命令的输出或输入重新定向到其他位置或文件，以实现对输出输入的控制。默认情况下命令的输出通常为终端，<strong>如果想将输出转移到文件或其他位置，这时候就需要重定向。</strong></p>]]></description>
+  <p>linux重定向可以将命令的输出或输入重新定向到其他位置或文件，以实现对输出输入的控制。默认情况下命令的输出通常为终端，<strong>如果想将输出转移到文件或其他位置，这时候就需要重定向。</strong></p>]]></description>
 </item></channel>
 </rss>
