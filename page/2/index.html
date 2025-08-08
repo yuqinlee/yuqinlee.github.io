@@ -15,12 +15,12 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="yuchin-blog">
   <meta name="twitter:description" content="个人技术博客">
-<meta name="application-name" content="yuchin-blog">
-<meta name="apple-mobile-web-app-title" content="yuchin-blog">
+<meta name="application-name" content="ublog">
+<meta name="apple-mobile-web-app-title" content="ublog">
 
-<meta name="theme-color" content="#f8f8f8"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
   
 
@@ -28,10 +28,27 @@
     <link rel="feed" href="/index.xml" type="application/rss+xml" title="yuchin-blog">
 <link rel="stylesheet" href="/css/main.min.css"><link rel="stylesheet" href="/css/style.min.css"><script type="application/ld+json">
         {"@context": "https://schema.org",
-        "@graph": [{
-                "@type": "WebSite",
-                "url": "https://yuqinlee.github.io/","inLanguage": "zh-cn","description": "个人技术博客","copyrightYear":  2025 ,"name": "yuchin-blog"
-            }]}
+        "@graph": [{"@type": "BlogPosting",
+        "headline": "Markdown 小记",
+        "inLanguage": "zh-cn",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://yuqinlee.github.io/posts/cst/markdown-%E5%B0%8F%E8%AE%B0/"
+        },"genre": "posts","keywords":["markdown"],"wordcount":  1068 ,
+        "url": "https://yuqinlee.github.io/posts/cst/markdown-%E5%B0%8F%E8%AE%B0/","datePublished": "2020-02-29T00:56:14+08:00","dateModified": "2020-02-29T00:56:14+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"description": ""
+    },{"@type": "BlogPosting",
+        "headline": "Typora 小记",
+        "inLanguage": "zh-cn",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://yuqinlee.github.io/posts/cst/typora-%E5%B0%8F%E8%AE%B0/"
+        },"genre": "posts","keywords":["markdown","typora"],"wordcount":  528 ,
+        "url": "https://yuqinlee.github.io/posts/cst/typora-%E5%B0%8F%E8%AE%B0/","datePublished": "2020-02-29T00:56:14+08:00","dateModified": "2020-02-29T00:56:14+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"description": ""
+    }]}
         </script></head>
 
 
@@ -62,8 +79,8 @@
             }
         }
       } else { 
-        if ('' === 'light' || '' === 'dark') 
-            setTheme(''), saveTheme(''); 
+        if ('black' === 'light' || 'black' === 'dark') 
+            setTheme('black'), saveTheme('black'); 
         else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');
     }
     let metaColors = {'light': '#f8f8f8','dark': '#161b22'}
@@ -73,7 +90,7 @@
     <div id="mask"></div><header class="desktop print:!tw-hidden" id="header-desktop">
     <div class="header-wrapper">
         <div class="header-title">
-            <a href="/" title="yuchin-blog">yuchin-blog</a>
+            <a href="/" title="yuchin-blog"><img class="tw-inline tw-align-text-bottom tw-mr-1"  src='/images/avatar.jpg'   alt="yuchin blog" height="32" width="32">yuchin blog</a>
         </div>
         <div class="menu">
             <div class="menu-inner"><a class="menu-item"
@@ -81,7 +98,7 @@
                     href="/tags/" > 标签 </a><a class="menu-item"
                     href="/categories/" > 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
                     <input type="text"
-                        placeholder=""
+                        placeholder="搜索文章标题或内容"
                         id="search-input-desktop">
                     <button class="search-button search-toggle" id="search-toggle-desktop" title="">
                         <svg class="icon"
@@ -95,9 +112,14 @@
                         <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49 0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z"/></svg>
                     </span>
-                </span><button class="menu-item theme-switch" aria-label="">
+                </span><button class="menu-item theme-select" aria-label="">
                     <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M8 256c0 136.966 111.033 248 248 248s248-111.034 248-248S392.966 8 256 8 8 119.033 8 256zm248 184V72c101.705 0 184 82.311 184 184 0 101.705-82.311 184-184 184z"/></svg>
+                    <select class="color-theme-select" id="theme-select-desktop" aria-label="">
+                        <option value="light"></option>
+                        <option value="dark"></option>
+                        <option value="auto"></option>
+                    </select>
                 </button></div>
         </div>
     </div>
@@ -105,7 +127,7 @@
     <div class="header-container">
         <div class="header-wrapper">
             <div class="header-title">
-                <a href="/" title="yuchin-blog">yuchin-blog</a>
+                <a href="/" title="yuchin-blog"><img class="tw-inline tw-align-text-bottom tw-mr-1"  src='/images/avatar.jpg'   alt="yuchin blog" height="32" width="32">yuchin blog</a>
             </div>
             <div class="menu-toggle" id="menu-toggle-mobile">
                 <span></span><span></span><span></span>
@@ -114,7 +136,7 @@
         <div class="menu" id="menu-mobile"><div class="search-wrapper">
                 <div class="search mobile" id="search-mobile">
                     <input type="text"
-                        placeholder=""
+                        placeholder="搜索文章标题或内容"
                         id="search-input-mobile">
                     <button class="search-button search-toggle tw-h-10" id="search-toggle-mobile" title="">
                         <svg class="icon"
@@ -132,9 +154,14 @@
                 <button class="search-cancel" id="search-cancel-mobile">
                     
                 </button>
-            </div><a class="menu-item" href="/posts/" title="" >文章</a><a class="menu-item" href="/tags/" title="" >标签</a><a class="menu-item" href="/categories/" title="" >分类</a><button class="menu-item theme-switch tw-w-full" aria-label="">
+            </div><a class="menu-item" href="/posts/" title="" >文章</a><a class="menu-item" href="/tags/" title="" >标签</a><a class="menu-item" href="/categories/" title="" >分类</a><button class="menu-item theme-select tw-w-full" aria-label="">
                 <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M8 256c0 136.966 111.033 248 248 248s248-111.034 248-248S392.966 8 256 8 8 119.033 8 256zm248 184V72c101.705 0 184 82.311 184 184 0 101.705-82.311 184-184 184z"/></svg>
+                <select class="color-theme-select" id="theme-select-mobile" aria-label="">
+                    <option value="light"></option>
+                    <option value="dark"></option>
+                    <option value="auto"></option>
+                </select>
             </button></div>
     </div>
 </header>
@@ -143,7 +170,8 @@
 </div>
 <div class="search-dropdown mobile">
     <div id="search-dropdown-mobile"></div>
-</div><main class="tw-mx-4 tw-flex-1"><div class="page home" posts><div class="home-profile"></div><article class="single summary"><h1 class="single-title">
+</div><main class="tw-mx-4 tw-flex-1"><div class="page home" posts><div class="home-profile"><div class="home-avatar"><a href="/posts/"  title="文章" ><img  loading="eager" src='/images/avatar.jpg'   alt="Home avatar" height="100" width="100"></a></div><div class="links"><a href="https://github.com/yuqinlee" title="GitHub" target="_blank" rel="noopener noreferrer me"><svg class="icon" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreferrer me"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z"/></svg></a></div></div><article class="single summary"><h1 class="single-title">
         <a href="/posts/cst/markdown-%E5%B0%8F%E8%AE%B0/">Markdown 小记</a>
     </h1><div class="post-meta">
         <span class="post-author"><svg class="icon"
@@ -155,7 +183,7 @@
 </blockquote><h2 id="基本语法" class="headerLink">
     <a href="#%e5%9f%ba%e6%9c%ac%e8%af%ad%e6%b3%95" class="header-mark"></a>基本语法</h2><p>语法参考：<a href="https://www.markdown.xyz/basic-syntax/" target="_blank" rel="noopener noreferrer">https://www.markdown.xyz/basic-syntax/</a></p>
 <h3 id="插入表格" class="headerLink">
-    <a href="#%e6%8f%92%e5%85%a5%e8%a1%a8%e6%a0%bc" class="header-mark"></a>插入表格</h3><div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+    <a href="#%e6%8f%92%e5%85%a5%e8%a1%a8%e6%a0%bc" class="header-mark"></a>插入表格</h3><div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -455,10 +483,8 @@
                         <a href="/page/2/">2</a>
                     </span>
                 </li></ul></div></main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">
-                    &nbsp;|&nbsp;
-                </div><div class="footer-line"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"/></svg>2025<span class="author">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer"></a></span></div>
+        <div class="footer-container"><div class="footer-line"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"/></svg>2022 - 2025&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
             <div class="footer-line"></div>
             <div class="footer-line">
             </div>
@@ -468,8 +494,34 @@
   </a>
 
   </div>
-
-<script>window.config={"autocomplete.min.js":"/lib/autocomplete/autocomplete.min.js","pagefind.js":"/pagefind/pagefind.js","search":{"highlightTag":null,"maxResultLength":null,"noResultsFound":"","pageLength":null,"snippetLength":null,"termFrequency":null,"termSaturation":null,"termSimilarity":null,"type":"pagefind"}};</script><script
+<link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript>
+<script>window.config={"autocomplete.min.js":"/lib/autocomplete/autocomplete.min.js","fuse.min.js":"/lib/fuse/fuse.min.js","math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false}};</script><script
+    src="/lib/katex/katex.min.js"
+    
+      defer
+    
+  ></script><script
+    src="/lib/katex/auto-render.min.js"
+    
+      defer
+    
+  ></script><script
+    src="/lib/katex/copy-tex.min.js"
+    
+      defer
+    
+  ></script><script
+    src="/lib/katex/mhchem.min.js"
+    
+      defer
+    
+  ></script><script
+    src="/js/katex.min.js"
+    
+      defer
+    
+  ></script><script
     src="/js/theme.min.js"
     
       defer

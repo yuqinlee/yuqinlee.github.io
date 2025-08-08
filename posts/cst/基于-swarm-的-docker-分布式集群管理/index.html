@@ -26,12 +26,12 @@ Nat：负责虚拟机与外网链接，保持默认 Host-Only：设置静态 ip 
 VirtualBox
 虚拟机名 虚拟磁盘大小 IP Host 映射 myCent_00 100G 192.168.56.101 master myCent_01 50G 192.168.56.104 slave01 myCent_02 50G 192.168.56.103 slave02 注：各虚拟机节点网卡设置如下
 Nat：负责虚拟机与外网链接，保持默认 Host-Only：设置静态 ip 保证集群之间通信 确保每台虚拟机能 ping 通外网网络设置好后，更改主机名与映射，主机名修改后重启生效">
-<meta name="application-name" content="yuchin-blog">
-<meta name="apple-mobile-web-app-title" content="yuchin-blog">
+<meta name="application-name" content="ublog">
+<meta name="apple-mobile-web-app-title" content="ublog">
 
-<meta name="theme-color" content="#f8f8f8"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 <link rel="canonical" href="https://yuqinlee.github.io/posts/cst/%E5%9F%BA%E4%BA%8E-swarm-%E7%9A%84-docker-%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/" /><link rel="prev" href="https://yuqinlee.github.io/posts/cst/linux-%E9%87%8D%E5%AE%9A%E5%90%91/" /><link rel="next" href="https://yuqinlee.github.io/posts/cst/archlinux-%E7%AE%80%E8%AE%B0/" />
 <link rel="stylesheet" href="/css/main.min.css"><link rel="stylesheet" href="/css/style.min.css"><script type="application/ld+json">{"@context": "https://schema.org","@type": "BlogPosting",
@@ -74,8 +74,8 @@ Nat：负责虚拟机与外网链接，保持默认 Host-Only：设置静态 ip 
             }
         }
       } else { 
-        if ('' === 'light' || '' === 'dark') 
-            setTheme(''), saveTheme(''); 
+        if ('black' === 'light' || 'black' === 'dark') 
+            setTheme('black'), saveTheme('black'); 
         else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');
     }
     let metaColors = {'light': '#f8f8f8','dark': '#161b22'}
@@ -85,7 +85,7 @@ Nat：负责虚拟机与外网链接，保持默认 Host-Only：设置静态 ip 
     <div id="mask"></div><header class="desktop print:!tw-hidden" id="header-desktop">
     <div class="header-wrapper">
         <div class="header-title">
-            <a href="/" title="yuchin-blog">yuchin-blog</a>
+            <a href="/" title="yuchin-blog"><img class="tw-inline tw-align-text-bottom tw-mr-1"  src='/images/avatar.jpg'   alt="yuchin blog" height="32" width="32">yuchin blog</a>
         </div>
         <div class="menu">
             <div class="menu-inner"><a class="menu-item"
@@ -93,7 +93,7 @@ Nat：负责虚拟机与外网链接，保持默认 Host-Only：设置静态 ip 
                     href="/tags/" > 标签 </a><a class="menu-item"
                     href="/categories/" > 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
                     <input type="text"
-                        placeholder=""
+                        placeholder="搜索文章标题或内容"
                         id="search-input-desktop">
                     <button class="search-button search-toggle" id="search-toggle-desktop" title="">
                         <svg class="icon"
@@ -107,9 +107,14 @@ Nat：负责虚拟机与外网链接，保持默认 Host-Only：设置静态 ip 
                         <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49 0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z"/></svg>
                     </span>
-                </span><button class="menu-item theme-switch" aria-label="">
+                </span><button class="menu-item theme-select" aria-label="">
                     <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M8 256c0 136.966 111.033 248 248 248s248-111.034 248-248S392.966 8 256 8 8 119.033 8 256zm248 184V72c101.705 0 184 82.311 184 184 0 101.705-82.311 184-184 184z"/></svg>
+                    <select class="color-theme-select" id="theme-select-desktop" aria-label="">
+                        <option value="light"></option>
+                        <option value="dark"></option>
+                        <option value="auto"></option>
+                    </select>
                 </button></div>
         </div>
     </div>
@@ -117,7 +122,7 @@ Nat：负责虚拟机与外网链接，保持默认 Host-Only：设置静态 ip 
     <div class="header-container">
         <div class="header-wrapper">
             <div class="header-title">
-                <a href="/" title="yuchin-blog">yuchin-blog</a>
+                <a href="/" title="yuchin-blog"><img class="tw-inline tw-align-text-bottom tw-mr-1"  src='/images/avatar.jpg'   alt="yuchin blog" height="32" width="32">yuchin blog</a>
             </div>
             <div class="menu-toggle" id="menu-toggle-mobile">
                 <span></span><span></span><span></span>
@@ -126,7 +131,7 @@ Nat：负责虚拟机与外网链接，保持默认 Host-Only：设置静态 ip 
         <div class="menu" id="menu-mobile"><div class="search-wrapper">
                 <div class="search mobile" id="search-mobile">
                     <input type="text"
-                        placeholder=""
+                        placeholder="搜索文章标题或内容"
                         id="search-input-mobile">
                     <button class="search-button search-toggle tw-h-10" id="search-toggle-mobile" title="">
                         <svg class="icon"
@@ -144,9 +149,14 @@ Nat：负责虚拟机与外网链接，保持默认 Host-Only：设置静态 ip 
                 <button class="search-cancel" id="search-cancel-mobile">
                     
                 </button>
-            </div><a class="menu-item" href="/posts/" title="" >文章</a><a class="menu-item" href="/tags/" title="" >标签</a><a class="menu-item" href="/categories/" title="" >分类</a><button class="menu-item theme-switch tw-w-full" aria-label="">
+            </div><a class="menu-item" href="/posts/" title="" >文章</a><a class="menu-item" href="/tags/" title="" >标签</a><a class="menu-item" href="/categories/" title="" >分类</a><button class="menu-item theme-select tw-w-full" aria-label="">
                 <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M8 256c0 136.966 111.033 248 248 248s248-111.034 248-248S392.966 8 256 8 8 119.033 8 256zm248 184V72c101.705 0 184 82.311 184 184 0 101.705-82.311 184-184 184z"/></svg>
+                <select class="color-theme-select" id="theme-select-mobile" aria-label="">
+                    <option value="light"></option>
+                    <option value="dark"></option>
+                    <option value="auto"></option>
+                </select>
             </button></div>
     </div>
 </header>
@@ -155,16 +165,20 @@ Nat：负责虚拟机与外网链接，保持默认 Host-Only：设置静态 ip 
 </div>
 <div class="search-dropdown mobile">
     <div id="search-dropdown-mobile"></div>
-</div><main class="tw-mx-4 tw-flex-1"><dialog id="toc-dialog" class="tw-max-w-full tw-w-full tw-max-h-full tw-h-full tw-ml-16">
-        <div class="toc tw-mx-4 tw-max-w-full">
-            <h2 class="tw-mx-0 tw-my-6 tw-uppercase tw-text-2xl"></h2>
-            <div class="toc-content"><nav id="TableOfContents">
+</div><main class="tw-mx-4 tw-flex-1"><div class="toc print:!tw-hidden" id="toc-auto">
+        <h2 class="toc-title"></h2>
+        <div class="toc-content always-active" id="toc-content-auto"><nav id="TableOfContents">
   <ul>
     <li><a href="#1-序">1. 序</a>
       <ul>
         <li><a href="#11-各虚拟机信息">1.1 各虚拟机信息</a></li>
         <li><a href="#12-ssh-免密登录">1.2 ssh 免密登录</a></li>
-        <li><a href="#13-centos-安装-docker">1.3 CentOS 安装 Docker</a></li>
+        <li><a href="#13-centos-安装-docker">1.3 CentOS 安装 Docker</a>
+          <ul>
+            <li><a href="#131-安装">1.3.1 安装</a></li>
+            <li><a href="#132-更改用户组">1.3.2 更改用户组</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
     <li><a href="#2-docker-网络基础">2. Docker 网络基础</a>
@@ -207,16 +221,145 @@ Nat：负责虚拟机与外网链接，保持默认 Host-Only：设置静态 ip 
     <li><a href="#7-swarm-集群使用">7. Swarm 集群使用</a>
       <ul>
         <li><a href="#71-网络模式">7.1 网络模式</a></li>
-        <li><a href="#72-docker-service">7.2 Docker service</a></li>
+        <li><a href="#72-docker-service">7.2 Docker service</a>
+          <ul>
+            <li><a href="#411-创建服务">4.1.1 创建服务</a></li>
+            <li><a href="#412-查看服务在-manager-节点上执行">4.1.2 查看服务（在 manager 节点上执行）</a></li>
+            <li><a href="#413-更新服务">4.1.3 更新服务</a></li>
+            <li><a href="#414-删除服务命令">4.1.4 删除服务命令</a></li>
+          </ul>
+        </li>
         <li><a href="#73-docker-stack">7.3 Docker stack</a></li>
       </ul>
     </li>
     <li><a href="#8-swarm-工作原理">8. <a href="https://holynull.gitbooks.io/docker-swarm/content/swarmmo-shi-gong-zuo-yuan-li.html">Swarm 工作原理</a></a>
       <ul>
-        <li><a href="#81-节点工作原理">8.1 节点工作原理</a></li>
-        <li><a href="#82-service-工作原理">8.2 Service 工作原理</a></li>
-        <li><a href="#83-安全pki">8.3 安全(PKI)</a></li>
-        <li><a href="#84-task-的状态">8.4 Task 的状态</a></li>
+        <li><a href="#81-节点工作原理">8.1 节点工作原理</a>
+          <ul>
+            <li><a href="#811-manager-节点">8.1.1 Manager 节点</a></li>
+            <li><a href="#812-worker-节点">8.1.2 Worker 节点</a></li>
+            <li><a href="#813-改变节点角色">8.1.3 改变节点角色</a></li>
+          </ul>
+        </li>
+        <li><a href="#82-service-工作原理">8.2 Service 工作原理</a>
+          <ul>
+            <li><a href="#821-servicetasks-and-containers">8.2.1 Service，Tasks and Containers</a></li>
+            <li><a href="#822-task-和调度">8.2.2 task 和调度</a></li>
+            <li><a href="#823-pending-services">8.2.3 Pending services</a></li>
+            <li><a href="#824-复制和全局-service">8.2.4 复制和全局 service</a></li>
+          </ul>
+        </li>
+        <li><a href="#83-安全pki">8.3 安全(PKI)</a>
+          <ul>
+            <li><a href="#831-ca-证书轮换">8.3.1 CA 证书轮换</a></li>
+          </ul>
+        </li>
+        <li><a href="#84-task-的状态">8.4 Task 的状态</a>
+          <ul>
+            <li><a href="#841-查看状态">8.4.1 查看状态</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#附docker-命令参考">附：docker 命令参考</a></li>
+    <li><a href="#附raft-协议参考">附：Raft 协议参考</a></li>
+  </ul>
+</nav></div>
+    </div><dialog id="toc-dialog" class="tw-max-w-full tw-w-full tw-max-h-full tw-h-full tw-ml-16">
+        <div class="toc tw-mx-4 tw-max-w-full">
+            <h2 class="tw-mx-0 tw-my-6 tw-uppercase tw-text-2xl"></h2>
+            <div class="toc-content"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-序">1. 序</a>
+      <ul>
+        <li><a href="#11-各虚拟机信息">1.1 各虚拟机信息</a></li>
+        <li><a href="#12-ssh-免密登录">1.2 ssh 免密登录</a></li>
+        <li><a href="#13-centos-安装-docker">1.3 CentOS 安装 Docker</a>
+          <ul>
+            <li><a href="#131-安装">1.3.1 安装</a></li>
+            <li><a href="#132-更改用户组">1.3.2 更改用户组</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#2-docker-网络基础">2. Docker 网络基础</a>
+      <ul>
+        <li><a href="#21-基本原理">2.1 基本原理</a></li>
+        <li><a href="#22-自定义网络">2.2 自定义网络</a></li>
+        <li><a href="#23-常用命令">2.3 常用命令</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-docker-数据卷">3. Docker 数据卷</a>
+      <ul>
+        <li><a href="#31-基本挂载命令">3.1 基本挂载命令</a></li>
+        <li><a href="#32-具名挂载与匿名挂载">3.2 具名挂载与匿名挂载</a></li>
+        <li><a href="#33-控制权限">3.3 控制权限</a></li>
+        <li><a href="#34-dockerfile-与数据卷">3.4 dockerfile 与数据卷</a></li>
+        <li><a href="#35-数据卷容器">3.5 数据卷容器</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-docker-dokcerfile">4. Docker Dokcerfile</a>
+      <ul>
+        <li><a href="#41-前言">4.1 前言</a></li>
+        <li><a href="#42-dokcerfile-构建">4.2 Dokcerfile 构建</a></li>
+        <li><a href="#43-dockerfile-指令">4.3 Dockerfile 指令</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-docker-compose">5. Docker compose</a>
+      <ul>
+        <li><a href="#51-前言">5.1 前言</a></li>
+        <li><a href="#52-安装">5.2 安装</a></li>
+        <li><a href="#53-测试">5.3 测试</a></li>
+        <li><a href="#54-compose-配置规则">5.4 compose 配置规则</a></li>
+      </ul>
+    </li>
+    <li><a href="#6-swarm-集群部署">6. Swarm 集群部署</a>
+      <ul>
+        <li><a href="#61-集群创建">6.1 集群创建</a></li>
+        <li><a href="#62-基于-portainer-的可视化">6.2 基于 Portainer 的可视化</a></li>
+      </ul>
+    </li>
+    <li><a href="#7-swarm-集群使用">7. Swarm 集群使用</a>
+      <ul>
+        <li><a href="#71-网络模式">7.1 网络模式</a></li>
+        <li><a href="#72-docker-service">7.2 Docker service</a>
+          <ul>
+            <li><a href="#411-创建服务">4.1.1 创建服务</a></li>
+            <li><a href="#412-查看服务在-manager-节点上执行">4.1.2 查看服务（在 manager 节点上执行）</a></li>
+            <li><a href="#413-更新服务">4.1.3 更新服务</a></li>
+            <li><a href="#414-删除服务命令">4.1.4 删除服务命令</a></li>
+          </ul>
+        </li>
+        <li><a href="#73-docker-stack">7.3 Docker stack</a></li>
+      </ul>
+    </li>
+    <li><a href="#8-swarm-工作原理">8. <a href="https://holynull.gitbooks.io/docker-swarm/content/swarmmo-shi-gong-zuo-yuan-li.html">Swarm 工作原理</a></a>
+      <ul>
+        <li><a href="#81-节点工作原理">8.1 节点工作原理</a>
+          <ul>
+            <li><a href="#811-manager-节点">8.1.1 Manager 节点</a></li>
+            <li><a href="#812-worker-节点">8.1.2 Worker 节点</a></li>
+            <li><a href="#813-改变节点角色">8.1.3 改变节点角色</a></li>
+          </ul>
+        </li>
+        <li><a href="#82-service-工作原理">8.2 Service 工作原理</a>
+          <ul>
+            <li><a href="#821-servicetasks-and-containers">8.2.1 Service，Tasks and Containers</a></li>
+            <li><a href="#822-task-和调度">8.2.2 task 和调度</a></li>
+            <li><a href="#823-pending-services">8.2.3 Pending services</a></li>
+            <li><a href="#824-复制和全局-service">8.2.4 复制和全局 service</a></li>
+          </ul>
+        </li>
+        <li><a href="#83-安全pki">8.3 安全(PKI)</a>
+          <ul>
+            <li><a href="#831-ca-证书轮换">8.3.1 CA 证书轮换</a></li>
+          </ul>
+        </li>
+        <li><a href="#84-task-的状态">8.4 Task 的状态</a>
+          <ul>
+            <li><a href="#841-查看状态">8.4.1 查看状态</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
     <li><a href="#附docker-命令参考">附：docker 命令参考</a></li>
@@ -224,7 +367,7 @@ Nat：负责虚拟机与外网链接，保持默认 Host-Only：设置静态 ip 
   </ul>
 </nav></div>
         </div>
-    </dialog><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title" data-pagefind-meta="date:1000-12-12" data-pagefind-body>基于 Swarm 的 Docker 分布式集群管理</h1><div class="post-meta">
+    </dialog><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title" data-pagefind-meta="date:1000-12-12" data-pagefind-body>基于 Swarm 的 Docker 分布式集群管理</h1><div class="post-meta">
             <div class="post-meta-line">
                 <span class="post-author"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"/></svg><a href="/" title="Author" rel=" author" class="author"></a>
@@ -235,7 +378,111 @@ Nat：负责虚拟机与外网链接，保持默认 Host-Only：设置静态 ip 
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;&nbsp;
                     <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;&nbsp;</div>
-        </div><div class="content" id="content" data-pagefind-body><!-- # 基于 Swarm 的 Docker 分布式集群管理 -->
+        </div><div class="details toc print:!tw-block" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span></span>
+                    <span class="details-icon"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-序">1. 序</a>
+      <ul>
+        <li><a href="#11-各虚拟机信息">1.1 各虚拟机信息</a></li>
+        <li><a href="#12-ssh-免密登录">1.2 ssh 免密登录</a></li>
+        <li><a href="#13-centos-安装-docker">1.3 CentOS 安装 Docker</a>
+          <ul>
+            <li><a href="#131-安装">1.3.1 安装</a></li>
+            <li><a href="#132-更改用户组">1.3.2 更改用户组</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#2-docker-网络基础">2. Docker 网络基础</a>
+      <ul>
+        <li><a href="#21-基本原理">2.1 基本原理</a></li>
+        <li><a href="#22-自定义网络">2.2 自定义网络</a></li>
+        <li><a href="#23-常用命令">2.3 常用命令</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-docker-数据卷">3. Docker 数据卷</a>
+      <ul>
+        <li><a href="#31-基本挂载命令">3.1 基本挂载命令</a></li>
+        <li><a href="#32-具名挂载与匿名挂载">3.2 具名挂载与匿名挂载</a></li>
+        <li><a href="#33-控制权限">3.3 控制权限</a></li>
+        <li><a href="#34-dockerfile-与数据卷">3.4 dockerfile 与数据卷</a></li>
+        <li><a href="#35-数据卷容器">3.5 数据卷容器</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-docker-dokcerfile">4. Docker Dokcerfile</a>
+      <ul>
+        <li><a href="#41-前言">4.1 前言</a></li>
+        <li><a href="#42-dokcerfile-构建">4.2 Dokcerfile 构建</a></li>
+        <li><a href="#43-dockerfile-指令">4.3 Dockerfile 指令</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-docker-compose">5. Docker compose</a>
+      <ul>
+        <li><a href="#51-前言">5.1 前言</a></li>
+        <li><a href="#52-安装">5.2 安装</a></li>
+        <li><a href="#53-测试">5.3 测试</a></li>
+        <li><a href="#54-compose-配置规则">5.4 compose 配置规则</a></li>
+      </ul>
+    </li>
+    <li><a href="#6-swarm-集群部署">6. Swarm 集群部署</a>
+      <ul>
+        <li><a href="#61-集群创建">6.1 集群创建</a></li>
+        <li><a href="#62-基于-portainer-的可视化">6.2 基于 Portainer 的可视化</a></li>
+      </ul>
+    </li>
+    <li><a href="#7-swarm-集群使用">7. Swarm 集群使用</a>
+      <ul>
+        <li><a href="#71-网络模式">7.1 网络模式</a></li>
+        <li><a href="#72-docker-service">7.2 Docker service</a>
+          <ul>
+            <li><a href="#411-创建服务">4.1.1 创建服务</a></li>
+            <li><a href="#412-查看服务在-manager-节点上执行">4.1.2 查看服务（在 manager 节点上执行）</a></li>
+            <li><a href="#413-更新服务">4.1.3 更新服务</a></li>
+            <li><a href="#414-删除服务命令">4.1.4 删除服务命令</a></li>
+          </ul>
+        </li>
+        <li><a href="#73-docker-stack">7.3 Docker stack</a></li>
+      </ul>
+    </li>
+    <li><a href="#8-swarm-工作原理">8. <a href="https://holynull.gitbooks.io/docker-swarm/content/swarmmo-shi-gong-zuo-yuan-li.html">Swarm 工作原理</a></a>
+      <ul>
+        <li><a href="#81-节点工作原理">8.1 节点工作原理</a>
+          <ul>
+            <li><a href="#811-manager-节点">8.1.1 Manager 节点</a></li>
+            <li><a href="#812-worker-节点">8.1.2 Worker 节点</a></li>
+            <li><a href="#813-改变节点角色">8.1.3 改变节点角色</a></li>
+          </ul>
+        </li>
+        <li><a href="#82-service-工作原理">8.2 Service 工作原理</a>
+          <ul>
+            <li><a href="#821-servicetasks-and-containers">8.2.1 Service，Tasks and Containers</a></li>
+            <li><a href="#822-task-和调度">8.2.2 task 和调度</a></li>
+            <li><a href="#823-pending-services">8.2.3 Pending services</a></li>
+            <li><a href="#824-复制和全局-service">8.2.4 复制和全局 service</a></li>
+          </ul>
+        </li>
+        <li><a href="#83-安全pki">8.3 安全(PKI)</a>
+          <ul>
+            <li><a href="#831-ca-证书轮换">8.3.1 CA 证书轮换</a></li>
+          </ul>
+        </li>
+        <li><a href="#84-task-的状态">8.4 Task 的状态</a>
+          <ul>
+            <li><a href="#841-查看状态">8.4.1 查看状态</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#附docker-命令参考">附：docker 命令参考</a></li>
+    <li><a href="#附raft-协议参考">附：Raft 协议参考</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content" data-pagefind-body><!-- # 基于 Swarm 的 Docker 分布式集群管理 -->
 <h2 id="1-序" class="headerLink">
     <a href="#1-%e5%ba%8f" class="header-mark"></a>1. 序</h2><h3 id="11-各虚拟机信息" class="headerLink">
     <a href="#11-%e5%90%84%e8%99%9a%e6%8b%9f%e6%9c%ba%e4%bf%a1%e6%81%af" class="header-mark"></a>1.1 各虚拟机信息</h3><blockquote>
@@ -280,7 +527,7 @@ VirtualBox</p>
 <li>Host-Only：设置静态 ip 保证集群之间通信</li>
 </ol>
 <p>确保每台虚拟机能 ping 通外网网络设置好后，更改主机名与映射，主机名修改后重启生效</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -369,15 +616,15 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>vim /etc/hostname <span style="color:#57606a">#修改主机名</span>
-</span></span><span style="display:flex;"><span>vim /etc/hosts    <span style="color:#57606a"># 修改映射</span></span></span></code></pre>
+      "><span class="line"><span class="cl">vim /etc/hostname <span class="c1">#修改主机名</span>
+</span></span><span class="line"><span class="cl">vim /etc/hosts    <span class="c1"># 修改映射</span></span></span></code></pre>
 </div>
 <p>修改后如下：</p>
 <p><img class="tw-inline" loading="lazy" src='%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650679575241.png'   alt="图 2"  ></p>
 <h3 id="12-ssh-免密登录" class="headerLink">
     <a href="#12-ssh-%e5%85%8d%e5%af%86%e7%99%bb%e5%bd%95" class="header-mark"></a>1.2 ssh 免密登录</h3><p><font color='red'>注：免密登录配置的为各节点的 hadoop 用户</font></p>
 <p>以 master 节点为例，生成公钥、修改权限等命令如下</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -466,20 +713,20 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span><span style="color:#6639ba">cd</span> ~
-</span></span><span style="display:flex;"><span>mkdir .ssh
-</span></span><span style="display:flex;"><span><span style="color:#6639ba">cd</span> .ssh
-</span></span><span style="display:flex;"><span><span style="color:#57606a"># rm ./*                                # 删除当前目录下所有内容（首次配置时该目录下无内容，不用删除）</span>
-</span></span><span style="display:flex;"><span>ssh-keygen -t rsa                       <span style="color:#57606a"># 生成公钥</span>
-</span></span><span style="display:flex;"><span>cat ./id_rsa.pub &gt;&gt; ./authorized_keys   <span style="color:#57606a"># 添加至认证文件</span>
-</span></span><span style="display:flex;"><span>chmod <span style="color:#0550ae">700</span> ~/.ssh/                       <span style="color:#57606a"># 赋予.ssh文件700权限,有的机器必须，但有的是可选</span>
-</span></span><span style="display:flex;"><span>chmod <span style="color:#0550ae">600</span> ./authorized_keys             <span style="color:#57606a"># 赋予认证文件600权限</span>
-</span></span><span style="display:flex;"><span>ssh localhost                           <span style="color:#57606a"># 测试</span></span></span></code></pre>
+      "><span class="line"><span class="cl"><span class="nb">cd</span> ~
+</span></span><span class="line"><span class="cl">mkdir .ssh
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> .ssh
+</span></span><span class="line"><span class="cl"><span class="c1"># rm ./*                                # 删除当前目录下所有内容（首次配置时该目录下无内容，不用删除）</span>
+</span></span><span class="line"><span class="cl">ssh-keygen -t rsa                       <span class="c1"># 生成公钥</span>
+</span></span><span class="line"><span class="cl">cat ./id_rsa.pub &gt;&gt; ./authorized_keys   <span class="c1"># 添加至认证文件</span>
+</span></span><span class="line"><span class="cl">chmod <span class="m">700</span> ~/.ssh/                       <span class="c1"># 赋予.ssh文件700权限,有的机器必须，但有的是可选</span>
+</span></span><span class="line"><span class="cl">chmod <span class="m">600</span> ./authorized_keys             <span class="c1"># 赋予认证文件600权限</span>
+</span></span><span class="line"><span class="cl">ssh localhost                           <span class="c1"># 测试</span></span></span></code></pre>
 </div>
 <p>退出登录执行 <code>exit</code> 即可，至此 master 节点上公钥、文件权限修改完成，要使得 master 能免密登录其他节点，将 master 的公钥传给其他节点，并让其追加至认证文件即可<br>
 即：要免密登录谁，就将自己的公钥给他，让他写入认证文件 <code>authorized_keys</code> 中</p>
 <p>发送 master 的公钥至 slave01 节点</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -568,11 +815,11 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span><span style="color:#6639ba">cd</span> ~.ssh
-</span></span><span style="display:flex;"><span>scp ./id_rsa.pub slave01:~/.ssh/id_master</span></span></code></pre>
+      "><span class="line"><span class="cl"><span class="nb">cd</span> ~.ssh
+</span></span><span class="line"><span class="cl">scp ./id_rsa.pub slave01:~/.ssh/id_master</span></span></code></pre>
 </div>
 <p>登录至 slave01 ，将 master 的公钥追加到认证文件，其他节点类似</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -661,17 +908,17 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span><span style="color:#6639ba">cd</span> ~/.ssh
-</span></span><span style="display:flex;"><span>cat ./id_master &gt;&gt; ./authorized_keys
-</span></span><span style="display:flex;"><span>chmod <span style="color:#0550ae">700</span> ~/.ssh/           <span style="color:#57606a"># 赋予.ssh文件700权限,有的机器必须，但有的是可选</span>
-</span></span><span style="display:flex;"><span>chmod <span style="color:#0550ae">600</span> ./authorized_keys <span style="color:#57606a"># 赋予认证文件600权限</span></span></span></code></pre>
+      "><span class="line"><span class="cl"><span class="nb">cd</span> ~/.ssh
+</span></span><span class="line"><span class="cl">cat ./id_master &gt;&gt; ./authorized_keys
+</span></span><span class="line"><span class="cl">chmod <span class="m">700</span> ~/.ssh/           <span class="c1"># 赋予.ssh文件700权限,有的机器必须，但有的是可选</span>
+</span></span><span class="line"><span class="cl">chmod <span class="m">600</span> ./authorized_keys <span class="c1"># 赋予认证文件600权限</span></span></span></code></pre>
 </div>
 <h3 id="13-centos-安装-docker" class="headerLink">
     <a href="#13-centos-%e5%ae%89%e8%a3%85-docker" class="header-mark"></a>1.3 CentOS 安装 Docker</h3><h4 id="131-安装" class="headerLink">
     <a href="#131-%e5%ae%89%e8%a3%85" class="header-mark"></a>1.3.1 安装</h4><ol>
 <li>
 <p>更新 yum</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -760,12 +1007,12 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>sudo yum -y update</span></span></code></pre>
+      "><span class="line"><span class="cl">sudo yum -y update</span></span></code></pre>
 </div>
 </li>
 <li>
 <p>添加源，选一个即可，考虑国内网络，这里使用的是阿里的源</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -854,17 +1101,17 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span><span style="color:#57606a"># 阿里仓库</span>
-</span></span><span style="display:flex;"><span>sudo yum-config-manager --add-repo http://mirrors.  aliyun.com/docker-ce/linux/centos/docker-ce.repo
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#57606a"># 中央仓库</span>
-</span></span><span style="display:flex;"><span><span style="color:#57606a"># sudo yum-config-manager --add-repo http://download. docker.com/linux/centos/docker-ce.repo</span></span></span></code></pre>
+      "><span class="line"><span class="cl"><span class="c1"># 阿里仓库</span>
+</span></span><span class="line"><span class="cl">sudo yum-config-manager --add-repo http://mirrors.  aliyun.com/docker-ce/linux/centos/docker-ce.repo
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 中央仓库</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># sudo yum-config-manager --add-repo http://download. docker.com/linux/centos/docker-ce.repo</span></span></span></code></pre>
 </div>
 <p><font color='red'>注：这里没有添加源的话，yum 默认是没有 docker 的包安装的</font></p>
 </li>
 <li>
 <p>查看可用版本</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -953,12 +1200,12 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>yum list docker-ce --showduplicates <span style="color:#1f2328">|</span> sort -r</span></span></code></pre>
+      "><span class="line"><span class="cl">yum list docker-ce --showduplicates <span class="p">|</span> sort -r</span></span></code></pre>
 </div>
 </li>
 <li>
 <p>安装</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -1047,7 +1294,7 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>sudo yum -y install docker-ce-18.03.1.ce</span></span></code></pre>
+      "><span class="line"><span class="cl">sudo yum -y install docker-ce-18.03.1.ce</span></span></code></pre>
 </div>
 <p>安装完成如图</p>
 <p><img class="tw-inline" loading="lazy" src='%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650642608352.png'   alt="图 1"  ></p>
@@ -1057,7 +1304,7 @@ VirtualBox</p>
     <a href="#132-%e6%9b%b4%e6%94%b9%e7%94%a8%e6%88%b7%e7%bb%84" class="header-mark"></a>1.3.2 更改用户组</h4><ol>
 <li>
 <p>查看用户组命令</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -1146,14 +1393,14 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>groups hadoop
-</span></span><span style="display:flex;"><span><span style="color:#57606a"># hadoop : hadoop docker</span></span></span></code></pre>
+      "><span class="line"><span class="cl">groups hadoop
+</span></span><span class="line"><span class="cl"><span class="c1"># hadoop : hadoop docker</span></span></span></code></pre>
 </div>
 </li>
 <li>
 <p>创建 docker 用户组，添加当前用户<br>
 在安装完 docker 后默认会创建 docker 用户组</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -1242,9 +1489,9 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>sudo groupadd docker            <span style="color:#57606a"># 新建 docker 组</span>
-</span></span><span style="display:flex;"><span>sudo usermod -aG docker <span style="color:#953800">$USER</span>   <span style="color:#57606a"># 添加当前用户至docker组</span>
-</span></span><span style="display:flex;"><span>newgrp docker                   <span style="color:#57606a">#更新</span></span></span></code></pre>
+      "><span class="line"><span class="cl">sudo groupadd docker            <span class="c1"># 新建 docker 组</span>
+</span></span><span class="line"><span class="cl">sudo usermod -aG docker <span class="nv">$USER</span>   <span class="c1"># 添加当前用户至docker组</span>
+</span></span><span class="line"><span class="cl">newgrp docker                   <span class="c1">#更新</span></span></span></code></pre>
 </div>
 <p>执行更新命令后就不会再出现 <code>Got permission denied while trying to connect to the Docker daemon socket...</code> 报错了，或者修改用户组后退出当前终端并重新登录进行测试</p>
 </li>
@@ -1340,28 +1587,28 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span><span style="color:#57606a"># 启动 docker</span>
-</span></span><span style="display:flex;"><span>systemctl start docker
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#57606a"># 设置开机自启</span>
-</span></span><span style="display:flex;"><span>systemctl <span style="color:#6639ba">enable</span> docker
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#57606a"># 设置开机自启并立即启动docker服务（相当于以上两条命令都执行）</span>
-</span></span><span style="display:flex;"><span>systemctl <span style="color:#6639ba">enable</span> --now docker
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#57606a"># 重启docker</span>
-</span></span><span style="display:flex;"><span>systemctl restart docker
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#57606a"># 停止docker</span>
-</span></span><span style="display:flex;"><span>systemctl stop docker
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#57606a"># 移除开机自启</span>
-</span></span><span style="display:flex;"><span>systemctl disable docker</span></span></code></pre>
+      "><span class="line"><span class="cl"><span class="c1"># 启动 docker</span>
+</span></span><span class="line"><span class="cl">systemctl start docker
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 设置开机自启</span>
+</span></span><span class="line"><span class="cl">systemctl <span class="nb">enable</span> docker
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 设置开机自启并立即启动docker服务（相当于以上两条命令都执行）</span>
+</span></span><span class="line"><span class="cl">systemctl <span class="nb">enable</span> --now docker
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 重启docker</span>
+</span></span><span class="line"><span class="cl">systemctl restart docker
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 停止docker</span>
+</span></span><span class="line"><span class="cl">systemctl stop docker
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 移除开机自启</span>
+</span></span><span class="line"><span class="cl">systemctl disable docker</span></span></code></pre>
 </div>
 </li>
 <li>
 <p>测试安装是否成功</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -1450,7 +1697,7 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>docker run --rm hello-world</span></span></code></pre>
+      "><span class="line"><span class="cl">docker run --rm hello-world</span></span></code></pre>
 </div>
 <p><img class="tw-inline" loading="lazy" src='%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650681556408.png'   alt="图 3"  ></p>
 <p>注：首次执行需要拉去镜像，会花一段时间</p>
@@ -1481,7 +1728,7 @@ VirtualBox</p>
 <li>host：和宿主机共享网络</li>
 <li>container：容器内网络连通（用的少）</li>
 </ol>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -1570,15 +1817,15 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>docker run -it -P --name mycentos centos
-</span></span><span style="display:flex;"><span><span style="color:#57606a"># docker run -it -P --name mycentos --net bridge centos</span></span></span></code></pre>
+      "><span class="line"><span class="cl">docker run -it -P --name mycentos centos
+</span></span><span class="line"><span class="cl"><span class="c1"># docker run -it -P --name mycentos --net bridge centos</span></span></span></code></pre>
 </div>
 <p>上述两个命令等价，因为默认创建就是使用的 bridge</p>
 <p>docker0 特点：默认的，但是域名不能访问，使用 <code>--link</code> 可以打通连接</p>
 <p><font color='red'>&ndash;link 有待学习</font></p>
 <h3 id="23-常用命令" class="headerLink">
     <a href="#23-%e5%b8%b8%e7%94%a8%e5%91%bd%e4%bb%a4" class="header-mark"></a>2.3 常用命令</h3><p><a href="https://blog.csdn.net/gezhonglei2007/article/details/51627821" target="_blank" rel="noopener noreferrer">Docker network 子命令</a>如下：</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -1667,17 +1914,17 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>docker network create       <span style="color:#57606a"># 创建网络</span>
-</span></span><span style="display:flex;"><span>docker network connect      <span style="color:#57606a"># 连接</span>
-</span></span><span style="display:flex;"><span>docker network ls           <span style="color:#57606a"># 列出网络</span>
-</span></span><span style="display:flex;"><span>docker network rm           <span style="color:#57606a"># 删除网络</span>
-</span></span><span style="display:flex;"><span>docker network disconnect   <span style="color:#57606a"># 断开连接</span>
-</span></span><span style="display:flex;"><span>docker network inspect      <span style="color:#57606a"># 列出某网络详细信息</span></span></span></code></pre>
+      "><span class="line"><span class="cl">docker network create       <span class="c1"># 创建网络</span>
+</span></span><span class="line"><span class="cl">docker network connect      <span class="c1"># 连接</span>
+</span></span><span class="line"><span class="cl">docker network ls           <span class="c1"># 列出网络</span>
+</span></span><span class="line"><span class="cl">docker network rm           <span class="c1"># 删除网络</span>
+</span></span><span class="line"><span class="cl">docker network disconnect   <span class="c1"># 断开连接</span>
+</span></span><span class="line"><span class="cl">docker network inspect      <span class="c1"># 列出某网络详细信息</span></span></span></code></pre>
 </div>
 <h2 id="3-docker-数据卷" class="headerLink">
     <a href="#3-docker-%e6%95%b0%e6%8d%ae%e5%8d%b7" class="header-mark"></a>3. Docker 数据卷</h2><h3 id="31-基本挂载命令" class="headerLink">
     <a href="#31-%e5%9f%ba%e6%9c%ac%e6%8c%82%e8%bd%bd%e5%91%bd%e4%bb%a4" class="header-mark"></a>3.1 基本挂载命令</h3><p>使用 <code>-v</code> 命令挂载</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -1766,10 +2013,10 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>docker run -it -v 主机目录:容器内目录</span></span></code></pre>
+      "><span class="line"><span class="cl">docker run -it -v 主机目录:容器内目录</span></span></code></pre>
 </div>
 <p><code>-v</code> 后进行的目录映射，类似于端口映射 <code>-p 主机端口:容器内端口</code></p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -1858,11 +2105,11 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>docker run -it -v /home/hadoop/utest/test_docker_volume/:/home centos /bin/bash</span></span></code></pre>
+      "><span class="line"><span class="cl">docker run -it -v /home/hadoop/utest/test_docker_volume/:/home centos /bin/bash</span></span></code></pre>
 </div>
 <p>这样，当在容器内部指定的目录内创建文件、文件夹等操作后会与主机对应的目录同步；同样的，在主机相应的目录中的操作也会同步到容器的响应目录中，这样当容器关闭后数据就能保存下来</p>
 <p>当需要挂载多个目录时可使用多个 <code>-v</code> 参数，例如</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -1951,12 +2198,12 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>docker run -d -p 3310:3306 -v /home/hadoop/utest/test_docker_volume/mysql/conf:/etc/mysql/conf.d -v /home/hadoop/utest/test_docker_volume/mysql/data:/var/lib/mysql -e <span style="color:#953800">MYSQL_ROOT_PASSWORD</span><span style="color:#0550ae">=</span><span style="color:#0550ae">123456</span> --name mysql01 mysql</span></span></code></pre>
+      "><span class="line"><span class="cl">docker run -d -p 3310:3306 -v /home/hadoop/utest/test_docker_volume/mysql/conf:/etc/mysql/conf.d -v /home/hadoop/utest/test_docker_volume/mysql/data:/var/lib/mysql -e <span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span><span class="m">123456</span> --name mysql01 mysql</span></span></code></pre>
 </div>
 <p>以上 <code>-e</code> 是指定环境，这里指定了密码</p>
 <h3 id="32-具名挂载与匿名挂载" class="headerLink">
     <a href="#32-%e5%85%b7%e5%90%8d%e6%8c%82%e8%bd%bd%e4%b8%8e%e5%8c%bf%e5%90%8d%e6%8c%82%e8%bd%bd" class="header-mark"></a>3.2 具名挂载与匿名挂载</h3><p>以上挂载时，指定了主机内对应的映射，如果不指定主机的目录，只在 <code>-v</code> 后声明容器内要被映射的目录，那就是<strong>匿名挂载</strong>，例如</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -2045,13 +2292,13 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>docker run -d -P --name nginx01 -v /etc/nginx nginx</span></span></code></pre>
+      "><span class="line"><span class="cl">docker run -d -P --name nginx01 -v /etc/nginx nginx</span></span></code></pre>
 </div>
 <blockquote>
   <p>-P 是随机端口映射</p>
 </blockquote><p>上述挂载就至指定了容器内的目录</p>
 <p>使用</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -2140,10 +2387,10 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>docker volume ls</span></span></code></pre>
+      "><span class="line"><span class="cl">docker volume ls</span></span></code></pre>
 </div>
 <p>查看所有卷</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -2232,15 +2479,15 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>(base) [hadoop@master test_docker_volume]$ docker volume ls
-</span></span><span style="display:flex;"><span>DRIVER              VOLUME NAME
-</span></span><span style="display:flex;"><span>local               137b54d6bf243bdd8d87e89f991597ca283780e1396d9fc7ec32623362cbdb8e
-</span></span><span style="display:flex;"><span>local               441ffaf533e1a0c851f59690a287fc28aa85df60a7ad352c5d98cdc5680f2ddf
-</span></span><span style="display:flex;"><span>local               b63721368502cc85d467e02fa2a7189f25c8a509553c23155e81947402ecf2a2
-</span></span><span style="display:flex;"><span>local               portainer_data</span></span></code></pre>
+      "><span class="line"><span class="cl">(base) [hadoop@master test_docker_volume]$ docker volume ls
+</span></span><span class="line"><span class="cl">DRIVER              VOLUME NAME
+</span></span><span class="line"><span class="cl">local               137b54d6bf243bdd8d87e89f991597ca283780e1396d9fc7ec32623362cbdb8e
+</span></span><span class="line"><span class="cl">local               441ffaf533e1a0c851f59690a287fc28aa85df60a7ad352c5d98cdc5680f2ddf
+</span></span><span class="line"><span class="cl">local               b63721368502cc85d467e02fa2a7189f25c8a509553c23155e81947402ecf2a2
+</span></span><span class="line"><span class="cl">local               portainer_data</span></span></code></pre>
 </div>
 <p>上述前三条就是匿名挂载，如果在 <code>-v</code> 后指定卷名，那就是具名挂载，例如</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -2329,7 +2576,7 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>docker run -it -v juming:/home centos /bin/bash</span></span></code></pre>
+      "><span class="line"><span class="cl">docker run -it -v juming:/home centos /bin/bash</span></span></code></pre>
 </div>
 <p>使用 <code>docker volume inspect 卷名</code> 查看该卷</p>
 <div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
@@ -2421,25 +2668,25 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>(base) [hadoop@master run]$ docker volume inspect juming
-</span></span><span style="display:flex;"><span>[
-</span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        &#34;CreatedAt&#34;: &#34;2022-04-26T15:04:52+08:00&#34;,
-</span></span><span style="display:flex;"><span>        &#34;Driver&#34;: &#34;local&#34;,
-</span></span><span style="display:flex;"><span>        &#34;Labels&#34;: null,
-</span></span><span style="display:flex;"><span>        &#34;Mountpoint&#34;: &#34;/var/lib/docker/volumes/juming/_data&#34;,
-</span></span><span style="display:flex;"><span>        &#34;Name&#34;: &#34;juming&#34;,
-</span></span><span style="display:flex;"><span>        &#34;Options&#34;: null,
-</span></span><span style="display:flex;"><span>        &#34;Scope&#34;: &#34;local&#34;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>]
-</span></span><span style="display:flex;"><span>(base) [hadoop@master run]$</span></span></code></pre>
+      "><span class="line"><span class="cl">(base) [hadoop@master run]$ docker volume inspect juming
+</span></span><span class="line"><span class="cl">[
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">        &#34;CreatedAt&#34;: &#34;2022-04-26T15:04:52+08:00&#34;,
+</span></span><span class="line"><span class="cl">        &#34;Driver&#34;: &#34;local&#34;,
+</span></span><span class="line"><span class="cl">        &#34;Labels&#34;: null,
+</span></span><span class="line"><span class="cl">        &#34;Mountpoint&#34;: &#34;/var/lib/docker/volumes/juming/_data&#34;,
+</span></span><span class="line"><span class="cl">        &#34;Name&#34;: &#34;juming&#34;,
+</span></span><span class="line"><span class="cl">        &#34;Options&#34;: null,
+</span></span><span class="line"><span class="cl">        &#34;Scope&#34;: &#34;local&#34;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">]
+</span></span><span class="line"><span class="cl">(base) [hadoop@master run]$</span></span></code></pre>
 </div>
 <p>可以看到该卷在主机上的挂载点为 <code>/var/lib/docker/volumes/juming/_data</code></p>
 <p>所有的 docker 容器卷，在没有指定目录的情况下都是在 <code>/var/lib/docker/volumes/xxx/_data</code> 处，其中 <code>xxx</code> 是卷名，<code>_data</code> 下放数据</p>
 <p>通过具名挂载可以很方便找到一个卷，大多数时候都使用<strong>具名挂载</strong></p>
 <h3 id="33-控制权限" class="headerLink">
-    <a href="#33-%e6%8e%a7%e5%88%b6%e6%9d%83%e9%99%90" class="header-mark"></a>3.3 控制权限</h3><div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+    <a href="#33-%e6%8e%a7%e5%88%b6%e6%9d%83%e9%99%90" class="header-mark"></a>3.3 控制权限</h3><div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -2528,15 +2775,15 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>docker run -it -v juming:/home:ro centos /bin/bash
-</span></span><span style="display:flex;"><span>docker run -it -v juming:/home:rw centos /bin/bash</span></span></code></pre>
+      "><span class="line"><span class="cl">docker run -it -v juming:/home:ro centos /bin/bash
+</span></span><span class="line"><span class="cl">docker run -it -v juming:/home:rw centos /bin/bash</span></span></code></pre>
 </div>
 <p>上述添加了 <code>ro</code>、<code>rw</code> 分别表示只读与可读写，一旦设定了只读，那说明这个目录<strong>只能通过宿主机来进行改变</strong>，容器内部是无法操作的</p>
 <h3 id="34-dockerfile-与数据卷" class="headerLink">
     <a href="#34-dockerfile-%e4%b8%8e%e6%95%b0%e6%8d%ae%e5%8d%b7" class="header-mark"></a>3.4 dockerfile 与数据卷</h3><ol>
 <li>
 <p>创建 <code>dockerfile</code></p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -2625,16 +2872,16 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span><span style="color:#cf222e">FROM</span><span style="color:#0a3069"> centos</span><span style="color:#f6f8fa;background-color:#82071e">
-</span></span></span><span style="display:flex;"><span><span style="color:#f6f8fa;background-color:#82071e"></span><span style="color:#cf222e">VOLUME</span> <span style="color:#1f2328">[</span><span style="color:#0a3069">&#34;volume01&#34;</span><span style="color:#1f2328">,</span><span style="color:#0a3069">&#34;volume02&#34;</span><span style="color:#1f2328">]</span><span style="color:#f6f8fa;background-color:#82071e">
-</span></span></span><span style="display:flex;"><span><span style="color:#f6f8fa;background-color:#82071e"></span><span style="color:#cf222e">CMD</span> <span style="color:#6639ba">echo</span> <span style="color:#0a3069">&#34;--------- end ---------&#34;</span><span style="color:#f6f8fa;background-color:#82071e">
-</span></span></span><span style="display:flex;"><span><span style="color:#f6f8fa;background-color:#82071e"></span><span style="color:#cf222e">CMD</span> /bin/bash</span></span></code></pre>
+      "><span class="line"><span class="cl"><span class="k">FROM</span><span class="s"> centos</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">VOLUME</span> <span class="p">[</span><span class="s2">&#34;volume01&#34;</span><span class="p">,</span><span class="s2">&#34;volume02&#34;</span><span class="p">]</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">CMD</span> <span class="nb">echo</span> <span class="s2">&#34;--------- end ---------&#34;</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">CMD</span> /bin/bash</span></span></code></pre>
 </div>
 <p>这里的每个命令就是镜像的一层，这里通过生成镜像的方式使得在容器创建时候就挂载不需要再指定参数</p>
 </li>
 <li>
 <p>构建</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -2723,7 +2970,7 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>docker build -f dockerfile1 -t uchin_centos .</span></span></code></pre>
+      "><span class="line"><span class="cl">docker build -f dockerfile1 -t uchin_centos .</span></span></code></pre>
 </div>
 <p>上述 <code>-f</code> 指定 dockerfile 文件，<code>-t</code> 即 target，指定生成的镜像名，最后指定生成后的路径</p>
 <div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
@@ -2815,32 +3062,32 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>(base) [hadoop@master test_docker_volume]$ docker build -f dockerfile1 -t uchin_centos .
-</span></span><span style="display:flex;"><span>Sending build context to Docker daemon  2.048kB
-</span></span><span style="display:flex;"><span>Step 1/4 : FROM centos
-</span></span><span style="display:flex;"><span> ---&gt; 5d0da3dc9764
-</span></span><span style="display:flex;"><span>Step 2/4 : VOLUME [&#34;volume01&#34;,&#34;volume02&#34;]
-</span></span><span style="display:flex;"><span> ---&gt; Running in 8ce46c7e7766
-</span></span><span style="display:flex;"><span>Removing intermediate container 8ce46c7e7766
-</span></span><span style="display:flex;"><span> ---&gt; 3019041d4948
-</span></span><span style="display:flex;"><span>Step 3/4 : CMD echo &#34;--------- end ---------&#34;
-</span></span><span style="display:flex;"><span> ---&gt; Running in b4647234f83d
-</span></span><span style="display:flex;"><span>Removing intermediate container b4647234f83d
-</span></span><span style="display:flex;"><span> ---&gt; b61a9aa5313f
-</span></span><span style="display:flex;"><span>Step 4/4 : CMD /bin/bash
-</span></span><span style="display:flex;"><span> ---&gt; Running in 8669d24b2112
-</span></span><span style="display:flex;"><span>Removing intermediate container 8669d24b2112
-</span></span><span style="display:flex;"><span> ---&gt; 8ea7424ac06e
-</span></span><span style="display:flex;"><span>Successfully built 8ea7424ac06e
-</span></span><span style="display:flex;"><span>Successfully tagged uchin_centos:latest
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>(base) [hadoop@master test_docker_volume]$ docker image ls | grep uchin_centos
-</span></span><span style="display:flex;"><span>uchin_centos          latest              8ea7424ac06e        2 minutes ago       231MB</span></span></code></pre>
+      "><span class="line"><span class="cl">(base) [hadoop@master test_docker_volume]$ docker build -f dockerfile1 -t uchin_centos .
+</span></span><span class="line"><span class="cl">Sending build context to Docker daemon  2.048kB
+</span></span><span class="line"><span class="cl">Step 1/4 : FROM centos
+</span></span><span class="line"><span class="cl"> ---&gt; 5d0da3dc9764
+</span></span><span class="line"><span class="cl">Step 2/4 : VOLUME [&#34;volume01&#34;,&#34;volume02&#34;]
+</span></span><span class="line"><span class="cl"> ---&gt; Running in 8ce46c7e7766
+</span></span><span class="line"><span class="cl">Removing intermediate container 8ce46c7e7766
+</span></span><span class="line"><span class="cl"> ---&gt; 3019041d4948
+</span></span><span class="line"><span class="cl">Step 3/4 : CMD echo &#34;--------- end ---------&#34;
+</span></span><span class="line"><span class="cl"> ---&gt; Running in b4647234f83d
+</span></span><span class="line"><span class="cl">Removing intermediate container b4647234f83d
+</span></span><span class="line"><span class="cl"> ---&gt; b61a9aa5313f
+</span></span><span class="line"><span class="cl">Step 4/4 : CMD /bin/bash
+</span></span><span class="line"><span class="cl"> ---&gt; Running in 8669d24b2112
+</span></span><span class="line"><span class="cl">Removing intermediate container 8669d24b2112
+</span></span><span class="line"><span class="cl"> ---&gt; 8ea7424ac06e
+</span></span><span class="line"><span class="cl">Successfully built 8ea7424ac06e
+</span></span><span class="line"><span class="cl">Successfully tagged uchin_centos:latest
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">(base) [hadoop@master test_docker_volume]$ docker image ls | grep uchin_centos
+</span></span><span class="line"><span class="cl">uchin_centos          latest              8ea7424ac06e        2 minutes ago       231MB</span></span></code></pre>
 </div>
 </li>
 <li>
 <p>测试</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -2929,10 +3176,10 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>docker run -it uchin_centos /bin/bash</span></span></code></pre>
+      "><span class="line"><span class="cl">docker run -it uchin_centos /bin/bash</span></span></code></pre>
 </div>
 <p>进入容器后发现指定的数据卷就被自动挂载了</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -3021,9 +3268,9 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>[root@5a1789b7990c /]# ls -l | grep volume
-</span></span><span style="display:flex;"><span>drwxr-xr-x.   2 root root   6 Apr 26 07:36 volume01
-</span></span><span style="display:flex;"><span>drwxr-xr-x.   2 root root   6 Apr 26 07:36 volume02</span></span></code></pre>
+      "><span class="line"><span class="cl">[root@5a1789b7990c /]# ls -l | grep volume
+</span></span><span class="line"><span class="cl">drwxr-xr-x.   2 root root   6 Apr 26 07:36 volume01
+</span></span><span class="line"><span class="cl">drwxr-xr-x.   2 root root   6 Apr 26 07:36 volume02</span></span></code></pre>
 </div>
 <p>并且这个卷和外部是同步的，但是在 dockerfile 中使用的是<strong>匿名挂载</strong>的方式，可以使用 <code>inspect</code> 方式查询其具体位置</p>
 <p>这种方式使用十分多，通常我们都会自己构建镜像，假设构建镜像时没有挂载卷，就手动使用 <code>-v</code> 方式挂载</p>
@@ -3032,7 +3279,7 @@ VirtualBox</p>
 <h3 id="35-数据卷容器" class="headerLink">
     <a href="#35-%e6%95%b0%e6%8d%ae%e5%8d%b7%e5%ae%b9%e5%99%a8" class="header-mark"></a>3.5 数据卷容器</h3><p><img class="tw-inline" loading="lazy" src='%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650959416556.png'   alt="图 1"  ></p>
 <p>创建父容器</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -3121,10 +3368,10 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>docker run -it --name docker01 uchin_centos /bin/bash</span></span></code></pre>
+      "><span class="line"><span class="cl">docker run -it --name docker01 uchin_centos /bin/bash</span></span></code></pre>
 </div>
 <p>在创建一个，使用 <code>--volumes-from</code> 参数来实现数据卷的共享</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -3213,7 +3460,7 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>docker run -it --name docker02 --volumes-from docker01 uchin_centos /bin/bash</span></span></code></pre>
+      "><span class="line"><span class="cl">docker run -it --name docker02 --volumes-from docker01 uchin_centos /bin/bash</span></span></code></pre>
 </div>
 <p>这样挂载的数据卷就可以实现多容器的共享了，当然这里不使用相同的镜像也可以</p>
 <p><font color='red'>有待继续探究</font></p>
@@ -3243,7 +3490,7 @@ VirtualBox</p>
 </ol>
 <h3 id="43-dockerfile-指令" class="headerLink">
     <a href="#43-dockerfile-%e6%8c%87%e4%bb%a4" class="header-mark"></a>4.3 Dockerfile 指令</h3><p>以下为一个 Dockerfile 文件示例</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -3332,16 +3579,16 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span><span style="color:#cf222e">FROM</span><span style="color:#0a3069"> python:3.7-alpine</span><span style="color:#f6f8fa;background-color:#82071e">
-</span></span></span><span style="display:flex;"><span><span style="color:#f6f8fa;background-color:#82071e"></span><span style="color:#cf222e">WORKDIR</span><span style="color:#0a3069"> /code</span><span style="color:#f6f8fa;background-color:#82071e">
-</span></span></span><span style="display:flex;"><span><span style="color:#f6f8fa;background-color:#82071e"></span><span style="color:#cf222e">ENV</span> <span style="color:#953800">FLASK_APP</span><span style="color:#0550ae">=</span>app.py<span style="color:#f6f8fa;background-color:#82071e">
-</span></span></span><span style="display:flex;"><span><span style="color:#f6f8fa;background-color:#82071e"></span><span style="color:#cf222e">ENV</span> <span style="color:#953800">FLASK_RUN_HOST</span><span style="color:#0550ae">=</span><span style="color:#0550ae">0</span>.0.0.0<span style="color:#f6f8fa;background-color:#82071e">
-</span></span></span><span style="display:flex;"><span><span style="color:#f6f8fa;background-color:#82071e"></span><span style="color:#cf222e">RUN</span> apk add --no-cache gcc musl-dev linux-headers<span style="color:#f6f8fa;background-color:#82071e">
-</span></span></span><span style="display:flex;"><span><span style="color:#f6f8fa;background-color:#82071e"></span><span style="color:#cf222e">COPY</span> requirements.txt requirements.txt<span style="color:#f6f8fa;background-color:#82071e">
-</span></span></span><span style="display:flex;"><span><span style="color:#f6f8fa;background-color:#82071e"></span><span style="color:#cf222e">RUN</span> pip install -r requirements.txt<span style="color:#f6f8fa;background-color:#82071e">
-</span></span></span><span style="display:flex;"><span><span style="color:#f6f8fa;background-color:#82071e"></span><span style="color:#cf222e">EXPOSE</span><span style="color:#0a3069"> 5000</span><span style="color:#f6f8fa;background-color:#82071e">
-</span></span></span><span style="display:flex;"><span><span style="color:#f6f8fa;background-color:#82071e"></span><span style="color:#cf222e">COPY</span> . .<span style="color:#f6f8fa;background-color:#82071e">
-</span></span></span><span style="display:flex;"><span><span style="color:#f6f8fa;background-color:#82071e"></span><span style="color:#cf222e">CMD</span> <span style="color:#1f2328">[</span><span style="color:#0a3069">&#34;flask&#34;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#34;run&#34;</span><span style="color:#1f2328">]</span></span></span></code></pre>
+      "><span class="line"><span class="cl"><span class="k">FROM</span><span class="s"> python:3.7-alpine</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /code</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENV</span> <span class="nv">FLASK_APP</span><span class="o">=</span>app.py<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENV</span> <span class="nv">FLASK_RUN_HOST</span><span class="o">=</span><span class="m">0</span>.0.0.0<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> apk add --no-cache gcc musl-dev linux-headers<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> requirements.txt requirements.txt<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> pip install -r requirements.txt<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">EXPOSE</span><span class="s"> 5000</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> . .<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;flask&#34;</span><span class="p">,</span> <span class="s2">&#34;run&#34;</span><span class="p">]</span></span></span></code></pre>
 </div>
 <ul>
 <li>
@@ -3349,7 +3596,7 @@ VirtualBox</p>
 </li>
 <li>
 <p><code>RUN</code>：用于执行后面跟着的命令行命令。有以下两种格式：</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -3438,11 +3685,11 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>RUN &lt;命令行命令&gt;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>RUN <span style="color:#0550ae">[</span><span style="color:#0a3069">&#34;可执行文件&#34;</span>, <span style="color:#0a3069">&#34;参数1&#34;</span>, <span style="color:#0a3069">&#34;参数2&#34;</span><span style="color:#0550ae">]</span>
-</span></span><span style="display:flex;"><span><span style="color:#57606a"># 例如：</span>
-</span></span><span style="display:flex;"><span><span style="color:#57606a"># RUN [&#34;./test.php&#34;, &#34;dev&#34;, &#34;offline&#34;] 等价于 RUN ./test.php dev offline</span></span></span></code></pre>
+      "><span class="line"><span class="cl">RUN &lt;命令行命令&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">RUN <span class="o">[</span><span class="s2">&#34;可执行文件&#34;</span>, <span class="s2">&#34;参数1&#34;</span>, <span class="s2">&#34;参数2&#34;</span><span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 例如：</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># RUN [&#34;./test.php&#34;, &#34;dev&#34;, &#34;offline&#34;] 等价于 RUN ./test.php dev offline</span></span></span></code></pre>
 </div>
 <p>注：Dockerfile 的指令每执行一次都会在 docker 上新建一层。所以过多无意义的层，会造成镜像膨胀过大，尽量使用 <code>&amp;&amp;</code> 符号将多个命令写成一行，这样就只会创建一层镜像，例如<br>
 <code>RUN yum -y install wget \ &amp;&amp; wget -O redis.tar.gz &quot;http://download.redis.io/releases/redis-5.0.3.tar.gz&quot; \ &amp;&amp; tar -xvf redis.tar.gz</code></p>
@@ -3468,7 +3715,7 @@ VirtualBox</p>
 <ol>
 <li>
 <p>下载</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -3557,13 +3804,13 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>sudo curl -L <span style="color:#0a3069">&#34;https://github.com/docker/compose/releases/download/1.29.2/docker-compose-</span><span style="color:#cf222e">$(</span>uname -s<span style="color:#cf222e">)</span><span style="color:#0a3069">-</span><span style="color:#cf222e">$(</span>uname -m<span style="color:#cf222e">)</span><span style="color:#0a3069">&#34;</span> -o /usr/local/bin/docker-compose
-</span></span><span style="display:flex;"><span><span style="color:#57606a"># sudo curl -L https://get.daocloud.io/docker/compose/releases/download/1.25.5/docker-compose-`uname -s`-`uname -m` &gt; /usr/local/bin/docker-compose</span></span></span></code></pre>
+      "><span class="line"><span class="cl">sudo curl -L <span class="s2">&#34;https://github.com/docker/compose/releases/download/1.29.2/docker-compose-</span><span class="k">$(</span>uname -s<span class="k">)</span><span class="s2">-</span><span class="k">$(</span>uname -m<span class="k">)</span><span class="s2">&#34;</span> -o /usr/local/bin/docker-compose
+</span></span><span class="line"><span class="cl"><span class="c1"># sudo curl -L https://get.daocloud.io/docker/compose/releases/download/1.25.5/docker-compose-`uname -s`-`uname -m` &gt; /usr/local/bin/docker-compose</span></span></span></code></pre>
 </div>
 </li>
 <li>
 <p>赋权限</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -3652,7 +3899,7 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>sudo chmod +x /usr/local/bin/docker-compose</span></span></code></pre>
+      "><span class="line"><span class="cl">sudo chmod +x /usr/local/bin/docker-compose</span></span></code></pre>
 </div>
 </li>
 </ol>
@@ -3661,7 +3908,7 @@ VirtualBox</p>
 <ol>
 <li>
 <p>创测试目录</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -3750,8 +3997,8 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>mkdir composetest
-</span></span><span style="display:flex;"><span><span style="color:#6639ba">cd</span> composetest</span></span></code></pre>
+      "><span class="line"><span class="cl">mkdir composetest
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> composetest</span></span></code></pre>
 </div>
 </li>
 <li>
@@ -3845,34 +4092,34 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span><span style="color:#cf222e">import</span> <span style="color:#24292e">time</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#cf222e">import</span> <span style="color:#24292e">redis</span>
-</span></span><span style="display:flex;"><span><span style="color:#cf222e">from</span> <span style="color:#24292e">flask</span> <span style="color:#cf222e">import</span> Flask
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>app <span style="color:#0550ae">=</span> Flask<span style="color:#1f2328">(</span><span style="color:#953800">__name__</span><span style="color:#1f2328">)</span>
-</span></span><span style="display:flex;"><span>cache <span style="color:#0550ae">=</span> redis<span style="color:#0550ae">.</span>Redis<span style="color:#1f2328">(</span>host<span style="color:#0550ae">=</span><span style="color:#0a3069">&#39;redis&#39;</span><span style="color:#1f2328">,</span> port<span style="color:#0550ae">=</span><span style="color:#0550ae">6379</span><span style="color:#1f2328">)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#cf222e">def</span> <span style="color:#6639ba">get_hit_count</span><span style="color:#1f2328">():</span>
-</span></span><span style="display:flex;"><span>    retries <span style="color:#0550ae">=</span> <span style="color:#0550ae">5</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">while</span> <span style="color:#cf222e">True</span><span style="color:#1f2328">:</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">try</span><span style="color:#1f2328">:</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#cf222e">return</span> cache<span style="color:#0550ae">.</span>incr<span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;hits&#39;</span><span style="color:#1f2328">)</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">except</span> redis<span style="color:#0550ae">.</span>exceptions<span style="color:#0550ae">.</span>ConnectionError <span style="color:#cf222e">as</span> exc<span style="color:#1f2328">:</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#cf222e">if</span> retries <span style="color:#0550ae">==</span> <span style="color:#0550ae">0</span><span style="color:#1f2328">:</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#cf222e">raise</span> exc
-</span></span><span style="display:flex;"><span>            retries <span style="color:#0550ae">-=</span> <span style="color:#0550ae">1</span>
-</span></span><span style="display:flex;"><span>            time<span style="color:#0550ae">.</span>sleep<span style="color:#1f2328">(</span><span style="color:#0550ae">0.5</span><span style="color:#1f2328">)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#0550ae">@app.route</span><span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;/&#39;</span><span style="color:#1f2328">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#cf222e">def</span> <span style="color:#6639ba">hello</span><span style="color:#1f2328">():</span>
-</span></span><span style="display:flex;"><span>    count <span style="color:#0550ae">=</span> get_hit_count<span style="color:#1f2328">()</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">return</span> <span style="color:#0a3069">&#39;Hello World! I have been seen </span><span style="color:#0a3069">{}</span><span style="color:#0a3069"> times.</span><span style="color:#0a3069">\n</span><span style="color:#0a3069">&#39;</span><span style="color:#0550ae">.</span>format<span style="color:#1f2328">(</span>count<span style="color:#1f2328">)</span></span></span></code></pre>
+      "><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">time</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">redis</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">cache</span> <span class="o">=</span> <span class="n">redis</span><span class="o">.</span><span class="n">Redis</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;redis&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">6379</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_hit_count</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="n">retries</span> <span class="o">=</span> <span class="mi">5</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">cache</span><span class="o">.</span><span class="n">incr</span><span class="p">(</span><span class="s1">&#39;hits&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">except</span> <span class="n">redis</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">ConnectionError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="n">retries</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="k">raise</span> <span class="n">exc</span>
+</span></span><span class="line"><span class="cl">            <span class="n">retries</span> <span class="o">-=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="n">count</span> <span class="o">=</span> <span class="n">get_hit_count</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="s1">&#39;Hello World! I have been seen </span><span class="si">{}</span><span class="s1"> times.</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">count</span><span class="p">)</span></span></span></code></pre>
 </div>
 </li>
 <li>
 <p><code>Dockerfile</code></p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -3961,21 +4208,21 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span><span style="color:#cf222e">FROM</span><span style="color:#0a3069"> python:3.7-alpine</span><span style="color:#f6f8fa;background-color:#82071e">
-</span></span></span><span style="display:flex;"><span><span style="color:#f6f8fa;background-color:#82071e"></span><span style="color:#cf222e">WORKDIR</span><span style="color:#0a3069"> /code</span><span style="color:#f6f8fa;background-color:#82071e">
-</span></span></span><span style="display:flex;"><span><span style="color:#f6f8fa;background-color:#82071e"></span><span style="color:#cf222e">ENV</span> <span style="color:#953800">FLASK_APP</span><span style="color:#0550ae">=</span>app.py<span style="color:#f6f8fa;background-color:#82071e">
-</span></span></span><span style="display:flex;"><span><span style="color:#f6f8fa;background-color:#82071e"></span><span style="color:#cf222e">ENV</span> <span style="color:#953800">FLASK_RUN_HOST</span><span style="color:#0550ae">=</span><span style="color:#0550ae">0</span>.0.0.0<span style="color:#f6f8fa;background-color:#82071e">
-</span></span></span><span style="display:flex;"><span><span style="color:#f6f8fa;background-color:#82071e"></span><span style="color:#cf222e">RUN</span> apk add --no-cache gcc musl-dev linux-headers<span style="color:#f6f8fa;background-color:#82071e">
-</span></span></span><span style="display:flex;"><span><span style="color:#f6f8fa;background-color:#82071e"></span><span style="color:#cf222e">COPY</span> requirements.txt requirements.txt<span style="color:#f6f8fa;background-color:#82071e">
-</span></span></span><span style="display:flex;"><span><span style="color:#f6f8fa;background-color:#82071e"></span><span style="color:#cf222e">RUN</span> pip install -r requirements.txt<span style="color:#f6f8fa;background-color:#82071e">
-</span></span></span><span style="display:flex;"><span><span style="color:#f6f8fa;background-color:#82071e"></span><span style="color:#cf222e">EXPOSE</span><span style="color:#0a3069"> 5000</span><span style="color:#f6f8fa;background-color:#82071e">
-</span></span></span><span style="display:flex;"><span><span style="color:#f6f8fa;background-color:#82071e"></span><span style="color:#cf222e">COPY</span> . .<span style="color:#f6f8fa;background-color:#82071e">
-</span></span></span><span style="display:flex;"><span><span style="color:#f6f8fa;background-color:#82071e"></span><span style="color:#cf222e">CMD</span> <span style="color:#1f2328">[</span><span style="color:#0a3069">&#34;flask&#34;</span><span style="color:#1f2328">,</span> <span style="color:#0a3069">&#34;run&#34;</span><span style="color:#1f2328">]</span></span></span></code></pre>
+      "><span class="line"><span class="cl"><span class="k">FROM</span><span class="s"> python:3.7-alpine</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /code</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENV</span> <span class="nv">FLASK_APP</span><span class="o">=</span>app.py<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENV</span> <span class="nv">FLASK_RUN_HOST</span><span class="o">=</span><span class="m">0</span>.0.0.0<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> apk add --no-cache gcc musl-dev linux-headers<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> requirements.txt requirements.txt<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> pip install -r requirements.txt<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">EXPOSE</span><span class="s"> 5000</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> . .<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;flask&#34;</span><span class="p">,</span> <span class="s2">&#34;run&#34;</span><span class="p">]</span></span></span></code></pre>
 </div>
 </li>
 <li>
 <p><code>docker-compose.yml</code> 文件</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -4064,19 +4311,19 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span><span style="color:#0550ae">version</span><span style="color:#1f2328">:</span><span style="color:#fff"> </span><span style="color:#0a3069">&#34;3.9&#34;</span><span style="color:#fff">
-</span></span></span><span style="display:flex;"><span><span style="color:#fff"></span><span style="color:#0550ae">services</span><span style="color:#1f2328">:</span><span style="color:#fff">
-</span></span></span><span style="display:flex;"><span><span style="color:#fff">  </span><span style="color:#0550ae">web</span><span style="color:#1f2328">:</span><span style="color:#fff">
-</span></span></span><span style="display:flex;"><span><span style="color:#fff">    </span><span style="color:#0550ae">build</span><span style="color:#1f2328">:</span><span style="color:#fff"> </span>.<span style="color:#fff">
-</span></span></span><span style="display:flex;"><span><span style="color:#fff">    </span><span style="color:#0550ae">ports</span><span style="color:#1f2328">:</span><span style="color:#fff">
-</span></span></span><span style="display:flex;"><span><span style="color:#fff">      </span>- <span style="color:#0a3069">&#34;8000:5000&#34;</span><span style="color:#fff">
-</span></span></span><span style="display:flex;"><span><span style="color:#fff">  </span><span style="color:#0550ae">redis</span><span style="color:#1f2328">:</span><span style="color:#fff">
-</span></span></span><span style="display:flex;"><span><span style="color:#fff">    </span><span style="color:#0550ae">image</span><span style="color:#1f2328">:</span><span style="color:#fff"> </span><span style="color:#0a3069">&#34;redis:alpine&#34;</span></span></span></code></pre>
+      "><span class="line"><span class="cl"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;3.9&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">web</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w"> </span><span class="l">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;8000:5000&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">redis</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;redis:alpine&#34;</span></span></span></code></pre>
 </div>
 </li>
 <li>
 <p>运行</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -4165,7 +4412,7 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>docker-compose up</span></span></code></pre>
+      "><span class="line"><span class="cl">docker-compose up</span></span></code></pre>
 </div>
 </li>
 </ol>
@@ -4269,20 +4516,20 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span><span style="color:#57606a"># 1. 版本</span><span style="color:#fff">
-</span></span></span><span style="display:flex;"><span><span style="color:#fff"></span><span style="color:#0550ae">version</span><span style="color:#1f2328">:</span><span style="color:#fff"> </span><span style="color:#0a3069">&#34;3.9&#34;</span><span style="color:#fff">
-</span></span></span><span style="display:flex;"><span><span style="color:#fff">
-</span></span></span><span style="display:flex;"><span><span style="color:#fff"></span><span style="color:#57606a"># 2. 定义服务</span><span style="color:#fff">
-</span></span></span><span style="display:flex;"><span><span style="color:#fff"></span><span style="color:#0550ae">services</span><span style="color:#1f2328">:</span><span style="color:#fff">
-</span></span></span><span style="display:flex;"><span><span style="color:#fff">  </span><span style="color:#0550ae">服务1（web）</span><span style="color:#1f2328">:</span><span style="color:#fff">
-</span></span></span><span style="display:flex;"><span><span style="color:#fff">    </span><span style="color:#0550ae">服务配置（image、build、network）</span><span style="color:#1f2328">:</span><span style="color:#fff">
-</span></span></span><span style="display:flex;"><span><span style="color:#fff">  </span><span style="color:#0550ae">服务2（redis）</span><span style="color:#1f2328">:</span><span style="color:#fff">
-</span></span></span><span style="display:flex;"><span><span style="color:#fff">  </span><span style="color:#0550ae">服务3</span><span style="color:#1f2328">:</span><span style="color:#fff">
-</span></span></span><span style="display:flex;"><span><span style="color:#fff">
-</span></span></span><span style="display:flex;"><span><span style="color:#fff"></span><span style="color:#57606a"># 3. 其他配置（网络、卷、全局规则）</span><span style="color:#fff">
-</span></span></span><span style="display:flex;"><span><span style="color:#fff"></span><span style="color:#0550ae">volumes</span><span style="color:#1f2328">:</span><span style="color:#fff">
-</span></span></span><span style="display:flex;"><span><span style="color:#fff"></span><span style="color:#0550ae">networks</span><span style="color:#1f2328">:</span><span style="color:#fff">
-</span></span></span><span style="display:flex;"><span><span style="color:#fff"></span>configs:</span></span></code></pre>
+      "><span class="line"><span class="cl"><span class="c"># 1. 版本</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;3.9&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># 2. 定义服务</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">服务1（web）</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">服务配置（image、build、network）</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">服务2（redis）</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">服务3</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># 3. 其他配置（网络、卷、全局规则）</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">networks</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="l">configs:</span></span></span></code></pre>
 </div>
 <p>有时其他配置可不需要</p>
 <p><font color='red'>注：集群中使用 compose 配置进行服务的创建有所不同，具体参考下文</font></p>
@@ -4299,7 +4546,7 @@ VirtualBox</p>
 <p><img class="tw-inline" loading="lazy" src='%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650677417546.png'   alt="图 1"  ></p>
 <p>这里将 <code>enp0s9</code> 作为集群通信所使用的，那就用其所对应 ip <code>192.168.56.101</code></p>
 <p>选择一个节点作为 manager 节点登录，执行初始化命令</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -4388,7 +4635,7 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>docker swarm init --autolock<span style="color:#0550ae">=</span><span style="color:#6639ba">false</span>  --advertise-addr 192.168.56.101 --listen-addr 192.168.56.101:2377</span></span></code></pre>
+      "><span class="line"><span class="cl">docker swarm init --autolock<span class="o">=</span><span class="nb">false</span>  --advertise-addr 192.168.56.101 --listen-addr 192.168.56.101:2377</span></span></code></pre>
 </div>
 <p>执行后如下</p>
 <p><img class="tw-inline" loading="lazy" src='%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650645402766.png'   alt="图 2"  ></p>
@@ -4398,7 +4645,7 @@ VirtualBox</p>
   <p><strong>在 swarm 中有两种可用的不同的 token，一种是用作 worker 角色，另一个是用作 manager 角色</strong></p>
 </blockquote><p>由于集群中允许有多个 manager 与 worker 的存在，因此<strong>在 join 时根据所使用的 token 的不同，加入的方式也不同</strong>，如果使用的是 worker 的 token，那加入后就是 worker，使用的 manager 的 token，加入后就是 manager</p>
 <p>常用涉及 token 的命令如下</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -4487,17 +4734,17 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>docker swarm join-token worker          <span style="color:#57606a"># 查看加入woker的命令</span>
-</span></span><span style="display:flex;"><span>docker swarm join-token manager         <span style="color:#57606a"># 查看加入manager的命令</span>
-</span></span><span style="display:flex;"><span>docker swarm join-token --rotate worker <span style="color:#57606a"># 重置woker的Token</span>
-</span></span><span style="display:flex;"><span>docker swarm join-token -q worker       <span style="color:#57606a"># 仅打印Token</span></span></span></code></pre>
+      "><span class="line"><span class="cl">docker swarm join-token worker          <span class="c1"># 查看加入woker的命令</span>
+</span></span><span class="line"><span class="cl">docker swarm join-token manager         <span class="c1"># 查看加入manager的命令</span>
+</span></span><span class="line"><span class="cl">docker swarm join-token --rotate worker <span class="c1"># 重置woker的Token</span>
+</span></span><span class="line"><span class="cl">docker swarm join-token -q worker       <span class="c1"># 仅打印Token</span></span></span></code></pre>
 </div>
 <h3 id="62-基于-portainer-的可视化" class="headerLink">
     <a href="#62-%e5%9f%ba%e4%ba%8e-portainer-%e7%9a%84%e5%8f%af%e8%a7%86%e5%8c%96" class="header-mark"></a>6.2 基于 Portainer 的可视化</h3><p>参考：<a href="https://support.websoft9.com/docs/docker/zh/solution-portainer.html#%E7%99%BB%E5%BD%95-portainer" target="_blank" rel="noopener noreferrer">可视化工具 Portainer</a></p>
 <p>Swarm 集群部署完成后可以通过各命令操作，当然也可以通过 Portainer 来进行 Swarm 集群的可视化管理</p>
 <p>Portainer 是一款轻量级的开源应用，它提供了图形化界面，用于方便地管理 Docker 环境，包括单机环境和集群环境</p>
 <p>如果部署了包含 Portainer 的 Docker 环境，可直接登录使用，否则，先安装 Portainer：</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -4586,8 +4833,8 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>docker volume create portainer_data <span style="color:#57606a"># 首次创建</span>
-</span></span><span style="display:flex;"><span>docker run -d -p 9000:9000 --name portainer -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer</span></span></code></pre>
+      "><span class="line"><span class="cl">docker volume create portainer_data <span class="c1"># 首次创建</span>
+</span></span><span class="line"><span class="cl">docker run -d -p 9000:9000 --name portainer -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer</span></span></code></pre>
 </div>
 <p>以上是使用独立容器启动 Portainer，也可以通过 Docker Compose 进行启动，docker-compose.yml 文件内容如下:</p>
 <div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
@@ -4679,19 +4926,19 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span><span style="color:#0550ae">version</span><span style="color:#1f2328">:</span><span style="color:#fff"> </span><span style="color:#0a3069">&#34;3&#34;</span><span style="color:#fff">
-</span></span></span><span style="display:flex;"><span><span style="color:#fff"></span><span style="color:#0550ae">volumes</span><span style="color:#1f2328">:</span><span style="color:#fff">
-</span></span></span><span style="display:flex;"><span><span style="color:#fff">  </span><span style="color:#0550ae">portainer_data</span><span style="color:#1f2328">:</span><span style="color:#fff">
-</span></span></span><span style="display:flex;"><span><span style="color:#fff">
-</span></span></span><span style="display:flex;"><span><span style="color:#fff"></span><span style="color:#0550ae">services</span><span style="color:#1f2328">:</span><span style="color:#fff">
-</span></span></span><span style="display:flex;"><span><span style="color:#fff">  </span><span style="color:#0550ae">portainer</span><span style="color:#1f2328">:</span><span style="color:#fff">
-</span></span></span><span style="display:flex;"><span><span style="color:#fff">    </span><span style="color:#0550ae">image</span><span style="color:#1f2328">:</span><span style="color:#fff"> </span>portainer/portainer<span style="color:#fff">
-</span></span></span><span style="display:flex;"><span><span style="color:#fff">    </span><span style="color:#0550ae">ports</span><span style="color:#1f2328">:</span><span style="color:#fff">
-</span></span></span><span style="display:flex;"><span><span style="color:#fff">      </span>- <span style="color:#0a3069">&#34;9000:9000&#34;</span><span style="color:#fff">
-</span></span></span><span style="display:flex;"><span><span style="color:#fff">    </span><span style="color:#0550ae">command</span><span style="color:#1f2328">:</span><span style="color:#fff"> </span>-H unix:///var/run/docker.sock<span style="color:#fff">
-</span></span></span><span style="display:flex;"><span><span style="color:#fff">    </span><span style="color:#0550ae">volumes</span><span style="color:#1f2328">:</span><span style="color:#fff">
-</span></span></span><span style="display:flex;"><span><span style="color:#fff">      </span>- /var/run/docker.sock:/var/run/docker.sock<span style="color:#fff">
-</span></span></span><span style="display:flex;"><span><span style="color:#fff">      </span>- portainer_data:/data</span></span></code></pre>
+      "><span class="line"><span class="cl"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;3&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">portainer_data</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">portainer</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">portainer/portainer</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;9000:9000&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span>-<span class="l">H unix:///var/run/docker.sock</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">/var/run/docker.sock:/var/run/docker.sock</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">portainer_data:/data</span></span></span></code></pre>
 </div>
 <p>文件编写完毕后通过 <code>docker-compose up -d</code> 命令可启动容器（可通过 <code>-f</code> 选项指定文件）</p>
 <p><font color='red'>注：这里使用 <code>docker run</code> 或使用 <code>docker-compose</code> 方式启动的容器都是在一个节点上，<strong>不是</strong> swarm 集群中运行，要让其在 swarm 集群中可使用 <code>docker stack deploy</code>命令</font></p>
@@ -4721,7 +4968,7 @@ VirtualBox</p>
 <li><code>docker service</code>：启动服务，具有<strong>扩缩容功能，滚动更新</strong>等功能</li>
 </ul>
 <h4 id="411-创建服务" class="headerLink">
-    <a href="#411-%e5%88%9b%e5%bb%ba%e6%9c%8d%e5%8a%a1" class="header-mark"></a>4.1.1 创建服务</h4><div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+    <a href="#411-%e5%88%9b%e5%bb%ba%e6%9c%8d%e5%8a%a1" class="header-mark"></a>4.1.1 创建服务</h4><div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -4810,14 +5057,14 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>docker service create  -p 8888:80 --name my-nginx nginx</span></span></code></pre>
+      "><span class="line"><span class="cl">docker service create  -p 8888:80 --name my-nginx nginx</span></span></code></pre>
 </div>
 <p>创建的服务从集群中<strong>任意主机 ip 都可访问</strong></p>
 <p><img class="tw-inline" loading="lazy" src='./基于%20Swarm%20的%20Docker%20分布式集群管理.assets/pic_1650980646777.png'   alt="图 5"  ><br>
 上述访问的是 <code>slave01</code> 的 ip，但容器运行在 <code>master</code> 节点上</p>
 <p><img class="tw-inline" loading="lazy" src='./基于%20Swarm%20的%20Docker%20分布式集群管理.assets//pic_1650980702383.png'   alt="图 6"  ></p>
 <h4 id="412-查看服务在-manager-节点上执行" class="headerLink">
-    <a href="#412-%e6%9f%a5%e7%9c%8b%e6%9c%8d%e5%8a%a1%e5%9c%a8-manager-%e8%8a%82%e7%82%b9%e4%b8%8a%e6%89%a7%e8%a1%8c" class="header-mark"></a>4.1.2 查看服务（在 manager 节点上执行）</h4><div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+    <a href="#412-%e6%9f%a5%e7%9c%8b%e6%9c%8d%e5%8a%a1%e5%9c%a8-manager-%e8%8a%82%e7%82%b9%e4%b8%8a%e6%89%a7%e8%a1%8c" class="header-mark"></a>4.1.2 查看服务（在 manager 节点上执行）</h4><div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -4906,10 +5153,10 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>docker service ls
-</span></span><span style="display:flex;"><span>docker service inspect my-nginx <span style="color:#57606a"># 查看该服务详细信息</span></span></span></code></pre>
+      "><span class="line"><span class="cl">docker service ls
+</span></span><span class="line"><span class="cl">docker service inspect my-nginx <span class="c1"># 查看该服务详细信息</span></span></span></code></pre>
 </div>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -4998,13 +5245,13 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>(base) [hadoop@master composetest]$ docker service ls
-</span></span><span style="display:flex;"><span>ID                  NAME                MODE                REPLICAS            IMAGE               PORTS
-</span></span><span style="display:flex;"><span>vah2ryttads6        my-nginx            replicated          1/1                 nginx:latest        *:8888-&gt;80/tcp</span></span></code></pre>
+      "><span class="line"><span class="cl">(base) [hadoop@master composetest]$ docker service ls
+</span></span><span class="line"><span class="cl">ID                  NAME                MODE                REPLICAS            IMAGE               PORTS
+</span></span><span class="line"><span class="cl">vah2ryttads6        my-nginx            replicated          1/1                 nginx:latest        *:8888-&gt;80/tcp</span></span></code></pre>
 </div>
 <p>可以看到在服务中有<code>REPLICAS</code>（副本）的概念，其代表这一服务有多少分副本</p>
 <h4 id="413-更新服务" class="headerLink">
-    <a href="#413-%e6%9b%b4%e6%96%b0%e6%9c%8d%e5%8a%a1" class="header-mark"></a>4.1.3 更新服务</h4><div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+    <a href="#413-%e6%9b%b4%e6%96%b0%e6%9c%8d%e5%8a%a1" class="header-mark"></a>4.1.3 更新服务</h4><div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -5093,12 +5340,12 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>docker service update --replicas <span style="color:#0550ae">3</span> my-nginx</span></span></code></pre>
+      "><span class="line"><span class="cl">docker service update --replicas <span class="m">3</span> my-nginx</span></span></code></pre>
 </div>
 <p>上述命令将 <code>my-nginx</code> 服务副本更新为 3，即集群中有 3 个运行 nginx 的容器，当选择的节点上没有该镜像时会自动下载；如指定 replicas 为 1 就能回到开始状态，达到动态缩容的效果</p>
 <p>注：<strong>只要是一个服务，那么在集群中的任意一个节点都可以访问</strong></p>
 <p>除了上述的 <code>update</code> 方式，还可以使用 <code>scale</code> 命令扩缩容</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -5187,10 +5434,10 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>docker service scale my-nginx<span style="color:#0550ae">=</span><span style="color:#0550ae">2</span></span></span></code></pre>
+      "><span class="line"><span class="cl">docker service scale my-nginx<span class="o">=</span><span class="m">2</span></span></span></code></pre>
 </div>
 <h4 id="414-删除服务命令" class="headerLink">
-    <a href="#414-%e5%88%a0%e9%99%a4%e6%9c%8d%e5%8a%a1%e5%91%bd%e4%bb%a4" class="header-mark"></a>4.1.4 删除服务命令</h4><div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+    <a href="#414-%e5%88%a0%e9%99%a4%e6%9c%8d%e5%8a%a1%e5%91%bd%e4%bb%a4" class="header-mark"></a>4.1.4 删除服务命令</h4><div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -5279,7 +5526,7 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>docker service rm my-nginx</span></span></code></pre>
+      "><span class="line"><span class="cl">docker service rm my-nginx</span></span></code></pre>
 </div>
 <p><img class="tw-inline" loading="lazy" src='./基于%20Swarm%20的%20Docker%20分布式集群管理.assets/pic_1650982073596.png'   alt="图 7"  ></p>
 <p><img class="tw-inline" loading="lazy" src='./基于%20Swarm%20的%20Docker%20分布式集群管理.assets/pic_1650982138022.png'   alt="图 8"  ></p>
@@ -5295,7 +5542,7 @@ VirtualBox</p>
   <p>使用 <code>docker-compose.yml</code> 来一次配置、启动多个容器，在 Swarm 集群中也可以使用 <code>compose</code> 文件 （<code>docker-compose.yml</code>） 来配置、启动多个服务。</p>
 <p><code>docker service create</code> 一次只能部署一个服务，使用 <code>docker-compose.yml</code> 我们可以一次启动多个关联的服务。</p>
 </blockquote><p>命令如下，其中 <code>-c</code> 指定 compose 文件名</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -5384,9 +5631,9 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>docker stack deploy -c docker-compose.yml wordpress</span></span></code></pre>
+      "><span class="line"><span class="cl">docker stack deploy -c docker-compose.yml wordpress</span></span></code></pre>
 </div>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -5475,13 +5722,13 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>docker service create --mount <span style="color:#953800">type</span><span style="color:#0550ae">=</span>volume,src<span style="color:#0550ae">=</span>volume,dst<span style="color:#0550ae">=</span>/data --name uchin_v_test busybox ping</span></span></code></pre>
+      "><span class="line"><span class="cl">docker service create --mount <span class="nv">type</span><span class="o">=</span>volume,src<span class="o">=</span>volume,dst<span class="o">=</span>/data --name uchin_v_test busybox ping</span></span></code></pre>
 </div>
 <p><a href="https://www.cnblogs.com/caoweixiong/p/12381838.html" target="_blank" rel="noopener noreferrer">Docker Swarm（四）Volume 数据（挂载）持久化</a></p>
 <p><a href="http://m.blog.chinaunix.net/uid-25530360-id-5825518.html" target="_blank" rel="noopener noreferrer">创建数据卷</a></p>
 <hr>
 <p>创建 overlay</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -5570,12 +5817,12 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>docker network create kafka --driver overlay --subnet 172.30.0.0/16 --gateway 172.30.0.1
-</span></span><span style="display:flex;"><span>docker network create kafka --driver overlay  --attachable --subnet 172.30.0.0/16 --gateway 172.30.0.1</span></span></code></pre>
+      "><span class="line"><span class="cl">docker network create kafka --driver overlay --subnet 172.30.0.0/16 --gateway 172.30.0.1
+</span></span><span class="line"><span class="cl">docker network create kafka --driver overlay  --attachable --subnet 172.30.0.0/16 --gateway 172.30.0.1</span></span></code></pre>
 </div>
 <p>创建数据卷</p>
 <p>参考：<a href="https://blog.csdn.net/even160941/article/details/99324273" target="_blank" rel="noopener noreferrer">https://blog.csdn.net/even160941/article/details/99324273</a></p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -5664,9 +5911,9 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>docker volume create --name volume_kafka</span></span></code></pre>
+      "><span class="line"><span class="cl">docker volume create --name volume_kafka</span></span></code></pre>
 </div>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -5755,9 +6002,9 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>docker service create --name uchin_test --network kafka --mount <span style="color:#953800">type</span><span style="color:#0550ae">=</span>volume,src<span style="color:#0550ae">=</span>volume_kafka,dst<span style="color:#0550ae">=</span>/home --replicas <span style="color:#0550ae">2</span> centos</span></span></code></pre>
+      "><span class="line"><span class="cl">docker service create --name uchin_test --network kafka --mount <span class="nv">type</span><span class="o">=</span>volume,src<span class="o">=</span>volume_kafka,dst<span class="o">=</span>/home --replicas <span class="m">2</span> centos</span></span></code></pre>
 </div>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -5846,7 +6093,7 @@ VirtualBox</p>
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>docker service create --network kafka -p 8888:80 --name my-nginx --mount <span style="color:#953800">type</span><span style="color:#0550ae">=</span>volume,src<span style="color:#0550ae">=</span>volume_kafka,dst<span style="color:#0550ae">=</span>/home  nginx</span></span></code></pre>
+      "><span class="line"><span class="cl">docker service create --network kafka -p 8888:80 --name my-nginx --mount <span class="nv">type</span><span class="o">=</span>volume,src<span class="o">=</span>volume_kafka,dst<span class="o">=</span>/home  nginx</span></span></code></pre>
 </div>
 <p><a href="https://ask.csdn.net/questions/770590" target="_blank" rel="noopener noreferrer">docker swarm 模式下，如何固定容器的 ip？</a></p>
 <p>docker run -it &ndash;network kafka -v /home/hadoop/workspace/zkk/zk_volumes/app/:/home &ndash;name myCL python /bin/bash
@@ -6012,18 +6259,18 @@ docker run -it &ndash;network kafka -v /home/hadoop/workspace/zkk/zk_volumes/app
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>Certificate:
-</span></span><span style="display:flex;"><span>    Data:
-</span></span><span style="display:flex;"><span>        Version: <span style="color:#0550ae">3</span> <span style="color:#0550ae">(</span>0x2<span style="color:#0550ae">)</span>
-</span></span><span style="display:flex;"><span>        Serial Number:
-</span></span><span style="display:flex;"><span>            3b:1c:06:91:73:fb:16:ff:69:c3:f7:a2:fe:96:c1:73:e2:80:97:3b
-</span></span><span style="display:flex;"><span>        Signature Algorithm: ecdsa-with-SHA256
-</span></span><span style="display:flex;"><span>        Issuer: <span style="color:#953800">CN</span><span style="color:#0550ae">=</span>swarm-ca
-</span></span><span style="display:flex;"><span>        Validity
-</span></span><span style="display:flex;"><span>            Not Before: Aug <span style="color:#0550ae">30</span> 02:39:00 <span style="color:#0550ae">2016</span> GMT
-</span></span><span style="display:flex;"><span>            Not After : Nov <span style="color:#0550ae">28</span> 03:39:00 <span style="color:#0550ae">2016</span> GMT
-</span></span><span style="display:flex;"><span>        Subject: <span style="color:#953800">O</span><span style="color:#0550ae">=</span>ec2adilxf4ngv7ev8fwsi61i7, <span style="color:#953800">OU</span><span style="color:#0550ae">=</span>swarm-worker, <span style="color:#953800">CN</span><span style="color:#0550ae">=</span>dw02poa4vqvzxi5c10gm4pq2g
-</span></span><span style="display:flex;"><span>...snip...</span></span></code></pre>
+      "><span class="line"><span class="cl">Certificate:
+</span></span><span class="line"><span class="cl">    Data:
+</span></span><span class="line"><span class="cl">        Version: <span class="m">3</span> <span class="o">(</span>0x2<span class="o">)</span>
+</span></span><span class="line"><span class="cl">        Serial Number:
+</span></span><span class="line"><span class="cl">            3b:1c:06:91:73:fb:16:ff:69:c3:f7:a2:fe:96:c1:73:e2:80:97:3b
+</span></span><span class="line"><span class="cl">        Signature Algorithm: ecdsa-with-SHA256
+</span></span><span class="line"><span class="cl">        Issuer: <span class="nv">CN</span><span class="o">=</span>swarm-ca
+</span></span><span class="line"><span class="cl">        Validity
+</span></span><span class="line"><span class="cl">            Not Before: Aug <span class="m">30</span> 02:39:00 <span class="m">2016</span> GMT
+</span></span><span class="line"><span class="cl">            Not After : Nov <span class="m">28</span> 03:39:00 <span class="m">2016</span> GMT
+</span></span><span class="line"><span class="cl">        Subject: <span class="nv">O</span><span class="o">=</span>ec2adilxf4ngv7ev8fwsi61i7, <span class="nv">OU</span><span class="o">=</span>swarm-worker, <span class="nv">CN</span><span class="o">=</span>dw02poa4vqvzxi5c10gm4pq2g
+</span></span><span class="line"><span class="cl">...snip...</span></span></code></pre>
 </div>
 <p>默认情况下，每个节点的证书 3 个月轮换一次。我们可以通过配置修改的这个间隔：docker swarm update &ndash;cert-expiry &lt;TIME PERIOD&gt;。最小的证书轮换时间为 1 小时。</p>
 <h4 id="831-ca-证书轮换" class="headerLink">
@@ -6222,11 +6469,11 @@ docker run -it &ndash;network kafka -v /home/hadoop/workspace/zkk/zk_volumes/app
             <a href="/posts/cst/archlinux-%E7%AE%80%E8%AE%B0/" class="next" rel="next" title="Archlinux 简记">Archlinux 简记<svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg></a></div>
 </div>
-</article></main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">
-                    &nbsp;|&nbsp;
-                </div><div class="footer-line"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"/></svg>2025<span class="author">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer"></a></span></div>
+<div id="comments" class="print:!tw-hidden tw-pt-32 tw-pb-8"><div id="gitalk" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
+            </noscript></div></article></main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"/></svg>2022 - 2025&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
             <div class="footer-line"></div>
             <div class="footer-line">
             </div>
@@ -6238,10 +6485,50 @@ docker run -it &ndash;network kafka -v /home/hadoop/workspace/zkk/zk_volumes/app
   <button id="toc-drawer-button" class="tw-block tw-bg-bgColor-secondary tw-rounded-full md:tw-hidden" style="padding: 0.6rem; line-height: 1.3rem; font-size: 1rem;">
       <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg>
-  </button></div>
-
-<script>window.config={"autocomplete.min.js":"/lib/autocomplete/autocomplete.min.js","comment":{},"pagefind.js":"/pagefind/pagefind.js","search":{"highlightTag":null,"maxResultLength":null,"noResultsFound":"","pageLength":null,"snippetLength":null,"termFrequency":null,"termSaturation":null,"termSimilarity":null,"type":"pagefind"}};</script><script
+  </button><a href="#comments" id="view-comments" class="tw-block tw-bg-bgColor-secondary tw-rounded-full" style="padding: 0.6rem; line-height: 1.3rem; font-size: 1rem;" title="">
+      <svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32z"/></svg>
+  </a></div>
+<link rel="stylesheet" href="/lib/gitalk/gitalk.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript>
+<script>window.config={"autocomplete.min.js":"/lib/autocomplete/autocomplete.min.js","comment":{"gitalk":{"admin":["yuqinlee"],"clientID":"Ov23lifxInDzJZx884sY","clientSecret":"522eeef485a4fdc2b64c7357a4b47c3df38b5c6b","id":"2022-12-01T09:46:11+08:00","owner":"yuqinlee","repo":"yuqinlee.github.io","title":"基于 Swarm 的 Docker 分布式集群管理"}},"fuse.min.js":"/lib/fuse/fuse.min.js","math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"table":{"sort":true}};</script><script
+    src="/lib/tablesort/tablesort.min.js"
+    
+  ></script><script
+    src="/lib/katex/katex.min.js"
+    
+      defer
+    
+  ></script><script
+    src="/lib/katex/auto-render.min.js"
+    
+      defer
+    
+  ></script><script
+    src="/lib/katex/copy-tex.min.js"
+    
+      defer
+    
+  ></script><script
+    src="/lib/katex/mhchem.min.js"
+    
+      defer
+    
+  ></script><script
+    src="/js/katex.min.js"
+    
+      defer
+    
+  ></script><script
     src="/js/theme.min.js"
+    
+      defer
+    
+  ></script><script
+    src="/lib/gitalk/gitalk.min.js"
+    
+  ></script><script
+    src="/js/gitalk.min.js"
     
       defer
     

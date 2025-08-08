@@ -20,12 +20,12 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Windows 安装 Docker、wsl 等">
   <meta name="twitter:description" content="安装 WSL——Archlinux控制面板找到 启用或关闭windows功能 勾选 Hyper-V 和 适用于 Linux 的 Windows 子系统（只用勾选后者实际就能WSL安装，如果需要使用原来的 Hyper-V 方式安装 Docker 才需要开启前者，这里直接都打开了），重启系统，执行 wsl --update 更新">
-<meta name="application-name" content="yuchin-blog">
-<meta name="apple-mobile-web-app-title" content="yuchin-blog">
+<meta name="application-name" content="ublog">
+<meta name="apple-mobile-web-app-title" content="ublog">
 
-<meta name="theme-color" content="#f8f8f8"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 <link rel="canonical" href="https://yuqinlee.github.io/posts/cst/windows-%E5%AE%89%E8%A3%85-dockerwsl-%E7%AD%89/" /><link rel="prev" href="https://yuqinlee.github.io/posts/cst/linux-%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7/" /><link rel="next" href="https://yuqinlee.github.io/posts/cst/zsh-%E7%AE%80%E8%AE%B0/" />
 <link rel="stylesheet" href="/css/main.min.css"><link rel="stylesheet" href="/css/style.min.css"><script type="application/ld+json">{"@context": "https://schema.org","@type": "BlogPosting",
@@ -68,8 +68,8 @@
             }
         }
       } else { 
-        if ('' === 'light' || '' === 'dark') 
-            setTheme(''), saveTheme(''); 
+        if ('black' === 'light' || 'black' === 'dark') 
+            setTheme('black'), saveTheme('black'); 
         else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');
     }
     let metaColors = {'light': '#f8f8f8','dark': '#161b22'}
@@ -79,7 +79,7 @@
     <div id="mask"></div><header class="desktop print:!tw-hidden" id="header-desktop">
     <div class="header-wrapper">
         <div class="header-title">
-            <a href="/" title="yuchin-blog">yuchin-blog</a>
+            <a href="/" title="yuchin-blog"><img class="tw-inline tw-align-text-bottom tw-mr-1"  src='/images/avatar.jpg'   alt="yuchin blog" height="32" width="32">yuchin blog</a>
         </div>
         <div class="menu">
             <div class="menu-inner"><a class="menu-item"
@@ -87,7 +87,7 @@
                     href="/tags/" > 标签 </a><a class="menu-item"
                     href="/categories/" > 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
                     <input type="text"
-                        placeholder=""
+                        placeholder="搜索文章标题或内容"
                         id="search-input-desktop">
                     <button class="search-button search-toggle" id="search-toggle-desktop" title="">
                         <svg class="icon"
@@ -101,9 +101,14 @@
                         <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49 0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z"/></svg>
                     </span>
-                </span><button class="menu-item theme-switch" aria-label="">
+                </span><button class="menu-item theme-select" aria-label="">
                     <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M8 256c0 136.966 111.033 248 248 248s248-111.034 248-248S392.966 8 256 8 8 119.033 8 256zm248 184V72c101.705 0 184 82.311 184 184 0 101.705-82.311 184-184 184z"/></svg>
+                    <select class="color-theme-select" id="theme-select-desktop" aria-label="">
+                        <option value="light"></option>
+                        <option value="dark"></option>
+                        <option value="auto"></option>
+                    </select>
                 </button></div>
         </div>
     </div>
@@ -111,7 +116,7 @@
     <div class="header-container">
         <div class="header-wrapper">
             <div class="header-title">
-                <a href="/" title="yuchin-blog">yuchin-blog</a>
+                <a href="/" title="yuchin-blog"><img class="tw-inline tw-align-text-bottom tw-mr-1"  src='/images/avatar.jpg'   alt="yuchin blog" height="32" width="32">yuchin blog</a>
             </div>
             <div class="menu-toggle" id="menu-toggle-mobile">
                 <span></span><span></span><span></span>
@@ -120,7 +125,7 @@
         <div class="menu" id="menu-mobile"><div class="search-wrapper">
                 <div class="search mobile" id="search-mobile">
                     <input type="text"
-                        placeholder=""
+                        placeholder="搜索文章标题或内容"
                         id="search-input-mobile">
                     <button class="search-button search-toggle tw-h-10" id="search-toggle-mobile" title="">
                         <svg class="icon"
@@ -138,9 +143,14 @@
                 <button class="search-cancel" id="search-cancel-mobile">
                     
                 </button>
-            </div><a class="menu-item" href="/posts/" title="" >文章</a><a class="menu-item" href="/tags/" title="" >标签</a><a class="menu-item" href="/categories/" title="" >分类</a><button class="menu-item theme-switch tw-w-full" aria-label="">
+            </div><a class="menu-item" href="/posts/" title="" >文章</a><a class="menu-item" href="/tags/" title="" >标签</a><a class="menu-item" href="/categories/" title="" >分类</a><button class="menu-item theme-select tw-w-full" aria-label="">
                 <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M8 256c0 136.966 111.033 248 248 248s248-111.034 248-248S392.966 8 256 8 8 119.033 8 256zm248 184V72c101.705 0 184 82.311 184 184 0 101.705-82.311 184-184 184z"/></svg>
+                <select class="color-theme-select" id="theme-select-mobile" aria-label="">
+                    <option value="light"></option>
+                    <option value="dark"></option>
+                    <option value="auto"></option>
+                </select>
             </button></div>
     </div>
 </header>
@@ -149,7 +159,20 @@
 </div>
 <div class="search-dropdown mobile">
     <div id="search-dropdown-mobile"></div>
-</div><main class="tw-mx-4 tw-flex-1"><dialog id="toc-dialog" class="tw-max-w-full tw-w-full tw-max-h-full tw-h-full tw-ml-16">
+</div><main class="tw-mx-4 tw-flex-1"><div class="toc print:!tw-hidden" id="toc-auto">
+        <h2 class="toc-title"></h2>
+        <div class="toc-content always-active" id="toc-content-auto"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#安装-wslarchlinux">安装 WSL——Archlinux</a></li>
+    <li><a href="#安装-docker">安装 docker</a>
+      <ul>
+        <li><a href="#安装">安装</a></li>
+      </ul>
+    </li>
+    <li><a href="#修改镜像位置">修改镜像位置</a></li>
+  </ul>
+</nav></div>
+    </div><dialog id="toc-dialog" class="tw-max-w-full tw-w-full tw-max-h-full tw-h-full tw-ml-16">
         <div class="toc tw-mx-4 tw-max-w-full">
             <h2 class="tw-mx-0 tw-my-6 tw-uppercase tw-text-2xl"></h2>
             <div class="toc-content"><nav id="TableOfContents">
@@ -164,7 +187,7 @@
   </ul>
 </nav></div>
         </div>
-    </dialog><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title" data-pagefind-meta="date:22000-06-06" data-pagefind-body>Windows 安装 Docker、wsl 等</h1><div class="post-meta">
+    </dialog><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title" data-pagefind-meta="date:22000-06-06" data-pagefind-body>Windows 安装 Docker、wsl 等</h1><div class="post-meta">
             <div class="post-meta-line">
                 <span class="post-author"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"/></svg><a href="/" title="Author" rel=" author" class="author"></a>
@@ -175,7 +198,24 @@
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;&nbsp;
                     <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;&nbsp;</div>
-        </div><div class="content" id="content" data-pagefind-body><!-- # Windows 安装 docker、wsl 等 -->
+        </div><div class="details toc print:!tw-block" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span></span>
+                    <span class="details-icon"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#安装-wslarchlinux">安装 WSL——Archlinux</a></li>
+    <li><a href="#安装-docker">安装 docker</a>
+      <ul>
+        <li><a href="#安装">安装</a></li>
+      </ul>
+    </li>
+    <li><a href="#修改镜像位置">修改镜像位置</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content" data-pagefind-body><!-- # Windows 安装 docker、wsl 等 -->
 <h2 id="安装-wslarchlinux" class="headerLink">
     <a href="#%e5%ae%89%e8%a3%85-wslarchlinux" class="header-mark"></a>安装 WSL——Archlinux</h2><p>控制面板找到 <code>启用或关闭windows功能</code> 勾选 <code>Hyper-V</code> 和 <code>适用于 Linux 的 Windows 子系统</code>（只用勾选后者实际就能WSL安装，如果需要使用原来的 Hyper-V 方式安装 Docker 才需要开启前者，这里直接都打开了），重启系统，执行 <code>wsl --update</code> 更新</p>
 <p>安装 Archlinux 作为子系统</p>
@@ -185,7 +225,7 @@
 <li>双击解压好的 Arch.exe 进行安装，这个 .exe 的名字 就是要创建的 WSL 实例的名字，改不同的名字就能创建多个 Arch WSL。</li>
 </ol>
 <p>常用命令</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -274,14 +314,14 @@
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>wsl --list <span style="color:#57606a"># 查看当前 wsl 中有的子系统</span>
-</span></span><span style="display:flex;"><span>wsl --update <span style="color:#57606a"># 下载或者更新</span>
-</span></span><span style="display:flex;"><span>wsl --shutdown <span style="color:#57606a"># 重新启动</span>
-</span></span><span style="display:flex;"><span>wsl -d  Arch <span style="color:#57606a"># 进入名为 Arch 的子系统</span></span></span></code></pre>
+      "><span class="line"><span class="cl">wsl --list <span class="c1"># 查看当前 wsl 中有的子系统</span>
+</span></span><span class="line"><span class="cl">wsl --update <span class="c1"># 下载或者更新</span>
+</span></span><span class="line"><span class="cl">wsl --shutdown <span class="c1"># 重新启动</span>
+</span></span><span class="line"><span class="cl">wsl -d  Arch <span class="c1"># 进入名为 Arch 的子系统</span></span></span></code></pre>
 </div>
 <p>官网文档：<a href="https://learn.microsoft.com/zh-cn/windows/wsl/basic-commands" target="_blank" rel="noopener noreferrer">https://learn.microsoft.com/zh-cn/windows/wsl/basic-commands</a></p>
 <p>配置用户</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -370,13 +410,13 @@
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>passwd root
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>useradd -m -G wheel -s /bin/bash uchin
-</span></span><span style="display:flex;"><span>passwd uchin</span></span></code></pre>
+      "><span class="line"><span class="cl">passwd root
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">useradd -m -G wheel -s /bin/bash uchin
+</span></span><span class="line"><span class="cl">passwd uchin</span></span></code></pre>
 </div>
 <p>退出ArchLinux，进入刚刚安装ArchLinux的目录（例如D:\vm\archlinux），将默认用户改为非root用户：</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -465,14 +505,14 @@
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span><span style="color:#6639ba">exit</span> <span style="color:#57606a"># 退出archlinux，之后你会回到Windows</span>
-</span></span><span style="display:flex;"><span><span style="color:#6639ba">cd</span> D:<span style="color:#0a3069">\W</span>SL<span style="color:#0a3069">\A</span>rch
-</span></span><span style="display:flex;"><span>.<span style="color:#0a3069">\A</span>rch.exe config --default-user uchin</span></span></code></pre>
+      "><span class="line"><span class="cl"><span class="nb">exit</span> <span class="c1"># 退出archlinux，之后你会回到Windows</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> D:<span class="se">\W</span>SL<span class="se">\A</span>rch
+</span></span><span class="line"><span class="cl">.<span class="se">\A</span>rch.exe config --default-user uchin</span></span></code></pre>
 </div>
 <p>配置hostname</p>
 <p>参考：<a href="https://www.cnblogs.com/stellae/p/14969599.html" target="_blank" rel="noopener noreferrer">WSL设置hostname，不修改Windows主机名</a></p>
 <p>默认的 <code>/etc/ws.conf</code> 如下</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -561,14 +601,14 @@
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span><span style="color:#0550ae">[</span>uchin@DESKTOP-UCHIN ~<span style="color:#0550ae">]</span>$ cat /etc/wsl.conf
-</span></span><span style="display:flex;"><span><span style="color:#0550ae">[</span>boot<span style="color:#0550ae">]</span>
-</span></span><span style="display:flex;"><span><span style="color:#953800">systemd</span><span style="color:#0550ae">=</span><span style="color:#6639ba">true</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#0550ae">[</span>automount<span style="color:#0550ae">]</span>
-</span></span><span style="display:flex;"><span><span style="color:#953800">enabled</span> <span style="color:#0550ae">=</span> <span style="color:#6639ba">true</span>
-</span></span><span style="display:flex;"><span><span style="color:#953800">options</span> <span style="color:#0550ae">=</span> <span style="color:#0a3069">&#34;metadata&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#953800">mountFsTab</span> <span style="color:#0550ae">=</span> true</span></span></code></pre>
+      "><span class="line"><span class="cl"><span class="o">[</span>uchin@DESKTOP-UCHIN ~<span class="o">]</span>$ cat /etc/wsl.conf
+</span></span><span class="line"><span class="cl"><span class="o">[</span>boot<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">systemd</span><span class="o">=</span><span class="nb">true</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>automount<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">enabled</span> <span class="o">=</span> <span class="nb">true</span>
+</span></span><span class="line"><span class="cl"><span class="nv">options</span> <span class="o">=</span> <span class="s2">&#34;metadata&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">mountFsTab</span> <span class="o">=</span> true</span></span></code></pre>
 </div>
 <p>该文件详细配置参考文档：<a href="https://learn.microsoft.com/zh-cn/windows/wsl/wsl-config" target="_blank" rel="noopener noreferrer">https://learn.microsoft.com/zh-cn/windows/wsl/wsl-config</a></p>
 <div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
@@ -660,24 +700,24 @@
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span><span style="color:#0550ae">[</span>uchin@DESKTOP-UCHIN ~<span style="color:#0550ae">]</span>$ cat /etc/wsl.conf
-</span></span><span style="display:flex;"><span><span style="color:#0550ae">[</span>boot<span style="color:#0550ae">]</span>
-</span></span><span style="display:flex;"><span><span style="color:#953800">systemd</span><span style="color:#0550ae">=</span><span style="color:#6639ba">true</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#0550ae">[</span>automount<span style="color:#0550ae">]</span>
-</span></span><span style="display:flex;"><span><span style="color:#953800">enabled</span> <span style="color:#0550ae">=</span> <span style="color:#6639ba">true</span>
-</span></span><span style="display:flex;"><span><span style="color:#953800">options</span> <span style="color:#0550ae">=</span> <span style="color:#0a3069">&#34;metadata&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#953800">mountFsTab</span> <span style="color:#0550ae">=</span> <span style="color:#6639ba">true</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#57606a"># 设置 wsl 自己的 hostname</span>
-</span></span><span style="display:flex;"><span><span style="color:#0550ae">[</span>network<span style="color:#0550ae">]</span>
-</span></span><span style="display:flex;"><span><span style="color:#953800">generateResolvConf</span> <span style="color:#0550ae">=</span> <span style="color:#6639ba">true</span>
-</span></span><span style="display:flex;"><span><span style="color:#953800">hostname</span> <span style="color:#0550ae">=</span> uchin-arch
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#57606a"># 禁用 windows 环境变量</span>
-</span></span><span style="display:flex;"><span><span style="color:#0550ae">[</span>interop<span style="color:#0550ae">]</span>
-</span></span><span style="display:flex;"><span><span style="color:#953800">enabled</span> <span style="color:#0550ae">=</span> <span style="color:#6639ba">false</span>
-</span></span><span style="display:flex;"><span><span style="color:#953800">appendWindowsPath</span> <span style="color:#0550ae">=</span> false</span></span></code></pre>
+      "><span class="line"><span class="cl"><span class="o">[</span>uchin@DESKTOP-UCHIN ~<span class="o">]</span>$ cat /etc/wsl.conf
+</span></span><span class="line"><span class="cl"><span class="o">[</span>boot<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">systemd</span><span class="o">=</span><span class="nb">true</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>automount<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">enabled</span> <span class="o">=</span> <span class="nb">true</span>
+</span></span><span class="line"><span class="cl"><span class="nv">options</span> <span class="o">=</span> <span class="s2">&#34;metadata&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">mountFsTab</span> <span class="o">=</span> <span class="nb">true</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 设置 wsl 自己的 hostname</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>network<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">generateResolvConf</span> <span class="o">=</span> <span class="nb">true</span>
+</span></span><span class="line"><span class="cl"><span class="nv">hostname</span> <span class="o">=</span> uchin-arch
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 禁用 windows 环境变量</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>interop<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">enabled</span> <span class="o">=</span> <span class="nb">false</span>
+</span></span><span class="line"><span class="cl"><span class="nv">appendWindowsPath</span> <span class="o">=</span> false</span></span></code></pre>
 </div>
 <h2 id="安装-docker" class="headerLink">
     <a href="#%e5%ae%89%e8%a3%85-docker" class="header-mark"></a>安装 docker</h2><h3 id="安装" class="headerLink">
@@ -690,7 +730,7 @@
     <a href="#%e4%bf%ae%e6%94%b9%e9%95%9c%e5%83%8f%e4%bd%8d%e7%bd%ae" class="header-mark"></a>修改镜像位置</h2><p>默认安装 docker 后镜像存放路径为 <code>C:\Users\uchin\AppData\Local\Docker\wsl</code> 当镜像过多后会大量占用 C 盘</p>
 <blockquote>
   <p>Docker Desktop WSL2 默认会安装2个子系统，使用命令wsl -l -v &ndash;all查看</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
     tw-flex 
@@ -779,11 +819,11 @@
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span>C:<span style="color:#0a3069">\U</span>sers<span style="color:#0a3069">\u</span>chin&gt;wsl -l -v --all
-</span></span><span style="display:flex;"><span>  NAME                   STATE           VERSION
-</span></span><span style="display:flex;"><span>* Arch                   Running         <span style="color:#0550ae">2</span>
-</span></span><span style="display:flex;"><span>  docker-desktop-data    Running         <span style="color:#0550ae">2</span>
-</span></span><span style="display:flex;"><span>  docker-desktop         Running         <span style="color:#0550ae">2</span></span></span></code></pre>
+      "><span class="line"><span class="cl">C:<span class="se">\U</span>sers<span class="se">\u</span>chin&gt;wsl -l -v --all
+</span></span><span class="line"><span class="cl">  NAME                   STATE           VERSION
+</span></span><span class="line"><span class="cl">* Arch                   Running         <span class="m">2</span>
+</span></span><span class="line"><span class="cl">  docker-desktop-data    Running         <span class="m">2</span>
+</span></span><span class="line"><span class="cl">  docker-desktop         Running         <span class="m">2</span></span></span></code></pre>
 </div>
 <p>两个子系统分别为 <code>docker-desktop-data</code> 与 <code>docker-desktop</code></p>
 </blockquote><p><code>docker-desktop-data</code> 与 <code>docker-desktop</code> 前者存放数据，后者存放程序</p>
@@ -876,22 +916,22 @@
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span style="display:flex;"><span><span style="color:#57606a"># 1. 退出Docker Desktop</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#57606a"># 2. 关闭 WSL</span>
-</span></span><span style="display:flex;"><span>wsl --shutdown
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#57606a"># 3. 将子系统导出为 tar 文件</span>
-</span></span><span style="display:flex;"><span>wsl --export docker-desktop D:<span style="color:#0a3069">\W</span>SL<span style="color:#0a3069">\d</span>ocker<span style="color:#0a3069">\d</span>ocker-desktop.tar
-</span></span><span style="display:flex;"><span>wsl --export docker-desktop-data D:<span style="color:#0a3069">\W</span>SL<span style="color:#0a3069">\d</span>ocker<span style="color:#0a3069">\d</span>ocker-desktop-data.tar
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#57606a"># 4. 注销子系统</span>
-</span></span><span style="display:flex;"><span>wsl --unregister docker-desktop
-</span></span><span style="display:flex;"><span>wsl --unregister docker-desktop-data
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#57606a"># 5. 使用新路径导入子系统</span>
-</span></span><span style="display:flex;"><span>wsl --import docker-desktop D:<span style="color:#0a3069">\W</span>SL<span style="color:#0a3069">\d</span>ocker<span style="color:#0a3069">\d</span>ocker-desktop D:<span style="color:#0a3069">\W</span>SL<span style="color:#0a3069">\d</span>ocker<span style="color:#0a3069">\d</span>ocker-desktop.tar --version <span style="color:#0550ae">2</span>
-</span></span><span style="display:flex;"><span>wsl --import docker-desktop-data D:<span style="color:#0a3069">\W</span>SL<span style="color:#0a3069">\d</span>ocker<span style="color:#0a3069">\d</span>ocker-desktop-data D:<span style="color:#0a3069">\W</span>SL<span style="color:#0a3069">\d</span>ocker<span style="color:#0a3069">\d</span>ocker-desktop-data.tar --version <span style="color:#0550ae">2</span></span></span></code></pre>
+      "><span class="line"><span class="cl"><span class="c1"># 1. 退出Docker Desktop</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 2. 关闭 WSL</span>
+</span></span><span class="line"><span class="cl">wsl --shutdown
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 3. 将子系统导出为 tar 文件</span>
+</span></span><span class="line"><span class="cl">wsl --export docker-desktop D:<span class="se">\W</span>SL<span class="se">\d</span>ocker<span class="se">\d</span>ocker-desktop.tar
+</span></span><span class="line"><span class="cl">wsl --export docker-desktop-data D:<span class="se">\W</span>SL<span class="se">\d</span>ocker<span class="se">\d</span>ocker-desktop-data.tar
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 4. 注销子系统</span>
+</span></span><span class="line"><span class="cl">wsl --unregister docker-desktop
+</span></span><span class="line"><span class="cl">wsl --unregister docker-desktop-data
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 5. 使用新路径导入子系统</span>
+</span></span><span class="line"><span class="cl">wsl --import docker-desktop D:<span class="se">\W</span>SL<span class="se">\d</span>ocker<span class="se">\d</span>ocker-desktop D:<span class="se">\W</span>SL<span class="se">\d</span>ocker<span class="se">\d</span>ocker-desktop.tar --version <span class="m">2</span>
+</span></span><span class="line"><span class="cl">wsl --import docker-desktop-data D:<span class="se">\W</span>SL<span class="se">\d</span>ocker<span class="se">\d</span>ocker-desktop-data D:<span class="se">\W</span>SL<span class="se">\d</span>ocker<span class="se">\d</span>ocker-desktop-data.tar --version <span class="m">2</span></span></span></code></pre>
 </div>
 <hr>
 <p><em>参考：</em></p>
@@ -936,11 +976,11 @@
             <a href="/posts/cst/zsh-%E7%AE%80%E8%AE%B0/" class="next" rel="next" title="zsh 简记">zsh 简记<svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg></a></div>
 </div>
-</article></main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">
-                    &nbsp;|&nbsp;
-                </div><div class="footer-line"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"/></svg>2025<span class="author">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer"></a></span></div>
+<div id="comments" class="print:!tw-hidden tw-pt-32 tw-pb-8"><div id="gitalk" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
+            </noscript></div></article></main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"/></svg>2022 - 2025&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
             <div class="footer-line"></div>
             <div class="footer-line">
             </div>
@@ -952,10 +992,50 @@
   <button id="toc-drawer-button" class="tw-block tw-bg-bgColor-secondary tw-rounded-full md:tw-hidden" style="padding: 0.6rem; line-height: 1.3rem; font-size: 1rem;">
       <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg>
-  </button></div>
-
-<script>window.config={"autocomplete.min.js":"/lib/autocomplete/autocomplete.min.js","comment":{},"pagefind.js":"/pagefind/pagefind.js","search":{"highlightTag":null,"maxResultLength":null,"noResultsFound":"","pageLength":null,"snippetLength":null,"termFrequency":null,"termSaturation":null,"termSimilarity":null,"type":"pagefind"}};</script><script
+  </button><a href="#comments" id="view-comments" class="tw-block tw-bg-bgColor-secondary tw-rounded-full" style="padding: 0.6rem; line-height: 1.3rem; font-size: 1rem;" title="">
+      <svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32z"/></svg>
+  </a></div>
+<link rel="stylesheet" href="/lib/gitalk/gitalk.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript>
+<script>window.config={"autocomplete.min.js":"/lib/autocomplete/autocomplete.min.js","comment":{"gitalk":{"admin":["yuqinlee"],"clientID":"Ov23lifxInDzJZx884sY","clientSecret":"522eeef485a4fdc2b64c7357a4b47c3df38b5c6b","id":"2024-06-22T17:08:21+08:00","owner":"yuqinlee","repo":"yuqinlee.github.io","title":"Windows 安装 Docker、wsl 等"}},"fuse.min.js":"/lib/fuse/fuse.min.js","math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"table":{"sort":true}};</script><script
+    src="/lib/tablesort/tablesort.min.js"
+    
+  ></script><script
+    src="/lib/katex/katex.min.js"
+    
+      defer
+    
+  ></script><script
+    src="/lib/katex/auto-render.min.js"
+    
+      defer
+    
+  ></script><script
+    src="/lib/katex/copy-tex.min.js"
+    
+      defer
+    
+  ></script><script
+    src="/lib/katex/mhchem.min.js"
+    
+      defer
+    
+  ></script><script
+    src="/js/katex.min.js"
+    
+      defer
+    
+  ></script><script
     src="/js/theme.min.js"
+    
+      defer
+    
+  ></script><script
+    src="/lib/gitalk/gitalk.min.js"
+    
+  ></script><script
+    src="/js/gitalk.min.js"
     
       defer
     
