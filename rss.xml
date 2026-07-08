@@ -1,1 +1,3261 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>轻 · 语</title><description>一个兴趣使然的无名部落</description><link>https://fuwari.vercel.app/</link><language>zh_CN</language></channel></rss>
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>轻 · 语</title><description>一个兴趣使然的无名部落</description><link>https://fuwari.vercel.app/</link><language>zh_CN</language><item><title>Python 版本管理 —— Poetry</title><link>https://fuwari.vercel.app/posts/cst/python-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/cst/python-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/</guid><pubDate>Mon, 09 Sep 2024 08:02:58 GMT</pubDate><content:encoded>&lt;h2&gt;poetry 是什么&lt;/h2&gt;
+&lt;p&gt;主要针对虚拟环境下的 python 包管理工具&lt;/p&gt;
+&lt;p&gt;poetry 与常见框架对比&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;conda: Python 版本管理，创建不同虚拟环境，管理不同 python 与 包 版本均&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Pyenv：Python 版本管理，注意这里主要是对于不同 python 版本需求&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 安装
+curl https://pyenv.run | bash
+
+# 添加系统路径并初始化 Pyenv
+export PATH=&quot;$HOME/.pyenv/bin:$PATH&quot;
+eval &quot;$(pyenv init -)&quot;
+eval &quot;$(pyenv virtualenv-init -)&quot;
+
+# 安装不同版本
+pyenv install 3.8.0
+
+# 全局启用
+pyenv global 3.8.0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;pip: Python 自带的包管理&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;venv: Python 自带的虚拟环境管理&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;python -m venv venv
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;小结：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;conda: &quot;重量级&quot;环境管理，可以管理虚拟环境，其虚拟环境下可以独立使用不同版本 py 与不同包，互不干扰&lt;/li&gt;
+&lt;li&gt;pip+venv: 官网自带轻量化，但 pip 不检测依赖，容易出现&quot;孤儿包&quot;（删除下游包后上有依赖无法自动删除）&lt;/li&gt;
+&lt;li&gt;Pyenv: 管理不同的 python 版本&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;安装&lt;/h2&gt;
+&lt;p&gt;archlinux 中直接通过 &lt;code&gt;pacman&lt;/code&gt; 即可安装&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# arch
+sudo pacman -S python-poetry
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;a href=&quot;https://python-poetry.org/docs/#installing-with-pipx&quot;&gt;官网安装方式&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;常用命令&lt;/h2&gt;
+&lt;h3&gt;包管理&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;# 查看版本
+poetry -V
+
+# 创建新的基于poetry 的 py 项目，类似 vue-cli 创建新工程
+poetry new &amp;lt;proj-name&amp;gt;
+
+# 已有工程上初始化
+poetry init
+
+# 依赖稳定后生成lock文件
+poetry lock
+
+# 解析并安装 pyproject.toml 的依赖包
+poetry install
+
+# 添加包
+poetry add &amp;lt;packag name&amp;gt;
+
+# 删除包
+poetry remove &amp;lt;packag name&amp;gt;
+
+# 列出当前虚拟环境中的包
+poetry show
+
+# 树形结构查看项目安装的依赖
+poetry show -t
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;虚拟环境&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;# 查看虚拟环境信息
+poetry env info
+
+# 显示虚拟环境列表
+poetry env list
+
+# 显示虚拟环境绝对路径
+poetry env list --full-path
+
+# 创建虚拟环境
+poetry env use python3.X.X
+
+# 删除虚拟环境
+poetry env remove python3.X.X
+
+# 查看python版本
+poetry run python -V
+
+# 启动环境
+poetry shell
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&amp;lt;font color=&apos;red&apos;&amp;gt;这里创建虚拟环境是需要本地有对应 python 解释器的且在环境变量中找到的&amp;lt;/font&amp;gt;&lt;/p&gt;
+&lt;h2&gt;配置&lt;/h2&gt;
+&lt;h3&gt;镜像源配置&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;poetry source add tsinghua https://pypi.tuna.tsinghua.edu.cn/simple
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;也可以直接修改 &lt;code&gt;pyproject.toml&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[[tool.poetry.source]]
+name = &quot;tsinghua&quot;
+url = &quot;https://pypi.tuna.tsinghua.edu.cn/simple&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;虚拟环境存放路径&lt;/h3&gt;
+&lt;p&gt;poetry 默认将虚拟环境统一存放&lt;/p&gt;
+&lt;p&gt;Windows：&lt;code&gt;C:\Users\&amp;lt;username&amp;gt;\AppData\Local\pypoetry\Cache\virtualenvs\&lt;/code&gt;&lt;br /&gt;
+Linux：&lt;code&gt;.local\pypoetry\cache\virtualenvs\&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;通过如下设置使 poetry 将虚拟环境放在项目 &lt;code&gt;.venv&lt;/code&gt; 下&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 设置项目内 venv
+poetry config virtualenvs.in-project true
+
+# 查看配置
+poetry config --list
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;em&gt;ref&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://python-poetry.org/docs&quot;&gt;Poetry Doc&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://notes.zhengxinonly.com/environment/use-poetry.html&quot;&gt;poetry 入门完全指南&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.agiexplained.com/2024/04/05/poetry-quickstart/index.html&quot;&gt;Python依赖和包管理工具Poetry&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.tobyblogs.cn/PoetryCn/6/&quot;&gt;Poetry项目配置与环境管理-Poetry中文翻译(六)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.cnblogs.com/-wenli/p/13337188.html&quot;&gt;Python包管理之poetry的使用&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.w3cschool.cn/article/32429509.html&quot;&gt;Python版本管理入门指南：多个版本切换不再困难&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.csdn.net/wuzhongqiang/article/details/125861099&quot;&gt;poetry管理python开发环境学习小记&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded></item><item><title>zsh 简记</title><link>https://fuwari.vercel.app/posts/cst/zsh-%E7%AE%80%E8%AE%B0/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/cst/zsh-%E7%AE%80%E8%AE%B0/</guid><pubDate>Fri, 30 Aug 2024 04:53:55 GMT</pubDate><content:encoded>&lt;h2&gt;zsh 安装与基础配置&lt;/h2&gt;
+&lt;p&gt;arch&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;pacman -S zsh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;切换默认 shell&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 列出当前 shell
+cat /etc/shells 
+
+# 切换 /bin/zsh 是连接，这里需要二进制路径
+chsh -s /usr/bin/zsh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;zsh 快捷键&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;zsh&lt;/th&gt;
+&lt;th&gt;bash&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;光标移动到行首&lt;/td&gt;
+&lt;td&gt;ctrl+a&lt;/td&gt;
+&lt;td&gt;home&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;光标移动到行尾&lt;/td&gt;
+&lt;td&gt;ctrl+e&lt;/td&gt;
+&lt;td&gt;end&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;删除光标后的所有字符&lt;/td&gt;
+&lt;td&gt;ctrl+k&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;删除光标前的所有字符&lt;/td&gt;
+&lt;td&gt;ctrl+h&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;搜索历史&lt;/td&gt;
+&lt;td&gt;ctrl+r&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;zsh 插件&lt;/h2&gt;
+&lt;h3&gt;zsh-autosuggestions&lt;/h3&gt;
+&lt;p&gt;命令历史自动提示插件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# arch
+sudo pacman -Sy zsh-autosuggestions
+echo &quot;source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh&quot; &amp;gt;&amp;gt; ~/.zshrc
+
+# mac
+brew install zsh-autosuggestions
+echo &quot;source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh&quot; &amp;gt;&amp;gt;  ${ZDOTDIR:-$HOME}/.zshrc
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;zsh-syntax-highlighting&lt;/h3&gt;
+&lt;p&gt;语法高亮插件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# arch
+pacman -Sy zsh-syntax-highlighting
+echo &quot;source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh&quot; &amp;gt;&amp;gt; ~/.zshrc
+
+# mac
+brew install zsh-syntax-highlighting
+echo &quot;source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh&quot; &amp;gt;&amp;gt; ${ZDOTDIR:-$HOME}/.zshrc
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;autojump&lt;/h3&gt;
+&lt;p&gt;跳转到历史记录里的目录&lt;/p&gt;
+&lt;h3&gt;incr&lt;/h3&gt;
+&lt;p&gt;系统目录自动提示插件&lt;/p&gt;
+&lt;h2&gt;zsh 主题&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;code&gt;~/.zshrc&lt;/code&gt;: &lt;a href=&quot;https://github.com/yuqinlee/uchin-config/blob/master/zsh/.zshrc&quot;&gt;https://github.com/yuqinlee/uchin-config/blob/master/zsh/.zshrc&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# ================================================
+#             uchin zsh config
+# ================================================
+# ================================================
+#             uchin zsh config
+# ================================================
+# alias
+alias ls=&apos;ls --color=auto&apos;
+alias ll=&apos;ls -lah --color=auto&apos;
+
+# enable color
+autoload -U colors &amp;amp;&amp;amp; colors
+
+# prompt config
+PROMPT=&quot;%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[green]%}%1|%~ %{$reset_color%}%#&amp;gt;&quot;
+# return last command status on line tail
+RPROMPT=&quot;[%{$fg_bold[yellow]%}%?%{$reset_color%}]&quot;
+
+#  plugins
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;em&gt;ref:&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://linux.cn/article-11378-1.html&quot;&gt;zsh 入门&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://linux.cn/article-13030-1.html&quot;&gt;配置一个简洁高效的 Zsh&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.cnblogs.com/lookfeel/p/17839867.html&quot;&gt;arch linux安装并简单配置zsh&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.newverse.wiki/knows/prompt/&quot;&gt;配置 Zsh 终端：Prompt 命令提示符&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded></item><item><title>Windows 安装 Docker、wsl 等</title><link>https://fuwari.vercel.app/posts/cst/windows-%E5%AE%89%E8%A3%85-dockerwsl-%E7%AD%89/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/cst/windows-%E5%AE%89%E8%A3%85-dockerwsl-%E7%AD%89/</guid><pubDate>Sat, 22 Jun 2024 09:08:21 GMT</pubDate><content:encoded>&lt;p&gt;&amp;lt;!-- # Windows 安装 docker、wsl 等 --&amp;gt;&lt;/p&gt;
+&lt;h2&gt;安装 WSL——Archlinux&lt;/h2&gt;
+&lt;p&gt;控制面板找到 &lt;code&gt;启用或关闭windows功能&lt;/code&gt; 勾选 &lt;code&gt;Hyper-V&lt;/code&gt; 和 &lt;code&gt;适用于 Linux 的 Windows 子系统&lt;/code&gt;（只用勾选后者实际就能WSL安装，如果需要使用原来的 Hyper-V 方式安装 Docker 才需要开启前者，这里直接都打开了），重启系统，执行 &lt;code&gt;wsl --update&lt;/code&gt; 更新&lt;/p&gt;
+&lt;p&gt;安装 Archlinux 作为子系统&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;从 &lt;code&gt;https://github.com/yuk7/ArchWSL/releases&lt;/code&gt; 下载压缩包&lt;/li&gt;
+&lt;li&gt;解压到指定目录&lt;/li&gt;
+&lt;li&gt;双击解压好的 Arch.exe 进行安装，这个 .exe 的名字 就是要创建的 WSL 实例的名字，改不同的名字就能创建多个 Arch WSL。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;常用命令&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;wsl --list # 查看当前 wsl 中有的子系统
+wsl --update # 下载或者更新
+wsl --shutdown # 重新启动
+wsl -d  Arch # 进入名为 Arch 的子系统
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;官网文档：&lt;a href=&quot;https://learn.microsoft.com/zh-cn/windows/wsl/basic-commands&quot;&gt;https://learn.microsoft.com/zh-cn/windows/wsl/basic-commands&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;配置用户&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;passwd root
+
+useradd -m -G wheel -s /bin/bash uchin
+passwd uchin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;退出ArchLinux，进入刚刚安装ArchLinux的目录（例如D:\vm\archlinux），将默认用户改为非root用户：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;exit # 退出archlinux，之后你会回到Windows
+cd D:\WSL\Arch
+.\Arch.exe config --default-user uchin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;配置hostname&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://www.cnblogs.com/stellae/p/14969599.html&quot;&gt;WSL设置hostname，不修改Windows主机名&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;默认的 &lt;code&gt;/etc/ws.conf&lt;/code&gt; 如下&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[uchin@DESKTOP-UCHIN ~]$ cat /etc/wsl.conf
+[boot]
+systemd=true
+
+[automount]
+enabled = true
+options = &quot;metadata&quot;
+mountFsTab = true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;该文件详细配置参考文档：&lt;a href=&quot;https://learn.microsoft.com/zh-cn/windows/wsl/wsl-config&quot;&gt;https://learn.microsoft.com/zh-cn/windows/wsl/wsl-config&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[uchin@DESKTOP-UCHIN ~]$ cat /etc/wsl.conf
+[boot]
+systemd=true
+
+[automount]
+enabled = true
+options = &quot;metadata&quot;
+mountFsTab = true
+
+# 设置 wsl 自己的 hostname
+[network]
+generateResolvConf = true
+hostname = uchin-arch
+
+# 禁用 windows 环境变量
+[interop]
+enabled = false
+appendWindowsPath = false
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;安装 docker&lt;/h2&gt;
+&lt;h3&gt;安装&lt;/h3&gt;
+&lt;p&gt;这里使用 WSL2 的方式安装 Windows Docker&lt;/p&gt;
+&lt;p&gt;WSL 对比 Hyper-V 体验更好，可以不考虑原来 Hyper-V 的方式了&lt;/p&gt;
+&lt;p&gt;运行 &lt;code&gt;wsl --update&lt;/code&gt;，如果之前没更新会更新WSL，然后下载 Windows Docker&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.docker.com/products/docker-desktop/&quot;&gt;https://www.docker.com/products/docker-desktop/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;安装时勾选 WSL2 安装即可安装完成&lt;/p&gt;
+&lt;h2&gt;修改镜像位置&lt;/h2&gt;
+&lt;p&gt;默认安装 docker 后镜像存放路径为 &lt;code&gt;C:\Users\uchin\AppData\Local\Docker\wsl&lt;/code&gt; 当镜像过多后会大量占用 C 盘&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Docker Desktop WSL2 默认会安装2个子系统，使用命令wsl -l -v --all查看&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;C:\Users\uchin&amp;gt;wsl -l -v --all
+  NAME                   STATE           VERSION
+* Arch                   Running         2
+  docker-desktop-data    Running         2
+  docker-desktop         Running         2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;两个子系统分别为 &lt;code&gt;docker-desktop-data&lt;/code&gt; 与 &lt;code&gt;docker-desktop&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;code&gt;docker-desktop-data&lt;/code&gt; 与 &lt;code&gt;docker-desktop&lt;/code&gt; 前者存放数据，后者存放程序&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 1. 退出Docker Desktop
+
+# 2. 关闭 WSL
+wsl --shutdown
+
+# 3. 将子系统导出为 tar 文件
+wsl --export docker-desktop D:\WSL\docker\docker-desktop.tar
+wsl --export docker-desktop-data D:\WSL\docker\docker-desktop-data.tar
+
+# 4. 注销子系统
+wsl --unregister docker-desktop
+wsl --unregister docker-desktop-data
+
+# 5. 使用新路径导入子系统
+wsl --import docker-desktop D:\WSL\docker\docker-desktop D:\WSL\docker\docker-desktop.tar --version 2
+wsl --import docker-desktop-data D:\WSL\docker\docker-desktop-data D:\WSL\docker\docker-desktop-data.tar --version 2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;em&gt;参考：&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://twor.me/posts/wsl_archlinux_gui/&quot;&gt;√ Arch WSL 安装 1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/613454594&quot;&gt;√ Arch WSL 安装 2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://moe23333.vercel.app/posts/install-arch-wsl2&quot;&gt;× Arch WSL appx 安装方式&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://cloud.tencent.com/developer/article/2208269&quot;&gt;√ windows docker 安装&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.csdn.net/daihaoxin/article/details/116104599&quot;&gt;√ Docker Desktop(WSL2)修改镜像存储位置&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://linux.cn/article-16108-1.html&quot;&gt;√ ls 命令输出的颜色&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.cnblogs.com/JavicxhloWong/p/14541469.html&quot;&gt;√ 系统配置bash shell字体颜色&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.cnblogs.com/enwaiax/p/15767346.html&quot;&gt;Linux PS1 的常用配置&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.cnblogs.com/KylinBlog/p/16588037.html&quot;&gt;√ 通过 VcXsrv 在 WSL2 上使用图形化界面&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://steinslab.io/archives/2082&quot;&gt;√ 使用 WSL2 + X11 转发 - 在 Windows10 中打造 GNU/Linux 学习生产环境&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded></item><item><title>Linux 文件属性</title><link>https://fuwari.vercel.app/posts/cst/linux-%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/cst/linux-%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7/</guid><pubDate>Mon, 04 Sep 2023 09:21:39 GMT</pubDate><content:encoded>&lt;p&gt;&amp;lt;!-- # Linux 文件属性 --&amp;gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[uchin@master linuxLearn]$ ll
+总用量 12K
+drwxrwxr-x.  2 uchin uchin   23 9月   4 17:21 .
+drwx------. 12 uchin uchin 4.0K 9月   4 17:21 ..
+-rw-------.  1 uchin uchin   23 9月   4 17:21 uchin.txt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;各列含义&lt;/h2&gt;
+&lt;h3&gt;第一列&lt;/h3&gt;
+&lt;p&gt;第一列代表这个文件的类型与权限（permission）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第一字符：代表这个文件是“目录、文件或链接文件等等”
+&lt;ul&gt;
+&lt;li&gt;当为[ d ]则是目录；&lt;/li&gt;
+&lt;li&gt;当为[ - ]则是文件；&lt;/li&gt;
+&lt;li&gt;若是[ l ]则表示为链接文件（link file）；&lt;/li&gt;
+&lt;li&gt;若是[ b ]则表示为设备文件里面的可供储存的周边设备（可随机存取设备）；&lt;/li&gt;
+&lt;li&gt;若是[ c ]则表示为设备文件里面的序列埠设备，例如键盘、鼠标（一次性读取设
+备）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;第一组三个字符：文件拥有者可具备的权限&lt;/li&gt;
+&lt;li&gt;第二组三个字符：加入此群组的帐号的权限&lt;/li&gt;
+&lt;li&gt;第三组三个字符：非本人且没有加入本群组之其他帐号的权限&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;第二列&lt;/h3&gt;
+&lt;p&gt;第二列表示有多少文件名链接到此节点（i-node）&lt;/p&gt;
+&lt;h3&gt;第三列&lt;/h3&gt;
+&lt;p&gt;第三列表示这个文件（或目录）的“拥有者帐号”&lt;/p&gt;
+&lt;h3&gt;第四列&lt;/h3&gt;
+&lt;p&gt;第四列表示这个文件的所属群组&lt;/p&gt;
+&lt;h3&gt;第五列&lt;/h3&gt;
+&lt;p&gt;第五列为这个文件的容量大小，默认单位为Bytes&lt;/p&gt;
+&lt;h3&gt;第六列&lt;/h3&gt;
+&lt;p&gt;第五列为这个文件的创建日期或者是最近的修改日期&lt;/p&gt;
+&lt;p&gt;完整显示加参数 &lt;code&gt;--full-time&lt;/code&gt;&lt;/p&gt;
+&lt;h2&gt;文件权限与文件&lt;/h2&gt;
+&lt;h2&gt;文件权限与目录&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.cnblogs.com/xiexj/p/7214502.html&quot;&gt;https://www.cnblogs.com/xiexj/p/7214502.html&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;理解了上面这些知识，就能理解目录的权限。目录文件的读权限（r）和写权限（w），都是针对目录文件本身（即不同用户能以什么权限访问操作对该目录文件，例如这里不同用户对tmp目录文件（d可以查出tmp是目录文件，d表示directory，即目录）分别为rwxr-xr-x，第一组的三个字符，即rwx，表示文件拥有者用户的对该文件的读写权限，第二组的三个字符，即r-x，表示文件拥有者用户所在的用户组里的其他用户对该文件的读写权限，第三组的三个字符，即r-x，表示文件拥有者用户所在的用户组以外的用户对该文件的读写权限。一个某个用户下运行的进程访问操作该目录文件只能以该用户所具有的对该目录文件的权限进行操作）。由于目录文件内只有文件名和inode号码，所以如果只有读权限，只能获取文件名，无法获取其他信息，因为其他信息都储存在inode节点中，而读取inode节点内的信息需要目录文件的执行权限（x）&lt;/p&gt;
+&lt;p&gt;但是，Unix/Linux系统允许，&lt;strong&gt;多个文件名指向同一个inode号码&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;这意味着，可以用不同的文件名访问同样的内容；对文件内容进行修改，会影响到所有文件名；但是，删除一个文件名，不影响另一个文件名的访问。这种情况就被称为&quot;硬链接&quot;（hard link）。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/wdkirchhoff/article/details/44205143&quot;&gt;https://blog.csdn.net/wdkirchhoff/article/details/44205143&lt;/a&gt;&amp;lt;&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.zhihu.com/question/50223526&quot;&gt;linux为什么不能硬链接目录？&lt;/a&gt;&lt;/p&gt;
+</content:encoded></item><item><title>Archlinux 简记</title><link>https://fuwari.vercel.app/posts/cst/archlinux-%E7%AE%80%E8%AE%B0/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/cst/archlinux-%E7%AE%80%E8%AE%B0/</guid><pubDate>Wed, 01 Feb 2023 02:18:48 GMT</pubDate><content:encoded>&lt;h2&gt;1. 无图形安装&lt;/h2&gt;
+&lt;h3&gt;检查安装模式&lt;/h3&gt;
+&lt;p&gt;检测是否为 &lt;code&gt;uefi 方式&lt;/code&gt; 安装，若为 &lt;code&gt;uefi 方式&lt;/code&gt; 则以下命令将输出一堆东西&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ls /sys/firmware/efi/efivars
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;更改字体&lt;/h3&gt;
+&lt;p&gt;默认 liveCD 字体可能过小&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;setfont /usr/local/kbd/consolefonts/LatGrkCyr-12x22.psfu.gz
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;禁用 reflector 服务&lt;/h3&gt;
+&lt;p&gt;禁用 reflector 服务，以方便自定义源&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;systemctl stop reflector.service
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;设置镜像源&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;vim /etc/pacman.d/mirrorlist
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;生效的是&lt;strong&gt;首行&lt;/strong&gt;，因此添加中科大或者清华的放在最上面&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch
+Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;连接网络&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;iwctl                           # 执行iwctl命令，进入交互式命令行
+device list                     # 列出设备名，比如无线网卡看到叫 wlan0
+station wlan0 scan              # 扫描网络
+station wlan0 get-networks      # 列出网络 比如想连接YOUR-WIRELESS-NAME这个无线
+station wlan0 connect YOUR-WIRELESS-NAME # 进行连接 输入密码即可
+exit                            # 成功后exit退出
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;设置完成后测试&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ping baidu.com
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;更新系统时钟&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;timedatectl set-ntp true        # 将系统时间与网络时间进行同步
+timedatectl status              # 检查服务状态
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;分区（Btrfs）&lt;/h3&gt;
+&lt;p&gt;这里文件采用 &lt;code&gt;Btrfs&lt;/code&gt; 文件系统，分区根据个人情况&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;/&lt;/th&gt;
+&lt;th&gt;/home&lt;/th&gt;
+&lt;th&gt;/efi&lt;/th&gt;
+&lt;th&gt;Swap&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;500M&lt;/td&gt;
+&lt;td&gt;&amp;gt;= 内存 x 60%&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;由于使用 &lt;code&gt;Btrfs&lt;/code&gt; 文件系统，这里 &lt;code&gt;/home&lt;/code&gt; 与 &lt;code&gt;/&lt;/code&gt; 将位于同一分区&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;lsblk                           # 显示当前分区情况
+cfdisk /dev/sdx                 # 对安装 archlinux 的磁盘分区
+fdisk -l                        # 分区完成后复查磁盘情况
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;格式化&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;mkfs.vfat  /dev/sdax            # 格式化 efi 分区
+mkfs.btrfs -L myArch /dev/sdxn  # 格式化 / 与 /home 所在分区
+mkswap /dev/sdxn                # 格式化 Swap 分区
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&amp;lt;u&amp;gt;双系统中原本 Windows 已经存在 &lt;code&gt;efi&lt;/code&gt; 分区的情况下，不需要再格式化了，后续挂载即可&amp;lt;/u&amp;gt;&lt;/p&gt;
+&lt;h3&gt;创建子卷&lt;/h3&gt;
+&lt;p&gt;为创建子卷，先将 &lt;code&gt;/&lt;/code&gt; 与 &lt;code&gt;/home&lt;/code&gt; 所在分区挂载至 &lt;code&gt;/mnt&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mount -t btrfs -o compress=zstd /dev/sdxn /mnt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;df -h # 查看挂载状态
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;btrfs subvolume create /mnt/@     # 创建 / 目录子卷
+btrfs subvolume create /mnt/@home # 创建 /home 目录子卷
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看子卷情况&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;btrfs subvolume list -p /mnt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;子卷创建完成后卸载&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;umount /mnt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;挂载&lt;/h3&gt;
+&lt;p&gt;&amp;lt;font color=&apos;red&apos;&amp;gt;先挂根目录&amp;lt;/font&amp;gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mount -t btrfs -o subvol=/@,compress=zstd /dev/sdxn /mnt # 挂载 / 目录
+mkdir /mnt/home # 创建 /home 目录
+mount -t btrfs -o subvol=/@home,compress=zstd /dev/sdxn /mnt/home # 挂载 /home 目录
+mkdir -p /mnt/boot/efi # 创建 /boot/efi 目录
+mount /dev/sdxn /mnt/boot/efi # 挂载 /boot/efi 目录
+swapon /dev/sdxn # 挂载交换分区
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看挂载情况&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;df -h
+free -h # 查看 Swap 情况
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;安装&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;pacstrap /mnt base base-devel linux linux-firmware
+pacstrap /mnt dhcpcd iwd vim
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;生成 fstab 文件&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;genfstab -U /mnt &amp;gt; /mnt/etc/fstab
+cat /mnt/etc/fstab # 复查一下 /mnt/etc/fstab 确保没有错误
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;切换系统&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;arch-chroot /mnt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;主机与主机名&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;vim /etc/hostname           # 修改主机名
+vim /etc/hosts              # 修改主机映射
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;# /etc/hosts
+127.0.0.1   localhost
+::1         localhost
+127.0.1.1   archlinux
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;时间与时区&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime #设置时区 
+hwclock --systohc                                       # 硬件时间设置
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Locale&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://wiki.archlinuxcn.org/wiki/%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%E6%9C%AC%E5%9C%B0%E5%8C%96&quot;&gt;wiki-archlinuxcn&lt;/a&gt;
+上不推荐直接修改 &lt;code&gt;/etc/locale.conf&lt;/code&gt; 方式修改 locale&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;不推荐在 &lt;code&gt;/etc/locale.conf&lt;/code&gt; 里把全局的 LANG locale 设置成中文 &lt;code&gt;LANG=zh_CN.UTF-8&lt;/code&gt;，因为 TTY 下没有 CJK 字体，这样设置会导致 TTY 中显示豆腐块（除非你使用的内核打了 cjktty 补丁能绘制中文字体，比如linux-lilyCNRepo）。&lt;/p&gt;
+&lt;p&gt;每个用户单独的 locale 可以在 ~/.bashrc、~/.xinitrc 或 ~/.xprofile 中设置：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;.bashrc&lt;/code&gt;：每次使用终端时会应用此处的设置。&lt;br /&gt;
+&lt;code&gt;.xinitrc&lt;/code&gt;：每次使用 startx 或 SLiM 来启动 X 窗口系统时会应用此处的设置。&lt;br /&gt;
+&lt;code&gt;.xprofile&lt;/code&gt;：每次使用 GDM 等显示管理器时会应用此处的设置。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;可以在用户环境变量下配置&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# ~/.xinitrc 或 ~/.xprofile 中如下配置且放在 WM 启动前即可
+export LANG=zh_CN.UTF-8
+export LANGUAGE=zh_CN:en_US
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;以下做法来自 &lt;a href=&quot;https://archlinuxstudio.github.io/ArchLinuxTutorial/#/rookie/basic_install?id=_12%e8%ae%be%e7%bd%ae-locale-%e8%bf%9b%e8%a1%8c%e6%9c%ac%e5%9c%b0%e5%8c%96&quot;&gt;https://archlinuxstudio.github.io/ArchLinuxTutorial/#/rookie/basic_install?id=_12设置-locale-进行本地化&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;编辑 &lt;code&gt;/etc/locale.gen&lt;/code&gt;，去掉 &lt;code&gt;en_US.UTF-8 UTF-8&lt;/code&gt; 以及 &lt;code&gt;zh_CN.UTF-8 UTF-8&lt;/code&gt; 行前的注释符号 &lt;code&gt;#&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim /etc/locale.gen                         # 去除相关注释
+locale-gen                                  # 生成 locale
+
+echo &apos;LANG=en_US.UTF-8&apos;  &amp;gt; /etc/locale.conf # 向 /etc/locale.conf 导入内容
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;安装微码&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;pacman -S intel-ucode # Intel
+pacman -S amd-ucode # AMD
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;引导&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;# 安装引导程序相应包
+pacman -S grub efibootmgr os-prober 
+
+# 安装 GRUB 到 EFI 分区
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=ARCH
+
+# 编辑 /etc/default/grub 文件
+vim /etc/default/grub 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;找到 &lt;code&gt;GRUB_CMDLINE_LINUX_DEFAULT&lt;/code&gt; 这一行，进行如下修改：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;去掉这行中最后的 &lt;code&gt;quiet&lt;/code&gt; 参数&lt;/li&gt;
+&lt;li&gt;把 &lt;code&gt;loglevel&lt;/code&gt; 的数值从 &lt;code&gt;3&lt;/code&gt; 改成 &lt;code&gt;5&lt;/code&gt;。这样是为了后续如果出现系统错误，方便排错&lt;/li&gt;
+&lt;li&gt;加入 &lt;code&gt;nowatchdog&lt;/code&gt; 参数，这可以显著提高开关机速度&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;添加新的一行 &lt;code&gt;GRUB_DISABLE_OS_PROBER=false&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;修改后为：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# GRUB boot loader configuration
+
+GRUB_DEFAULT=0
+GRUB_TIMEOUT=5
+GRUB_DISTRIBUTOR=&quot;Arch&quot;
+GRUB_CMDLINE_LINUX_DEFAULT=&quot;loglevel=5 nowatchdog&quot;
+GRUB_CMDLINE_LINUX=&quot;&quot;
+GRUB_DISABLE_OS_PROBER=false
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;生成 GRUB 所需的配置文件,若引导了 Windows 将会有相应输出&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;grub-mkconfig -o /boot/grub/grub.cfg
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;设置root 密码&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;passwd root
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;2. 基础配置&lt;/h2&gt;
+&lt;h3&gt;2.1 添加用户&lt;/h3&gt;
+&lt;p&gt;添加用户，比如新增加的用户叫 testuser&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;useradd -m -G wheel -s /bin/bash uchin  #wheel附加组可sudo，以root用
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;户执行命令 -m同时创建用户家目录
+设置新用户 testuser 的密码&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;passwd uchin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;编辑 sudoers 配置文件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;EDITOR=vim visudo  # 需要以 root 用户运行 visudo 命令
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;找到下面这样的一行，把前面的注释符号 # 去掉，:wq 保存并退出即可。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# %wheel ALL=(ALL) ALL
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这里稍微解释一下 %wheel 代表是 wheel 组，百分号是前缀 ALL= 代表在所有主机上都生效(如果把同样的sudoers文件下发到了多个主机上) (ALL) 代表可以成为任意目标用户 ALL 代表可以执行任意命令 一个更详细的例子:&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;%mailadmin   snow,rain=(root) /usr/sbin/postfix, /usr/sbin/postsuper, /usr/bin/doveadm
+nobody       ALL=(root) NOPASSWD: /usr/sbin/rndc reload
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;组 mailadmin 可以作为 root 用户，执行一些邮件服务器控制命令。可以在 &quot;snow&quot; 和 &quot;rain&quot;这两台主机上执行 用户 nobody 可以以 root 用户执行rndc reload命令。可以在所有主机上执行。同时可以不输入密码。(正常来说 sudo 都是要求输入调用方的密码的)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;2.2 archlinuxcn 与 AUR&lt;/h3&gt;
+&lt;h4&gt;2.2.1 archlinuxcn&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Arch Linux 中文社区仓库是由 Arch Linux 中文社区驱动的非官方软件仓库，包含许多官方仓库未提供的额外的软件包，以及已有软件的 git 版本等变种。一部分软件包的打包脚本来源于 AUR，但也有许多包与 AUR 不一样。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;code&gt;sudo vim /etc/pacman.conf&lt;/code&gt; 文件末尾添加以下两行&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[archlinuxcn]
+Server = https://repo.archlinuxcn.org/$arch
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;更新索引、系统&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo pacman -Syyu --noconfirm
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;安装 &lt;code&gt;archlinuxcn-keyring&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo pacman -S --noconfirm archlinuxcn-keyring
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4&gt;2.2.2 AUR&lt;/h4&gt;
+&lt;p&gt;pura 安装&lt;/p&gt;
+&lt;p&gt;archlinuxcn 中提供了二进制包，可直接安装&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo pacman -S paru 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;3. 桌面（x11）&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;sudo pacman -S xorg
+sudo pacman -S xorg-server
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;3.1 DWM&lt;/h3&gt;
+&lt;h4&gt;3.1.1 基础安装与启动&lt;/h4&gt;
+&lt;p&gt;没联网先联网，同前文使用 iwd 方式连接，没开服务先开服务&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;systemctl enable dhcpcd         # 开机自启 dhcp
+systemctl start iwd.service     # 开启 iwd 服务
+iwctl                           # 联网
+···
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;若没安装 &lt;code&gt;xorg&lt;/code&gt; 组件，先安装&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo pacman -S xorg-server
+sudo pacman -S xorg-apps
+sudo pacman -S xorg-xinit
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;中文字体未安装先安装&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo pacman -S noto-fonts-cjk  #安装中日韩字体，避免不能正常显示
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;下载所需要的包&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git clone https://git.suckless.org/dwm
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;安装&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo make clean install
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;修改 &lt;code&gt;~/.xinitrc&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# ~/.xinitrc
+exec dwm
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;启动&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;startx
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4&gt;3.1.2 打 patch&lt;/h4&gt;
+&lt;p&gt;todo&lt;/p&gt;
+&lt;h3&gt;3.2 Awesome&lt;/h3&gt;
+&lt;h4&gt;3.2.1 安装&lt;/h4&gt;
+&lt;p&gt;安装awesome&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;pacman -S awesome
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;安装字体&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo pacman -S adobe-source-han-serif-cn-fonts wqy-zenhei                   #安装几个开源中文字体 一般装上文泉驿就能解决大多wine应用中文方块的问题
+sudo pacman -S noto-fonts-cjk noto-fonts-emoji noto-fonts-extra 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4&gt;3.2.2 配置&lt;/h4&gt;
+&lt;p&gt;todo&lt;/p&gt;
+&lt;h2&gt;4. wayland-Hyprland&lt;/h2&gt;
+&lt;p&gt;&amp;lt;center&amp;gt; ----- ref ----- &amp;lt;/center&amp;gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;安装&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://archlinuxstudio.github.io/ArchLinuxTutorial/#/&quot;&gt;Arch Linux 安装使用教程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://arch.icekylin.online/&quot;&gt;archlinux 简明指南&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr /&gt;
+&lt;p&gt;DWM&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://suckless.org/&quot;&gt;suckless.org&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.bilibili.com/video/BV1Ef4y1Z7kA&quot;&gt;yaocccc-bilibli&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.csdn.net/weixin_44335269/article/details/117930190&quot;&gt;Arch Linux 美化 (st + dwm)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.csdn.net/qq_36390239/article/details/112987099&quot;&gt;DWM安装及简略配置教程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/yaocccc/dwm&quot;&gt;yaocccc-github&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.programminghunter.com/article/4737964538/&quot;&gt;在Arch上使用Fcitx5&lt;/a&gt;
+&lt;a href=&quot;https://space.bilibili.com/13081489/search/video?keyword=arch&quot;&gt;TheCW-bilibili&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/theniceboy/scripts&quot;&gt;theniceboy的脚本&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr /&gt;
+&lt;p&gt;输入法&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.bilibili.com/read/cv7476615&quot;&gt;Arch系安装并配置fcitx5输入法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://wiki.archlinuxcn.org/wiki/Fcitx5#%E9%85%8D%E7%BD%AE%E5%B7%A5%E5%85%B7&quot;&gt;wiki&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.bilibili.com/read/cv7476615&quot;&gt;来自blibili的配置&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://manateelazycat.github.io/linux/2020/06/19/fcitx5-is-awesome.html&quot;&gt;https://manateelazycat.github.io/linux/2020/06/19/fcitx5-is-awesome.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr /&gt;
+&lt;p&gt;终端&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.v2ex.com/t/900640&quot;&gt;流行终端对比&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://josephpei.github.io/2022/04/18/kitty-terminal-%E7%BB%88%E7%AB%AF/&quot;&gt;Kitty Terminal 终端&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://sw.kovidgoyal.net/kitty/conf/#fonts&quot;&gt;kitty文档&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr /&gt;
+&lt;p&gt;rofi&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.cnblogs.com/siyingcheng/p/11706215.html&quot;&gt;Rofi 配置&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr /&gt;
+&lt;p&gt;Hyprland&lt;/p&gt;
+&lt;p&gt;TODO 目录整理:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.inetech.fun/posts/clean-arch/&quot;&gt;如何规整你的 Arch Linux 系统&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://catcat.cc/post/wn3np/&quot;&gt;Linux 整理魔法：整理 Linux 家目录&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://wiki.archlinuxcn.org/wiki/XDG_%E5%9F%BA%E6%9C%AC%E7%9B%AE%E5%BD%95#%E5%B7%A5%E5%85%B7&quot;&gt;wiki: XDG 基本目录&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/rydesun/dotfiles&quot;&gt;整理后配置文件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/rydesun/dotfiles&quot;&gt;zsh 配置&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;TODO hyprland教程&lt;/p&gt;
+&lt;p&gt;配置&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/gaurav210233/simple-hyprland/blob/main/README.md&quot;&gt;1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://cascade.moe/posts/hyprland-configure/&quot;&gt;Hyprland 环境配置与美化&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.bilibili.com/read/cv22707313/&quot;&gt;ArchLinux下Hyprland配置指北&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://ivonblog.com/posts/hyprland-setup/#3--%E8%A8%AD%E5%AE%9Ahyprland%E7%9A%84%E9%85%8D%E5%A5%97%E7%A8%8B%E5%BC%8F&quot;&gt;Hyprland設定教學，漂亮又不佔資源的Linux Wayland視窗管理器&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://a-wing.top/linux/2022/01/03/translate_wayland&quot;&gt;[译] Arch Linux 上的完整 Wayland 设置&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://samwhelp.github.io/note-about-ultramarine-hyprland/read/config/keybind/volume-control.html#pamixer-%E7%89%88%E6%9C%AC&quot;&gt;声音控制1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.csdn.net/weixin_43046653/article/details/105583100&quot;&gt;linux下使用命令行来调节系统音量的两种方法amixer和pactl&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.jianshu.com/p/fc8c8cad67d6&quot;&gt;Ubuntu 命令行配置默认声卡、录音播放与音量调节&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;p&gt;其他&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;http://ivo-wang.github.io/2018/05/29/archlinux-%E4%BF%AE%E5%A4%8Duefi%E5%BC%95%E5%AF%BC%E5%90%AF%E5%8A%A8/&quot;&gt;archlinux 修复uefi引导启动&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</content:encoded></item><item><title>基于 Swarm 的 Docker 分布式集群管理</title><link>https://fuwari.vercel.app/posts/cst/%E5%9F%BA%E4%BA%8E-swarm-%E7%9A%84-docker-%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/cst/%E5%9F%BA%E4%BA%8E-swarm-%E7%9A%84-docker-%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/</guid><pubDate>Thu, 01 Dec 2022 01:46:11 GMT</pubDate><content:encoded>&lt;h2&gt;1. 序&lt;/h2&gt;
+&lt;h3&gt;1.1 各虚拟机信息&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;CentOS 7&lt;br /&gt;
+VirtualBox&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;虚拟机名&lt;/th&gt;
+&lt;th&gt;虚拟磁盘大小&lt;/th&gt;
+&lt;th&gt;IP&lt;/th&gt;
+&lt;th&gt;Host 映射&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;myCent_00&lt;/td&gt;
+&lt;td&gt;100G&lt;/td&gt;
+&lt;td&gt;192.168.56.101&lt;/td&gt;
+&lt;td&gt;master&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;myCent_01&lt;/td&gt;
+&lt;td&gt;50G&lt;/td&gt;
+&lt;td&gt;192.168.56.104&lt;/td&gt;
+&lt;td&gt;slave01&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;myCent_02&lt;/td&gt;
+&lt;td&gt;50G&lt;/td&gt;
+&lt;td&gt;192.168.56.103&lt;/td&gt;
+&lt;td&gt;slave02&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;注：各虚拟机节点网卡设置如下&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Nat：负责虚拟机与外网链接，保持默认&lt;/li&gt;
+&lt;li&gt;Host-Only：设置静态 ip 保证集群之间通信&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;确保每台虚拟机能 ping 通外网网络设置好后，更改主机名与映射，主机名修改后重启生效&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim /etc/hostname #修改主机名
+vim /etc/hosts    # 修改映射
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;修改后如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650679575241.png&quot; alt=&quot;图 2&quot; /&gt;&lt;/p&gt;
+&lt;h3&gt;1.2 ssh 免密登录&lt;/h3&gt;
+&lt;p&gt;&amp;lt;font color=&apos;red&apos;&amp;gt;注：免密登录配置的为各节点的 hadoop 用户&amp;lt;/font&amp;gt;&lt;/p&gt;
+&lt;p&gt;以 master 节点为例，生成公钥、修改权限等命令如下&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cd ~
+mkdir .ssh
+cd .ssh
+# rm ./*                                # 删除当前目录下所有内容（首次配置时该目录下无内容，不用删除）
+ssh-keygen -t rsa                       # 生成公钥
+cat ./id_rsa.pub &amp;gt;&amp;gt; ./authorized_keys   # 添加至认证文件
+chmod 700 ~/.ssh/                       # 赋予.ssh文件700权限,有的机器必须，但有的是可选
+chmod 600 ./authorized_keys             # 赋予认证文件600权限
+ssh localhost                           # 测试
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;退出登录执行 &lt;code&gt;exit&lt;/code&gt; 即可，至此 master 节点上公钥、文件权限修改完成，要使得 master 能免密登录其他节点，将 master
+的公钥传给其他节点，并让其追加至认证文件即可&lt;br /&gt;
+即：要免密登录谁，就将自己的公钥给他，让他写入认证文件 &lt;code&gt;authorized_keys&lt;/code&gt; 中&lt;/p&gt;
+&lt;p&gt;发送 master 的公钥至 slave01 节点&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cd ~.ssh
+scp ./id_rsa.pub slave01:~/.ssh/id_master
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;登录至 slave01 ，将 master 的公钥追加到认证文件，其他节点类似&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cd ~/.ssh
+cat ./id_master &amp;gt;&amp;gt; ./authorized_keys
+chmod 700 ~/.ssh/           # 赋予.ssh文件700权限,有的机器必须，但有的是可选
+chmod 600 ./authorized_keys # 赋予认证文件600权限
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;1.3 CentOS 安装 Docker&lt;/h3&gt;
+&lt;h4&gt;1.3.1 安装&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;更新 yum&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo yum -y update
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;添加源，选一个即可，考虑国内网络，这里使用的是阿里的源&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 阿里仓库
+sudo yum-config-manager --add-repo http://mirrors.  aliyun.com/docker-ce/linux/centos/docker-ce.repo
+
+# 中央仓库
+# sudo yum-config-manager --add-repo http://download. docker.com/linux/centos/docker-ce.repo
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&amp;lt;font color=&apos;red&apos;&amp;gt;注：这里没有添加源的话，yum 默认是没有 docker 的包安装的&amp;lt;/font&amp;gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;查看可用版本&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;yum list docker-ce --showduplicates | sort -r
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;安装&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo yum -y install docker-ce-18.03.1.ce
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;安装完成如图&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650642608352.png&quot; alt=&quot;图 1&quot; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4&gt;1.3.2 更改用户组&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;查看用户组命令&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;groups hadoop
+# hadoop : hadoop docker
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建 docker 用户组，添加当前用户&lt;br /&gt;
+在安装完 docker 后默认会创建 docker 用户组&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo groupadd docker            # 新建 docker 组
+sudo usermod -aG docker $USER   # 添加当前用户至docker组
+newgrp docker                   #更新
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;执行更新命令后就不会再出现 &lt;code&gt;Got permission denied while trying to connect to the Docker daemon socket...&lt;/code&gt;
+报错了，或者修改用户组后退出当前终端并重新登录进行测试&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;docker 启动重启等相关命令&lt;br /&gt;
+这里启动 docker 服务并设置开机自启即可，执行以下命令&lt;strong&gt;前两条&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 启动 docker
+systemctl start docker
+
+# 设置开机自启
+systemctl enable docker
+
+# 设置开机自启并立即启动docker服务（相当于以上两条命令都执行）
+systemctl enable --now docker
+
+# 重启docker
+systemctl restart docker
+
+# 停止docker
+systemctl stop docker
+
+# 移除开机自启
+systemctl disable docker
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;测试安装是否成功&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker run --rm hello-world
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&quot;%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650681556408.png&quot; alt=&quot;图 3&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;注：首次执行需要拉去镜像，会花一段时间&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在准备创建集群的各节点安装 docker，操作同上&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;2. Docker 网络基础&lt;/h2&gt;
+&lt;h3&gt;2.1 基本原理&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;每启动一个 docker，docker 就会给容器分配一个 ip，只要安装了 docker，就会有一个 docker0 的网卡，这里的网卡采用的是**桥接模式
+**，使用的技术是 evth-pair 技术&lt;/li&gt;
+&lt;li&gt;当启动一个容器时，本地就会多一个网卡（&lt;strong&gt;与容器的网卡成对&lt;/strong&gt;）
+&lt;img src=&quot;%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650962858622.png&quot; alt=&quot;图 2&quot; /&gt;&lt;/li&gt;
+&lt;li&gt;这些由于容器而产生的&lt;strong&gt;成对&lt;/strong&gt;的网卡就是 evth-pair 技术：一对虚拟设备接口，一端连着协议，一端彼此连接&lt;/li&gt;
+&lt;li&gt;正因为有这个特性，evth-pair 充当一个桥梁，连接各种虚拟设备&lt;/li&gt;
+&lt;li&gt;因此容器之间也是可以 ping 通的&lt;/li&gt;
+&lt;li&gt;所有容器在没有指定网络的情况下都是 docker0 进行路由的，docker 会给容器分配默认的可用 ip
+&lt;img src=&quot;%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650963563673.png&quot; alt=&quot;图 3&quot; /&gt;&lt;br /&gt;
+&lt;img src=&quot;%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650963614223.png&quot; alt=&quot;图 4&quot; /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&amp;lt;font color=&apos;red&apos;&amp;gt;--link 有待学习&amp;lt;/font&amp;gt;&lt;/p&gt;
+&lt;h3&gt;2.2 自定义网络&lt;/h3&gt;
+&lt;p&gt;Docker 有以下四种网络模式&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;bridge：桥接（默认方式）&lt;/li&gt;
+&lt;li&gt;none：不配置网络&lt;/li&gt;
+&lt;li&gt;host：和宿主机共享网络&lt;/li&gt;
+&lt;li&gt;container：容器内网络连通（用的少）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;docker run -it -P --name mycentos centos
+# docker run -it -P --name mycentos --net bridge centos
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;上述两个命令等价，因为默认创建就是使用的 bridge&lt;/p&gt;
+&lt;p&gt;docker0 特点：默认的，但是域名不能访问，使用 &lt;code&gt;--link&lt;/code&gt; 可以打通连接&lt;/p&gt;
+&lt;p&gt;&amp;lt;font color=&apos;red&apos;&amp;gt;--link 有待学习&amp;lt;/font&amp;gt;&lt;/p&gt;
+&lt;h3&gt;2.3 常用命令&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/gezhonglei2007/article/details/51627821&quot;&gt;Docker network 子命令&lt;/a&gt;如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker network create       # 创建网络
+docker network connect      # 连接
+docker network ls           # 列出网络
+docker network rm           # 删除网络
+docker network disconnect   # 断开连接
+docker network inspect      # 列出某网络详细信息
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;3. Docker 数据卷&lt;/h2&gt;
+&lt;h3&gt;3.1 基本挂载命令&lt;/h3&gt;
+&lt;p&gt;使用 &lt;code&gt;-v&lt;/code&gt; 命令挂载&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker run -it -v 主机目录:容器内目录
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;-v&lt;/code&gt; 后进行的目录映射，类似于端口映射 &lt;code&gt;-p 主机端口:容器内端口&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker run -it -v /home/hadoop/utest/test_docker_volume/:/home centos /bin/bash
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这样，当在容器内部指定的目录内创建文件、文件夹等操作后会与主机对应的目录同步；同样的，在主机相应的目录中的操作也会同步到容器的响应目录中，这样当容器关闭后数据就能保存下来&lt;/p&gt;
+&lt;p&gt;当需要挂载多个目录时可使用多个 &lt;code&gt;-v&lt;/code&gt; 参数，例如&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker run -d -p 3310:3306 -v /home/hadoop/utest/test_docker_volume/mysql/conf:/etc/mysql/conf.d -v /home/hadoop/utest/test_docker_volume/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 --name mysql01 mysql
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;以上 &lt;code&gt;-e&lt;/code&gt; 是指定环境，这里指定了密码&lt;/p&gt;
+&lt;h3&gt;3.2 具名挂载与匿名挂载&lt;/h3&gt;
+&lt;p&gt;以上挂载时，指定了主机内对应的映射，如果不指定主机的目录，只在 &lt;code&gt;-v&lt;/code&gt; 后声明容器内要被映射的目录，那就是&lt;strong&gt;匿名挂载&lt;/strong&gt;，例如&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker run -d -P --name nginx01 -v /etc/nginx nginx
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;-P 是随机端口映射&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;上述挂载就至指定了容器内的目录&lt;/p&gt;
+&lt;p&gt;使用&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker volume ls
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看所有卷&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;(base) [hadoop@master test_docker_volume]$ docker volume ls
+DRIVER              VOLUME NAME
+local               137b54d6bf243bdd8d87e89f991597ca283780e1396d9fc7ec32623362cbdb8e
+local               441ffaf533e1a0c851f59690a287fc28aa85df60a7ad352c5d98cdc5680f2ddf
+local               b63721368502cc85d467e02fa2a7189f25c8a509553c23155e81947402ecf2a2
+local               portainer_data
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;上述前三条就是匿名挂载，如果在 &lt;code&gt;-v&lt;/code&gt; 后指定卷名，那就是具名挂载，例如&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker run -it -v juming:/home centos /bin/bash
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;使用 &lt;code&gt;docker volume inspect 卷名&lt;/code&gt; 查看该卷&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;(base) [hadoop@master run]$ docker volume inspect juming
+[
+    {
+        &quot;CreatedAt&quot;: &quot;2022-04-26T15:04:52+08:00&quot;,
+        &quot;Driver&quot;: &quot;local&quot;,
+        &quot;Labels&quot;: null,
+        &quot;Mountpoint&quot;: &quot;/var/lib/docker/volumes/juming/_data&quot;,
+        &quot;Name&quot;: &quot;juming&quot;,
+        &quot;Options&quot;: null,
+        &quot;Scope&quot;: &quot;local&quot;
+    }
+]
+(base) [hadoop@master run]$
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以看到该卷在主机上的挂载点为 &lt;code&gt;/var/lib/docker/volumes/juming/_data&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;所有的 docker 容器卷，在没有指定目录的情况下都是在 &lt;code&gt;/var/lib/docker/volumes/xxx/_data&lt;/code&gt; 处，其中 &lt;code&gt;xxx&lt;/code&gt; 是卷名，&lt;code&gt;_data&lt;/code&gt; 下放数据&lt;/p&gt;
+&lt;p&gt;通过具名挂载可以很方便找到一个卷，大多数时候都使用&lt;strong&gt;具名挂载&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;3.3 控制权限&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;docker run -it -v juming:/home:ro centos /bin/bash
+docker run -it -v juming:/home:rw centos /bin/bash
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;上述添加了 &lt;code&gt;ro&lt;/code&gt;、&lt;code&gt;rw&lt;/code&gt; 分别表示只读与可读写，一旦设定了只读，那说明这个目录&lt;strong&gt;只能通过宿主机来进行改变&lt;/strong&gt;，容器内部是无法操作的&lt;/p&gt;
+&lt;h3&gt;3.4 dockerfile 与数据卷&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;创建 &lt;code&gt;dockerfile&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;FROM centos
+VOLUME [&quot;volume01&quot;,&quot;volume02&quot;]
+CMD echo &quot;--------- end ---------&quot;
+CMD /bin/bash
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这里的每个命令就是镜像的一层，这里通过生成镜像的方式使得在容器创建时候就挂载不需要再指定参数&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;构建&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker build -f dockerfile1 -t uchin_centos .
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;上述 &lt;code&gt;-f&lt;/code&gt; 指定 dockerfile 文件，&lt;code&gt;-t&lt;/code&gt; 即 target，指定生成的镜像名，最后指定生成后的路径&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;(base) [hadoop@master test_docker_volume]$ docker build -f dockerfile1 -t uchin_centos .
+Sending build context to Docker daemon  2.048kB
+Step 1/4 : FROM centos
+ ---&amp;gt; 5d0da3dc9764
+Step 2/4 : VOLUME [&quot;volume01&quot;,&quot;volume02&quot;]
+ ---&amp;gt; Running in 8ce46c7e7766
+Removing intermediate container 8ce46c7e7766
+ ---&amp;gt; 3019041d4948
+Step 3/4 : CMD echo &quot;--------- end ---------&quot;
+ ---&amp;gt; Running in b4647234f83d
+Removing intermediate container b4647234f83d
+ ---&amp;gt; b61a9aa5313f
+Step 4/4 : CMD /bin/bash
+ ---&amp;gt; Running in 8669d24b2112
+Removing intermediate container 8669d24b2112
+ ---&amp;gt; 8ea7424ac06e
+Successfully built 8ea7424ac06e
+Successfully tagged uchin_centos:latest
+
+(base) [hadoop@master test_docker_volume]$ docker image ls | grep uchin_centos
+uchin_centos          latest              8ea7424ac06e        2 minutes ago       231MB
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;测试&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker run -it uchin_centos /bin/bash
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;进入容器后发现指定的数据卷就被自动挂载了&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[root@5a1789b7990c /]# ls -l | grep volume
+drwxr-xr-x.   2 root root   6 Apr 26 07:36 volume01
+drwxr-xr-x.   2 root root   6 Apr 26 07:36 volume02
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;并且这个卷和外部是同步的，但是在 dockerfile 中使用的是&lt;strong&gt;匿名挂载&lt;/strong&gt;的方式，可以使用 &lt;code&gt;inspect&lt;/code&gt; 方式查询其具体位置&lt;/p&gt;
+&lt;p&gt;这种方式使用十分多，通常我们都会自己构建镜像，假设构建镜像时没有挂载卷，就手动使用 &lt;code&gt;-v&lt;/code&gt; 方式挂载&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;3.5 数据卷容器&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650959416556.png&quot; alt=&quot;图 1&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;创建父容器&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker run -it --name docker01 uchin_centos /bin/bash
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在创建一个，使用 &lt;code&gt;--volumes-from&lt;/code&gt; 参数来实现数据卷的共享&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker run -it --name docker02 --volumes-from docker01 uchin_centos /bin/bash
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这样挂载的数据卷就可以实现多容器的共享了，当然这里不使用相同的镜像也可以&lt;/p&gt;
+&lt;p&gt;&amp;lt;font color=&apos;red&apos;&amp;gt;有待继续探究&amp;lt;/font&amp;gt;&lt;/p&gt;
+&lt;h2&gt;4. Docker Dokcerfile&lt;/h2&gt;
+&lt;h3&gt;4.1 前言&lt;/h3&gt;
+&lt;p&gt;Dockerfile 是一个用来&lt;strong&gt;构建镜像&lt;/strong&gt;的文本文件，文本内容包含了一条条构建镜像所需的指令和说明。&lt;/p&gt;
+&lt;p&gt;当获取的镜像不满足我们使用的需求时，往往需要在创建容器后，自己再在容器中执行命令去安装软件、配置文件等。当多次需要使用到相同环境时这样不方便。&lt;/p&gt;
+&lt;p&gt;可以使用&lt;code&gt;docker commit&lt;/code&gt;命令将已经配置好的容器提交为镜像类似于&lt;code&gt;git&lt;/code&gt;的提交，这是一种手动保存镜像的方式，这里的 Dockerfile
+就是一种更加自动化的方式去进行镜像的构建&lt;/p&gt;
+&lt;h3&gt;4.2 Dokcerfile 构建&lt;/h3&gt;
+&lt;p&gt;使用 Dockerfile 构建一个镜像流程&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;创建一个目录并进入其中（以下均在该目录下进行）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;新建一个名为 &lt;code&gt;Dockerfile&lt;/code&gt; 文件，并定义指令（见下节）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在 Dockerfile 文件的存放目录下，执行构建动作 &lt;code&gt;docker build -t mycentos:v1 .&lt;/code&gt;命令构建&lt;br /&gt;
+其中 &lt;code&gt;-t&lt;/code&gt; 即 target，参数指定 &lt;code&gt;镜像名称:镜像标签&lt;/code&gt;； &lt;code&gt;.&lt;/code&gt; 代表本次执行的&lt;strong&gt;上下文路径&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;上下文路径，是指 docker 在构建镜像，有时候想要使用到本机的文件（比如复制），docker build 命令得知这个路径后，会将路径下的所有内容打包。&lt;/p&gt;
+&lt;p&gt;解析：由于 docker 的运行模式是 C/S。我们本机是 C，docker 引擎是 S。实际的构建过程是在 docker
+引擎下完成的，所以这个时候无法用到我们本机的文件。这就需要把我们本机的指定目录下的文件一起打包提供给 docker 引擎使用。&lt;/p&gt;
+&lt;p&gt;如果未说明最后一个参数，那么默认上下文路径就是 Dockerfile 所在的位置。&lt;/p&gt;
+&lt;p&gt;注意：上下文路径下不要放无用的文件，因为会一起打包发送给 docker 引擎，如果文件过多会造成过程缓慢。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;4.3 Dockerfile 指令&lt;/h3&gt;
+&lt;p&gt;以下为一个 Dockerfile 文件示例&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;FROM python:3.7-alpine
+WORKDIR /code
+ENV FLASK_APP=app.py
+ENV FLASK_RUN_HOST=0.0.0.0
+RUN apk add --no-cache gcc musl-dev linux-headers
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+EXPOSE 5000
+COPY . .
+CMD [&quot;flask&quot;, &quot;run&quot;]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;FROM&lt;/code&gt;：定制的镜像都是基于 &lt;code&gt;FROM&lt;/code&gt; 的镜像，这里的 python:3.7-alpine 就是定制需要的基础镜像。后续的操作都是基于 python:
+3.7-alpine&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;RUN&lt;/code&gt;：用于执行后面跟着的命令行命令。有以下两种格式：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;RUN &amp;lt;命令行命令&amp;gt;
+
+RUN [&quot;可执行文件&quot;, &quot;参数1&quot;, &quot;参数2&quot;]
+# 例如：
+# RUN [&quot;./test.php&quot;, &quot;dev&quot;, &quot;offline&quot;] 等价于 RUN ./test.php dev offline
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;注：Dockerfile 的指令每执行一次都会在 docker 上新建一层。所以过多无意义的层，会造成镜像膨胀过大，尽量使用 &lt;code&gt;&amp;amp;&amp;amp;&lt;/code&gt;
+符号将多个命令写成一行，这样就只会创建一层镜像，例如&lt;br /&gt;
+&lt;code&gt;RUN yum -y install wget \ &amp;amp;&amp;amp; wget -O redis.tar.gz &quot;http://download.redis.io/releases/redis-5.0.3.tar.gz&quot; \ &amp;amp;&amp;amp; tar -xvf redis.tar.gz&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;更多指令参考&lt;a href=&quot;https://www.runoob.com/docker/docker-dockerfile.html&quot;&gt;https://www.runoob.com/docker/docker-dockerfile.html&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;5. Docker compose&lt;/h2&gt;
+&lt;h3&gt;5.1 前言&lt;/h3&gt;
+&lt;p&gt;原先是使用 dockerfile 进行镜像创建，使用&lt;code&gt;docker build&lt;/code&gt;、&lt;code&gt;docker run&lt;/code&gt; 等命令进行&lt;strong&gt;手动的&lt;/strong&gt;操作&lt;strong&gt;单个&lt;/strong&gt;
+容器；这样也不便实现相互之间的依赖关系，于是就有了 docker compose
+这一容器编排管理技术&lt;/p&gt;
+&lt;p&gt;使用 docker compose 能高效管理容器：&lt;br /&gt;
+① 定义多个运行容器&lt;br /&gt;
+② 实现批量容器编排&lt;/p&gt;
+&lt;p&gt;使用步骤:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;dockerfile&lt;/code&gt;：确保项目在任何地方都可以运行&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker-compose.yml&lt;/code&gt;：定义服务&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker-compose up&lt;/code&gt;：运行&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;5.2 安装&lt;/h3&gt;
+&lt;p&gt;docker compose 不是 docker 所自带，需要额外自行安装&lt;/p&gt;
+&lt;p&gt;&lt;s&gt;注：在使用 swarm 集群时，使用 &lt;code&gt;docker stack deploy&lt;/code&gt; 指定 compose 文件进行构建时没有安装 docker-compose 也可以&lt;/s&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;下载&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo curl -L &quot;https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)&quot; -o /usr/local/bin/docker-compose
+# sudo curl -L https://get.daocloud.io/docker/compose/releases/download/1.25.5/docker-compose-`uname -s`-`uname -m` &amp;gt; /usr/local/bin/docker-compose
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;赋权限&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo chmod +x /usr/local/bin/docker-compose
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;5.3 测试&lt;/h3&gt;
+&lt;p&gt;注：测试来源于 docker 官网&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;创测试目录&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mkdir composetest
+cd composetest
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建 &lt;code&gt;app.py&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import time
+
+import redis
+from flask import Flask
+
+app = Flask(__name__)
+cache = redis.Redis(host=&apos;redis&apos;, port=6379)
+
+def get_hit_count():
+    retries = 5
+    while True:
+        try:
+            return cache.incr(&apos;hits&apos;)
+        except redis.exceptions.ConnectionError as exc:
+            if retries == 0:
+                raise exc
+            retries -= 1
+            time.sleep(0.5)
+
+@app.route(&apos;/&apos;)
+def hello():
+    count = get_hit_count()
+    return &apos;Hello World! I have been seen {} times.\n&apos;.format(count)
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Dockerfile&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;FROM python:3.7-alpine
+WORKDIR /code
+ENV FLASK_APP=app.py
+ENV FLASK_RUN_HOST=0.0.0.0
+RUN apk add --no-cache gcc musl-dev linux-headers
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+EXPOSE 5000
+COPY . .
+CMD [&quot;flask&quot;, &quot;run&quot;]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;docker-compose.yml&lt;/code&gt; 文件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;version: &quot;3.9&quot;
+services:
+  web:
+    build: .
+    ports:
+      - &quot;8000:5000&quot;
+  redis:
+    image: &quot;redis:alpine&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;运行&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker-compose up
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;创建步骤：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;应用 &lt;code&gt;app.py&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Dockerfile 使应用能打包为镜像&lt;/li&gt;
+&lt;li&gt;docker-compose 文件（定义整个服务，需要的环境，web、redis）提供完整的上线服务&lt;/li&gt;
+&lt;li&gt;启动 compose 项目（docker-compose up）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&amp;lt;font color=&apos;red&apos;&amp;gt;注：这里的 &lt;code&gt;web&lt;/code&gt; 服务所使用的镜像是使用 Dockerfile 进行 &lt;code&gt;build&lt;/code&gt; 的；而 &lt;code&gt;redis&lt;/code&gt; 服务是直接使用的镜像，两种方式都可，但是在
+swarm 集群中是&lt;strong&gt;不能&lt;/strong&gt;通过 &lt;code&gt;build&lt;/code&gt; 来进行镜像的创建的&amp;lt;/font&amp;gt;&lt;/p&gt;
+&lt;h3&gt;5.4 compose 配置规则&lt;/h3&gt;
+&lt;p&gt;详细配置可参考&lt;a href=&quot;https://docs.docker.com/compose/compose-file/#compose-file-and-examples&quot;&gt;官网&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;一般使用的 compose 文件包含以下三大部分：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 1. 版本
+version: &quot;3.9&quot;
+
+# 2. 定义服务
+services:
+  服务1（web）:
+    服务配置（image、build、network）:
+  服务2（redis）:
+  服务3:
+
+# 3. 其他配置（网络、卷、全局规则）
+volumes:
+networks:
+configs:
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;有时其他配置可不需要&lt;/p&gt;
+&lt;p&gt;&amp;lt;font color=&apos;red&apos;&amp;gt;注：集群中使用 compose 配置进行服务的创建有所不同，具体参考下文&amp;lt;/font&amp;gt;&lt;/p&gt;
+&lt;h2&gt;6. Swarm 集群部署&lt;/h2&gt;
+&lt;p&gt;进行 swarm 集群搭建前请确保&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;各节点之间能通讯正常&lt;/li&gt;
+&lt;li&gt;能通过相互免密登录&lt;/li&gt;
+&lt;li&gt;docker 均已安装其能正常使用&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&amp;lt;font color=&apos;red&apos;&amp;gt;&lt;strong&gt;注：以下操作都在各节点的 hadoop 用户下操作，集群部署使用的用户名保持各节点一致&lt;/strong&gt;&amp;lt;/font&amp;gt;&lt;/p&gt;
+&lt;h3&gt;6.1 集群创建&lt;/h3&gt;
+&lt;p&gt;如有多块网卡，需指定集群中使用的网卡所对应的 ip，例如，当前有多块网卡，如下图&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650677417546.png&quot; alt=&quot;图 1&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;这里将 &lt;code&gt;enp0s9&lt;/code&gt; 作为集群通信所使用的，那就用其所对应 ip &lt;code&gt;192.168.56.101&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;选择一个节点作为 manager 节点登录，执行初始化命令&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker swarm init --autolock=false  --advertise-addr 192.168.56.101 --listen-addr 192.168.56.101:2377
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;执行后如下&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650645402766.png&quot; alt=&quot;图 2&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;初始化后，当前所在的这个节点就是 manager，接下来可添加 worker,复制以上 Join token 内容，即
+&lt;code&gt;docker swarm join --token SWMTKN-1-5tquxa6ztsbln9l4q0gr5tq6o7wowj16oncu6vg9t26mp9shj7-drdzg6xreehoz3gpm6h48hgpk 192.168.56.101:2377&lt;/code&gt;
+，登录 slave01 节点，执行该命令，即可将 slave01 节点以 worker 方式加入 swarm 集群&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;在 swarm 中有两种可用的不同的 token，一种是用作 worker 角色，另一个是用作 manager 角色&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;由于集群中允许有多个 manager 与 worker 的存在，因此&lt;strong&gt;在 join 时根据所使用的 token 的不同，加入的方式也不同&lt;/strong&gt;，如果使用的是
+worker 的 token，那加入后就是 worker，使用的 manager 的 token，加入后就是 manager&lt;/p&gt;
+&lt;p&gt;常用涉及 token 的命令如下&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker swarm join-token worker          # 查看加入woker的命令
+docker swarm join-token manager         # 查看加入manager的命令
+docker swarm join-token --rotate worker # 重置woker的Token
+docker swarm join-token -q worker       # 仅打印Token
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;6.2 基于 Portainer 的可视化&lt;/h3&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://support.websoft9.com/docs/docker/zh/solution-portainer.html#%E7%99%BB%E5%BD%95-portainer&quot;&gt;可视化工具 Portainer&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Swarm 集群部署完成后可以通过各命令操作，当然也可以通过 Portainer 来进行 Swarm 集群的可视化管理&lt;/p&gt;
+&lt;p&gt;Portainer 是一款轻量级的开源应用，它提供了图形化界面，用于方便地管理 Docker 环境，包括单机环境和集群环境&lt;/p&gt;
+&lt;p&gt;如果部署了包含 Portainer 的 Docker 环境，可直接登录使用，否则，先安装 Portainer：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker volume create portainer_data # 首次创建
+docker run -d -p 9000:9000 --name portainer -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;以上是使用独立容器启动 Portainer，也可以通过 Docker Compose 进行启动，docker-compose.yml 文件内容如下:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;version: &quot;3&quot;
+volumes:
+  portainer_data:
+
+services:
+  portainer:
+    image: portainer/portainer
+    ports:
+      - &quot;9000:9000&quot;
+    command: -H unix:///var/run/docker.sock
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;文件编写完毕后通过 &lt;code&gt;docker-compose up -d&lt;/code&gt; 命令可启动容器（可通过 &lt;code&gt;-f&lt;/code&gt; 选项指定文件）&lt;/p&gt;
+&lt;p&gt;&amp;lt;font color=&apos;red&apos;&amp;gt;注：这里使用 &lt;code&gt;docker run&lt;/code&gt; 或使用 &lt;code&gt;docker-compose&lt;/code&gt; 方式启动的容器都是在一个节点上，&lt;strong&gt;不是&lt;/strong&gt; swarm
+集群中运行，要让其在 swarm 集群中可使用 &lt;code&gt;docker stack deploy&lt;/code&gt;命令&amp;lt;/font&amp;gt;&lt;/p&gt;
+&lt;p&gt;容器启动后，访问 &lt;code&gt;https://192.168.56.101:9000&lt;/code&gt; 即可进入 webUI 界面，如图（&lt;code&gt;192.168.56.101&lt;/code&gt; 为&lt;strong&gt;运行该容器&lt;/strong&gt;所在节点的 ip）&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650685819089.png&quot; alt=&quot;图 4&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;注：首次进入需设置用户名与密码&lt;/p&gt;
+&lt;p&gt;在 portainer 页面可创建、删除容器、查看 swarm 信息等&lt;/p&gt;
+&lt;p&gt;查看 swarm 信息
+&lt;img src=&quot;%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650686138442.png&quot; alt=&quot;图 5&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;进入容器
+&lt;img src=&quot;%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650686499864.png&quot; alt=&quot;图 6&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;容器控制界面
+&lt;img src=&quot;%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650686591366.png&quot; alt=&quot;图 7&quot; /&gt;&lt;/p&gt;
+&lt;h2&gt;7. Swarm 集群使用&lt;/h2&gt;
+&lt;h3&gt;7.1 网络模式&lt;/h3&gt;
+&lt;p&gt;参考 &lt;a href=&quot;https://www.jianshu.com/p/cacdd5ff0f14&quot;&gt;docker swarm 网络模式&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;swarm：&lt;/li&gt;
+&lt;li&gt;overlay：&lt;/li&gt;
+&lt;li&gt;ingress：特殊的 Overlay 网络，具有负载均衡功能&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;7.2 Docker service&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;服务是一组运行于集群&lt;strong&gt;不同结点中可复制的容器的集合&lt;/strong&gt;。通过服务发现机制，&lt;strong&gt;使用该服务的客户端可以透明的访问这些容器&lt;/strong&gt;
+。这些容器的分布、升级、故障管理有集群统一管理。一般地，集群内部服务容器地选择由 动态DNS 实现&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;docker run&lt;/code&gt;：不具有扩缩容的功能&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker service&lt;/code&gt;：启动服务，具有&lt;strong&gt;扩缩容功能，滚动更新&lt;/strong&gt;等功能&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;4.1.1 创建服务&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;docker service create  -p 8888:80 --name my-nginx nginx
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;创建的服务从集群中&lt;strong&gt;任意主机 ip 都可访问&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;./%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650980646777.png&quot; alt=&quot;图 5&quot; /&gt;&lt;br /&gt;
+上述访问的是 &lt;code&gt;slave01&lt;/code&gt; 的 ip，但容器运行在 &lt;code&gt;master&lt;/code&gt; 节点上&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;./%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets//pic_1650980702383.png&quot; alt=&quot;图 6&quot; /&gt;&lt;/p&gt;
+&lt;h4&gt;4.1.2 查看服务（在 manager 节点上执行）&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;docker service ls
+docker service inspect my-nginx # 查看该服务详细信息
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;(base) [hadoop@master composetest]$ docker service ls
+ID                  NAME                MODE                REPLICAS            IMAGE               PORTS
+vah2ryttads6        my-nginx            replicated          1/1                 nginx:latest        *:8888-&amp;gt;80/tcp
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以看到在服务中有&lt;code&gt;REPLICAS&lt;/code&gt;（副本）的概念，其代表这一服务有多少分副本&lt;/p&gt;
+&lt;h4&gt;4.1.3 更新服务&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;docker service update --replicas 3 my-nginx
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;上述命令将 &lt;code&gt;my-nginx&lt;/code&gt; 服务副本更新为 3，即集群中有 3 个运行 nginx 的容器，当选择的节点上没有该镜像时会自动下载；如指定
+replicas 为 1 就能回到开始状态，达到动态缩容的效果&lt;/p&gt;
+&lt;p&gt;注：&lt;strong&gt;只要是一个服务，那么在集群中的任意一个节点都可以访问&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;除了上述的 &lt;code&gt;update&lt;/code&gt; 方式，还可以使用 &lt;code&gt;scale&lt;/code&gt; 命令扩缩容&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker service scale my-nginx=2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4&gt;4.1.4 删除服务命令&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;docker service rm my-nginx
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&quot;./%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650982073596.png&quot; alt=&quot;图 7&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;./%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650982138022.png&quot; alt=&quot;图 8&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;命令 -&amp;gt; 管理节点 -&amp;gt; api -&amp;gt; 调度 -&amp;gt; 工作节点（创建容器，即 Task 任务）&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;./%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650982654368.png&quot; alt=&quot;图 9&quot; /&gt;&lt;/p&gt;
+&lt;h3&gt;7.3 Docker stack&lt;/h3&gt;
+&lt;p&gt;参考:&lt;a href=&quot;https://yeasy.gitbook.io/docker_practice/swarm_mode/stack&quot;&gt;https://yeasy.gitbook.io/docker_practice/swarm_mode/stack&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;docker-compose:单机部署&lt;/li&gt;
+&lt;li&gt;docker stack：集群上部署&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;使用 &lt;code&gt;docker-compose.yml&lt;/code&gt; 来一次配置、启动多个容器，在 Swarm 集群中也可以使用 &lt;code&gt;compose&lt;/code&gt; 文件 （&lt;code&gt;docker-compose.yml&lt;/code&gt;）
+来配置、启动多个服务。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;docker service create&lt;/code&gt; 一次只能部署一个服务，使用 &lt;code&gt;docker-compose.yml&lt;/code&gt; 我们可以一次启动多个关联的服务。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;命令如下，其中 &lt;code&gt;-c&lt;/code&gt; 指定 compose 文件名&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker stack deploy -c docker-compose.yml wordpress
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;docker service create --mount type=volume,src=volume,dst=/data --name uchin_v_test busybox ping
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.cnblogs.com/caoweixiong/p/12381838.html&quot;&gt;Docker Swarm（四）Volume 数据（挂载）持久化&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://m.blog.chinaunix.net/uid-25530360-id-5825518.html&quot;&gt;创建数据卷&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;创建 overlay&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker network create kafka --driver overlay --subnet 172.30.0.0/16 --gateway 172.30.0.1
+docker network create kafka --driver overlay  --attachable --subnet 172.30.0.0/16 --gateway 172.30.0.1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;创建数据卷&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://blog.csdn.net/even160941/article/details/99324273&quot;&gt;https://blog.csdn.net/even160941/article/details/99324273&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker volume create --name volume_kafka
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;docker service create --name uchin_test --network kafka --mount type=volume,src=volume_kafka,dst=/home --replicas 2 centos
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;docker service create --network kafka -p 8888:80 --name my-nginx --mount type=volume,src=volume_kafka,dst=/home  nginx
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;a href=&quot;https://ask.csdn.net/questions/770590&quot;&gt;docker swarm 模式下，如何固定容器的 ip？&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;docker run -it --network kafka -v /home/hadoop/workspace/zkk/zk_volumes/app/:/home --name myCL python /bin/bash
+docker run -it --network kafka -v /home/hadoop/workspace/zkk/zk_volumes/app/:/home --name myConsumer
+continuumio/anaconda3 /bin/bash&lt;/p&gt;
+&lt;h2&gt;8. &lt;a href=&quot;https://holynull.gitbooks.io/docker-swarm/content/swarmmo-shi-gong-zuo-yuan-li.html&quot;&gt;Swarm 工作原理&lt;/a&gt;&lt;/h2&gt;
+&lt;h3&gt;8.1 节点工作原理&lt;/h3&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://holynull.gitbooks.io/docker-swarm/content/swarmmo-shi-gong-zuo-yuan-li/jie-dian-gong-zuo-yuan-li.html&quot;&gt;swarm 节点工作原理&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Swarm 集群中的节点分为两类：managers 和 workers，集群中可有多个 manager 和 worker。Manager 通过 Raft 协议来使 Swarm
+的整体维持在一个一致的内部状态上，service 则运行在这个一致的内部状态之上。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;././%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/swarm-diagram.png&quot; alt=&quot;swarm-diagram&quot; /&gt;&lt;/p&gt;
+&lt;h4&gt;8.1.1 Manager 节点&lt;/h4&gt;
+&lt;p&gt;Manager 节点用来处理集群管理任务：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;维护集群状态&lt;/li&gt;
+&lt;li&gt;调度 service&lt;/li&gt;
+&lt;li&gt;提供 swarm 模式 HTTP API 端点&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;推荐使 Swarm 的节点为&lt;strong&gt;奇数&lt;/strong&gt;个，来实现高可用的要求。当采用多个 manager 节点时，我们就可以在不停止集群运行的情况下恢复停止运行的
+manager 节点。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;3 个 manager 节点最大容错允许 1 个 manager 不可用&lt;/li&gt;
+&lt;li&gt;5 个 manager 节点最大容错允许 2 个 manager 不可用。&lt;/li&gt;
+&lt;li&gt;N 个 manager 节点最大容错允许(N-1)/2 个 manager 节点不可用。&lt;/li&gt;
+&lt;li&gt;建议最大 manager 节点数为 7 个。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;8.1.2 Worker 节点&lt;/h4&gt;
+&lt;p&gt;Worker 节点也是 Docker Engine 的实例，目的是用来运行 Container。Worker 节点不会像 Manager 节点那样提供集群的管理、任务调度和
+API。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;可以创建仅有一个 manager 节点的 Swarm，但是不能在没有 manager 节点的前提下，创建 Worker 节点。在默认情况下，manager
+节点同时也是一个 worker 节点。&lt;/strong&gt; 在一个 manager 节点的集群中，执行``docker service create`命令，调度器会将所有的 task 调度在本地
+Docker Engine 上执行。&lt;/p&gt;
+&lt;p&gt;要阻止调度器将 task 分配到 manager 节点上执行，就需要将 manager 节点的可用性状态设置成 DRAIN。调度器会停止 DRAIN 节点上的
+task，转移到其他状态为 ACTIVE 的节点上继续运行停止的 task。并且调度器不会再将新的 task 分配给 DRAIN 状态的节点。&lt;/p&gt;
+&lt;h4&gt;8.1.3 改变节点角色&lt;/h4&gt;
+&lt;p&gt;我们可以通过``docker node promote`来将一个 worker 节点修改成一个 manager 节点。例如，某些维护需要，我们将停止一个 manager
+节点，这时我们可以将某一个正在运行的 worker 节点变成 manager 节点，来代替停止的那个 manager 节点。当然，同样也可将一个
+manager 节点改成一个 worker 节点。&lt;/p&gt;
+&lt;h3&gt;8.2 Service 工作原理&lt;/h3&gt;
+&lt;p&gt;参考&lt;a href=&quot;https://holynull.gitbooks.io/docker-swarm/content/swarmmo-shi-gong-zuo-yuan-li/servicegong-zuo-yuan-li.html&quot;&gt;Service 工作原理&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;为了部署一个应用的镜像到 Swarm 模式的 Docker Engine 中，我们需要创建一个 service。通常 service
+是拥有大型应用系统上下文信息的微服务镜像。例如，一个服务可能包含一个 HTTP 服务器、一个数据库、或者其他的软件，我们需要这些软件运行在一个分布式环境中。&lt;/p&gt;
+&lt;p&gt;当创建 service 时，我们需要指定用什么镜像运行 container，以及 container 内部运行什么样的命令。我们还需要定义以下内容：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;service 向 Swarm 以外暴露的可用端口&lt;/li&gt;
+&lt;li&gt;一个 overlay network，用来支持 service 之间相互通信&lt;/li&gt;
+&lt;li&gt;CPU 和内存的限制和预设&lt;/li&gt;
+&lt;li&gt;滚动更新的策略&lt;/li&gt;
+&lt;li&gt;镜像在 Swarm 中运行的副本数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;8.2.1 Service，Tasks and Containers&lt;/h4&gt;
+&lt;p&gt;当我们部署一个 service 到 swarm 时，manager 节点将接受我们对 service 定义，并作为 service 的理想状态。Manager 节点在 swarm
+节点之间调度 service 的副本。不同节点上运行的 task 是相互独立的。&lt;/p&gt;
+&lt;p&gt;例如，我们设想在 3 个 HTTP 监听实例之间实现负载均衡。下图展示了拥有 3 个副本的 HTTP 监听器。每一个监听器实例就是一个 swarm
+中的 task。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;././%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/services-diagram.png&quot; alt=&quot;alt&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;一个 container 是一个被隔离的进程。在 swarm 模式的模型中，每一个 task 运行一个 container。&lt;strong&gt;task 就像调度器放置 container
+使用的一个“槽”&lt;/strong&gt;。一旦 container 运行起来，调度器就能意识到 task 是在运行状态。如果 container 不可用或者被终止，则 task
+也将被终止。&lt;/p&gt;
+&lt;h4&gt;8.2.2 task 和调度&lt;/h4&gt;
+&lt;p&gt;task 是 swarm 调度的原子单元。当创建和更新 service 时，我们声明了 service 的理想状态，协调器通过调度 task
+来实现这个理想状态。例如，我们定义了一个 service，要求协调器在任何时候都能保证有 3 个 HTTP 监听器在运行。协调器创建 3 个
+task 作为回应。每一个 task 就像一个“槽”，调度器将产生 3 个 container 放在“槽”中。container 是 task 的一个实例。当一个 HTTP
+监听器不可用或者崩溃，协调器将创建一个新的 task 副本，并放入一个新的 container。&lt;/p&gt;
+&lt;p&gt;task 的状态变化采用一种单向机制。贯穿 task 生命周期的状态有：已分配状态、已准备状态、正在运行状态，等等。如果 task
+运行失败了，协调器会移除这个 task 并停止它的 container，然后创建新的 task 替代它，以保证 service 定义的理想状态。&lt;/p&gt;
+&lt;p&gt;Swarm 模式背后的逻辑其实是一种通用的调度器和协调器逻辑。service 和 task 被抽象设计成并不需要知道他们实现的 container
+是什么样的。假设，我们可以实现其他类型的 task，例如虚拟机 task 或者非容器化的进程 task。调度器和协调器并不需要知道 task
+的类型。然而，当前版本的 Docker 只支持容器 task。&lt;/p&gt;
+&lt;p&gt;下图展示了 Swarm 模式如何接收 service 的创建请求，并调度 task 到 worker 节点。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;././%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/service-lifecycle.png&quot; alt=&quot;service-lifecycle&quot; /&gt;&lt;/p&gt;
+&lt;h4&gt;8.2.3 Pending services&lt;/h4&gt;
+&lt;p&gt;由于配置的原因，某些 service 在当前 swarm 中没有节点可以执行它的 task。在这种情况下，service 会一直保持 pending
+状态。下面的一些例子会造成 service 保持 pending 状态。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意：如果有意要阻止 service 被发布，应该将 service 的 scale 设置为 0，而不是通过设置让 service 一直保持在 pending 状态上。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;如果所有的节点都暂停了或者都处于 DRAIN 状态，创建 service 时就会一直处于 pending
+状态，知道有节点变为可用状态。事实上，当一个节点可用时，所有的任务都会被分配到这个节点上，所以对于生产环境来说并不是一件好事。&lt;/li&gt;
+&lt;li&gt;可以事先给 service 划定一定的内存。如果没有一个节点具有所需要的内存空间量，service 会一直保持 pending 状态，直到一个节点变的可用。&lt;/li&gt;
+&lt;li&gt;可以强制 service 的放置约束，短时间内可能达不到约束条件。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以上说明需求和 task 的配置没有紧密的结合到 swarm 的当前状态。作为 Swarm 的管理员，生命 Swarm 的理想状态，manager 节点结合其他节点在
+Swarm 中创建出这个状态。就不需要将管理的粒度细化到 task 级别。&lt;/p&gt;
+&lt;h4&gt;8.2.4 复制和全局 service&lt;/h4&gt;
+&lt;p&gt;有两种 service 的部署模式，复制和全局。&lt;/p&gt;
+&lt;p&gt;设置 task 的数量来实现复制模式下的 service。例如，想要部署 3 个副本的 HTTP 服务，每个副本都提供相同的服务。&lt;/p&gt;
+&lt;p&gt;全局 service 是在所有节点上都有一个 task 的 service。不能指定 task 的数量。每次增加一个节点，协调器会创建一个
+task，并有调度器分配到新节点上。全局 service 的最佳应用是部署监控代理，病毒扫描，以及其他希望在 swarm 中每个节点上都部署的
+service。&lt;/p&gt;
+&lt;p&gt;下图展示了 3 个副本的 service 和一个全局 service 部署在 swarm 中的情况，黄色代表 3 个副本的 service，灰色代表全局 service：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;././%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/replicated-vs-global.png&quot; alt=&quot;alt&quot; /&gt;&lt;/p&gt;
+&lt;h3&gt;8.3 安全(PKI)&lt;/h3&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://holynull.gitbooks.io/docker-swarm/content/swarmmo-shi-gong-zuo-yuan-li/an-quan-ff08-pki.html&quot;&gt;安全&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Docker 内置了 PKI，使保障发布容器化的业务流程系统的安全性变得很简单。Swarm 节点之间采用 TLS 来鉴权、授权和加密通信。&lt;/p&gt;
+&lt;p&gt;当我们运行&lt;code&gt;docker swarm init&lt;/code&gt;命令时，Docker 指定当前节点为一个 manager 节点。默认情况下，manager 节点会生成一个新的根 CA
+证书以及一对密钥。CA 证书和密钥将会被用在节点之间的通信上。也可以通过参数--external-ca 来指定其他 CA 证书。&lt;/p&gt;
+&lt;p&gt;Manager 节点会生成两个 token，一个用来添加 worker 节点，一个用来添加 manager 节点。每一个 token 包含了 CA 证书的 digest
+和一个随机密钥。当节点加入到 Swarm 中时，加入的节点将 digest 发送给远端的 manager 节点，由 manager 节点来验证申请加入节点的根
+CA 证书是否合法。远端 manager 节点通过随机密钥来验证申请加入的节点是否被核准加入。&lt;/p&gt;
+&lt;p&gt;每当节点加入到 Swarm 中后，manager 都会给节点发送一个证书。这个证书中包含了一个随机生成的节点
+ID，用来标识这个证书通用名称下的节点，以及组织单元下的角色。在节点的当前 Swarm 生命周期中，节点 ID 是节点的安全加密的身份标识。&lt;/p&gt;
+&lt;p&gt;下图说明了 manager 节点和 worker 节点如何使用 TSL 1.2 进行通信加密的。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;././%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/tls.png&quot; alt=&quot;alt&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;下面的例子展示了一个 worker 节点获得证书内容：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number:
+            3b:1c:06:91:73:fb:16:ff:69:c3:f7:a2:fe:96:c1:73:e2:80:97:3b
+        Signature Algorithm: ecdsa-with-SHA256
+        Issuer: CN=swarm-ca
+        Validity
+            Not Before: Aug 30 02:39:00 2016 GMT
+            Not After : Nov 28 03:39:00 2016 GMT
+        Subject: O=ec2adilxf4ngv7ev8fwsi61i7, OU=swarm-worker, CN=dw02poa4vqvzxi5c10gm4pq2g
+...snip...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;默认情况下，每个节点的证书 3 个月轮换一次。我们可以通过配置修改的这个间隔：docker swarm update --cert-expiry &amp;lt;TIME
+PERIOD&amp;gt;。最小的证书轮换时间为 1 小时。&lt;/p&gt;
+&lt;h4&gt;8.3.1 CA 证书轮换&lt;/h4&gt;
+&lt;p&gt;如果 Swarm 的 CA 密钥或 Manager 节点受到危害，您可以轮换 Swarm 的根 CA 证书，以使所有节点都不再信任旧的根 CA 签名的证书。&lt;/p&gt;
+&lt;p&gt;运行命令&lt;code&gt;docker swarm ca --ratate&lt;/code&gt;来生成新的 CA 证书和密钥。也可以通过参数&lt;code&gt;--ca-cert&lt;/code&gt;和&lt;code&gt;--external-ca&lt;/code&gt;来指定外部的根 CA
+证书。&lt;/p&gt;
+&lt;p&gt;当运行了&lt;code&gt;docker swarm ca --rotate&lt;/code&gt;命令后，会按顺序发生下面的事情：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Docker 会生成一个交叉签名（cross-signed）证书。即新证书是由旧的证书签署的。这个交叉签名证书将作为一个过渡性的证书。这是为了确保节点仍然能够信任旧的证书，也能使用新的
+CA 证书验证签名。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在 Docker 17.06 或者更高版本中，Docker 会通知所有节点立即更新 TLS 证书。根据 Swarm 中节点的数量多少，这个过程可能会花费几分钟时间。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意：如果 Swarm 中的节点上 Docker 的版本不一致，将会发生下面的情况：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;只有 manager 节点运行了 Docker 17.06 或者更高版本，并且作为 leader 时，才能通知到其他节点更新 TLS 证书。&lt;/li&gt;
+&lt;li&gt;只有 Docker 17.06 或者更高版本才会支持这个指令。 最好确保所有的 Swarm 节点上运行 Docker 17.06 或者更高版本。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在所有的节点都更新了新 CA 证书签署的 TLS 证书后，Docker 将不在信任旧的证书，并通知所有节点仅信任新的 CA 证书。&lt;/p&gt;
+&lt;p&gt;加入 Swarm 使用的 token 将发生变化，旧的 token 将不可用。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;从这时起，所有新的由新根 CA 证书签署的节点证书将颁发给节点，并且完全不存在过度内容。&lt;/p&gt;
+&lt;h3&gt;8.4 Task 的状态&lt;/h3&gt;
+&lt;p&gt;Service 是应用运行的理想状态的描述，task 在这个理想状态下完成工作。工作按照下面的流程在 Swarm 节点之间被调度：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;使用 CLI 运行命令&lt;code&gt;docker service create&lt;/code&gt;，或者使用 UCP web 界面。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;请求传递给 manager 节点。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;manager 节点在特定的节点调度 service 的运行。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;每一个 service 可以由多个 task 来执行。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;每一个 task 都有一个生命周期，生命周期的状态包括：&lt;code&gt;NEW&lt;/code&gt;，&lt;code&gt;PENDING&lt;/code&gt;和&lt;code&gt;COMPLETE&lt;/code&gt;等等。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Task 是一次执行单元。当 task 停止，就不会再被执行，除非一个新的 task 会取代它。&lt;/p&gt;
+&lt;p&gt;在 task 执行完成或者失败之前，task 会通过一系列的状态变化。task 由&lt;code&gt;NEW&lt;/code&gt;状态初始化。task 的状态变化过程是不可逆的。例如，一个
+task 是永远不会从&lt;code&gt;COMPLETE&lt;/code&gt;状态变回&lt;code&gt;RUNNING&lt;/code&gt;状态的。&lt;/p&gt;
+&lt;p&gt;Task 的状态如下表：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;状态&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;NEW&lt;/td&gt;
+&lt;td&gt;初始化状态&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PENDING&lt;/td&gt;
+&lt;td&gt;资源分配了任务时的状态&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ASSIGNED&lt;/td&gt;
+&lt;td&gt;task 被分配到节点后的状态&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ACCEPTED&lt;/td&gt;
+&lt;td&gt;task 被 worker 节点接受后的状态。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PREPARING&lt;/td&gt;
+&lt;td&gt;Docker 正在准备 task&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;STARTING&lt;/td&gt;
+&lt;td&gt;Docker 启动 task&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;RUNNING&lt;/td&gt;
+&lt;td&gt;正在运行中的状态&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;COMPLETE&lt;/td&gt;
+&lt;td&gt;task 已经存在，并且没有错误码&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;FAILED&lt;/td&gt;
+&lt;td&gt;task 已经存在，但是有错误码出现&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SHUTDOWN&lt;/td&gt;
+&lt;td&gt;Docker 被请求关闭 task&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;REJECTED&lt;/td&gt;
+&lt;td&gt;worker 节点拒绝接受 task&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ORPHANED&lt;/td&gt;
+&lt;td&gt;节点离线时间超长&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4&gt;8.4.1 查看状态&lt;/h4&gt;
+&lt;p&gt;运行命令&lt;code&gt;docker service ps &amp;lt;service-name&amp;gt;&lt;/code&gt;来获得 task 的状态。&lt;code&gt;CURRENT STATE&lt;/code&gt;表示 task 的状态：&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;附：docker 命令参考&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://sunbufu.github.io/wiki/docker-command/&quot;&gt;docker 常用命令&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/gezhonglei2007/article/details/51627821&quot;&gt;Docker network 命令&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/qq_30118563/article/details/113838214&quot;&gt;常用命令&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/u010246789/article/details/53958662&quot;&gt;Docker 实践(二)：容器的管理(创建、查看、启动、终止、删除)&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;附：Raft 协议参考&lt;/h2&gt;
+&lt;p&gt;raft 是工程上使用较为广泛的强一致性、去中心化、高可用的分布式协议&lt;/p&gt;
+&lt;p&gt;参考&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://mp.weixin.qq.com/s/OLcb0nWLp-Oa1DA6ppFbKQ&quot;&gt;Raft 协议原理详解，10 分钟带你掌握&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.cnblogs.com/xybaby/p/10124083.html&quot;&gt;一文搞懂 Raft 算法&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;p&gt;其他参考：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://yeasy.gitbook.io/docker_practice/install/centos&quot;&gt;安装教程 01&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://cloud.tencent.com/developer/article/1701451&quot;&gt;安装教程 02&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/dkfajsldfsdfsd/article/details/79923218&quot;&gt;docker swarm 集群创建、配置、可视化管理实验&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.jianshu.com/p/6e48d01d11c9&quot;&gt;Docker Swarm 管理节点高可用分析&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://ypdai.github.io/2021/02/24/%E4%BD%BF%E7%94%A8swarm%E6%90%AD%E5%BB%BA%E5%92%8C%E7%AE%A1%E7%90%86docker%E9%9B%86%E7%BE%A4/&quot;&gt;使用 swarm 搭建和管理 docker 集群&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://blog.51cto.com/lwc0329/3010862&quot;&gt;Docker Swarm （容器集群，高可用，安全）&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.gitbook.com/book/holynull/docker-swarm&quot;&gt;&amp;lt;u&amp;gt;Docker Swarm 深入浅出&amp;lt;/u&amp;gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.cnblogs.com/songxingzhu/p/10669497.html&quot;&gt;DockerSwarm 获取 Token 与常用命令&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.hangge.com/blog/cache/detail_2597.html&quot;&gt;Portainer - Docker 的可视化管理工具使用详解&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/gezhonglei2007/article/details/51627821&quot;&gt;Docker network 命令&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://laravelacademy.org/post/21850&quot;&gt;在 Swarm 集群中使用 Compose 文件&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.cnblogs.com/xiangsikai/p/9935253.html&quot;&gt;https://www.cnblogs.com/xiangsikai/p/9935253.html&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;|&lt;strong&gt;PS：原《 docker 进阶》见 7.3&lt;/strong&gt;&lt;/p&gt;
+</content:encoded></item><item><title>Linux 重定向</title><link>https://fuwari.vercel.app/posts/cst/linux-%E9%87%8D%E5%AE%9A%E5%90%91/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/cst/linux-%E9%87%8D%E5%AE%9A%E5%90%91/</guid><pubDate>Fri, 30 Sep 2022 06:11:08 GMT</pubDate><content:encoded>&lt;p&gt;&amp;lt;!-- # Linux 重定向 --&amp;gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;linux重定向可以将命令的输出或输入重新定向到其他位置或文件，以实现对输出输入的控制。默认情况下命令的输出通常为终端，&lt;strong&gt;如果想将输出转移到文件或其他位置，这时候就需要重定向。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;文件描述符：一个命令通常都会打开三个文件，默认使用文件描述符0,1,2来指代这个三个文件&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;stdin   0  标准输入流 （键盘）
+stdout  1  标准输出流 （终端）
+stderr  2  标准错误输出流 （终端）
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;以上标准输出和输入均在终端中进行，而重定向符 &lt;code&gt;&amp;gt;&lt;/code&gt;、&lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt; 就是将其输出对象进行改变&lt;/p&gt;
+&lt;p&gt;shell 中常见重定向形式如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt; file               // 标准输出重定向到文件（覆盖）
+
+&amp;gt;&amp;gt; file              // 标准输出重定向到文件（追加）
+
+2&amp;gt; file              // 标准错误重定向到文件（覆盖）
+
+2&amp;gt;&amp;gt; file             // 标准错误重定向到文件（追加）
+
+2&amp;gt; /dev/null         // 标准错误重定向到回收站
+
+&amp;amp;&amp;gt; file              // 标准输出和标准错误重定向到文件（覆盖）
+
+&amp;gt;&amp;gt; file 2&amp;gt;&amp;amp;1         // 标准输出和标准错误重定向到文件（追加）
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;默认的重定向为标准输出重定向，即 &lt;code&gt;&amp;gt; file&lt;/code&gt; 等价于 &lt;code&gt;1&amp;gt; file&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;amp;&amp;gt; file&lt;/code&gt; 等价于 &lt;code&gt;1&amp;gt; file 2&amp;gt;&amp;amp;1&lt;/code&gt; ，这里的 &lt;code&gt;&amp;amp;1&lt;/code&gt; 指的是&lt;strong&gt;标准输出 1&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;当格式为 &lt;code&gt;&amp;gt;&amp;gt; file 2&amp;gt;&amp;amp;1&lt;/code&gt; &lt;strong&gt;不代表&lt;/strong&gt; 标准输出追加而标准错误输出覆盖！&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;a href=&quot;https://gwaslab.com/2021/11/28/linux-redirection/&quot;&gt;Linux ：输入/输出重定向 &amp;gt;, 1&amp;gt;, 2&amp;gt;, &amp;amp;&amp;gt;, &amp;gt;&amp;gt; , &amp;lt;&amp;lt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.bilibili.com/video/BV18y4y137Gr&quot;&gt;linux 中的输入输出重定向（b 站）&lt;/a&gt;&lt;/p&gt;
+</content:encoded></item><item><title>Conda 简记</title><link>https://fuwari.vercel.app/posts/cst/conda-%E7%AE%80%E8%AE%B0/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/cst/conda-%E7%AE%80%E8%AE%B0/</guid><pubDate>Fri, 24 Jun 2022 12:53:39 GMT</pubDate><content:encoded>&lt;h2&gt;1. Anaconda 与 Miniconda 与 Conda&lt;/h2&gt;
+&lt;p&gt;&amp;lt;center&amp;gt;
+&amp;lt;img src=&quot;https://conda.io/projects/conda/en/latest/_static/conda_logo_full.svg&quot; alt=&quot;condalogo&quot; style=&quot;zoom:50%;&quot; /&amp;gt;
+&amp;lt;/center&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Conda&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/Conda&quot;&gt;维基：conda&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://docs.conda.io/en/latest/&quot;&gt;conda官网&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;任何语言的包、依赖项和环境管理 — Python、R、Ruby、Lua、Scala、Java、JavaScript、C/C++、FORTRAN 等。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Conda 是一个开源包管理系统和环境管理系统，在 Windows、macOS 和 Linux 上运行。Conda 快速安装、运行和更新包及其依赖项。&lt;strong&gt;Conda 可在本地计算机上轻松创建、保存、加载和切换环境&lt;/strong&gt;。它是为 Python 程序创建的，但它可以打包和分发任何语言的软件。&lt;/p&gt;
+&lt;p&gt;Conda 作为包管理器可帮助您查找和安装包。&lt;strong&gt;如果需要不同版本的 Python 的包，则不需要切换到其他环境管理器，因为 conda 也是环境管理器。只需几个命令，就可以设置一个完全独立的环境来运行不同版本的 Python，同时在正常环境中继续运行通常版本的 Python&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;conda 包和环境管理器包含在 Anaconda 和 Miniconda 的所有版本中。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;以上为conda官网对于codna的说明，简单说就是包管理工具，并且提供设置不同的环境的功能，因此用户能在不同版本的python之间灵活切换，不同python环境各自独立。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Anaconda&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/Anaconda_(Python%E5%8F%91%E8%A1%8C%E7%89%88)&quot;&gt;维基：Anaconda&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://www.anaconda.com/&quot;&gt;Anaconda官网&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Anaconda是一个免费开源的Python和R语言的发行版本，用于计算科学（数据科学、机器学习、大数据处理和预测分析），Anaconda致力于简化软件包管理系统和部署。Anaconda的包使用软件包管理系统Conda进行管理&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;以上为维基Anaconda词条，简单说来就是python的一个发行版本，包括python、conda、许多科学计算需要的包，以及一些科学计算用到的工具等&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Minicona&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://docs.conda.io/en/latest/miniconda.html&quot;&gt;Miniconda官网&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Miniconda 是conda的免费最小安装程序。这是一个小的，引导版本的Anaconda，只包括conda，Python，他们依赖的包，和少数其他有用的包，包括pip，zlib和其他一些。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;以上为Miniconda官网的介绍&lt;/p&gt;
+&lt;h2&gt;2. 下载与安装&lt;/h2&gt;
+&lt;h3&gt;下载&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;下载Anaconda还是Miniconda？&lt;/p&gt;
+&lt;p&gt;如果只是需要使用到不同的Python的环境，&lt;strong&gt;没有机器学习、科学计算等需求&lt;/strong&gt;，下载Miniconda其实就行，需要一些包后续使用conda或pip安装即可。但是有些包因为版本问题等不是十分容易安装，而Anaconda自带很多常用、不常用的包，在这方面会比较方便。因此安装Anaconda肯定是没问题的，Anaconda安装包更大，并且自带Spyder、Jupyter等（安装后可删除），如果怕麻烦，电脑空间也够，那就安装Anaconda&lt;/p&gt;
+&lt;p&gt;如果有强迫症，讨厌捆绑很多东西(比如本人)，那自然……&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Miniconda下载&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.conda.io/en/latest/miniconda.html&quot;&gt;官网&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/&quot;&gt;清华镜像&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Anaconda下载&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.anaconda.com/&quot;&gt;官网&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/&quot;&gt;清华镜像&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;官网下载速度可能比较慢，从清华镜像下载会快很多&lt;/p&gt;
+&lt;h3&gt;安装&lt;/h3&gt;
+&lt;p&gt;Miniconda 与 Anaconda 安装界面类似&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&quot;Anaconda%E8%AE%B0%E5%BD%95.assets/image-20210214135615761.png&quot; alt=&quot;image-20210214135615761&quot; style=&quot;zoom: 80%;&quot; /&amp;gt;&lt;/p&gt;
+&lt;p&gt;点击 next，点击I Agree，如下&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&quot;Anaconda%E8%AE%B0%E5%BD%95.assets/image-20210214135724640.png&quot; alt=&quot;image-20210214135724640&quot; style=&quot;zoom:80%;&quot; /&amp;gt;&lt;/p&gt;
+&lt;p&gt;Just Me安装在当前用户；All Users给所用用户安装。因为一台计算机中用户可能有多个(尽管Windows用户很多时候只有一个……)，给所有用户安装那只要是这台计算机中的用户都能使用Anaconda/Miniconda，Just Me就是只给当前所使用的用户安装~~（也不是说别的用户就完全不能用）~~，按个人喜好勾选，Windows个人还是建议All Users，毕竟多数时候是只是用一个用户的emmm&lt;/p&gt;
+&lt;p&gt;点击Next，之后选择安装路径，&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&quot;Anaconda%E8%AE%B0%E5%BD%95.assets/image-20210214140931475.png&quot; alt=&quot;image-20210214140931475&quot; style=&quot;zoom:80%;&quot; /&amp;gt;&lt;/p&gt;
+&lt;p&gt;点击Next&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&quot;Anaconda%E8%AE%B0%E5%BD%95.assets/image-20210214141133596.png&quot; alt=&quot;image-20210214141133596&quot; style=&quot;zoom:80%;&quot; /&amp;gt;&lt;/p&gt;
+&lt;p&gt;两个选择框选择环境变量的添加，第一个是添加环境变量，第二个是将Anaconda/Miniconda自带的Python作为系统的python&lt;/p&gt;
+&lt;p&gt;第一个个人建议勾选(&lt;strong&gt;不勾选之后再添加也可，网上有博客说勾选出问题了的，不过我是没出过问题哈，自己添加可参考下面安装完成后的环境变量，Anaconda与Miniconda类似&lt;/strong&gt;)，第二个如果计算机还有其他Python根据情况选择，如果和其他Python产生冲突，之后调整环境变量顺序即可。&lt;/p&gt;
+&lt;p&gt;Install等待安装即可，都勾选安装完成后涉及Anaconda的环境变量如下&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;Anaconda%E8%AE%B0%E5%BD%95.assets/image-20210214141745350.png&quot; alt=&quot;image-20210214141745350&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;可以打开cmd(&lt;strong&gt;环境变量已经配好了&lt;/strong&gt;)再验证下是否安装完成了&lt;/p&gt;
+&lt;p&gt;查看当前python版本（安装了其他版本python可在环境变量里看看顺序，在前面的优先）&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;python -V
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看conda版本&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;conda -V
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看pip版本&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;pip -V
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;启用base环境（Windows上，建议使用cmd，如果是使用cmd，提示符最前面会有base标记，Power shell的话没有）&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;activate base
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;3. 换源&lt;/h2&gt;
+&lt;p&gt;使用conda更新、下载包时都比较慢，更换为国内源后会快很多&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;参看：&lt;a href=&quot;https://www.cnblogs.com/dereen/p/anaconda_tencent_mirrors.html&quot;&gt;国内可用Anaconda 源的镜像站及换国内源方法&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;添加清华源&lt;/strong&gt;
+命令行中直接使用以下命令（ubuntu命令行也可以）&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge 
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2/
+# 设置搜索时显示通道地址
+conda config --set show_channel_urls yes
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;添加中科大源&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/main/
+conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/conda-forge/
+conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/msys2/
+conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/bioconda/
+conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/menpo/
+conda config --set show_channel_urls yes
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;4. conda常用命令&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;查看conda版本，验证是否安装&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;conda --version 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;更新至最新版本，也会更新其它相关包&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;conda update conda
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;更新所有包&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;conda update --all 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;更新指定的包&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;conda update package_name
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;lt;font color=&apos;red&apos;&amp;gt;&lt;strong&gt;显示所有的虚拟环境&lt;/strong&gt;&amp;lt;/font&amp;gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;conda env list
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;或者&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;conda info -e
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;lt;font color=&apos;red&apos;&amp;gt;&lt;strong&gt;切换至env_name环境&lt;/strong&gt;&amp;lt;/font&amp;gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;conda activate env_name
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;退出环境&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;codna deactivate
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&amp;lt;font color=&apos;red&apos;&amp;gt;创建名为env_name的新环境&amp;lt;/font&amp;gt;，并在该环境下安装名为package_name 的包，可以指定新环境的版本号，例如：&lt;code&gt;conda create -n python2 python=python2.7 numpy pandas&lt;/code&gt;，创建了python2环境，python版本为2.7，同时还安装了numpy pandas包&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;conda create --name env_name   package_name python=3.7
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;--name&lt;/code&gt;可缩写为&lt;code&gt;-n&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;查看所有已经安装的包&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;conda list
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;在当前环境中安装包&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;conda install package_name
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;在指定环境中安装包&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;conda install --name env_name package_name
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;删除指定环境中的包&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;conda remove --name env_name package 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;删除当前环境中的包&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;conda remove package
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;复制old_env_name为new_env_name&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;conda create --name new_env_name --clone old_env_name
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;删除环境&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;conda remove --name env_name --all
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;清理&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;conda clean -p      //删除没有用的包
+conda clean -t      //删除tar包
+conda clean -y --all //删除所有的安装包及cache
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;conda clean就可以轻松搞定！第一步：通过conda clean -p来删除一些没用的包，这个命令会检查哪些包没有在包缓存中被硬依赖到其他地方，并删除它们。第二步：通过conda clean -t可以将删除conda保存下来的tar包。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/zhayushui/article/details/80433768&quot;&gt;https://blog.csdn.net/zhayushui/article/details/80433768&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;复制/重命名/删除env环境&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Conda是没有重命名环境的功能的, 要实现这个基本需求, 只能通过愚蠢的克隆-删除的过程。
+切记不要直接mv移动环境的文件夹来重命名, 会导致一系列无法想象的错误的发生!&lt;/p&gt;
+&lt;p&gt;&amp;lt;font color=&apos;red&apos;&amp;gt;注意：必须在base环境下进行以上操作，否则会出现各种莫名的问题。&amp;lt;/font&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/zhayushui/article/details/80433768&quot;&gt;https://blog.csdn.net/zhayushui/article/details/80433768&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;//克隆oldname环境为newname环境
+conda create --name newname --clone oldname 
+//彻底删除旧环境
+conda remove --name oldname --all
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;5. MindSpore相关&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.mindspore.cn/install&quot;&gt;MindSpore官网&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/136172122&quot;&gt;MindSpore安装&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;6.jupyter notebook使用&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.jianshu.com/p/0ab80f63af8a&quot;&gt;Jupyter Notebook 添加代码自动补全功能&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;其他参考&lt;/h2&gt;
+&lt;p&gt;【1】&lt;a href=&quot;https://zhuanlan.zhihu.com/p/67745160&quot;&gt;conda常用命令&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;【2】&lt;a href=&quot;https://blog.csdn.net/zhayushui/article/details/80433768&quot;&gt;conda常用命令:安装，更新，创建，激活，关闭，查看，卸载，删除，清理，重命名，换源，问题&lt;/a&gt;&lt;/p&gt;
+</content:encoded></item><item><title>Git 使用小结</title><link>https://fuwari.vercel.app/posts/cst/git-%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/cst/git-%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/</guid><pubDate>Mon, 24 Jan 2022 06:44:00 GMT</pubDate><content:encoded>&lt;p&gt;&amp;lt;!-- # Git 使用小结 --&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;!-- &amp;gt; uchin/李玉勤   --&amp;gt;
+&amp;lt;!-- &amp;gt; 20220124   --&amp;gt;&lt;/p&gt;
+&lt;h2&gt;1. git 配置&lt;/h2&gt;
+&lt;h3&gt;1.1 git 三级配置&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;System： &lt;code&gt;/etc/gitconfig&lt;/code&gt;，Msys64 底下的 etc&lt;/li&gt;
+&lt;li&gt;Global： &lt;code&gt;~/.gitconfig&lt;/code&gt;，Msys64 底下的 home/[UserName]/w 为 ~&lt;/li&gt;
+&lt;li&gt;工程目录： &lt;code&gt;.git/gitconfig&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;作用域依次减小，优先级依次升高&lt;/p&gt;
+&lt;p&gt;ps：不是安装 Msys64 而是 Window 版的 git 在 window 用户家目录下会有文件&lt;code&gt;.gitconfig&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git config --system --list  # 查看系统配置
+git config --global --list  # 查看全局配置
+git config --list           # 查看所有配置
+git config -l               # 同上简写
+
+git config --system -e      # 直接打开系统配置
+git config --global -e      # 直接打开全局配置
+git config -e               # 直接打开项目配置
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&amp;lt;font color=&apos;red&apos;&amp;gt;注：&lt;code&gt;git config --list&lt;/code&gt; 查看的是当前项目所有的配置（综合系统配置与全局配置和项目配置），不是仅仅查看的 &lt;code&gt;.git&lt;/code&gt; 目录下的配置&amp;lt;/font&amp;gt;&lt;/p&gt;
+&lt;h3&gt;1.2 修改 git 配置&lt;/h3&gt;
+&lt;p&gt;通过上述命令查看用户名是否设置完成，没有需要进行设置&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 设置用户签名
+git config --global user.name &quot;userName&quot;
+git config --global user.email &quot;userEmail&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&amp;lt;font color=&apos;red&apos;&amp;gt;用户名和邮件是必须要配置的！&amp;lt;/font&amp;gt; 无论采用用户名+密码验证方式的 http，还是采用密钥验证的 ssh，在和远程仓库关联时均只是在做权限验证，即是否能往该远程库推送。但具体提交的修改需要记录是谁做的，因此 git 系统中需要配置用户名与邮件地址来在远程仓库记录下这些操作是由谁来完成的。&lt;/p&gt;
+&lt;p&gt;具体参考&lt;a href=&quot;https://blog.csdn.net/ITWANGBOIT/article/details/103618427#:~:text=1%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E9%85%8D%E7%BD%AE%E7%94%A8%E6%88%B7,%E6%98%AF%E7%94%B1%E8%B0%81%E5%AE%8C%E6%88%90%E7%9A%84%E3%80%82&quot;&gt;对给 git 配置邮箱和用户名的理解&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;除了设置全局签名，使用 &lt;code&gt;git config user.name &quot;userName&quot;&lt;/code&gt; 来设置当前项目的签名也可以。&lt;/p&gt;
+&lt;h2&gt;2. git 核心概念&lt;/h2&gt;
+&lt;h3&gt;2.1 区域&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;工作区（Workspace）=&amp;gt; 写代码&lt;/li&gt;
+&lt;li&gt;暂存区（Stage）=&amp;gt; 暂时缓存的修改&lt;/li&gt;
+&lt;li&gt;本地版本库（Local Repository）=&amp;gt; 本地仓库&lt;/li&gt;
+&lt;li&gt;远程仓库（Remote Repository）=&amp;gt; 远程仓库&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;工作区 =&amp;gt; &lt;code&gt;git add&lt;/code&gt; 添加到暂存区 =&amp;gt; &lt;code&gt;git commit&lt;/code&gt; 提交到本地库&lt;/p&gt;
+&lt;p&gt;只有在 &lt;code&gt;git commit&lt;/code&gt; 进行提交到本地库后才有版本控制&lt;/p&gt;
+&lt;h3&gt;2.2 HEAD 指针&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;标记当前分支：切换分支时会指向当前所在的分支&lt;/li&gt;
+&lt;li&gt;指向当前提交：当进行提交后，HEAD 指向最新的提交&lt;/li&gt;
+&lt;li&gt;作为检出点：回滚或切分支&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;2.3 分支&lt;/h3&gt;
+&lt;p&gt;隔离开发干扰设计&lt;/p&gt;
+&lt;h2&gt;3. 项目中常用命令&lt;/h2&gt;
+&lt;h3&gt;3.1 初始化与本地提交等&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;git init              # 初始化本地库
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;git status            # 查看本地库状态
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看文件有没有被修改、追踪&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git add fileName          # 添加到缓存区
+git add .                 # 添加当前目录所有文件进行追踪
+git rm --cached fileName  # 删除缓存区的文件
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;没有被追踪文件/文件夹，存在工作区，通过 &lt;code&gt;add&lt;/code&gt; 使其添加到缓存区&lt;br /&gt;
+git 追踪的文件发生修改是绿色,没被追踪的文件发生修改是红色&lt;/p&gt;
+&lt;p&gt;通过 &lt;code&gt;add&lt;/code&gt; 添加至缓冲区的文件能通过 &lt;code&gt;git rm --cached&lt;/code&gt; 从缓冲区中删除，不再追踪。命令删除的是缓存区的文件，工作区的文件依旧存在的&lt;/p&gt;
+&lt;p&gt;ps：windows 端 git 的 bash 里使用 vim 编辑文件后 &lt;code&gt;add&lt;/code&gt; 命令会将 LF 转换成 CRLF，但是 msys2 的不会&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git diff                 # 查看具体修改地方
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;git commit -m &quot;日志信息&quot; fileName # 提交本地库
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;git reflog # 查看版本信息
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;git log
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;# 版本穿梭
+git reset --hard 版本号
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;示例如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[uchin@arch blog]$ git reflog
+5341b98 (HEAD -&amp;gt; master) HEAD@{0}: commit: second commit
+326787f HEAD@{1}: commit (initial): first commit
+
+[uchin@arch blog]$ git reset --hard 326787f
+HEAD is now at 326787f first commit
+
+[uchin@arch blog]$ git reflog
+326787f (HEAD -&amp;gt; master) HEAD@{0}: reset: moving to 326787f
+5341b98 HEAD@{1}: commit: second commit
+326787f (HEAD -&amp;gt; master) HEAD@{2}: commit (initial): first commit
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4&gt;gitignore&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.liaoxuefeng.com/wiki/896043488029600/900004590234208&quot;&gt;忽略特殊文件&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# =======================================
+# .gitignore 示例
+# =======================================
+
+# 忽略所有 .a 结尾的文件
+*.a
+# 但 lib.a 除外
+!lib.a
+# 仅仅忽略项目根目录下的 TODO 文件，不包括 subdir/TODO
+/TODO
+# 忽略 build/ 目录下的所有文件
+build/
+# 会忽略 doc/notes.txt 但不包括 doc/server/arch.txt
+doc/*.txt
+# ignore all .txt files in the doc/ directory
+doc/**/*.txt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4&gt;tag&lt;/h4&gt;
+&lt;p&gt;针对特定提交或者特定的时间点，赋予一个标识符，&lt;strong&gt;相当于一个永久指针&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;轻量级标签：指向某个 commit 的引用，不含附注信息&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 列出标签
+git tag
+git tag -l &quot;v1.8.5*&quot; # -l或 --list 进行筛选
+
+# 打标签
+git tag &amp;lt;tag-name&amp;gt; &amp;lt;commit-SHA&amp;gt;
+
+# 删除标签
+git tag -d [tag]
+
+# 删除远程tag
+git push origin :refs/tags/[tagName]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;重量级标签：&lt;/p&gt;
+&lt;h3&gt;3.2 分支操作&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;git branch              # 查看分支
+git branch -r           # 查看远程分支
+git branch -a           # 查看所有分支（包括远程）
+git branch -vv          # 查看本地分支与远程分支的关系
+
+git branch &amp;lt;name&amp;gt;       # 创建分支
+git branch -d &amp;lt;name&amp;gt;    # 删除分支
+
+git checkout &amp;lt;name&amp;gt;     # 切换分支
+git branch -b &amp;lt;name&amp;gt;    # 创建并切换
+git switch &amp;lt;name&amp;gt;       # 切换分支
+git switch -c &amp;lt;name&amp;gt;    # 创建并切换
+
+git merge &amp;lt;name&amp;gt;        # 合并分支
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;例如，在 &lt;code&gt;master&lt;/code&gt; 分支中使用 &lt;code&gt;git merge dev&lt;/code&gt; 命令，则会将 &lt;code&gt;dev&lt;/code&gt; 分支的更新内容合并至 &lt;code&gt;master&lt;/code&gt; 分支。&lt;/p&gt;
+&lt;p&gt;在 idea 中，直接从右下角找到 dev 分支，选择 Merge dev into master 即可。&lt;/p&gt;
+&lt;h3&gt;3.3 远程操作&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4&gt;3.3.1 克隆远程库&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;# https 协议下载
+git clone https://gitee.com/yuqinlee/test.git
+# ssh 协议下载
+git clone git@gitee.com:liaoxuefeng/learngit.git
+# 本地没有项目，直接拉取指定分支
+git clone -b dev git@gitee.com:liaoxuefeng/learngit.git
+# 本地已经有项目
+git fetch --all                 # 先更新
+git checkout -b dev origin/dev  # 在拉取
+
+git fetch                       # 从远程拉取
+git fetch -p                    # 如果远程分支删除了，拉取的时候同时清理本地对应分支
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;使用 &lt;code&gt;git clone&lt;/code&gt; 命令下载远程库后，会自带版本信息&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;clone&lt;/code&gt;、&lt;code&gt;fetch&lt;/code&gt;、&lt;code&gt;pull&lt;/code&gt;区别&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;clone&lt;/code&gt;：远程克隆仓库，带版本控制&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;fetch&lt;/code&gt;：从远程获取最新版本到本地，不会自动 merge&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pull&lt;/code&gt;：从远程获取最新版本并 merge 到本地仓库&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;3.3.2 关联远程库&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;# http 协议关联
+git remote add origin https://gitee.com/yuqinlee/test.git
+# ssh 协议关联
+git remote add origin git@gitee.com:liaoxuefeng/learngit.git
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;取消关联远程仓库&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git remote remove origin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;将本地分支关联到远程分支&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git branch --set-upstream-to=origin/develop develop
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4&gt;3.3.4 同步&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;git push -u origin &quot;master&quot; # 推送
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;em&gt;&amp;lt;center&amp;gt;远程关联仓库（gitee 示例）&amp;lt;/center&amp;gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Git 全局设置:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git config --global user.name &quot;yuqinlee&quot;
+git config --global user.email &quot;yuqin.lee@outlook.com&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;创建 git 仓库:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mkdir test
+cd test
+git init
+touch README.md
+git add README.md
+git commit -m &quot;first commit&quot;
+
+# git remote add origin https://gitee.com/yuqinlee/test.git
+git remote add origin git@gitee.com:liaoxuefeng/learngit.git
+
+git push -u origin &quot;master&quot;
+
+# 指定本地 dev 分支与远程 origin/dev 分支的链接，根据提示，设置dev和 origin/dev 的链接
+git branch --set-upstream-to=origin/dev dev
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;已有仓库?&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cd existing_git_repo
+git remote add origin https://gitee.com/yuqinlee/test.git
+git push -u origin &quot;master&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;3.4 子模块&lt;/h3&gt;
+&lt;p&gt;使用 &lt;code&gt;git clone&lt;/code&gt; 已经将远程克隆到本地了&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git submodule init      # 子模块初始化
+git submodule update    # 更新
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;使用 &lt;code&gt;git clone&lt;/code&gt; 之前，使用 &lt;code&gt;--recursive&lt;/code&gt; 参数&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git clone --recursive &amp;lt;git@github.com:xxx/xxx.git&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;添加子模块&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 拉取
+git submodule add git@github.com:xxx/xxx.git &amp;lt;local-dir&amp;gt;
+
+# 更新
+git submodule update --remote --merge
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;em&gt;参考&lt;/em&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.ruanyifeng.com/blog/2018/10/git-internals.html&quot;&gt;Git 原理入门 - 阮一峰的网络日志 (ruanyifeng.com)&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.jianshu.com/p/1bc8809716ad&quot;&gt;5.git 添加远程仓库,再克隆到本地,然后做分支管理&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.liaoxuefeng.com/wiki/896043488029600&quot;&gt;廖雪峰 git 教程&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://segmentfault.com/a/1190000017030384&quot;&gt;git clone、git pull 和 git fetch 的用法及区别&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/ITWANGBOIT/article/details/103618427#:~:text=1%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E9%85%8D%E7%BD%AE%E7%94%A8%E6%88%B7,%E6%98%AF%E7%94%B1%E8%B0%81%E5%AE%8C%E6%88%90%E7%9A%84%E3%80%82&quot;&gt;对给 git 配置邮箱和用户名的理解&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.bilibili.com/video/BV1FE411P7B3?spm_id_from=..search-card.all.click&quot;&gt;https://www.bilibili.com/video/BV1FE411P7B3?spm_id_from=..search-card.all.click&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.cnblogs.com/yhjoker/p/7740203.html&quot;&gt;git 学习记录—— git 中的仓库、文件状态等概念介绍&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/qq_42340309/article/details/125033439&quot;&gt;lh-常用 Git 命令总结&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.systemsci.org/jinshanw/2022/01/22/%E4%BB%A3%E7%A0%81%E5%90%8C%E6%97%B6%E6%9B%B4%E6%96%B0%E5%88%B0gitee%E5%92%8Cgithub/&quot;&gt;代码同时更新到 Gitee 和 github&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.cnblogs.com/codingbit/p/git-clone-with-submodule.html&quot;&gt;√ git clone 含有子模块的项目&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr /&gt;
+&lt;p&gt;注：使用 Msys2 的 git vscode 会有问题&lt;/p&gt;
+</content:encoded></item><item><title>区块链与安全Note</title><link>https://fuwari.vercel.app/posts/cst/%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%8E%E5%AE%89%E5%85%A8note/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/cst/%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%8E%E5%AE%89%E5%85%A8note/</guid><pubDate>Wed, 04 Nov 2020 13:00:40 GMT</pubDate><content:encoded>&lt;p&gt;&amp;lt;!-- &amp;lt;h1&amp;gt;区块链与安全Note&amp;lt;/h1&amp;gt; --&amp;gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;2020-11-04&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&amp;lt;!-- &amp;gt;yuqin --&amp;gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.bilibili.com/video/av37065233&quot;&gt;https://www.bilibili.com/video/av37065233&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&amp;lt;!-- [toc] --&amp;gt;&lt;/p&gt;
+&lt;h2&gt;一、BTC-密码学原理&lt;/h2&gt;
+&lt;h3&gt;1. Hash&lt;/h3&gt;
+&lt;h4&gt;性质1 collision resistance&lt;/h4&gt;
+&lt;p&gt;密文m&lt;/p&gt;
+&lt;p&gt;H(m)经过hash函数处理之后得到一个hash值，很难在修改m后再进行hash运算还是原来的值，尽管存在hash碰撞&lt;/p&gt;
+&lt;p&gt;&amp;lt;font color=&apos;red&apos;&amp;gt;没有证明那个hash函数是不存在collision resistance的！！但是有函数是被验证是能够人为找出碰撞的，如MD5&amp;lt;/font&amp;gt;&lt;/p&gt;
+&lt;h4&gt;性质2 hiding&lt;/h4&gt;
+&lt;p&gt;hiding：hash函数的计算是单向且不可逆的，即给定x，可以算出其hash值$H(x)$ , $x-&amp;gt;H(x)$但是没办法从$H(x)$反推出$x$&lt;/p&gt;
+&lt;p&gt;&amp;lt;font color=&apos;red&apos;&amp;gt;hiding成立的前提是输入空间足够大(不然直接暴力遍历出原文),并且输入的取值比较均匀,各种取值差不多&amp;lt;/font&amp;gt;&lt;/p&gt;
+&lt;p&gt;hiding与collision resistance结合起来,实现 &lt;strong&gt;digital commitment(digital equivalent  of a sealed envelope)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;例如,呀进行股市的预测,需提前给出预测,但是又不能将结果直接公布,因为这个预测会对结果产生影响,所以,可以先将预测进行hash,得到一个hash值,由于性质1与性质2,在第二天结果知晓后,公布预测内容并计算hash值,对比之前公布的hash值,相同则预测正确&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;实际操作中,为使输入的空间足够大,可以$H(x||nonce)$,即在输入内容后增加一个随机数(nonce)&lt;/strong&gt;&lt;/p&gt;
+&lt;h4&gt;性质3 puzzle friendly&lt;/h4&gt;
+&lt;p&gt;puzzle friendly:hash值的计算事先是不可预测的,即如果想获得一个区间范围内的hash值,那只能一个一个试&lt;/p&gt;
+&lt;p&gt;例如,想要获得一个经过hash运算后，256位的hash值是形如&quot;00……00xxxxx&quot;前k位都是&quot;0&quot;的原文，那只能一个一个试，而没有方法实现知道。在挖矿中，$nonce$在$block\quad header$中,是可以自己设置的,挖矿过程就是找到适合的$nonce$使得满足以下式子:
+$$
+H(block\quad header)\leq target
+$$
+$H(block\quad header)$要落在指定的$target\quad space$中,只有经过大量的尝试,才能证明其中的&quot;$proof\quad of\quad work$&quot;,在这个过程中,&quot;挖矿&quot;是很难的,但是去验证是很容易的,这个性质叫**&quot;difficult to solve,but easy to verify&quot;**&lt;/p&gt;
+&lt;p&gt;在比特币中使用的hash函数是$SHA-256(Secure Hash Algorithm)$,满足上述三个性质&lt;/p&gt;
+&lt;h3&gt;2. 签名&lt;/h3&gt;
+&lt;p&gt;$asymmetric\quad encryption\quad algorithm(非对称加密)$&lt;/p&gt;
+&lt;p&gt;在现实中开户需要到银行进行相关手续，但是比特币开户只需要在本地创建一对公钥与私钥即可$(public\quad key ,private\quad key)$,知道公钥就相当于知道银行账号,其他人可以往里转账,而私钥就好比是账户的口令,能将账户中的&quot;钱&quot;取出来。比特币是不加密的加密货币，这里公私钥是为了进行签名。&lt;/p&gt;
+&lt;p&gt;&amp;lt;font color=&apos;red&apos;&amp;gt;会不会两人生成的公私钥对是相同的？答：可能性微乎其微&amp;lt;/font&amp;gt;&lt;/p&gt;
+&lt;p&gt;这里生成公私钥要求有一个$a\quad good\quad source\quad of\quad randomness$，如果随机源选择不好的话就有可能两个人的公私钥相同了；在比特币中，除了生成公私钥对时需要一个好的随机源，在每一次加密的过程中都需要有好的随机源，不然可能泄露私钥&lt;/p&gt;
+&lt;p&gt;比特币中一般是先对message进行hash，然后再对hash值进行签名！！&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;a href=&quot;https://www.cnblogs.com/wkfvawl/p/13138979.html&quot;&gt;区块链技术与应用——BTC密码学原理&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;h2&gt;二、BTC-数据结构&lt;/h2&gt;
+&lt;h3&gt;hash pointer、区块链&lt;/h3&gt;
+&lt;p&gt;普通指针是存储一个结构体的地址值，而hash指针除了存储地址值外还存储hash值，这样一来可以找到该结构体的位置，二来可以知道该结构体是否被改变，一般使用$H()$表示&lt;/p&gt;
+&lt;p&gt;比特币中区块与普通的区块的一个区别就是使用hash指针代替了普通指针&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;$Block\quad chain\quad is\quad a\quad linked\quad list\quad using\quad hash\quad pointers$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&amp;lt;img src=&quot;%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%8E%E5%AE%89%E5%85%A8Note.assets/image-20201104195623038.png&quot; alt=&quot;image-20201104195623038&quot; style=&quot;zoom: 67%;&quot; /&amp;gt;&lt;/p&gt;
+&lt;p&gt;后面一个hash值是将前面区块$block\quad header$整个取hash，包括其中的hash function，以此实现了 tamper-evident log，这样如果前一个区块中的内容发生改变，那么后面的hash值也会发生改变，依次类推，后面所有的区块内容都会发生改变，所以只要记住最后的hash值就可以检测出整个区块链中任何部位的修改，这也是和普通区块的不同。&lt;/p&gt;
+&lt;p&gt;本地不必存储所有的区块，在需要使用前面的区块时向其他节点要即可，验证真伪只需要将前面的hash值进行对比就可。&lt;/p&gt;
+&lt;h3&gt;Merkel tree&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%8E%E5%AE%89%E5%85%A8Note.assets/image-20201104202141989.png&quot; alt=&quot;image-20201104202141989&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;两个data blocks的hash pointer放在父节点，这两个hash pointer组合再取hash值，构成整个父节点，两个父节点的的hash pointer再放在更上一层中，……&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;binary tree与Merkel tree的区别&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;merkel tree使用hash指针代替了原有指针&lt;/li&gt;
+&lt;li&gt;只要记录root hash值，就能检测出对树中任何部位的修改&lt;/li&gt;
+&lt;li&gt;每个data block都是一个“交易”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;lt;font color=&apos;red&apos;&amp;gt;比特币中各个区块之间用hash 指针连接在一起，每个区块所包含的交易是组织成一个Merkel tree的形式&amp;lt;/font&amp;gt;&lt;/p&gt;
+&lt;p&gt;每个区块分为$block\quad header$和$block\quad body$，在$block\quad header$中有根hash值，而没有交易的具体内容，$block\quad body$中是有交易列表的&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;merkel tree的作用：提供Merkel proof&lt;/strong&gt;，示意图如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%8E%E5%AE%89%E5%85%A8Note.assets/image-20201104203540474.png&quot; alt=&quot;image-20201104203540474&quot; /&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;轻节点向全节点进行一个Merkel proof的请求，全节点向轻节点发送红色的H()&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;轻节点在本地根据待证明tx可以计算出其上一个绿色H()，而红色的H()是向全节点请求能得到的，因此和红色H()结合能算出再上一层的绿色H()，……最后能算出一个根hash值&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;此时与轻节点所保存的根hash值进行比较就可以验证是否待证明的tx交易在整个区块链中&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;以上证明称为$proof\quad of\quad membership$或$proof\quad of\quad inclusion$，其事件复杂度为$O(log(n))$,如果是证明$proof\quad of\quad no-membership$,其中一个方式是将整棵Merkel tree传回来，验证每一层的hash值都是正确的，则说明这树中只有这些叶节点，而没有待验证的此时复杂度为$O(n)$,如果没有对叶节点进行排序等操作，是没有更好的办法的，但是将tx按照交易的hash值进行排序，就能以$O(log(n))$的代价进行验证了，此时这棵树叫$sorted\quad merkel\quad tree$,&lt;strong&gt;在比特币中是没有这种需求的！&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;没有环的数据结构中，hash pointer基本都可以代替普通指针，但是有环的是不行的&lt;/strong&gt;&lt;/p&gt;
+&lt;h2&gt;三、BTC-协议&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;数字货币方案1&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;假设央行发行数字货币，只采用非对称密码，央行保存私钥，并用私钥进行数字签名，这样发行出来的货币存在的问题：“double spending attack”，即可以将央行发行的数字货币进行复制，从而进行多次支付！这也是数字货币面临的主要挑战。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;数字货币方案2&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在之前的基础上为每个数字货币添加一个编号，央行对编号的所有者进行记录，同时在完成支付之后更改编号所有者。这样就能防范“double spending attack ”。&lt;/p&gt;
+&lt;p&gt;这套方案可行，但每笔交易都经过央行，过于繁琐，这是一种中心化的方案。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;简单区块链示意&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%8E%E5%AE%89%E5%85%A8Note.assets/image-20201106184509456.png&quot; alt=&quot;image-20201106184509456&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;上图中有两种hash指针，一种是区块链之间的连接的&amp;lt;font color=&apos;orange&apos;&amp;gt;hash指针(橙色)&amp;lt;/font&amp;gt;，另一种是&amp;lt;font color=&apos;green&apos;&amp;gt;指向前面某个交易的(绿色)&amp;lt;/font&amp;gt;&lt;/p&gt;
+&lt;p&gt;比特币系统中每个交易都包含输入和输出两个部分:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;输入：①说明币的来源；②A的公钥是什么&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;输出：给出收款人的公钥的hash&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;lt;font color=&apos;red&apos;&amp;gt;为什么要记录来源？&amp;lt;/font&amp;gt;①证明这个钱不是凭空捏造的；②防止&lt;strong&gt;double spending attack&lt;/strong&gt;
+例如上图中：B已经将钱转给C和D了，现在出现F，B要将钱再次转给F
+&lt;img src=&quot;%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%8E%E5%AE%89%E5%85%A8Note.assets/image-20201106183904834.png&quot; alt=&quot;image-20201106183904834&quot; /&gt;
+别的节点收到交易后，从B转向F的交易向前查询，当查到B转给C与D时就会出生问题，B在转给C与D的这次交易中就已将5个币花了出去，即说明B转给F的交易是不合法的！！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;上述转账中，A转账给B，A需要的信息有：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;A的签名&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;B的地址（比特币中收款的地址通过公钥推算出来，公钥取hash经过一些转换得到）&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;比特币系统是不会提供查询某个人的地址的服务的，想要知道别人的地址，需要通过其他渠道，例如在某支持比特币的购物网站上，收款人可以贴出自己的地址/公钥。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;上述转账中&amp;lt;font color=&apos;red&apos;&amp;gt;B、乃至所有的节点还需要知道A的公钥&amp;lt;/font&amp;gt;，因为B要知道支付人的信息，才能知道这笔交易的钱是从哪来的，同时A支付这一过程中A进行了签名，要验证签名就需要A的公钥（签名是私钥签，公钥验证）。A在交易的输入中就会说明A的公钥是什么。&lt;/p&gt;
+&lt;p&gt;问题：自己宣称公钥是否有漏洞？&lt;br /&gt;
+如果存在B的同伙$B&apos;$,这时候伪造一个A到B的转账交易，$B&apos;$用自己的公钥在输入中说是A的公钥，用自己的私钥进行签名，当别的节点用假造的公钥去验证交易的合法性，就会盗走A账户的钱？&lt;/p&gt;
+&lt;p&gt;解决方式：
+在Create Coin过程的输出中包含着A的公钥的hash，在交易A向B转账时，A的公钥要和之前的输出过程的hash对得上才行&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;示意图中每个区块包含着一个交易，但实际过程中每个区块中包含着许多交易，这些交易组装成Merkel Tree，每个区块分为$Block\quad header$与$Block\quad body$两个部分。&lt;/p&gt;
+&lt;p&gt;$Block\quad header$包含着区块中的宏观信息:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;使用的是比特币哪个版本的协议(version)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;执行前一个区块的指针(hash of previous block header)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;lt;font color=&apos;red&apos;&amp;gt;前一个区块的hash只算的是$block\quad header$！！&amp;lt;/font&amp;gt;&lt;/p&gt;
+&lt;p&gt;只有block header才有hash指针串联起来，每次取hash都是将块头进行取hash&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&quot;%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%8E%E5%AE%89%E5%85%A8Note.assets/image-20201106194111150.png&quot; alt=&quot;image-20201106194111150&quot; style=&quot;zoom: 40%;&quot; /&amp;gt;&lt;/p&gt;
+&lt;p&gt;因为Merkel root hash就能保证Block body中的交易列表是没有办法进行改变的。（因为要是改变了那header的hash值就会发生变化）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;整个Merkel tree的根hash值(Merkel root hash)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;难度目标阈值(target)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;随机数(nonce)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;$$
+H(block\quad header)\leq target
+$$&lt;/p&gt;
+&lt;p&gt;$block\quad header$的hash值要小于target&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;关于full node（全节点）与light node（轻节点）&lt;/h3&gt;
+&lt;p&gt;full node：也称fully validating node，保存全部信息&lt;/p&gt;
+&lt;p&gt;light node：只保存block header的信息，一般是无法独立验证交易的合法性的。轻节点知识利用区块链的信息进行一些查询等操作。&lt;/p&gt;
+&lt;h3&gt;比特币中的共识协议（Consensus in BitCoin）&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;账本的内容要取得分布式共识 distributed consensus&lt;/p&gt;
+&lt;p&gt;FLP impossibility result：
+在异步式系统（网络传输时延没有上限）中，只有一个成员有问题，也不可能取得共识&lt;/p&gt;
+&lt;p&gt;CAP Theorem：CAP三个性质中最多只能满足两个（见分布式系统）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;共识协议要解决的问题：有些节点可能是有恶意的，这里假设系统中大多数节点是没有恶意的，有恶意的只是少数&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;**假想：**投票机制，某个节点提出一个候选区块，根据收到的交易信息，选择那些交易是合法的，将这些交易打包到区块里，将这个候选区块发布给所有节点，每个节点收到这个区块后检查一下是不是每个交易都是合法的，都合法就投赞成票，有一个交易是非法的就投反对票，赞成过半就写入区块链中&lt;/p&gt;
+&lt;p&gt;存在的问题：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;提出候选区块的节点恶意加入非法区块到候选区块，并不断提交这种带非法交易的候选区块，造成一直投票却无法写入区块链&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;无法保证每个节点都投票&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;效率问题、网络还有延迟&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;lt;font color=&apos;red&apos;&amp;gt;比特币系统中，投票权问题无法确定&amp;lt;/font&amp;gt;，只要恶意产生足够多账户，超过半数，就可操作结果
+（$sybil\quad  attack$）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;在比特币中也是进行“投票”，但是是利用算力进行投票，每个节点都可以在本地组装出候选区块，将其认为合法的交易放到这个区块中，然后尝试各种nonce值，如果某个节点找到了nonce，使得$H(block\quad header)\leq target$,则该节点获得了记账权，即能往账本中写入下一个区块的权利。其他节点则检查是否符合要求。&lt;/p&gt;
+&lt;h3&gt;最长合法链&lt;/h3&gt;
+&lt;p&gt;下图中，区块1为C转账A，区块3为A转B，区块5为A再次转给自己，首先，这没有构成$double\quad spending\quad attack$,因为在链1&amp;lt;-2&amp;lt;-5中，A并没有使用两次，检测是否是”双花“时是不会检查其他链上的交易情况的。下图中5写到2的后面的情况显然是不被希望的。&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&quot;%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%8E%E5%AE%89%E5%85%A8Note.assets/image-20201106205107454.png&quot; alt=&quot;image-20201106205107454&quot; style=&quot;zoom: 50%;&quot; /&amp;gt;&lt;/p&gt;
+&lt;p&gt;因此在比特币协议中，规定写在**&amp;lt;font color=&apos;red&apos;&amp;gt;最长合法链&amp;lt;/font&amp;gt;**之后的才是合法区块,上述例子称为”forking attack（分叉攻击）“，即：通过往区块链中间某个区块后插入区块实现回滚某个已经发生了的交易。&lt;/p&gt;
+&lt;p&gt;在正常情况下，如果两个节点同时找到了合适的nonce并发布出去，由于整个系统中节点众多，不同节点认同的这两个区块中的某一个，那么就会形成两个等长的链，按照最长合法链原则，这两个都是合法的，比特币系统中，接受某个区块就会往该区块后面继续添加区块，因此会存在临时的分支，但某条链最后会”胜出“。&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&quot;%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%8E%E5%AE%89%E5%85%A8Note.assets/image-20201106210916913.png&quot; alt=&quot;image-20201106210916913&quot; style=&quot;zoom: 60%;&quot; /&amp;gt;&lt;/p&gt;
+&lt;p&gt;如上图，5，6同时发布，原先最长链分叉，这时形成两条合法链，如果在下一时刻，区块5后增加区块7，而6后并未增加新的区块，那么6所在的那条链就会被丢弃，称为”orphan block“。在”orphan block“中获得的block reward是不会被认可的&lt;/p&gt;
+&lt;h3&gt;block reward（出块奖励）&lt;/h3&gt;
+&lt;p&gt;去中心化货币面临的两个问题：①谁来发行货币；②怎么保证交易的合法性&lt;/p&gt;
+&lt;p&gt;coinbase transaction是发行比特币的&amp;lt;font color=&apos;red&apos;&amp;gt;&lt;strong&gt;唯一方法&lt;/strong&gt;&amp;lt;/font&amp;gt;。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;前21万个区块里，每个区块发行50BTC，之后21万区块里，每个区块发行25BTC，下一21万区块中，每个区块发行12.5BTC&lt;/p&gt;
+&lt;p&gt;50BTC -&amp;gt; 25BTC -&amp;gt; 12.5BTC -&amp;gt; ……&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;**hash rate：**比特币系统中根据算力投票，不同区块获取符合nonce的概率是不同的，这个称为hash rate&lt;/p&gt;
+&lt;p&gt;针对“sybil attack”，由于投票权是以算力决定的，即使创建账户十分多，也无法改变其算力大小。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;a href=&quot;https://www.cnblogs.com/wkfvawl/p/13150376.html&quot;&gt;区块链技术与应用——BTC的共识协议&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;h2&gt;BTH-实现&lt;/h2&gt;
+&lt;p&gt;比特币采用的是&lt;strong&gt;基于交易的账本模式，transaction-based ledger&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3&gt;UTXO：Unspend Transaction Output&lt;/h3&gt;
+&lt;p&gt;即：还没有被花出去的交易的输出，区块链上有很多交易，有些交易的输出可能已经被花掉了，有些还没有被花掉，没有被花掉的交易的输出组成的集合就是UTXO。UTXO为比特币系统中的一个数据结构。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;例如：A转给B、C各5BTC，这时B将这5个比特币花掉了，C没有花掉，那么就只有A与C的输出在UTXO中&lt;/p&gt;
+&lt;p&gt;如果这时B再转给D，D也没有花掉，那么B转给D的输出就会保存在UTXO&lt;/p&gt;
+&lt;p&gt;&amp;lt;img src=&quot;%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%8E%E5%AE%89%E5%85%A8Note.assets/image-20201108125335047.png&quot; alt=&quot;image-20201108125335047&quot; style=&quot;zoom: 33%;&quot; /&amp;gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;UTXO中的每个元素要给出产生这个输出的交易的hash值，以及它在这个交易里是第几个输出，就可以定位到UTXO中的输出&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;lt;font color=&apos;red&apos;&amp;gt;为什么要维护UTXO这个数据结构？&amp;lt;/font&amp;gt;&lt;/p&gt;
+&lt;p&gt;花掉的币只有在UTXO这个集合中才是合法的，如果不在这个集合中，那么花的币要么不存在，要么以前已经被花过了。全节点要在内存中维护UTXO这个数据结构，以便快速检测“double spending”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;total inputs=total outputs&lt;/strong&gt;：一笔交易可以有多个输入（不一定来自同一个地址，所以一个交易也可能有多个签名），也可以有多个输出，要求交易的总输入等于总输出。&lt;/p&gt;
+&lt;p&gt;但有时total inputs 可能稍微大于outputs，因为还要给打包区块的节点提供费用，即$transaction\quad fee（交易费）$。一般交易费是比较小的，甚至有的交易没有交易费。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;为什么有交易费？&lt;br /&gt;
+光有出块奖励机制还不够，有些“自私”的节点可能只去打包自己的交易，而不去管别人的交易，因为打包别人的交易还要验证交易的合法性，占用带宽等，，显然只打包自己的会方便很多，因此交易会提供费用给打包的人。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;目前挖矿主要还是为了获得出块奖励，规定约10min出一个区块，出21万个区块就减半，因此出块奖励大约4年就减半。在很长时间之后出块奖励会变得非常小，那么交易费就会成主要奖励来源了&lt;/p&gt;
+&lt;p&gt;$$
+T_{减半周期}=\frac {210000&lt;em&gt;10min}{60min&lt;/em&gt;24h*365d}=3.995433
+$$&lt;/p&gt;
+&lt;p&gt;与比特币这种$transaction-based\quad ledger$相对应的还有一种$account-based(基于账户的)\quad ledger$,&lt;strong&gt;以太坊&lt;/strong&gt;就是用的此模式，这种模式下，系统显示记录每个账户上有多少个币。两种方式各有优缺点，前者显然隐私的保护会更好，但是代价就是要说明币的来源。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;创建时间：2020-11-04&lt;/p&gt;
+&lt;p&gt;修改时间：2020-11-08&lt;/p&gt;
+&lt;/blockquote&gt;
+</content:encoded></item><item><title>Typora 小记</title><link>https://fuwari.vercel.app/posts/cst/typora-%E5%B0%8F%E8%AE%B0/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/cst/typora-%E5%B0%8F%E8%AE%B0/</guid><pubDate>Fri, 28 Feb 2020 16:56:14 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;创建于_2020-02-29 00:56 by uchin&lt;br /&gt;
+修改于_2020-08-01 19:00 by uchin&lt;br /&gt;
+修改于_2020-12-13 21:27 by uchin&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;Typora 快捷键&lt;/h2&gt;
+&lt;h3&gt;1.菜单快捷键&lt;/h3&gt;
+&lt;h4&gt;1.1.文件&lt;/h4&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;快捷键&lt;/th&gt;
+&lt;th&gt;功能&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ctrl+N&lt;/td&gt;
+&lt;td&gt;新建&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ctrl+shift+N&lt;/td&gt;
+&lt;td&gt;新建窗口&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ctrl+O&lt;/td&gt;
+&lt;td&gt;打开文件夹&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ctrl+P&lt;/td&gt;
+&lt;td&gt;快速打开&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ctrl+S&lt;/td&gt;
+&lt;td&gt;保存&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ctrl+shift+S&lt;/td&gt;
+&lt;td&gt;另存为&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ctrl+，&lt;/td&gt;
+&lt;td&gt;偏好设置&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ctrl+W&lt;/td&gt;
+&lt;td&gt;关闭&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4&gt;1.2.编辑&lt;/h4&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;快捷键&lt;/th&gt;
+&lt;th&gt;功能&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ctrl+shift+V&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;粘贴为纯文本&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ctrl+shift+C&lt;/td&gt;
+&lt;td&gt;复制为纯文本&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ctrl+A&lt;/td&gt;
+&lt;td&gt;全选&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ctrl+L&lt;/td&gt;
+&lt;td&gt;选当前行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ctrl+E&lt;/td&gt;
+&lt;td&gt;选当前格式文本&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ctrl+D&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;选当前词&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ctrl+J&lt;/td&gt;
+&lt;td&gt;跳转到所选内容&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4&gt;1.3.段落&lt;/h4&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;快捷键&lt;/th&gt;
+&lt;th&gt;功能&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ctrl+=&lt;/td&gt;
+&lt;td&gt;提升标题级别&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ctrl+-&lt;/td&gt;
+&lt;td&gt;降低标题级别&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ctrl+T&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;插入表格&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ctrl+shift+K&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;代码块&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ctrl+shift+D&lt;/td&gt;
+&lt;td&gt;公式块&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ctrl+shift+Q&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;引用&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ctrl+shift+[&lt;/td&gt;
+&lt;td&gt;有序列表&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ctrl+shift+]&lt;/td&gt;
+&lt;td&gt;无序列表&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ctrl+[/]&lt;/td&gt;
+&lt;td&gt;列表缩进&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4&gt;1.4.格式&lt;/h4&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;快捷键&lt;/th&gt;
+&lt;th&gt;功能&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ctrl+B/I/U&lt;/td&gt;
+&lt;td&gt;加粗/斜体/下划线&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ctrl+shift+`&lt;/td&gt;
+&lt;td&gt;代码&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;alt+shift+5&lt;/td&gt;
+&lt;td&gt;删除线&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ctrl+K&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;超链接&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ctrl+shift+I&lt;/td&gt;
+&lt;td&gt;插入图片&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ctrl+\&lt;/td&gt;
+&lt;td&gt;清除样式&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4&gt;1.5.视图&lt;/h4&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;快捷键&lt;/th&gt;
+&lt;th&gt;功能&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ctrl+shift+9&lt;/td&gt;
+&lt;td&gt;实际大小&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ctrl+shift+=&lt;/td&gt;
+&lt;td&gt;放大&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ctrl+shift+-&lt;/td&gt;
+&lt;td&gt;缩小&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ctrl+tab&lt;/td&gt;
+&lt;td&gt;应用内窗口切换&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ctr+/&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;源码模式&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;2.其他快捷键+&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;快捷键&lt;/th&gt;
+&lt;th&gt;功能&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ctrl+d&lt;/td&gt;
+&lt;td&gt;选中单词&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ctrl+l&lt;/td&gt;
+&lt;td&gt;选中一行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ctrl+e&lt;/td&gt;
+&lt;td&gt;选中相同格式的字&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ctrl+f&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;文件内搜索&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ctrl+h&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;替换&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ctrl+shift+f&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;全局搜索&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;3.自定义快捷键&lt;/h3&gt;
+&lt;p&gt;Windows 路径:&amp;lt;font color=&apos;orange&apos;&amp;gt;&lt;code&gt;C:\Users\[userName]\AppData\Roaming\Typora\conf\conf.user.json&lt;/code&gt;&amp;lt;/font&amp;gt;&lt;/p&gt;
+&lt;p&gt;userName 为用户名&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&quot;keyBinding&quot;: {
+    // for example:
+    // &quot;Always on Top&quot;: &quot;Ctrl+Shift+P&quot;
+    &quot;Toggle Sidebar&quot;:&quot;Alt+.&quot;,
+    &quot;Outline&quot;:&quot;Alt+q&quot;,
+},
+&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;快捷键&lt;/th&gt;
+&lt;th&gt;功能&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;alt+q&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;大纲&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;alt+.&lt;/td&gt;
+&lt;td&gt;隐藏/显示侧栏&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;em&gt;参考：&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;a href=&quot;https://www.runoob.com/markdown/md-tutorial.html&quot;&gt;Markdown 教程&lt;/a&gt;(菜鸟教程)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;a href=&quot;https://blog.csdn.net/diantongqingjie/article/details/89310843&quot;&gt;Tyora 使用&lt;/a&gt;(csdn)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;a href=&quot;https://www.cnblogs.com/fhkankan/p/8082351.html&quot;&gt;Typora 使用说明（记录总结）&lt;/a&gt;(cnblog)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;a href=&quot;https://www.cnblogs.com/hongdada/p/9776547.html&quot;&gt;Typora 快捷键&lt;/a&gt;(cnblog)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;a href=&quot;https://blog.csdn.net/mingzhuo_126/article/details/82722455&quot;&gt;使用 Typora 添加数学公式&lt;/a&gt;(csdn)&lt;/em&gt;&lt;/p&gt;
+</content:encoded></item><item><title>Markdown 小记</title><link>https://fuwari.vercel.app/posts/cst/markdown-%E5%B0%8F%E8%AE%B0/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/cst/markdown-%E5%B0%8F%E8%AE%B0/</guid><pubDate>Fri, 28 Feb 2020 16:56:14 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;创建于_2020-02-29 00:56 by uchin&lt;br /&gt;
+修改于_2020-08-01 19:00 by uchin&lt;br /&gt;
+修改于_2020-12-13 21:27 by uchin&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;基本语法&lt;/h2&gt;
+&lt;p&gt;语法参考：&lt;a href=&quot;https://www.markdown.xyz/basic-syntax/&quot;&gt;https://www.markdown.xyz/basic-syntax/&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;插入表格&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;| Title1 | Title2 |
+| ------ | ------ |
+|        |        |
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;插入链接&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;[引用标题](引用地址)
+
+快速插入链接  
+&amp;lt;https://www.runoob.com&amp;gt;
+
+注脚[^01]
+[01]: https://www.runoob.com &quot;菜鸟&quot;
+
+引用式链接 [网址变量][02]
+[02]: https://www.runoob.com
+
+&amp;lt;!-- 上标注脚，typora 支持 --&amp;gt;
+
+10[^x]
+
+&amp;lt;a href=&quot;#bottom&quot;&amp;gt;去底部&amp;lt;/a&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;代码块&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;```Java
+public class Main {
+    public static void main(String[] args) {
+        System.out.println(&quot;hello&quot;);
+    }
+}
+```
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;TODO list&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;- [ ] 任务清单
+- [x] vs
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;注释&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;!-- 这是注释 --&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;其他&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;!-- 下标 --&amp;gt;
+
+H~2~O~2~
+
+&amp;lt;u&amp;gt;下划线&amp;lt;/u&amp;gt;
+
+~~划掉内容~~
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;插入公式&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;行内公式语法：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$公式内容$
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;块公式语法：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;\$\$
+\sum\_{i=0}^{\infty}
+\$\$
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;公式符号对照表&lt;/h2&gt;
+&lt;h3&gt;上下标&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;算式&lt;/th&gt;
+&lt;th&gt;Markdown&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;$x^2 $&lt;/td&gt;
+&lt;td&gt;x^2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$y_1 $&lt;/td&gt;
+&lt;td&gt;y_1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$x_{k+\frac{1}{2}}$&lt;/td&gt;
+&lt;td&gt;x_{k+\frac{1}{2}}&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;分式&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;算式&lt;/th&gt;
+&lt;th&gt;Markdown&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;$1/2$&lt;/td&gt;
+&lt;td&gt;1/2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$\frac{1}{2}$&lt;/td&gt;
+&lt;td&gt;\frac{1}{2}&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;省略号&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;省略号&lt;/th&gt;
+&lt;th&gt;Markdown&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;$\cdots$&lt;/td&gt;
+&lt;td&gt;\cdots&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;开根号&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;算式&lt;/th&gt;
+&lt;th&gt;Markdown&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;$\sqrt{2}$&lt;/td&gt;
+&lt;td&gt;\sqrt{2}&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;矢量&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;算式&lt;/th&gt;
+&lt;th&gt;Markdown&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;$\vec{a}$&lt;/td&gt;
+&lt;td&gt;\vec{a}&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;积分&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;算式&lt;/th&gt;
+&lt;th&gt;Markdown&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;$\int{x}dx$&lt;/td&gt;
+&lt;td&gt;\int{x}dx&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$\int_{1}^{2}{x}dx$&lt;/td&gt;
+&lt;td&gt;\int_{1}^{2}{x}dx&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;极限&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;算式&lt;/th&gt;
+&lt;th&gt;Markdown&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;$\lim{a+b}$&lt;/td&gt;
+&lt;td&gt;\lim{a+b}&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$lim_{n\rightarrow+\infty}$&lt;/td&gt;
+&lt;td&gt;\lim_{n\rightarrow+\infty}&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;累加&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;算式&lt;/th&gt;
+&lt;th&gt;Markdown&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;$\sum_{i=1}^{\rightarrow +\infty}{a}$&lt;/td&gt;
+&lt;td&gt;\sum_{i=1}^{\rightarrow +\infty}{a}&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$\sum_{n=1}^{100}{a_n}$&lt;/td&gt;
+&lt;td&gt;\sum_{n=1}^{100}{a_n}&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;累乘&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;算式&lt;/th&gt;
+&lt;th&gt;Markdown&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;$\prod{x}$&lt;/td&gt;
+&lt;td&gt;\prod{x}&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$\prod_{n=1}^{99}{x_n}$&lt;/td&gt;
+&lt;td&gt;\prod_{n=1}^{99}{x_n}&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;希腊字母&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;大写&lt;/th&gt;
+&lt;th&gt;Markdown&lt;/th&gt;
+&lt;th&gt;小写&lt;/th&gt;
+&lt;th&gt;Markdown&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;$A$&lt;/td&gt;
+&lt;td&gt;A&lt;/td&gt;
+&lt;td&gt;$\alpha$&lt;/td&gt;
+&lt;td&gt;\alpha&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$B$&lt;/td&gt;
+&lt;td&gt;B&lt;/td&gt;
+&lt;td&gt;$\beta$&lt;/td&gt;
+&lt;td&gt;\beta&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$\Gamma$&lt;/td&gt;
+&lt;td&gt;\Gamma&lt;/td&gt;
+&lt;td&gt;$\gamma$&lt;/td&gt;
+&lt;td&gt;\gamma&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$\Delta$&lt;/td&gt;
+&lt;td&gt;\Delta&lt;/td&gt;
+&lt;td&gt;$\delta$&lt;/td&gt;
+&lt;td&gt;\delta&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$E$&lt;/td&gt;
+&lt;td&gt;E&lt;/td&gt;
+&lt;td&gt;$\epsilon$&lt;/td&gt;
+&lt;td&gt;\epsilon&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;$\varepsilon$&lt;/td&gt;
+&lt;td&gt;\varepsilon&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$Z$&lt;/td&gt;
+&lt;td&gt;Z&lt;/td&gt;
+&lt;td&gt;$\zeta$&lt;/td&gt;
+&lt;td&gt;\zeta&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$H$&lt;/td&gt;
+&lt;td&gt;H&lt;/td&gt;
+&lt;td&gt;$\eta$&lt;/td&gt;
+&lt;td&gt;\eta&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$\Theta$&lt;/td&gt;
+&lt;td&gt;\Theta&lt;/td&gt;
+&lt;td&gt;$\theta$&lt;/td&gt;
+&lt;td&gt;\theta&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$I$&lt;/td&gt;
+&lt;td&gt;I&lt;/td&gt;
+&lt;td&gt;$\iota$&lt;/td&gt;
+&lt;td&gt;\iota&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$K$&lt;/td&gt;
+&lt;td&gt;K&lt;/td&gt;
+&lt;td&gt;$\kappa$&lt;/td&gt;
+&lt;td&gt;\kappa&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$\Lambda$&lt;/td&gt;
+&lt;td&gt;\Lambda&lt;/td&gt;
+&lt;td&gt;$\lambda$&lt;/td&gt;
+&lt;td&gt;\lambda&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$M$&lt;/td&gt;
+&lt;td&gt;M&lt;/td&gt;
+&lt;td&gt;$\mu$&lt;/td&gt;
+&lt;td&gt;\mu&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$N$&lt;/td&gt;
+&lt;td&gt;N&lt;/td&gt;
+&lt;td&gt;$\nu$&lt;/td&gt;
+&lt;td&gt;\nu&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$\Xi$&lt;/td&gt;
+&lt;td&gt;\Xi&lt;/td&gt;
+&lt;td&gt;$\xi$&lt;/td&gt;
+&lt;td&gt;\xi&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$O$&lt;/td&gt;
+&lt;td&gt;O&lt;/td&gt;
+&lt;td&gt;$\omicron$&lt;/td&gt;
+&lt;td&gt;\omicron&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$\Pi$&lt;/td&gt;
+&lt;td&gt;\Pi&lt;/td&gt;
+&lt;td&gt;$\pi$&lt;/td&gt;
+&lt;td&gt;\pi&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$P$&lt;/td&gt;
+&lt;td&gt;P&lt;/td&gt;
+&lt;td&gt;$\rho$&lt;/td&gt;
+&lt;td&gt;\rho&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$\Sigma$&lt;/td&gt;
+&lt;td&gt;\Sigma&lt;/td&gt;
+&lt;td&gt;$\sigma$&lt;/td&gt;
+&lt;td&gt;\sigma&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$T$&lt;/td&gt;
+&lt;td&gt;T&lt;/td&gt;
+&lt;td&gt;$\tau$&lt;/td&gt;
+&lt;td&gt;\tau&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$\Upsilon$&lt;/td&gt;
+&lt;td&gt;\Upsilon&lt;/td&gt;
+&lt;td&gt;$\upsilon$&lt;/td&gt;
+&lt;td&gt;\upsilon&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$\Phi$&lt;/td&gt;
+&lt;td&gt;\Phi&lt;/td&gt;
+&lt;td&gt;$\phi$&lt;/td&gt;
+&lt;td&gt;\phi&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;$\varphi$&lt;/td&gt;
+&lt;td&gt;\varphi&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$X$&lt;/td&gt;
+&lt;td&gt;X&lt;/td&gt;
+&lt;td&gt;$\chi$&lt;/td&gt;
+&lt;td&gt;\chi&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$\Psi$&lt;/td&gt;
+&lt;td&gt;\Psi&lt;/td&gt;
+&lt;td&gt;$\psi$&lt;/td&gt;
+&lt;td&gt;\psi&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$\Omega$&lt;/td&gt;
+&lt;td&gt;\Omega&lt;/td&gt;
+&lt;td&gt;$\omega$&lt;/td&gt;
+&lt;td&gt;\omega&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;三角函数&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;三角函数&lt;/th&gt;
+&lt;th&gt;Markdown&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;$\sin$&lt;/td&gt;
+&lt;td&gt;\sin&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;对数函数&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;算式&lt;/th&gt;
+&lt;th&gt;Markdown&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;$ln2$&lt;/td&gt;
+&lt;td&gt;\ln2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$\log_2 8$&lt;/td&gt;
+&lt;td&gt;\log_28&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$\lg 10$&lt;/td&gt;
+&lt;td&gt;\lg10&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;关系运算符&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;运算符&lt;/th&gt;
+&lt;th&gt;Markdown&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;$\pm$&lt;/td&gt;
+&lt;td&gt;\pm&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$\times$&lt;/td&gt;
+&lt;td&gt;\times&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$\cdot$&lt;/td&gt;
+&lt;td&gt;\cdot&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$\div$&lt;/td&gt;
+&lt;td&gt;\div&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$\neq$&lt;/td&gt;
+&lt;td&gt;\neq&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$\equiv$&lt;/td&gt;
+&lt;td&gt;\equiv&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$\leq$&lt;/td&gt;
+&lt;td&gt;\leq&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$\geq$&lt;/td&gt;
+&lt;td&gt;\geq&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$\approx$&lt;/td&gt;
+&lt;td&gt;\approx&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;其它特殊字符&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;符号&lt;/th&gt;
+&lt;th&gt;Markdown&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;$\forall$&lt;/td&gt;
+&lt;td&gt;\forall&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$\infty$&lt;/td&gt;
+&lt;td&gt;\infty&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$\emptyset$&lt;/td&gt;
+&lt;td&gt;\emptyset&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$\exists$&lt;/td&gt;
+&lt;td&gt;\exists&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$\nabla$&lt;/td&gt;
+&lt;td&gt;\nabla&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$\bot$&lt;/td&gt;
+&lt;td&gt;\bot&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$\angle$&lt;/td&gt;
+&lt;td&gt;\angle&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$\because$&lt;/td&gt;
+&lt;td&gt;\because&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$\therefore$&lt;/td&gt;
+&lt;td&gt;\therefore&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;大括号&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;$$
+c(u)=\begin{cases}
+
+\sqrt\frac{1}{N}，u=0\\
+\sqrt\frac{2}{N}，u\neq0
+
+\end{cases}
+$$
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;矩阵&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;$$
+ a =
+ \left[
+ \matrix{
+ \alpha_1 &amp;amp; test1\\
+ \alpha_2 &amp;amp; test2\\
+ \alpha_3 &amp;amp; test3
+ }
+ \right]
+$$
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;空格&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;$a\quad b$&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;font color=&apos;red&apos;&amp;gt;注意：行内公式属于 LaTeX 扩展语法，并非 Markdown 的通用标准，需要在 Typora 的“文件”-“偏好设置”中，勾选“内联公式”一项，Typora 才会予以解析。&lt;strong&gt;在很多其他的 Markdown 编辑器中很可能还是不认识无法解析&lt;/strong&gt;&amp;lt;/font&amp;gt;&lt;/p&gt;
+&lt;h2&gt;换行问题&lt;/h2&gt;
+&lt;p&gt;typora 换行问题（以下 typora 均在所见即所得模式 下操作，源码模式下和一般 markdown 编辑器相同）&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;软换行
+所谓软换行就是将其解析成空格的换行，在一般 markdown 编辑器里点击以此 enter 就是软换行，而在 typora 里是 shift+enter 是软换行&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;硬换行
+硬换行就是在解析后真正有换行效果的换行，在一般 markdown 里是末尾两个空格之后再敲击回车达到硬换行效果&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;换段
+在一般 markdown 编辑器里，段落之间使用一行空行进行区分，因此需要在某段落结尾（含两个空格，事实上不加两个空格换段效果也会有）连续敲击两次回车
+在 typora 中，敲击以此回车就是换段，即做了两次软换行 shift+enter&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr /&gt;
+&lt;p&gt;参考：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.moonpapers.com/blog/5f9bc075e342e0f73c0a49bc&quot;&gt;LaTeX 数学符号大全&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.csdn.net/garfielder007/article/details/51646604&quot;&gt;LaTeX 各种命令，符号&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.markdown.xyz/basic-syntax/&quot;&gt;Markdown 基本语法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.thisfaner.com/p/edit-markdown-efficiently-in-vscode/&quot;&gt;在 VSCode 中高效编辑 markdown 的正确方式&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded></item></channel></rss>
