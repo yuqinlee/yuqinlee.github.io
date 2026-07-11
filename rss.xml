@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>轻 · 语</title><description>一个兴趣使然的无名部落</description><link>https://fuwari.vercel.app/</link><language>zh_CN</language><item><title>Python 版本管理 —— Poetry</title><link>https://fuwari.vercel.app/posts/cst/python-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/cst/python-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/</guid><pubDate>Mon, 09 Sep 2024 08:02:58 GMT</pubDate><content:encoded>&lt;h2&gt;poetry 是什么&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>轻 · 语</title><description>No description</description><link>https://fuwari.vercel.app/</link><language>zh_CN</language><item><title>Python 版本管理 —— Poetry</title><link>https://fuwari.vercel.app/posts/cst/python-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/cst/python-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/</guid><pubDate>Mon, 09 Sep 2024 08:02:58 GMT</pubDate><content:encoded>&lt;h2&gt;poetry 是什么&lt;/h2&gt;
 &lt;p&gt;主要针对虚拟环境下的 python 包管理工具&lt;/p&gt;
 &lt;p&gt;poetry 与常见框架对比&lt;/p&gt;
 &lt;ul&gt;
@@ -1249,7 +1249,7 @@ configs:
 &lt;p&gt;执行后如下&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;%E5%9F%BA%E4%BA%8E%20Swarm%20%E7%9A%84%20Docker%20%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86.assets/pic_1650645402766.png&quot; alt=&quot;图 2&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;初始化后，当前所在的这个节点就是 manager，接下来可添加 worker,复制以上 Join token 内容，即
-&lt;code&gt;docker swarm join --token SWMTKN-1-5tquxa6ztsbln9l4q0gr5tq6o7wowj16oncu6vg9t26mp9shj7-drdzg6xreehoz3gpm6h48hgpk 192.168.56.101:2377&lt;/code&gt;
+&lt;code&gt;docker swarm join --token &amp;lt;your token&amp;gt; 192.168.56.101:2377&lt;/code&gt;
 ，登录 slave01 节点，执行该命令，即可将 slave01 节点以 worker 方式加入 swarm 集群&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;在 swarm 中有两种可用的不同的 token，一种是用作 worker 角色，另一个是用作 manager 角色&lt;/strong&gt;&lt;/p&gt;
@@ -2198,7 +2198,7 @@ $$
 $H(block\quad header)$要落在指定的$target\quad space$中,只有经过大量的尝试,才能证明其中的&quot;$proof\quad of\quad work$&quot;,在这个过程中,&quot;挖矿&quot;是很难的,但是去验证是很容易的,这个性质叫**&quot;difficult to solve,but easy to verify&quot;**&lt;/p&gt;
 &lt;p&gt;在比特币中使用的hash函数是$SHA-256(Secure Hash Algorithm)$,满足上述三个性质&lt;/p&gt;
 &lt;h3&gt;2. 签名&lt;/h3&gt;
-&lt;p&gt;$asymmetric\quad encryption\quad algorithm(非对称加密)$&lt;/p&gt;
+&lt;p&gt;asymmetric encryption algorithm(非对称加密)&lt;/p&gt;
 &lt;p&gt;在现实中开户需要到银行进行相关手续，但是比特币开户只需要在本地创建一对公钥与私钥即可$(public\quad key ,private\quad key)$,知道公钥就相当于知道银行账号,其他人可以往里转账,而私钥就好比是账户的口令,能将账户中的&quot;钱&quot;取出来。比特币是不加密的加密货币，这里公私钥是为了进行签名。&lt;/p&gt;
 &lt;p&gt;&amp;lt;font color=&apos;red&apos;&amp;gt;会不会两人生成的公私钥对是相同的？答：可能性微乎其微&amp;lt;/font&amp;gt;&lt;/p&gt;
 &lt;p&gt;这里生成公私钥要求有一个$a\quad good\quad source\quad of\quad randomness$，如果随机源选择不好的话就有可能两个人的公私钥相同了；在比特币中，除了生成公私钥对时需要一个好的随机源，在每一次加密的过程中都需要有好的随机源，不然可能泄露私钥&lt;/p&gt;
@@ -2383,16 +2383,16 @@ $$&lt;/p&gt;
 &lt;p&gt;花掉的币只有在UTXO这个集合中才是合法的，如果不在这个集合中，那么花的币要么不存在，要么以前已经被花过了。全节点要在内存中维护UTXO这个数据结构，以便快速检测“double spending”&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;total inputs=total outputs&lt;/strong&gt;：一笔交易可以有多个输入（不一定来自同一个地址，所以一个交易也可能有多个签名），也可以有多个输出，要求交易的总输入等于总输出。&lt;/p&gt;
-&lt;p&gt;但有时total inputs 可能稍微大于outputs，因为还要给打包区块的节点提供费用，即$transaction\quad fee（交易费）$。一般交易费是比较小的，甚至有的交易没有交易费。&lt;/p&gt;
+&lt;p&gt;但有时total inputs 可能稍微大于outputs，因为还要给打包区块的节点提供费用，即 transaction fee（交易费）。一般交易费是比较小的，甚至有的交易没有交易费。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;为什么有交易费？&lt;br /&gt;
 光有出块奖励机制还不够，有些“自私”的节点可能只去打包自己的交易，而不去管别人的交易，因为打包别人的交易还要验证交易的合法性，占用带宽等，，显然只打包自己的会方便很多，因此交易会提供费用给打包的人。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;目前挖矿主要还是为了获得出块奖励，规定约10min出一个区块，出21万个区块就减半，因此出块奖励大约4年就减半。在很长时间之后出块奖励会变得非常小，那么交易费就会成主要奖励来源了&lt;/p&gt;
 &lt;p&gt;$$
-T_{减半周期}=\frac {210000&lt;em&gt;10min}{60min&lt;/em&gt;24h*365d}=3.995433
+T_{\text{减半周期}}=\frac {210000&lt;em&gt;10min}{60min&lt;/em&gt;24h*365d}=3.995433
 $$&lt;/p&gt;
-&lt;p&gt;与比特币这种$transaction-based\quad ledger$相对应的还有一种$account-based(基于账户的)\quad ledger$,&lt;strong&gt;以太坊&lt;/strong&gt;就是用的此模式，这种模式下，系统显示记录每个账户上有多少个币。两种方式各有优缺点，前者显然隐私的保护会更好，但是代价就是要说明币的来源。&lt;/p&gt;
+&lt;p&gt;与比特币这种$transaction-based\quad ledger$相对应的还有一种account-based(基于账户的) ledger,&lt;strong&gt;以太坊&lt;/strong&gt;就是用的此模式，这种模式下，系统显示记录每个账户上有多少个币。两种方式各有优缺点，前者显然隐私的保护会更好，但是代价就是要说明币的来源。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;创建时间：2020-11-04&lt;/p&gt;
 &lt;p&gt;修改时间：2020-11-08&lt;/p&gt;
