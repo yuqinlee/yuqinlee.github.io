@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>轻 · 语</title><description>兴趣使然的个人博客</description><link>https://fuwari.vercel.app/</link><language>zh_CN</language><item><title>Linux 链接命令</title><link>https://fuwari.vercel.app/posts/cst/linux-%E9%93%BE%E6%8E%A5%E5%91%BD%E4%BB%A4/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/cst/linux-%E9%93%BE%E6%8E%A5%E5%91%BD%E4%BB%A4/</guid><pubDate>Tue, 14 Jul 2026 14:11:36 GMT</pubDate><content:encoded>&lt;h2&gt;什么是 inode&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>轻 · 语</title><description>兴趣使然的个人博客</description><link>https://yuqinlee.github.io/</link><language>zh_CN</language><item><title>Linux 链接命令</title><link>https://yuqinlee.github.io/posts/cst/linux-%E9%93%BE%E6%8E%A5%E5%91%BD%E4%BB%A4/</link><guid isPermaLink="true">https://yuqinlee.github.io/posts/cst/linux-%E9%93%BE%E6%8E%A5%E5%91%BD%E4%BB%A4/</guid><pubDate>Tue, 14 Jul 2026 14:11:36 GMT</pubDate><content:encoded>&lt;h2&gt;什么是 inode&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;wiki: inode（index node）是指在许多“类Unix文件系统”中的文件的信息，
 每个inode保存了文件系统内的各个对象（包括文件、目录、设备文件、socket、管道等）的数据的属性和磁盘块位置。
@@ -141,7 +141,7 @@ hard ----/
 
 hard ----&amp;gt; inode100 ----&amp;gt; hello
 &lt;/code&gt;&lt;/pre&gt;
-</content:encoded></item><item><title>GitHub Actions 使用指南</title><link>https://fuwari.vercel.app/posts/cst/github-actions-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/github-actions-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/cst/github-actions-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/github-actions-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</guid><description>（AI 生成文档）以本博客为例，详细讲解如何使用 GitHub Actions 将 Astro 静态博客自动部署到 GitHub Pages，包含 SSH 密钥配置、工作流文件编写、常见问题排查等完整流程。</description><pubDate>Thu, 09 Jul 2026 00:52:47 GMT</pubDate><content:encoded>&lt;h2&gt;前言&lt;/h2&gt;
+</content:encoded></item><item><title>GitHub Actions 使用指南</title><link>https://yuqinlee.github.io/posts/cst/github-actions-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/github-actions-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</link><guid isPermaLink="true">https://yuqinlee.github.io/posts/cst/github-actions-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/github-actions-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</guid><description>（AI 生成文档）以本博客为例，详细讲解如何使用 GitHub Actions 将 Astro 静态博客自动部署到 GitHub Pages，包含 SSH 密钥配置、工作流文件编写、常见问题排查等完整流程。</description><pubDate>Thu, 09 Jul 2026 00:52:47 GMT</pubDate><content:encoded>&lt;h2&gt;前言&lt;/h2&gt;
 &lt;p&gt;本博客基于 &lt;a href=&quot;https://astro.build&quot;&gt;Astro&lt;/a&gt; 框架的 &lt;a href=&quot;https://github.com/saicaca/fuwari&quot;&gt;Fuwari&lt;/a&gt; 模板构建，源码托管在 &lt;a href=&quot;https://github.com/yuqinlee/yuchin-space&quot;&gt;yuqinlee/yuchin-space&lt;/a&gt;，通过 GitHub Pages 对外提供服务。&lt;/p&gt;
 &lt;p&gt;每次写完文章，只需要一个 &lt;code&gt;git push&lt;/code&gt;，剩下的构建和部署全部由 GitHub Actions 自动完成。这篇文章就以此博客为例，带你从零搭建一套完整的「Push → 自动部署到 GitHub Pages」工作流。&lt;/p&gt;
 &lt;h2&gt;基础概念&lt;/h2&gt;
@@ -505,7 +505,7 @@ draft: true # ← 设为 true
 &lt;li&gt;&lt;a href=&quot;https://docs.astro.build/en/guides/deploy/&quot;&gt;Astro 部署指南&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/pnpm/action-setup&quot;&gt;pnpm/action-setup&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</content:encoded></item><item><title>Python 版本管理 —— Poetry</title><link>https://fuwari.vercel.app/posts/cst/python-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/cst/python-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/</guid><pubDate>Mon, 09 Sep 2024 08:02:58 GMT</pubDate><content:encoded>&lt;h2&gt;poetry 是什么&lt;/h2&gt;
+</content:encoded></item><item><title>Python 版本管理 —— Poetry</title><link>https://yuqinlee.github.io/posts/cst/python-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/</link><guid isPermaLink="true">https://yuqinlee.github.io/posts/cst/python-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/</guid><pubDate>Mon, 09 Sep 2024 08:02:58 GMT</pubDate><content:encoded>&lt;h2&gt;poetry 是什么&lt;/h2&gt;
 &lt;p&gt;主要针对虚拟环境下的 python 包管理工具&lt;/p&gt;
 &lt;p&gt;poetry 与常见框架对比&lt;/p&gt;
 &lt;ul&gt;
@@ -633,7 +633,7 @@ poetry config --list
 &lt;li&gt;&lt;a href=&quot;https://www.w3cschool.cn/article/32429509.html&quot;&gt;Python版本管理入门指南：多个版本切换不再困难&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://blog.csdn.net/wuzhongqiang/article/details/125861099&quot;&gt;poetry管理python开发环境学习小记&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</content:encoded></item><item><title>zsh 简记</title><link>https://fuwari.vercel.app/posts/cst/zsh-%E7%AE%80%E8%AE%B0/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/cst/zsh-%E7%AE%80%E8%AE%B0/</guid><pubDate>Fri, 30 Aug 2024 04:53:55 GMT</pubDate><content:encoded>&lt;h2&gt;zsh 安装与基础配置&lt;/h2&gt;
+</content:encoded></item><item><title>zsh 简记</title><link>https://yuqinlee.github.io/posts/cst/zsh-%E7%AE%80%E8%AE%B0/</link><guid isPermaLink="true">https://yuqinlee.github.io/posts/cst/zsh-%E7%AE%80%E8%AE%B0/</guid><pubDate>Fri, 30 Aug 2024 04:53:55 GMT</pubDate><content:encoded>&lt;h2&gt;zsh 安装与基础配置&lt;/h2&gt;
 &lt;p&gt;arch&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;pacman -S zsh
 &lt;/code&gt;&lt;/pre&gt;
@@ -740,7 +740,7 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 &lt;li&gt;&lt;a href=&quot;https://www.cnblogs.com/lookfeel/p/17839867.html&quot;&gt;arch linux安装并简单配置zsh&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://www.newverse.wiki/knows/prompt/&quot;&gt;配置 Zsh 终端：Prompt 命令提示符&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</content:encoded></item><item><title>Windows 安装 Docker、wsl 等</title><link>https://fuwari.vercel.app/posts/cst/windows-%E5%AE%89%E8%A3%85-dockerwsl-%E7%AD%89/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/cst/windows-%E5%AE%89%E8%A3%85-dockerwsl-%E7%AD%89/</guid><pubDate>Sat, 22 Jun 2024 09:08:21 GMT</pubDate><content:encoded>&lt;p&gt;&amp;lt;!-- # Windows 安装 docker、wsl 等 --&amp;gt;&lt;/p&gt;
+</content:encoded></item><item><title>Windows 安装 Docker、wsl 等</title><link>https://yuqinlee.github.io/posts/cst/windows-%E5%AE%89%E8%A3%85-dockerwsl-%E7%AD%89/</link><guid isPermaLink="true">https://yuqinlee.github.io/posts/cst/windows-%E5%AE%89%E8%A3%85-dockerwsl-%E7%AD%89/</guid><pubDate>Sat, 22 Jun 2024 09:08:21 GMT</pubDate><content:encoded>&lt;p&gt;&amp;lt;!-- # Windows 安装 docker、wsl 等 --&amp;gt;&lt;/p&gt;
 &lt;h2&gt;安装 WSL——Archlinux&lt;/h2&gt;
 &lt;p&gt;控制面板找到 &lt;code&gt;启用或关闭windows功能&lt;/code&gt; 勾选 &lt;code&gt;Hyper-V&lt;/code&gt; 和 &lt;code&gt;适用于 Linux 的 Windows 子系统&lt;/code&gt;（只用勾选后者实际就能WSL安装，如果需要使用原来的 Hyper-V 方式安装 Docker 才需要开启前者，这里直接都打开了），重启系统，执行 &lt;code&gt;wsl --update&lt;/code&gt; 更新&lt;/p&gt;
 &lt;p&gt;安装 Archlinux 作为子系统&lt;/p&gt;
@@ -851,7 +851,7 @@ wsl --import docker-desktop-data D:\WSL\docker\docker-desktop-data D:\WSL\docker
 &lt;li&gt;&lt;a href=&quot;https://www.cnblogs.com/KylinBlog/p/16588037.html&quot;&gt;√ 通过 VcXsrv 在 WSL2 上使用图形化界面&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://steinslab.io/archives/2082&quot;&gt;√ 使用 WSL2 + X11 转发 - 在 Windows10 中打造 GNU/Linux 学习生产环境&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</content:encoded></item><item><title>Linux 文件属性</title><link>https://fuwari.vercel.app/posts/cst/linux-%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/cst/linux-%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7/</guid><pubDate>Mon, 04 Sep 2023 09:21:39 GMT</pubDate><content:encoded>&lt;p&gt;&amp;lt;!-- # Linux 文件属性 --&amp;gt;&lt;/p&gt;
+</content:encoded></item><item><title>Linux 文件属性</title><link>https://yuqinlee.github.io/posts/cst/linux-%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7/</link><guid isPermaLink="true">https://yuqinlee.github.io/posts/cst/linux-%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7/</guid><pubDate>Mon, 04 Sep 2023 09:21:39 GMT</pubDate><content:encoded>&lt;p&gt;&amp;lt;!-- # Linux 文件属性 --&amp;gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;[uchin@master linuxLearn]$ ll
 总用量 12K
 drwxrwxr-x.  2 uchin uchin   23 9月   4 17:21 .
@@ -897,7 +897,7 @@ drwx------. 12 uchin uchin 4.0K 9月   4 17:21 ..
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/wdkirchhoff/article/details/44205143&quot;&gt;https://blog.csdn.net/wdkirchhoff/article/details/44205143&lt;/a&gt;&amp;lt;&amp;gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://www.zhihu.com/question/50223526&quot;&gt;linux为什么不能硬链接目录？&lt;/a&gt;&lt;/p&gt;
-</content:encoded></item><item><title>Archlinux 简记</title><link>https://fuwari.vercel.app/posts/cst/archlinux-%E7%AE%80%E8%AE%B0/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/cst/archlinux-%E7%AE%80%E8%AE%B0/</guid><pubDate>Wed, 01 Feb 2023 02:18:48 GMT</pubDate><content:encoded>&lt;h2&gt;1. 无图形安装&lt;/h2&gt;
+</content:encoded></item><item><title>Archlinux 简记</title><link>https://yuqinlee.github.io/posts/cst/archlinux-%E7%AE%80%E8%AE%B0/</link><guid isPermaLink="true">https://yuqinlee.github.io/posts/cst/archlinux-%E7%AE%80%E8%AE%B0/</guid><pubDate>Wed, 01 Feb 2023 02:18:48 GMT</pubDate><content:encoded>&lt;h2&gt;1. 无图形安装&lt;/h2&gt;
 &lt;h3&gt;检查安装模式&lt;/h3&gt;
 &lt;p&gt;检测是否为 &lt;code&gt;uefi 方式&lt;/code&gt; 安装，若为 &lt;code&gt;uefi 方式&lt;/code&gt; 则以下命令将输出一堆东西&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;ls /sys/firmware/efi/efivars
@@ -1238,7 +1238,7 @@ sudo pacman -S noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&quot;http://ivo-wang.github.io/2018/05/29/archlinux-%E4%BF%AE%E5%A4%8Duefi%E5%BC%95%E5%AF%BC%E5%90%AF%E5%8A%A8/&quot;&gt;archlinux 修复uefi引导启动&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
-</content:encoded></item><item><title>基于 Swarm 的 Docker 分布式集群管理</title><link>https://fuwari.vercel.app/posts/cst/%E5%9F%BA%E4%BA%8E-swarm-%E7%9A%84-docker-%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/cst/%E5%9F%BA%E4%BA%8E-swarm-%E7%9A%84-docker-%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/</guid><pubDate>Thu, 01 Dec 2022 01:46:11 GMT</pubDate><content:encoded>&lt;h2&gt;1. 序&lt;/h2&gt;
+</content:encoded></item><item><title>基于 Swarm 的 Docker 分布式集群管理</title><link>https://yuqinlee.github.io/posts/cst/%E5%9F%BA%E4%BA%8E-swarm-%E7%9A%84-docker-%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/</link><guid isPermaLink="true">https://yuqinlee.github.io/posts/cst/%E5%9F%BA%E4%BA%8E-swarm-%E7%9A%84-docker-%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/</guid><pubDate>Thu, 01 Dec 2022 01:46:11 GMT</pubDate><content:encoded>&lt;h2&gt;1. 序&lt;/h2&gt;
 &lt;h3&gt;1.1 各虚拟机信息&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;CentOS 7&lt;br /&gt;
@@ -2173,7 +2173,7 @@ task 是永远不会从&lt;code&gt;COMPLETE&lt;/code&gt;状态变回&lt;code&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;|&lt;strong&gt;PS：原《 docker 进阶》见 7.3&lt;/strong&gt;&lt;/p&gt;
-</content:encoded></item><item><title>Linux 重定向</title><link>https://fuwari.vercel.app/posts/cst/linux-%E9%87%8D%E5%AE%9A%E5%90%91/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/cst/linux-%E9%87%8D%E5%AE%9A%E5%90%91/</guid><pubDate>Fri, 30 Sep 2022 06:11:08 GMT</pubDate><content:encoded>&lt;p&gt;&amp;lt;!-- # Linux 重定向 --&amp;gt;&lt;/p&gt;
+</content:encoded></item><item><title>Linux 重定向</title><link>https://yuqinlee.github.io/posts/cst/linux-%E9%87%8D%E5%AE%9A%E5%90%91/</link><guid isPermaLink="true">https://yuqinlee.github.io/posts/cst/linux-%E9%87%8D%E5%AE%9A%E5%90%91/</guid><pubDate>Fri, 30 Sep 2022 06:11:08 GMT</pubDate><content:encoded>&lt;p&gt;&amp;lt;!-- # Linux 重定向 --&amp;gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;linux重定向可以将命令的输出或输入重新定向到其他位置或文件，以实现对输出输入的控制。默认情况下命令的输出通常为终端，&lt;strong&gt;如果想将输出转移到文件或其他位置，这时候就需要重定向。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;文件描述符：一个命令通常都会打开三个文件，默认使用文件描述符0,1,2来指代这个三个文件&lt;/strong&gt;&lt;/p&gt;
@@ -2206,7 +2206,7 @@ stderr  2  标准错误输出流 （终端）
 &lt;hr /&gt;
 &lt;p&gt;&lt;a href=&quot;https://gwaslab.com/2021/11/28/linux-redirection/&quot;&gt;Linux ：输入/输出重定向 &amp;gt;, 1&amp;gt;, 2&amp;gt;, &amp;amp;&amp;gt;, &amp;gt;&amp;gt; , &amp;lt;&amp;lt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://www.bilibili.com/video/BV18y4y137Gr&quot;&gt;linux 中的输入输出重定向（b 站）&lt;/a&gt;&lt;/p&gt;
-</content:encoded></item><item><title>Conda 简记</title><link>https://fuwari.vercel.app/posts/cst/conda-%E7%AE%80%E8%AE%B0/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/cst/conda-%E7%AE%80%E8%AE%B0/</guid><pubDate>Fri, 24 Jun 2022 12:53:39 GMT</pubDate><content:encoded>&lt;h2&gt;1. Anaconda 与 Miniconda 与 Conda&lt;/h2&gt;
+</content:encoded></item><item><title>Conda 简记</title><link>https://yuqinlee.github.io/posts/cst/conda-%E7%AE%80%E8%AE%B0/</link><guid isPermaLink="true">https://yuqinlee.github.io/posts/cst/conda-%E7%AE%80%E8%AE%B0/</guid><pubDate>Fri, 24 Jun 2022 12:53:39 GMT</pubDate><content:encoded>&lt;h2&gt;1. Anaconda 与 Miniconda 与 Conda&lt;/h2&gt;
 &lt;p&gt;&amp;lt;center&amp;gt;
 &amp;lt;img src=&quot;https://conda.io/projects/conda/en/latest/_static/conda_logo_full.svg&quot; alt=&quot;condalogo&quot; style=&quot;zoom:50%;&quot; /&amp;gt;
 &amp;lt;/center&amp;gt;&lt;/p&gt;
@@ -2415,7 +2415,7 @@ conda remove --name oldname --all
 &lt;h2&gt;其他参考&lt;/h2&gt;
 &lt;p&gt;【1】&lt;a href=&quot;https://zhuanlan.zhihu.com/p/67745160&quot;&gt;conda常用命令&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;【2】&lt;a href=&quot;https://blog.csdn.net/zhayushui/article/details/80433768&quot;&gt;conda常用命令:安装，更新，创建，激活，关闭，查看，卸载，删除，清理，重命名，换源，问题&lt;/a&gt;&lt;/p&gt;
-</content:encoded></item><item><title>Git 使用小结</title><link>https://fuwari.vercel.app/posts/cst/git-%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/cst/git-%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/</guid><pubDate>Mon, 24 Jan 2022 06:44:00 GMT</pubDate><content:encoded>&lt;p&gt;&amp;lt;!-- # Git 使用小结 --&amp;gt;&lt;/p&gt;
+</content:encoded></item><item><title>Git 使用小结</title><link>https://yuqinlee.github.io/posts/cst/git-%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/</link><guid isPermaLink="true">https://yuqinlee.github.io/posts/cst/git-%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/</guid><pubDate>Mon, 24 Jan 2022 06:44:00 GMT</pubDate><content:encoded>&lt;p&gt;&amp;lt;!-- # Git 使用小结 --&amp;gt;&lt;/p&gt;
 &lt;p&gt;&amp;lt;!-- &amp;gt; uchin/李玉勤   --&amp;gt;
 &amp;lt;!-- &amp;gt; 20220124   --&amp;gt;&lt;/p&gt;
 &lt;h2&gt;1. git 配置&lt;/h2&gt;
@@ -2675,7 +2675,7 @@ git submodule update --remote --merge
 &lt;/ol&gt;
 &lt;hr /&gt;
 &lt;p&gt;注：使用 Msys2 的 git vscode 会有问题&lt;/p&gt;
-</content:encoded></item><item><title>区块链与安全Note</title><link>https://fuwari.vercel.app/posts/cst/%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%8E%E5%AE%89%E5%85%A8note/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/cst/%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%8E%E5%AE%89%E5%85%A8note/</guid><pubDate>Wed, 04 Nov 2020 13:00:40 GMT</pubDate><content:encoded>&lt;p&gt;&amp;lt;!-- &amp;lt;h1&amp;gt;区块链与安全Note&amp;lt;/h1&amp;gt; --&amp;gt;&lt;/p&gt;
+</content:encoded></item><item><title>区块链与安全Note</title><link>https://yuqinlee.github.io/posts/cst/%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%8E%E5%AE%89%E5%85%A8note/</link><guid isPermaLink="true">https://yuqinlee.github.io/posts/cst/%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%8E%E5%AE%89%E5%85%A8note/</guid><pubDate>Wed, 04 Nov 2020 13:00:40 GMT</pubDate><content:encoded>&lt;p&gt;&amp;lt;!-- &amp;lt;h1&amp;gt;区块链与安全Note&amp;lt;/h1&amp;gt; --&amp;gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;2020-11-04&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -2904,7 +2904,7 @@ $$&lt;/p&gt;
 &lt;p&gt;创建时间：2020-11-04&lt;/p&gt;
 &lt;p&gt;修改时间：2020-11-08&lt;/p&gt;
 &lt;/blockquote&gt;
-</content:encoded></item><item><title>Markdown 小记</title><link>https://fuwari.vercel.app/posts/cst/markdown-%E5%B0%8F%E8%AE%B0/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/cst/markdown-%E5%B0%8F%E8%AE%B0/</guid><pubDate>Fri, 28 Feb 2020 16:56:14 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+</content:encoded></item><item><title>Markdown 小记</title><link>https://yuqinlee.github.io/posts/cst/markdown-%E5%B0%8F%E8%AE%B0/</link><guid isPermaLink="true">https://yuqinlee.github.io/posts/cst/markdown-%E5%B0%8F%E8%AE%B0/</guid><pubDate>Fri, 28 Feb 2020 16:56:14 GMT</pubDate><content:encoded>&lt;blockquote&gt;
 &lt;p&gt;创建于_2020-02-29 00:56 by uchin&lt;br /&gt;
 修改于_2020-08-01 19:00 by uchin&lt;br /&gt;
 修改于_2020-12-13 21:27 by uchin&lt;/p&gt;
@@ -3489,7 +3489,7 @@ $$
 &lt;li&gt;&lt;a href=&quot;https://www.markdown.xyz/basic-syntax/&quot;&gt;Markdown 基本语法&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://www.thisfaner.com/p/edit-markdown-efficiently-in-vscode/&quot;&gt;在 VSCode 中高效编辑 markdown 的正确方式&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</content:encoded></item><item><title>Typora 小记</title><link>https://fuwari.vercel.app/posts/cst/typora-%E5%B0%8F%E8%AE%B0/</link><guid isPermaLink="true">https://fuwari.vercel.app/posts/cst/typora-%E5%B0%8F%E8%AE%B0/</guid><pubDate>Fri, 28 Feb 2020 16:56:14 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+</content:encoded></item><item><title>Typora 小记</title><link>https://yuqinlee.github.io/posts/cst/typora-%E5%B0%8F%E8%AE%B0/</link><guid isPermaLink="true">https://yuqinlee.github.io/posts/cst/typora-%E5%B0%8F%E8%AE%B0/</guid><pubDate>Fri, 28 Feb 2020 16:56:14 GMT</pubDate><content:encoded>&lt;blockquote&gt;
 &lt;p&gt;创建于_2020-02-29 00:56 by uchin&lt;br /&gt;
 修改于_2020-08-01 19:00 by uchin&lt;br /&gt;
 修改于_2020-12-13 21:27 by uchin&lt;/p&gt;
